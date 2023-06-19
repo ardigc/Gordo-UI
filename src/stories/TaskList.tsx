@@ -14,8 +14,12 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }:{l
   };
 
   const LoadingRow = (
-    <div className='w-32 prose'>
-      <Skeleton  height={30} />
+    <div className='prose'>
+      <span className="glow-checkbox" />
+      <span className="glow-text">
+        <span><Skeleton /></span> 
+      </span>
+      
     </div>
   );
   if (loading) {
@@ -32,7 +36,15 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }:{l
   }
 
   if (tasks.length === 0) {
-    return <div className="list-items">empty</div>;
+    return (
+      <div className="list-items" key={"empty"} data-testid="empty">
+        <div className="wrapper-message">
+          <span className="icon-check" />
+          <p className="title-message">You have no tasks</p>
+          <p className="subtitle-message">Sit back and relax</p>
+        </div>
+      </div>
+    );
   }
 
   const tasksInOrder = [
