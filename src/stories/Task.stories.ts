@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Task } from './Task'
-const meta: Meta<typeof Task> = {
+const meta = {
   component: Task,
-  title: 'Example/Task',
+  title: 'Me/Task',
+  tags: ['autodocs'],
+
   // task: {
   //     id: '1',
   //     title: 'Test Task',
   //     state: 'TASK_INBOX',
   //   },
-}
+} satisfies Meta<typeof Task>
 export default meta
 type Story = StoryObj<typeof meta>
 export const primary: Story = {
