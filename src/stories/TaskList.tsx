@@ -38,9 +38,10 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }:{l
   if (tasks.length === 0) {
     return (
       <div className="list-items" key={"empty"} data-testid="empty">
-        <div className="wrapper-message">
+        <div className="flex flex-col items-center justify-center h-screen">
+
           <span className="icon-check" />
-          <p className="title-message">You have no tasks</p>
+          <p className="font-bold text-lg">You have no tasks</p>
           <p className="subtitle-message">Sit back and relax</p>
         </div>
       </div>
