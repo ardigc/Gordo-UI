@@ -13,7 +13,6 @@ export default function AutoComplete({
   const [value, setValue] = useState(label)
   const changeEventHandler: ChangeEventHandler<HTMLInputElement> = (ev) => {
     const target = ev.currentTarget
-    //   console.log(ev.target.value)
     setValue(target.value)
     onInputChange(ev, target.value)
   }
