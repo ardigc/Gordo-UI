@@ -2,8 +2,10 @@
 // crear la lista de tareas
 
 import React from 'react';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import {Task} from './Task';
+import Skeleton from 'react-loading-skeleton';
 
 export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }:{loading: boolean, tasks:any, onPinTask:React.Dispatch<React.SetStateAction<any>>, onArchiveTask: React.Dispatch<React.SetStateAction<any>>}) {
   const events = {
@@ -12,16 +14,13 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }:{l
   };
 
   const LoadingRow = (
-    <div className="loading-item">
-      <span className="glow-checkbox" />
-      <span className="glow-text">
-        <span>Loading</span> <span>cool</span> <span>state</span>
-      </span>
+    <div className='w-32 prose'>
+      <Skeleton  height={30} />
     </div>
   );
   if (loading) {
     return (
-      <div className="list-items" data-testid="loading" key={"loading"}>
+      <div className="list-items w-32" data-testid="loading" key={"loading"}>
         {LoadingRow}
         {LoadingRow}
         {LoadingRow}
@@ -36,9 +35,13 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }:{l
     return <div className="list-items">empty</div>;
   }
 
+  const tasksInOrder = [
+    ...tasks.filter((t: { state: string; }) => t.state === 'TASK_PINNED'),
+    ...tasks.filter((t: { state: string; }) => t.state !== 'TASK_PINNED'),
+  ];
   return (
     <div className="list-items">
-      {tasks.map((task: { id: string, title: string; state: string; }) => (
+      {tasksInOrder.map((task) => (
         <Task key={task.id} task={task} {...events} />
       ))}
     </div>
