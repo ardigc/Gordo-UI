@@ -1,12 +1,14 @@
 import './task.css'
+import React from 'react'
+
 interface TaskProps {
   task: {
     id: string
     title: string
     state: string
   }
-  onArchiveTask: boolean
-  onPinTask: boolean
+  onArchiveTask: React.Dispatch<React.SetStateAction<any>>
+  onPinTask: React.Dispatch<React.SetStateAction<any>>
 }
 export function Task({
   task: { id, title, state },

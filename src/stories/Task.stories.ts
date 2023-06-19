@@ -45,6 +45,15 @@ export const Pinned: Story = {
     },
   },
 }
+export const Archived: Story = {
+  args: {
+    task: {
+      id: '1',
+      title: 'Test Task',
+      state: 'TASK_ARCHIVED',
+    },
+  },
+}
 
 // export const Archived = Template.bind({});
 // Archived.args = {
