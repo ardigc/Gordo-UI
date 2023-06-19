@@ -3,7 +3,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <div>holiwi</div>
+      <div className='flex bg-slate-100'>holiwi</div>
       <div>jkass</div>
     </>
   )
