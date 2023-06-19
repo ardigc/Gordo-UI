@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     '@storybook/addon-styling',
     {
       name: '@storybook/addon-styling',
-      options: {  postCss: true,},
+      options: {  },
     },
   ],
 

@@ -32,7 +32,7 @@ export function Task({
         <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
       </label>
 
-      <label htmlFor="title" aria-label={title} className="title">
+      <label htmlFor="title" aria-label={title} className="title ">
         <input
           type="text"
           value={title}
