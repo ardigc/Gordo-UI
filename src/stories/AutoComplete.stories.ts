@@ -116,5 +116,23 @@ export const primary: Story = {
       '3 Idiots',
       'Monty Python and the Holy Grail',
     ],
+    label: 'Peliculas',
+    onInputChange(ev, newValue) {
+      const target = ev.currentTarget
+      console.log(target.value)
+      console.log(newValue)
+    },
+  },
+}
+const timeSlots = Array.from(new Array(24 * 2)).map(
+  (_, index) =>
+    `${index < 20 ? '0' : ''}${Math.floor(index / 2)}:${
+      index % 2 === 0 ? '00' : '30'
+    }`
+)
+export const hours: Story = {
+  args: {
+    options: timeSlots,
+    label: 'Horas',
   },
 }
