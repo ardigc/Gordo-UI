@@ -1,7 +1,7 @@
 import './task.css'
 import React from 'react'
 import { StarIcon, StarIconFilled } from '../components/icons/StarIcon'
-interface TaskProps {
+export interface TaskProps {
   task: {
     id: string
     title: string

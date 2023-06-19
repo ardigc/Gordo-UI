@@ -3,16 +3,16 @@
 
 import React from 'react'
 
-import { Task } from './Task'
+import { Task, TaskProps } from './Task'
 
 export default function TaskList({
-  loading,
+  loading = false,
   tasks,
   onPinTask,
   onArchiveTask,
 }: {
-  loading: boolean
-  tasks: any
+  loading?: boolean
+  tasks: Array<TaskProps['task']>
   onPinTask: React.Dispatch<React.SetStateAction<any>>
   onArchiveTask: React.Dispatch<React.SetStateAction<any>>
 }) {
@@ -63,8 +63,8 @@ export default function TaskList({
   }
 
   const tasksInOrder = [
-    ...tasks.filter((t: { state: string }) => t.state === 'TASK_PINNED'),
-    ...tasks.filter((t: { state: string }) => t.state !== 'TASK_PINNED'),
+    ...tasks.filter((t) => t.state === 'TASK_PINNED'),
+    ...tasks.filter((t) => t.state !== 'TASK_PINNED'),
   ]
   return (
     <div className="list-items">
