@@ -7,7 +7,7 @@ import * as TaskStories from './Task.stories';
 
 const meta = {
     component: TaskList,
-    title: 'TaskList',
+    title: 'Me/TaskList',
     // decorators: [(story) => <div >{story()}</div>],
     // [(story) => <div style={{ padding: '3rem' }}>{story()}</div>],
     tags: ['autodocs'],
