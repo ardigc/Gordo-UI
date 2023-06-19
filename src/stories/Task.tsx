@@ -1,6 +1,6 @@
 import './task.css'
 import React from 'react'
-
+import { StarIcon, StarIconFilled } from '../components/icons/StarIcon'
 interface TaskProps {
   task: {
     id: string
@@ -50,7 +50,17 @@ export function Task({
           aria-label={`pinTask-${id}`}
           key={`pinTask-${id}`}
         >
-          <span className={`icon-star`} />
+          {state !== 'TASK_PINNED' && (
+            <span className={`icon-star`}>
+              <StarIcon />
+            </span>
+          )}
+
+          {state === 'TASK_PINNED' && (
+            <span className={`icon-star`}>
+              <StarIconFilled />
+            </span>
+          )}
         </button>
       )}
     </div>
