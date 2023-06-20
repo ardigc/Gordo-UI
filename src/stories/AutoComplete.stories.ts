@@ -117,7 +117,7 @@ export const primary: Story = {
       'Monty Python and the Holy Grail',
     ],
     label: 'Peliculas',
-    classes: 'border',
+    className: 'border',
     onInputChange(ev, newValue) {
       const target = ev.currentTarget
       console.log(target.value)
@@ -134,7 +134,7 @@ const timeSlots = Array.from(new Array(24 * 2)).map(
 export const hours: Story = {
   args: {
     options: timeSlots,
-    classes: 'bg-slate-400',
+    className: 'bg-slate-400 ',
     label: 'Horas',
   },
 }

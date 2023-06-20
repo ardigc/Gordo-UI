@@ -4,12 +4,12 @@ export default function AutoComplete({
   options,
   label,
   onInputChange,
-  classes,
+  className,
 }: {
   options: Array<string>
   label: string
   onInputChange: (ev: ChangeEvent<HTMLInputElement>, newValue: string) => void
-  classes?: string
+  className?: string
 }) {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState(label)
@@ -34,7 +34,7 @@ export default function AutoComplete({
         type="text"
         onChange={changeEventHandler}
         value={value}
-        className={classes}
+        className={className}
       />
       {open && (
         <div>
