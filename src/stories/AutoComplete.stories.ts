@@ -134,7 +134,7 @@ const timeSlots = Array.from(new Array(24 * 2)).map(
 export const hours: Story = {
   args: {
     options: timeSlots,
-    // classes:'border',
+    classes: 'bg-slate-400',
     label: 'Horas',
   },
 }
