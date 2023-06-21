@@ -73,9 +73,7 @@ button:focus-visible {
 
 .input-text-field {
   padding: 25px 12px 8px;
-  outline: none;
-  background-color: rgba(243, 243, 243, 0.87);
-  border-radius: 5px;
+
 }
 
 .input-div-filled::after{

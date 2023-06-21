@@ -4,7 +4,7 @@ import classNames from 'classnames'
 export interface TextField {
   label?: string
   variant?: 'filled'
-  classes?:{labelClassName:string}
+  classes?:{labelClassName:string, inputContainerClassName:string, inputClassName:string}
 }
 export default function TextField({ label, variant, classes }: TextField) {
   const [touched, setTouched] = useState(false)
@@ -22,7 +22,7 @@ export default function TextField({ label, variant, classes }: TextField) {
         {label}
       </label>
       <div className={classNames('input-div-filled',{'input-div-filled-none':!touched, 'input-div-filled-normal':touched})}>
-        <input id='filled-input'  onFocus={() => setTouched(true)} className="input-text-field" />
+        <input id='filled-input'  onFocus={() => setTouched(true)} className="input-text-field outline-none bg-gray-100 rounded-sm" />
       </div>
     </div>
   )
