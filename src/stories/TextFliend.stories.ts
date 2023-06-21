@@ -24,6 +24,9 @@ export const secondary: Story={
 }
 export const sinFondo: Story={
   args:{
-    label:'sin nada de fondo'
+    label:'sin nada de fondo',
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
   }
 }
