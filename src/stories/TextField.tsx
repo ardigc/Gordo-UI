@@ -4,21 +4,25 @@ import classNames from 'classnames'
 export interface TextField {
   label?: string
   variant?: 'filled'
+  classes?:{labelClassName:string}
 }
-export default function TextField({ label, variant }: TextField) {
+export default function TextField({ label, variant, classes }: TextField) {
   const [touched, setTouched] = useState(false)
+  const labelClassName= classes?.labelClassName
   return (
     <div className="relative inline-flex">
       <label
-        className={classNames('label-text-field', {
-          'normal-label-text-field': !touched,
-          'mini-label-text-field': touched,
+        className={classNames('label-text-field','text-lg cursor-text' ,{
+          'normal-label-text-field-filled': !touched,
+          'mini-label-text-field-filled': touched,
+          [labelClassName||''] : labelClassName,
         })}
+        htmlFor='filled-input'
       >
         {label}
       </label>
       <div>
-        <input onFocus={() => setTouched(true)} className="input-text-field" />
+        <input id='filled-input' onFocus={() => setTouched(true)} className="input-text-field" />
       </div>
     </div>
   )
