@@ -13,6 +13,6 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     label: 'hola',
-    classes: {labelClassName:'bg-blue-400 text-sm'}
+    classes: {labelClassName:'bg-blue-200'}
   },
 }
