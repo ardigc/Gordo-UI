@@ -56,6 +56,7 @@ export const Error: Story = {
     type: 'text',
     label: 'Error',
     color: 'error',
+    helperText: 'craso error',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -211,6 +212,18 @@ export const hiddenLabel: Story = {
     type: 'text',
     label: 'info',
     hiddenLabel: true,
+    color: 'info',
+
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  },
+}
+export const helperText: Story = {
+  args: {
+    type: 'text',
+    label: 'info',
+    helperText: 'holiwi',
     color: 'info',
 
     onChange(ev) {

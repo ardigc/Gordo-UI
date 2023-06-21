@@ -33,6 +33,7 @@ export interface TextField {
   inputProps?: {}
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   required?: boolean
+  helperText?: string | undefined
 }
 export default function TextField({
   label,
@@ -55,6 +56,7 @@ export default function TextField({
   readOnly = select ? true : false,
   hiddenLabel,
   inputProps,
+  helperText,
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -79,7 +81,7 @@ export default function TextField({
   return (
     <div
       id={id}
-      className="relative inline-flex"
+      className="relative inline-flex flex-col"
       onBlur={() => {
         if (!ComponentValue) {
           setTouched(false)
@@ -89,17 +91,21 @@ export default function TextField({
     >
       {!hiddenLabel && (
         <label
-          className={classNames('label-text-field', 'text-lg cursor-text', {
-            'normal-label-text-field-filled': !touched,
-            'mini-label-text-field-filled': touched,
-            'text-error-color': touched && color === 'error',
-            'text-primary-color': touched && color === 'primary',
-            'text-secundary-color': touched && color === 'secundary',
-            'text-warning-color': touched && color === 'warning',
-            'text-info-color': touched && color === 'info',
-            'text-success-color': touched && color === 'success',
-            [labelClassName || '']: labelClassName,
-          })}
+          className={classNames(
+            'label-text-field',
+            'text-lg cursor-text left-0 z-10',
+            {
+              'normal-label-text-field-filled': !touched,
+              'mini-label-text-field-filled': touched,
+              'text-error-color': touched && color === 'error',
+              'text-primary-color': touched && color === 'primary',
+              'text-secundary-color': touched && color === 'secundary',
+              'text-warning-color': touched && color === 'warning',
+              'text-info-color': touched && color === 'info',
+              'text-success-color': touched && color === 'success',
+              [labelClassName || '']: labelClassName,
+            }
+          )}
           htmlFor="filled-input"
         >
           {label}
@@ -107,7 +113,7 @@ export default function TextField({
       )}
       <div
         className={classNames(
-          'input-div-filled after:border-b-2 ',
+          'input-div-filled after:border-b-2 flex relative',
           // [colourOptions.after],
           {
             'after:border-b-primary-color': color === 'primary',
@@ -144,9 +150,22 @@ export default function TextField({
           )}
           {...inputProps}
         />
-
-        {opened && select && <div>{children}</div>}
       </div>
+      {opened && select && <div>{children}</div>}
+      {helperText && (
+        <p
+          className={classNames('text-sm mx-3', {
+            'text-error-color': color === 'error',
+            'text-primary-color': color === 'primary',
+            'text-secundary-color': color === 'secundary',
+            'text-warning-color': color === 'warning',
+            'text-info-color': color === 'info',
+            'text-success-color': color === 'success',
+          })}
+        >
+          {helperText}
+        </p>
+      )}
     </div>
   )
 }

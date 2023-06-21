@@ -99,10 +99,11 @@ button:focus-visible {
 .label-text-field {
   position: absolute;
   transition: all 0.2s ease-out;
+  transform-origin: left top;
 }
 .normal-label-text-field-filled {
   transform: translate(12px, 16px) scale(1);
 }
 .mini-label-text-field-filled {
-  transform: translate(8px, 4px) scale(0.75);
+  transform: translate(12px, 4px) scale(0.75);
 }
