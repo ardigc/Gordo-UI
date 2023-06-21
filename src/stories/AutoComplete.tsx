@@ -4,12 +4,16 @@ export default function AutoComplete({
   options,
   label,
   onInputChange,
-  className,
+  classes = { optionClassName: 'cursor-pointer hover:bg-slate-200' },
 }: {
   options: Array<string>
   label: string
   onInputChange: (ev: ChangeEvent<HTMLInputElement>, newValue: string) => void
-  className?: string
+  classes?: {
+    inputClassname?: string
+    optionsClassName?: string
+    optionClassName?: string
+  }
 }) {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState(label)
@@ -34,14 +38,14 @@ export default function AutoComplete({
         type="text"
         onChange={changeEventHandler}
         value={value}
-        className={className}
+        className={classes?.inputClassname}
       />
       {open && (
-        <div>
+        <div className={classes?.optionsClassName}>
           {options.map((option, index) => (
             <div
               onClick={() => handleOptionClick(option)}
-              className="cursor-pointer hover:bg-slate-200"
+              className={classes.optionClassName}
               key={index}
             >
               {option}
