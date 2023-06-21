@@ -2,6 +2,7 @@ import {
   ChangeEvent,
   ChangeEventHandler,
   HTMLInputTypeAttribute,
+  ReactNode,
   useState,
 } from 'react'
 import classNames from 'classnames'
@@ -22,25 +23,38 @@ export interface TextField {
   autoFocus?: boolean
   defaultValue?: string | number | ReadonlyArray<string> | undefined
   disabled?: boolean | undefined
-  error?: boolean
+  error?: boolean | undefined
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  disableUnderline?: boolean | undefined
+  select?: boolean
+  children?: ReactNode
+  readOnly?: boolean
+  hiddenLabel?: boolean | undefined
+  inputProps?: {}
 }
 export default function TextField({
   label,
   variant,
-  error = false,
+  error,
   color = error ? 'error' : 'primary',
   defaultValue,
   disabled,
   autoFocus = false,
   id,
   value,
+  select,
   type = 'text',
   classes,
   onChange,
+  disableUnderline,
+  children,
+  readOnly = select ? true : false,
+  hiddenLabel,
+  inputProps,
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
+  const [opened, setOpened] = useState(false)
   const labelClassName = classes?.labelClassName
   // const colours = {
   //   primary: error ? 'red-600' : 'blue-600',
@@ -65,25 +79,28 @@ export default function TextField({
       onBlur={() => {
         if (!ComponentValue) {
           setTouched(false)
+          setOpened(false)
         }
       }}
     >
-      <label
-        className={classNames('label-text-field', 'text-lg cursor-text', {
-          'normal-label-text-field-filled': !touched,
-          'mini-label-text-field-filled': touched,
-          'text-error-color': touched && color === 'error',
-          'text-primary-color': touched && color === 'primary',
-          'text-secundary-color': touched && color === 'secundary',
-          'text-warning-color': touched && color === 'warning',
-          'text-info-color': touched && color === 'info',
-          'text-success-color': touched && color === 'success',
-          [labelClassName || '']: labelClassName,
-        })}
-        htmlFor="filled-input"
-      >
-        {label}
-      </label>
+      {!hiddenLabel && (
+        <label
+          className={classNames('label-text-field', 'text-lg cursor-text', {
+            'normal-label-text-field-filled': !touched,
+            'mini-label-text-field-filled': touched,
+            'text-error-color': touched && color === 'error',
+            'text-primary-color': touched && color === 'primary',
+            'text-secundary-color': touched && color === 'secundary',
+            'text-warning-color': touched && color === 'warning',
+            'text-info-color': touched && color === 'info',
+            'text-success-color': touched && color === 'success',
+            [labelClassName || '']: labelClassName,
+          })}
+          htmlFor="filled-input"
+        >
+          {label}
+        </label>
+      )}
       <div
         className={classNames(
           'input-div-filled after:border-b-2 ',
@@ -95,8 +112,8 @@ export default function TextField({
             'after:border-b-warning-color': color === 'warning',
             'after:border-b-info-color': color === 'info',
             'after:border-b-success-color': color === 'success',
-            'input-div-filled-none ': !touched,
-            'input-div-filled-normal': touched,
+            'input-div-filled-none ': disableUnderline || !touched,
+            'input-div-filled-normal': !disableUnderline && touched,
             [classes?.inputContainerClassName || '']:
               classes?.inputContainerClassName,
           }
@@ -109,13 +126,20 @@ export default function TextField({
           autoFocus={autoFocus}
           value={value}
           type={type}
+          readOnly={readOnly}
           onChange={(ev) => changeEventHandler(ev)}
-          onFocus={() => setTouched(true)}
+          onFocus={() => {
+            setTouched(true)
+            setOpened(true)
+          }}
           className={classNames(
             'input-text-field outline-none bg-gray-100 rounded-sm',
             { [classes?.inputClassName || '']: classes?.inputClassName }
           )}
+          {...inputProps}
         />
+
+        {opened && select && <div>{children}</div>}
       </div>
     </div>
   )
