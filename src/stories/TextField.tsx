@@ -31,6 +31,8 @@ export interface TextField {
   readOnly?: boolean
   hiddenLabel?: boolean | undefined
   inputProps?: {}
+  inputRef?: React.LegacyRef<HTMLInputElement> | undefined
+  required?: boolean
 }
 export default function TextField({
   label,
@@ -39,10 +41,12 @@ export default function TextField({
   color = error ? 'error' : 'primary',
   defaultValue,
   disabled,
+  inputRef,
   autoFocus = false,
   id,
   value,
   select,
+  required = false,
   type = 'text',
   classes,
   onChange,
@@ -125,9 +129,11 @@ export default function TextField({
           defaultValue={defaultValue}
           autoFocus={autoFocus}
           value={value}
+          ref={inputRef}
           type={type}
           readOnly={readOnly}
           onChange={(ev) => changeEventHandler(ev)}
+          required={required}
           onFocus={() => {
             setTouched(true)
             setOpened(true)
