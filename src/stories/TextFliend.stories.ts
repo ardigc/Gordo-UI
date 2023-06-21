@@ -19,12 +19,21 @@ export const primary: Story = {
 export const secondary: Story={
   args:{
     label:'hola ramonchu',
+    type: 'password',
     classes:{inputClassName:'bg-red-500'}
   }
 }
 export const sinFondo: Story={
   args:{
     label:'sin nada de fondo',
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  }
+}
+export const numeros: Story={
+  args:{
+    type:'number',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
