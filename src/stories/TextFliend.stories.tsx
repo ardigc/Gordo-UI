@@ -196,6 +196,16 @@ export const warning: Story = {
     },
   },
 }
+export const search: Story = {
+  args: {
+    type: 'search',
+    label: 'warning',
+    color: 'warning',
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  },
+}
 export const info: Story = {
   args: {
     type: 'text',
