@@ -39,3 +39,22 @@ export const numeros: Story={
     },
   }
 }
+export const autoFocus: Story={
+  args:{
+    type:'text',
+    autoFocus: true,
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  }
+}
+export const Error: Story={
+  args:{
+    type:'text',
+    label:'Error',
+    error:true,
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  }
+}
