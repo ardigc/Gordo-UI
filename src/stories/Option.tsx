@@ -6,7 +6,11 @@ export interface OptionProps {
   onClick?: () => void
 }
 // Partial<OptionProps>
-export default function Option({ children, className, onClick }: OptionProps) {
+export default function Option({
+  children,
+  className = 'cursor-pointer hover:bg-slate-200',
+  onClick,
+}: OptionProps) {
   return (
     <div onClick={onClick} className={className}>
       {children}

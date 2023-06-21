@@ -1,10 +1,11 @@
 // import * as React from 'react';
 import { ChangeEvent, ChangeEventHandler, useState } from 'react'
+import Option from './Option'
 export default function AutoComplete({
   options,
   label,
   onInputChange,
-  classes = { optionClassName: 'cursor-pointer hover:bg-slate-200' },
+  classes,
 }: {
   options: Array<string>
   label: string
@@ -43,13 +44,13 @@ export default function AutoComplete({
       {open && (
         <div className={classes?.optionsClassName}>
           {options.map((option, index) => (
-            <div
+            <Option
               onClick={() => handleOptionClick(option)}
-              className={classes.optionClassName}
+              className={classes?.optionClassName}
               key={index}
             >
               {option}
-            </div>
+            </Option>
           ))}
         </div>
       )}
