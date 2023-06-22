@@ -13,5 +13,6 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     id: 'hola',
+    color: 'info',
   },
 }

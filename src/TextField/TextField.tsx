@@ -131,8 +131,7 @@ export default function TextField({
         )}
         <div
           className={classNames(
-            'input-input-custom after:border-b-2 flex flex-col relative ',
-            // [colourOptions.after],
+            'input-custom after:border-b-2 flex flex-col relative ',
             {
               'after:border-b-primary-color': color === 'primary',
               'after:border-b-secundary-color': color === 'secundary',
