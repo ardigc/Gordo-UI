@@ -131,7 +131,7 @@ export default function TextField({
         )}
         <div
           className={classNames(
-            'input-div-filled after:border-b-2 flex flex-col relative ',
+            'input-input-custom after:border-b-2 flex flex-col relative ',
             // [colourOptions.after],
             {
               'after:border-b-primary-color': color === 'primary',
@@ -140,8 +140,8 @@ export default function TextField({
               'after:border-b-warning-color': color === 'warning',
               'after:border-b-info-color': color === 'info',
               'after:border-b-success-color': color === 'success',
-              'input-div-filled-none ': disableUnderline || !touched,
-              'input-div-filled-normal': !disableUnderline && touched,
+              'input-custom-none ': disableUnderline || !touched,
+              'input-custom-normal': !disableUnderline && touched,
               [classes?.inputContainerClassName || '']:
                 classes?.inputContainerClassName,
             }

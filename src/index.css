@@ -81,7 +81,7 @@ button:focus-visible {
   padding: 25px 12px 8px;
 }
 
-.input-div-filled::after {
+.input-custom::after {
   /* border-bottom: solid 2px #2563eb; */
   position: absolute;
   left: 0;
@@ -90,10 +90,10 @@ button:focus-visible {
   content: '';
   transition: all 200ms cubic-bezier(0, 0, 0.2, 1);
 }
-.input-div-filled-none::after {
+.input-custom-none::after {
   transform: scale(0);
 }
-.input-div-filled-normal::after {
+.input-custom-normal::after {
   transform: scale(1);
 }
 .label-text-field {
