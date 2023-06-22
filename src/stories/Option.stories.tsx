@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     children: 'hola',
+    value: 'hola',
     className: 'bg-slate-400',
     onClick() {
       console.log('hola')
@@ -23,6 +24,7 @@ export const secundary: Story = {
   args: {
     children: <div>hola</div>,
     className: 'bg-blue-200',
+    value: 'hola',
     onClick() {
       console.log('hola')
     },
