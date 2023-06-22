@@ -6,7 +6,7 @@ interface inputProps {
   id?: string
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
   autoFocus?: boolean
-  clases?: {
+  classes?: {
     constainerClassName?: string
     inputClassName?: string
   }
@@ -16,13 +16,14 @@ export default function Input({
   autoFocus,
   id,
   color = 'primary',
+  classes,
 }: inputProps) {
   const [touched, setTouched] = useState(false)
   return (
     <Clickaway onClickaway={() => setTouched(false)}>
       <div
         className={classNames(
-          'input-custom after:border-b-2 flex flex-col relative ',
+          'input-custom hover:before:border-t-2 before:border-black after:border-b-2 before:border-t flex flex-col relative ',
           {
             'after:border-b-primary-color': color === 'primary',
             'after:border-b-secundary-color': color === 'secundary',
@@ -32,6 +33,7 @@ export default function Input({
             'after:border-b-success-color': color === 'success',
             'input-custom-none ': !touched,
             'input-custom-normal': touched,
+            [classes?.constainerClassName || '']: classes?.constainerClassName,
           }
         )}
       >
@@ -39,7 +41,9 @@ export default function Input({
           id={id}
           autoComplete={autocomplete}
           autoFocus={autoFocus}
-          className={classNames('outline-none')}
+          className={classNames('outline-none', {
+            [classes?.inputClassName || '']: classes?.inputClassName,
+          })}
           onFocus={() => {
             setTouched(true)
           }}
