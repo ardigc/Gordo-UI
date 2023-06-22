@@ -55,6 +55,7 @@ export interface TextField {
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   required?: boolean
   helperText?: string | undefined
+  multiLine?: boolean
 }
 export default function TextField({
   label,
@@ -73,6 +74,7 @@ export default function TextField({
   classes,
   onChange,
   disableUnderline,
+  multiLine,
   children,
   readOnly = select ? true : false,
   hiddenLabel,
@@ -141,27 +143,52 @@ export default function TextField({
             }
           )}
         >
-          <input
-            id="filled-input"
-            disabled={disabled}
-            defaultValue={defaultValue}
-            autoFocus={autoFocus}
-            value={ComponentValue}
-            ref={inputRef}
-            type={type}
-            readOnly={readOnly}
-            onChange={(ev) => changeEventHandler(ev)}
-            required={required}
-            onFocus={() => {
-              setTouched(true)
-              setOpened(true)
-            }}
-            className={classNames(
-              'input-text-field outline-none bg-gray-100 rounded-sm',
-              { [classes?.inputClassName || '']: classes?.inputClassName }
-            )}
-            {...inputProps}
-          />
+          {!multiLine && (
+            <input
+              id="filled-input"
+              disabled={disabled}
+              defaultValue={defaultValue}
+              autoFocus={autoFocus}
+              value={ComponentValue}
+              ref={inputRef}
+              type={type}
+              readOnly={readOnly}
+              onChange={(ev) => changeEventHandler(ev)}
+              required={required}
+              onFocus={() => {
+                setTouched(true)
+                setOpened(true)
+              }}
+              className={classNames(
+                'input-text-field outline-none bg-gray-100 rounded-sm',
+                { [classes?.inputClassName || '']: classes?.inputClassName }
+              )}
+              {...inputProps}
+            />
+          )}
+          {multiLine && (
+            <textarea
+              id="filled-input"
+              disabled={disabled}
+              defaultValue={defaultValue}
+              autoFocus={autoFocus}
+              value={ComponentValue}
+              ref={inputRef}
+              type={type}
+              readOnly={readOnly}
+              onChange={(ev) => changeEventHandler(ev)}
+              required={required}
+              onFocus={() => {
+                setTouched(true)
+                setOpened(true)
+              }}
+              className={classNames(
+                'input-text-field outline-none bg-gray-100 rounded-sm',
+                { [classes?.inputClassName || '']: classes?.inputClassName }
+              )}
+              {...inputProps}
+            />
+          )}
         </div>
         <TextFieldContext.Provider value={{ setValue, setOpened }}>
           {opened && select && <div className="max-w-input">{children}</div>}
