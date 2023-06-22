@@ -11,6 +11,9 @@ export default {
         'info-color': 'var(--info-color)',
         'success-color': 'var(--success-color)',
       },
+      maxWidth: {
+        input: '205px',
+      },
     },
   },
   plugins: [],

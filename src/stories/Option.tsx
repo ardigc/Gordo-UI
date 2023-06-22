@@ -1,5 +1,5 @@
 import { MouseEvent, MouseEventHandler, ReactNode, useContext } from 'react'
-import { TextFieldContext } from './TextField'
+import { TextFieldContext } from '../TextField/TextField'
 
 export interface OptionProps {
   children?: ReactNode

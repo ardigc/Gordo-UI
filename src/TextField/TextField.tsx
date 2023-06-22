@@ -7,9 +7,10 @@ import {
   SetStateAction,
   createContext,
   useState,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
-import Clickaway from './ClickAway'
+import Clickaway from '../stories/ClickAway'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
   setValue?: Dispatch<
@@ -90,24 +91,16 @@ export default function TextField({
       onChange(ev)
     }
   }
-  const clickAwayHandler = () => {
+  const clickAwayHandler = useCallback(() => {
     console.log(ComponentValue)
     if (!ComponentValue) {
       setTouched(false)
     }
-  }
+    setOpened(false)
+  }, [ComponentValue])
   return (
     <Clickaway onClickaway={clickAwayHandler}>
-      <div
-        id={id}
-        className="relative inline-flex flex-col"
-        onBlur={() => {
-          console.log(ComponentValue)
-          if (!ComponentValue) {
-            setTouched(false)
-          }
-        }}
-      >
+      <div id={id} className="relative inline-flex flex-col">
         {!hiddenLabel && (
           <label
             className={classNames(
@@ -132,7 +125,7 @@ export default function TextField({
         )}
         <div
           className={classNames(
-            'input-div-filled after:border-b-2 flex relative',
+            'input-div-filled after:border-b-2 flex flex-col relative ',
             // [colourOptions.after],
             {
               'after:border-b-primary-color': color === 'primary',
@@ -171,7 +164,7 @@ export default function TextField({
           />
         </div>
         <TextFieldContext.Provider value={{ setValue, setOpened }}>
-          {opened && select && <div>{children}</div>}
+          {opened && select && <div className="max-w-input">{children}</div>}
         </TextFieldContext.Provider>
         {helperText && (
           <p

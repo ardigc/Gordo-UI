@@ -22,7 +22,7 @@ export default function Clickaway({
     return () => {
       document.removeEventListener('click', clickInside)
     }
-  }, [])
+  }, [clickInside])
   return (
     <div className="inline-flex" ref={targetRef}>
       {children}

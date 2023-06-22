@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import TextField from './TextField'
-import Option from './Option'
+import Option from '../stories/Option'
 const meta = {
   component: TextField,
   title: 'GordoUI/TextField',
@@ -57,6 +57,8 @@ export const Error: Story = {
     label: 'Error',
     color: 'error',
     helperText: 'craso error',
+    classes: { inputClassName: ' border border-black' },
+
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -67,6 +69,7 @@ export const success: Story = {
     type: 'text',
     label: 'success',
     color: 'success',
+    classes: { inputClassName: 'rounded-xl border border-black' },
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
