@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { useState } from 'react'
 import Clickaway from '../ClickAway/ClickAway'
+import { ElementType } from 'react'
 interface inputProps {
   autocomplete?: string
   id?: string
@@ -10,6 +11,10 @@ interface inputProps {
     constainerClassName?: string
     inputClassName?: string
   }
+  components?: {
+    Input?: ElementType
+    Container?: ElementType
+  }
 }
 export default function Input({
   autocomplete,
@@ -17,8 +22,10 @@ export default function Input({
   id,
   color = 'primary',
   classes,
+  components,
 }: inputProps) {
   const [touched, setTouched] = useState(false)
+  const UserInput = components?.Input
   return (
     <Clickaway onClickaway={() => setTouched(false)}>
       <div
@@ -37,17 +44,20 @@ export default function Input({
           }
         )}
       >
-        <input
-          id={id}
-          autoComplete={autocomplete}
-          autoFocus={autoFocus}
-          className={classNames('outline-none', {
-            [classes?.inputClassName || '']: classes?.inputClassName,
-          })}
-          onFocus={() => {
-            setTouched(true)
-          }}
-        />
+        {!UserInput && (
+          <input
+            id={id}
+            autoComplete={autocomplete}
+            autoFocus={autoFocus}
+            className={classNames('outline-none', {
+              [classes?.inputClassName || '']: classes?.inputClassName,
+            })}
+            onFocus={() => {
+              setTouched(true)
+            }}
+          />
+        )}
+        {UserInput && <UserInput />}
       </div>
     </Clickaway>
   )
