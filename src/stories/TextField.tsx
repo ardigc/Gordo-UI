@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react'
 import classNames from 'classnames'
+import Clickaway from './ClickAway'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
   setValue?: Dispatch<
@@ -78,119 +79,115 @@ export default function TextField({
   helperText,
 }: TextField) {
   const [touched, setTouched] = useState(false)
-  const [ComponentValue, setValue] = useState(value)
+  const [ComponentValue, setValue] = useState('value')
   const [opened, setOpened] = useState(false)
-  // const [option, setOption] = useState<
-  //   string | ReadonlyArray<string> | number | undefined
-  // >()
-  console.log(ComponentValue)
+
   const labelClassName = classes?.labelClassName
-  // const colours = {
-  //   primary: error ? 'red-600' : 'blue-600',
-  //   light: error ? 'red-400' : 'blue-400',
-  //   dark: error ? 'red-800' : 'blue-800',
-  // }
-  // console.log(colours)
-  // const colourOptions = {
-  //   text: `text-${colours.primary}`,
-  //   after: `after:border-b-${colours.primary}`,
-  // }
+
   const changeEventHandler: ChangeEventHandler<HTMLInputElement> = (ev) => {
     setValue(ev.currentTarget.value)
     if (onChange) {
       onChange(ev)
     }
   }
-  // console.log(option)
+  const clickAwayHandler = () => {
+    console.log(ComponentValue)
+    if (!ComponentValue) {
+      setTouched(false)
+    }
+  }
   return (
-    <div
-      id={id}
-      className="relative inline-flex flex-col"
-      onBlur={() => {
-        if (!ComponentValue) {
-          setTouched(false)
-        }
-      }}
-    >
-      {!hiddenLabel && (
-        <label
+    <Clickaway onClickaway={clickAwayHandler}>
+      <div
+        id={id}
+        className="relative inline-flex flex-col"
+        onBlur={() => {
+          console.log(ComponentValue)
+          if (!ComponentValue) {
+            setTouched(false)
+          }
+        }}
+      >
+        {!hiddenLabel && (
+          <label
+            className={classNames(
+              'label-text-field',
+              'text-lg cursor-text left-0 z-10',
+              {
+                'normal-label-text-field-filled': !touched,
+                'mini-label-text-field-filled': touched,
+                'text-error-color': touched && color === 'error',
+                'text-primary-color': touched && color === 'primary',
+                'text-secundary-color': touched && color === 'secundary',
+                'text-warning-color': touched && color === 'warning',
+                'text-info-color': touched && color === 'info',
+                'text-success-color': touched && color === 'success',
+                [labelClassName || '']: labelClassName,
+              }
+            )}
+            htmlFor="filled-input"
+          >
+            {label}
+          </label>
+        )}
+        <div
           className={classNames(
-            'label-text-field',
-            'text-lg cursor-text left-0 z-10',
+            'input-div-filled after:border-b-2 flex relative',
+            // [colourOptions.after],
             {
-              'normal-label-text-field-filled': !touched,
-              'mini-label-text-field-filled': touched,
-              'text-error-color': touched && color === 'error',
-              'text-primary-color': touched && color === 'primary',
-              'text-secundary-color': touched && color === 'secundary',
-              'text-warning-color': touched && color === 'warning',
-              'text-info-color': touched && color === 'info',
-              'text-success-color': touched && color === 'success',
-              [labelClassName || '']: labelClassName,
+              'after:border-b-primary-color': color === 'primary',
+              'after:border-b-secundary-color': color === 'secundary',
+              'after:border-b-error-color': color === 'error',
+              'after:border-b-warning-color': color === 'warning',
+              'after:border-b-info-color': color === 'info',
+              'after:border-b-success-color': color === 'success',
+              'input-div-filled-none ': disableUnderline || !touched,
+              'input-div-filled-normal': !disableUnderline && touched,
+              [classes?.inputContainerClassName || '']:
+                classes?.inputContainerClassName,
             }
           )}
-          htmlFor="filled-input"
         >
-          {label}
-        </label>
-      )}
-      <div
-        className={classNames(
-          'input-div-filled after:border-b-2 flex relative',
-          // [colourOptions.after],
-          {
-            'after:border-b-primary-color': color === 'primary',
-            'after:border-b-secundary-color': color === 'secundary',
-            'after:border-b-error-color': color === 'error',
-            'after:border-b-warning-color': color === 'warning',
-            'after:border-b-info-color': color === 'info',
-            'after:border-b-success-color': color === 'success',
-            'input-div-filled-none ': disableUnderline || !touched,
-            'input-div-filled-normal': !disableUnderline && touched,
-            [classes?.inputContainerClassName || '']:
-              classes?.inputContainerClassName,
-          }
+          <input
+            id="filled-input"
+            disabled={disabled}
+            defaultValue={defaultValue}
+            autoFocus={autoFocus}
+            value={ComponentValue}
+            ref={inputRef}
+            type={type}
+            readOnly={readOnly}
+            onChange={(ev) => changeEventHandler(ev)}
+            required={required}
+            onFocus={() => {
+              setTouched(true)
+              setOpened(true)
+            }}
+            className={classNames(
+              'input-text-field outline-none bg-gray-100 rounded-sm',
+              { [classes?.inputClassName || '']: classes?.inputClassName }
+            )}
+            {...inputProps}
+          />
+        </div>
+        <TextFieldContext.Provider value={{ setValue, setOpened }}>
+          {opened && select && <div>{children}</div>}
+        </TextFieldContext.Provider>
+        {helperText && (
+          <p
+            className={classNames('text-sm mx-3', {
+              'text-error-color': color === 'error',
+              'text-primary-color': color === 'primary',
+              'text-secundary-color': color === 'secundary',
+              'text-warning-color': color === 'warning',
+              'text-info-color': color === 'info',
+              'text-success-color': color === 'success',
+            })}
+          >
+            {helperText}
+          </p>
         )}
-      >
-        <input
-          id="filled-input"
-          disabled={disabled}
-          defaultValue={defaultValue}
-          autoFocus={autoFocus}
-          value={ComponentValue}
-          ref={inputRef}
-          type={type}
-          readOnly={readOnly}
-          onChange={(ev) => changeEventHandler(ev)}
-          required={required}
-          onFocus={() => {
-            setTouched(true)
-            setOpened(true)
-          }}
-          className={classNames(
-            'input-text-field outline-none bg-gray-100 rounded-sm',
-            { [classes?.inputClassName || '']: classes?.inputClassName }
-          )}
-          {...inputProps}
-        />
       </div>
-      <TextFieldContext.Provider value={{ setValue, setOpened }}>
-        {opened && select && <div>{children}</div>}
-      </TextFieldContext.Provider>
-      {helperText && (
-        <p
-          className={classNames('text-sm mx-3', {
-            'text-error-color': color === 'error',
-            'text-primary-color': color === 'primary',
-            'text-secundary-color': color === 'secundary',
-            'text-warning-color': color === 'warning',
-            'text-info-color': color === 'info',
-            'text-success-color': color === 'success',
-          })}
-        >
-          {helperText}
-        </p>
-      )}
-    </div>
+    </Clickaway>
   )
 }
