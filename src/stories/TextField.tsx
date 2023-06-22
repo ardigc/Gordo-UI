@@ -11,21 +11,22 @@ import {
 import classNames from 'classnames'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
-  setOption?: Dispatch<
+  setValue?: Dispatch<
     SetStateAction<string | ReadonlyArray<string> | number | undefined>
   >
+  setOpened?: Dispatch<SetStateAction<boolean>>
 }
 export const TextFieldContext = createContext<InputContextType>({})
-export function TextFieldProvider({ children }: { children: ReactNode }) {
-  const [option, setOption] = useState<
-    string | ReadonlyArray<string> | number | undefined
-  >()
-  return (
-    <TextFieldContext.Provider value={{ option, setOption }}>
-      {children}
-    </TextFieldContext.Provider>
-  )
-}
+// export function TextFieldProvider({ children }: { children: ReactNode }) {
+//   const [option, setOption] = useState<
+//     string | ReadonlyArray<string> | number | undefined
+//   >()
+//   return (
+//     <TextFieldContext.Provider value={{ option, setOption }}>
+//       {children}
+//     </TextFieldContext.Provider>
+//   )
+// }
 export interface TextField {
   label?: string
   variant?: 'filled'
@@ -79,10 +80,10 @@ export default function TextField({
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
   const [opened, setOpened] = useState(false)
-  const [option, setOption] = useState<
-    string | ReadonlyArray<string> | number | undefined
-  >()
-
+  // const [option, setOption] = useState<
+  //   string | ReadonlyArray<string> | number | undefined
+  // >()
+  console.log(ComponentValue)
   const labelClassName = classes?.labelClassName
   // const colours = {
   //   primary: error ? 'red-600' : 'blue-600',
@@ -100,7 +101,7 @@ export default function TextField({
       onChange(ev)
     }
   }
-  console.log(option)
+  // console.log(option)
   return (
     <div
       id={id}
@@ -108,7 +109,6 @@ export default function TextField({
       onBlur={() => {
         if (!ComponentValue) {
           setTouched(false)
-          setOpened(false)
         }
       }}
     >
@@ -157,7 +157,7 @@ export default function TextField({
           disabled={disabled}
           defaultValue={defaultValue}
           autoFocus={autoFocus}
-          value={select ? option : value}
+          value={ComponentValue}
           ref={inputRef}
           type={type}
           readOnly={readOnly}
@@ -174,7 +174,7 @@ export default function TextField({
           {...inputProps}
         />
       </div>
-      <TextFieldContext.Provider value={{ option, setOption }}>
+      <TextFieldContext.Provider value={{ setValue, setOpened }}>
         {opened && select && <div>{children}</div>}
       </TextFieldContext.Provider>
       {helperText && (
