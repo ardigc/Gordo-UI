@@ -244,3 +244,31 @@ export const helperText: Story = {
     },
   },
 }
+
+export const TextArea: Story = {
+  args: {
+    type: 'text',
+    label: 'info',
+    helperText: 'holiwi',
+    color: 'info',
+    multiLine: true,
+
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  },
+}
+export const TextArearows: Story = {
+  args: {
+    type: 'text',
+    label: 'info',
+    helperText: 'holiwi',
+    color: 'info',
+    rows: 3,
+    multiLine: true,
+
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  },
+}

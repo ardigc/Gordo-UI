@@ -37,7 +37,7 @@ export interface TextField {
     inputContainerClassName?: string
     inputClassName?: string
   }
-  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   id?: string
   type?: HTMLInputTypeAttribute
   value?: string | ReadonlyArray<string> | number | undefined
@@ -53,9 +53,11 @@ export interface TextField {
   hiddenLabel?: boolean | undefined
   inputProps?: {}
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
+  TextAreaRef?: React.LegacyRef<HTMLTextAreaElement> | undefined
   required?: boolean
   helperText?: string | undefined
   multiLine?: boolean
+  rows?: number
 }
 export default function TextField({
   label,
@@ -68,6 +70,7 @@ export default function TextField({
   autoFocus = false,
   id,
   value,
+  rows = 1,
   select,
   required = false,
   type = 'text',
@@ -75,6 +78,7 @@ export default function TextField({
   onChange,
   disableUnderline,
   multiLine,
+  TextAreaRef,
   children,
   readOnly = select ? true : false,
   hiddenLabel,
@@ -84,10 +88,10 @@ export default function TextField({
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
   const [opened, setOpened] = useState(false)
-
   const labelClassName = classes?.labelClassName
-
-  const changeEventHandler: ChangeEventHandler<HTMLInputElement> = (ev) => {
+  const changeEventHandler: ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (ev) => {
     setValue(ev.currentTarget.value)
     if (onChange) {
       onChange(ev)
@@ -173,17 +177,17 @@ export default function TextField({
               defaultValue={defaultValue}
               autoFocus={autoFocus}
               value={ComponentValue}
-              ref={inputRef}
-              type={type}
+              ref={TextAreaRef}
               readOnly={readOnly}
               onChange={(ev) => changeEventHandler(ev)}
               required={required}
+              rows={rows}
               onFocus={() => {
                 setTouched(true)
                 setOpened(true)
               }}
               className={classNames(
-                'input-text-field outline-none bg-gray-100 rounded-sm',
+                'input-text-field outline-none bg-gray-100 rounded-sm resize-none',
                 { [classes?.inputClassName || '']: classes?.inputClassName }
               )}
               {...inputProps}
