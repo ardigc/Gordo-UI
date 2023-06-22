@@ -190,7 +190,7 @@ export const warning: Story = {
     label: 'warning',
     color: 'warning',
     select: true,
-    children: options.map((option) => <Option>{option}</Option>),
+    children: options.map((option) => <Option value={option}>{option}</Option>),
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
