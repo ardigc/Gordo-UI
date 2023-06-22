@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import ClickAway from './ClickAway'
 import TextField from '../TextField/TextField'
-import Option from './Option'
+import Option from '../option/Option'
 
 const meta = {
   component: ClickAway,

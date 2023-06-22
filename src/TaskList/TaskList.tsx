@@ -3,7 +3,7 @@
 
 import React from 'react'
 
-import { Task, TaskProps } from './Task'
+import { Task, TaskProps } from '../Task/Task'
 
 export default function TaskList({
   loading = false,

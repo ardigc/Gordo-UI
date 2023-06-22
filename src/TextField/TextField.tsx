@@ -10,7 +10,7 @@ import {
   useCallback,
 } from 'react'
 import classNames from 'classnames'
-import Clickaway from '../stories/ClickAway'
+import Clickaway from '../ClickAway/ClickAway'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
   setValue?: Dispatch<

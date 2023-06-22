@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import TextField from './TextField'
-import Option from '../stories/Option'
+import Option from '../option/Option'
 const meta = {
   component: TextField,
   title: 'GordoUI/TextField',
