@@ -79,7 +79,7 @@ export default function TextField({
   helperText,
 }: TextField) {
   const [touched, setTouched] = useState(false)
-  const [ComponentValue, setValue] = useState('value')
+  const [ComponentValue, setValue] = useState(value)
   const [opened, setOpened] = useState(false)
 
   const labelClassName = classes?.labelClassName
