@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react'
-import ClickAwait from './ClickAwait'
+import ClickAway from './ClickAway'
 import TextField from './TextField'
 import Option from './Option'
 
 const meta = {
-  component: ClickAwait,
-  title: 'GordoUI/ClickAwait',
+  component: ClickAway,
+  title: 'GordoUI/Clickaway',
   tags: ['autodogs'],
-} satisfies Meta<typeof ClickAwait>
+} satisfies Meta<typeof ClickAway>
 
 export default meta
 
@@ -129,7 +129,7 @@ export const primary: Story = {
         </div>
       </div>
     ),
-    onClickAwait() {
+    onClickaway() {
       console.log('fuera')
     },
   },

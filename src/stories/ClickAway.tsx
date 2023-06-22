@@ -1,11 +1,11 @@
 import { ReactNode, useRef, useEffect } from 'react'
 
-export default function ClickAwait({
-  onClickAwait,
+export default function Clickaway({
+  onClickaway,
   children,
 }: {
   children: ReactNode
-  onClickAwait: (event: MouseEvent | TouchEvent) => void
+  onClickaway: (event: MouseEvent | TouchEvent) => void
 }) {
   const targetRef = useRef<HTMLDivElement>(null)
   const clickInside = (ev: MouseEvent | TouchEvent) => {
@@ -14,7 +14,7 @@ export default function ClickAwait({
       ev.target instanceof Node &&
       !targetRef.current.contains(ev.target)
     ) {
-      onClickAwait(ev)
+      onClickaway(ev)
     }
   }
   useEffect(() => {
