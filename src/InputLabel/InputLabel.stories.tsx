@@ -14,5 +14,6 @@ export const primary: Story = {
     className: 'bg-slate-100',
     disableAnimation: false,
     shrink: true,
+    color: 'warning',
   },
 }

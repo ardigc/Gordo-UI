@@ -6,6 +6,7 @@ export interface InputLabelProps {
   htmlFor?: string
   disableAnimation?: boolean
   shrink?: boolean
+  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
 }
 export default function InputLabel({
   children,
@@ -13,14 +14,21 @@ export default function InputLabel({
   className,
   disableAnimation,
   shrink,
+  color,
 }: InputLabelProps) {
   return (
     <label
       htmlFor={htmlFor}
-      className={classNames('absolute ', {
+      className={classNames('absolute origin-top-left', {
         [className || '']: className,
         'transition-all': !disableAnimation,
-        '-translate-y-3 origin-top-left scale-75': shrink,
+        ' -translate-y-3  scale-75': shrink,
+        'text-error-color': shrink && color === 'error',
+        'text-primary-color': shrink && color === 'primary',
+        'text-secundary-color': shrink && color === 'secundary',
+        'text-warning-color': shrink && color === 'warning',
+        'text-info-color': shrink && color === 'info',
+        'text-success-color': shrink && color === 'success',
       })}
     >
       {children}
