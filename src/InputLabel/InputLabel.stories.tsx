@@ -10,7 +10,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
-    children: 'hola',
+    children: 'holaasdasdasd asd asd asd asd asd as',
     className: 'bg-slate-100',
+    disableAnimation: false,
+    shrink: true,
   },
 }
