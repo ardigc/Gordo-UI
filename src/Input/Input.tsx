@@ -1,5 +1,10 @@
 import classNames from 'classnames'
-import React, { ChangeEvent, ChangeEventHandler, HTMLInputTypeAttribute, useState } from 'react'
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  HTMLInputTypeAttribute,
+  useState,
+} from 'react'
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 
@@ -31,16 +36,16 @@ interface InputProps {
   fullWidth?: boolean
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   margin?: 'dense' | 'none'
-  multiline?:boolean
-  multilineTextAreaRef?:React.LegacyRef<HTMLTextAreaElement> | undefined
-rows?:number|string
-name?:string
-onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-value?: string | ReadonlyArray<string> | number | undefined
-placeholder?: string |undefined
-readonly?:boolean
-required?: boolean
-type?: HTMLInputTypeAttribute
+  multiline?: boolean
+  multilineTextAreaRef?: React.LegacyRef<HTMLTextAreaElement> | undefined
+  rows?: number | string
+  name?: string
+  onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  value?: string | ReadonlyArray<string> | number | undefined
+  placeholder?: string | undefined
+  readonly?: boolean
+  required?: boolean
+  type?: HTMLInputTypeAttribute
 }
 export default function Input({
   autocomplete,
@@ -65,16 +70,16 @@ export default function Input({
   rows,
   startAdornment,
   name,
-value,
-placeholder,
-readonly,
-required,
-type,
-onChange
+  value,
+  placeholder,
+  readonly,
+  required,
+  type,
+  onChange,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
-const[currentValue,setCurrentValue]= useState(value)
-  const UserInput = components?.Input || inputComponent 
+  const [currentValue, setCurrentValue] = useState(value)
+  const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
@@ -96,32 +101,34 @@ const[currentValue,setCurrentValue]= useState(value)
           [classes?.constainerClassName || '']: classes?.constainerClassName,
         }),
       }
- const changeHandler: ChangeEventHandler<HTMLInputElement|HTMLTextAreaElement>=(ev)=>{
-setCurrentValue(ev.currentTarget.value)
-if (onChange) {
-  onChange(ev)
-}
-  }    
-const parseRows= (rows:string|number|undefined)=>{
-if (!rows) return
-if (typeof rows ==='number') {
-  return rows
-}
-if (typeof rows==='string') {
- return parseInt(rows) 
-}
-      }
-      const renderMyInput= !multiline&&!UserInput?true:false
-      console.log(renderMyInput)
+  const changeHandler: ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (ev) => {
+    setCurrentValue(ev.currentTarget.value)
+    if (onChange) {
+      onChange(ev)
+    }
+  }
+  const parseRows = (rows: string | number | undefined) => {
+    if (!rows) return
+    if (typeof rows === 'number') {
+      return rows
+    }
+    if (typeof rows === 'string') {
+      return parseInt(rows)
+    }
+  }
+  const renderMyInput = !multiline && !UserInput ? true : false
+  console.log(renderMyInput)
   return (
-    <Clickaway onClickaway={() => {if(!currentValue)setTouched(false)}}>
+    <Clickaway onClickaway={() => setTouched(false)}>
       <RenderComponent {...RenderComponentProps}>
-        {renderMyInput  && (
-           <>
-          {startAdornment && startAdornment}
+        {renderMyInput && (
+          <>
+            {startAdornment && startAdornment}
             <input
-            name={name}
-            required={required}
+              name={name}
+              required={required}
               ref={inputRef}
               type={type}
               defaultValue={defaultValue}
@@ -143,31 +150,35 @@ if (typeof rows==='string') {
               {...inputProps}
             />
             {endAdornment && endAdornment}
-          </>)}
-      
-        {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
-        {multiline && <textarea ref={multilineTextAreaRef}
-              defaultValue={defaultValue}
-              name={name}
-              id={id}
-              rows={parseRows(rows)}
-              autoComplete={autocomplete}
-              autoFocus={autoFocus}
-              onChange={changeHandler}
-              value={currentValue}
-              placeholder={placeholder}
-              readOnly={readonly}
-              required={required}
+          </>
+        )}
 
-              className={classNames('outline-none resize-none', {
-                'w-full': fullWidth,
-                [classes?.inputClassName || '']: classes?.inputClassName,
-              })}
-              onFocus={() => {
-                setTouched(true)
-              }}
-              disabled={disabled}
-              {...inputProps}  />}
+        {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
+        {multiline && (
+          <textarea
+            ref={multilineTextAreaRef}
+            defaultValue={defaultValue}
+            name={name}
+            id={id}
+            rows={parseRows(rows)}
+            autoComplete={autocomplete}
+            autoFocus={autoFocus}
+            onChange={changeHandler}
+            value={currentValue}
+            placeholder={placeholder}
+            readOnly={readonly}
+            required={required}
+            className={classNames('outline-none resize-none', {
+              'w-full': fullWidth,
+              [classes?.inputClassName || '']: classes?.inputClassName,
+            })}
+            onFocus={() => {
+              setTouched(true)
+            }}
+            disabled={disabled}
+            {...inputProps}
+          />
+        )}
       </RenderComponent>
     </Clickaway>
   )
