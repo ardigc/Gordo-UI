@@ -13,8 +13,8 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     id: 'hola',
-    color: 'info',
-    classes: { constainerClassName: 'bg-slate-500 w-52' },
+    error: true,
+    classes: { constainerClassName: 'bg-slate-500' },
   },
 }
 export const secundary: Story = {

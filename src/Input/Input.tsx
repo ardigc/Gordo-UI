@@ -25,6 +25,8 @@ interface InputProps {
   disaledUndeline?: boolean
   endAdornment?: ReactNode
   error?: boolean
+  inputComponent?: ElementType
+  inputProps?: object
 }
 export default function Input({
   autocomplete,
@@ -39,15 +41,17 @@ export default function Input({
   disabled,
   disaledUndeline,
   endAdornment,
+  inputComponent,
+  inputProps,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
-  const UserInput = components?.Input
+  const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
     : {
-        className: classNames('input-custom  flex relative ', {
+        className: classNames('input-custom inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
           'after:border-b-primary-color': color === 'primary',
@@ -71,18 +75,19 @@ export default function Input({
               id={id}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
-              className={classNames('outline-none', {
+              className={classNames('outline-none ', {
                 [classes?.inputClassName || '']: classes?.inputClassName,
               })}
               onFocus={() => {
                 setTouched(true)
               }}
               disabled={disabled}
+              {...inputProps}
             />
             {endAdornment && endAdornment}
           </>
         )}
-        {UserInput && <UserInput {...componentsProps?.input} />}
+        {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
       </RenderComponent>
     </Clickaway>
   )

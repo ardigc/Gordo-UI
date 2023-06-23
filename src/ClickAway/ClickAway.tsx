@@ -1,13 +1,18 @@
-import { ReactNode, useRef, useEffect } from 'react'
+import React, {
+  useRef,
+  useEffect,
+  ReactElement,
+  JSXElementConstructor,
+} from 'react'
 
 export default function Clickaway({
   onClickaway,
   children,
 }: {
-  children: ReactNode
+  children: ReactElement<any, string | JSXElementConstructor<any>>
   onClickaway: (event: MouseEvent | TouchEvent) => void
 }) {
-  const targetRef = useRef<HTMLDivElement>(null)
+  const targetRef = useRef<HTMLElement>(null)
   const clickInside = (ev: MouseEvent | TouchEvent) => {
     if (
       targetRef.current &&
@@ -24,8 +29,8 @@ export default function Clickaway({
     }
   }, [clickInside])
   return (
-    <div className="inline-flex" ref={targetRef}>
-      {children}
-    </div>
+    // <div className="inline-flex" ref={targetRef}>
+    <>{React.cloneElement(children, { ref: targetRef })}</>
+    // </div>
   )
 }
