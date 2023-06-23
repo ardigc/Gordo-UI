@@ -29,6 +29,7 @@ interface InputProps {
   inputProps?: object
   fullWidth?: boolean
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
+  margin?: 'dense' | 'none'
 }
 export default function Input({
   autocomplete,
