@@ -47,3 +47,17 @@ export const startAdronemt: Story = {
     ),
   },
 }
+export const component: Story = {
+  args: {
+    id: 'hola',
+    color: 'secundary',
+    autoFocus: true,
+    fullWidth: true,
+    margin:'dense',
+    disaledUndeline: true,
+    components:{Input:'div'},
+    startAdornment: (
+      <div style={{ background: 'gray', width: '30px', height: '30px' }}></div>
+    ),
+  },
+}

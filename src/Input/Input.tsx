@@ -111,13 +111,12 @@ if (typeof rows==='string') {
  return parseInt(rows) 
 }
       }
-      
+      const renderMyInput= !multiline&&!UserInput?true:false
+      console.log(renderMyInput)
   return (
     <Clickaway onClickaway={() => {if(!currentValue)setTouched(false)}}>
       <RenderComponent {...RenderComponentProps}>
-        {!multiline  && (
-          <>
-         {(!UserInput&&
+        {renderMyInput  && (
            <>
           {startAdornment && startAdornment}
             <input
@@ -145,8 +144,7 @@ if (typeof rows==='string') {
             />
             {endAdornment && endAdornment}
           </>)}
-          </>
-        )}
+      
         {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
         {multiline && <textarea ref={multilineTextAreaRef}
               defaultValue={defaultValue}
