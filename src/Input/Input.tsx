@@ -13,6 +13,7 @@ interface InputProps {
   id?: string
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
   autoFocus?: boolean
+  className?: 'string'
   classes?: {
     constainerClassName?: string
     inputClassName?: string
@@ -76,6 +77,7 @@ export default function Input({
   required,
   type,
   onChange,
+  className,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
@@ -86,6 +88,7 @@ export default function Input({
     ? { ...componentsProps?.container }
     : {
         className: classNames('input-custom inline-flex flex relative ', {
+          [className || '']: className,
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
           'w-full': fullWidth,
