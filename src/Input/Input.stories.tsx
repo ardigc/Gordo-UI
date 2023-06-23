@@ -22,6 +22,9 @@ export const secundary: Story = {
     id: 'hola',
     color: 'secundary',
     autoFocus: true,
-    classes: { inputClassName: 'bg-black' },
+    disaledUndeline: true,
+    endAdornment: (
+      <div style={{ background: 'gray', width: '30px', height: '30px' }}></div>
+    ),
   },
 }
