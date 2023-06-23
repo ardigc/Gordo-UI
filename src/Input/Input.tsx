@@ -31,6 +31,8 @@ interface InputProps {
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   margin?: 'dense' | 'none'
   multiline?:boolean
+  multilineTextAreaRef?:React.LegacyRef<HTMLTextAreaElement> | undefined
+rows?:number|string
 }
 export default function Input({
   autocomplete,
@@ -51,6 +53,8 @@ export default function Input({
   margin,
   multiline,
   inputRef,
+  multilineTextAreaRef,
+  rows,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent 
@@ -74,6 +78,15 @@ export default function Input({
           'input-custom-normal': touched,
           [classes?.constainerClassName || '']: classes?.constainerClassName,
         }),
+      }
+      const parseRows= (rows:string|number|undefined)=>{
+if (!rows) return
+if (typeof rows ==='number') {
+  return rows
+}
+if (typeof rows==='string') {
+ return parseInt(rows) 
+}
       }
       
   return (
@@ -101,9 +114,10 @@ export default function Input({
           </>
         )}
         {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
-        {multiline && <textarea ref={inputRef}
+        {multiline && <textarea ref={multilineTextAreaRef}
               defaultValue={defaultValue}
               id={id}
+              rows={parseRows(rows)}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
               className={classNames('outline-none', {
