@@ -30,6 +30,7 @@ interface InputProps {
   fullWidth?: boolean
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   margin?: 'dense' | 'none'
+  multiline?:boolean
 }
 export default function Input({
   autocomplete,
@@ -49,9 +50,10 @@ export default function Input({
   fullWidth,
   inputRef,
   margin,
+  multiline,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
-  const UserInput = components?.Input || inputComponent
+  const UserInput = components?.Input || inputComponent 
   const UserComponent = components?.Container
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
@@ -98,6 +100,7 @@ export default function Input({
           </>
         )}
         {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
+        {multiline && <textarea {...inputProps} {...componentsProps?.input} />}
       </RenderComponent>
     </Clickaway>
   )
