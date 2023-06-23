@@ -28,7 +28,7 @@ interface InputProps {
   inputComponent?: ElementType
   inputProps?: object
   fullWidth?: boolean
-  inputRef?: React.LegacyRef<HTMLInputElement> | undefined
+  inputRef?: React.LegacyRef<HTMLInputElement|HTMLTextAreaElement> | undefined
   margin?: 'dense' | 'none'
   multiline?:boolean
 }
@@ -100,7 +100,20 @@ export default function Input({
           </>
         )}
         {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
-        {multiline && <textarea {...inputProps} {...componentsProps?.input} />}
+        {multiline && <textarea ref={inputRef}
+              defaultValue={defaultValue}
+              id={id}
+              autoComplete={autocomplete}
+              autoFocus={autoFocus}
+              className={classNames('outline-none', {
+                'w-full': fullWidth,
+                [classes?.inputClassName || '']: classes?.inputClassName,
+              })}
+              onFocus={() => {
+                setTouched(true)
+              }}
+              disabled={disabled}
+              {...inputProps}  />}
       </RenderComponent>
     </Clickaway>
   )
