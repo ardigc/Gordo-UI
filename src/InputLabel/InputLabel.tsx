@@ -17,10 +17,10 @@ export default function InputLabel({
   return (
     <label
       htmlFor={htmlFor}
-      className={classNames('absolute origin-top-left', {
+      className={classNames('absolute ', {
         [className || '']: className,
         'transition-all': !disableAnimation,
-        '-translate-y-3  scale-75': shrink,
+        '-translate-y-3 origin-top-left scale-75': shrink,
       })}
     >
       {children}
