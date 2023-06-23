@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useState } from 'react'
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType } from 'react'
-interface inputProps {
+interface InputProps {
   autocomplete?: string
   id?: string
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
@@ -16,9 +16,12 @@ interface inputProps {
     Container?: ElementType
   }
   componentsProps?: {
-    root?: React.HTMLAttributes<HTMLDivElement>
+    container?: React.HTMLAttributes<HTMLDivElement>
     input?: React.InputHTMLAttributes<HTMLInputElement>
   }
+  defaultValue?: string | number | ReadonlyArray<string> | undefined
+  disabled: boolean
+  disaledUndeLine: boolean
 }
 export default function Input({
   autocomplete,
@@ -28,15 +31,18 @@ export default function Input({
   classes,
   components,
   componentsProps,
-}: inputProps) {
+  defaultValue,
+  disabled,
+  disaledUndeLine,
+}: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input
   const UserComponent = components?.Container
-  const RenderComponent = UserComponent ? UserComponent : <div />
-  return (
-    <Clickaway onClickaway={() => setTouched(false)}>
-      <RenderComponent
-        className={classNames(
+  const RenderComponent = UserComponent ? UserComponent : 'div'
+  const RenderComponentProps = UserComponent
+    ? { ...componentsProps?.container }
+    : {
+        className: classNames(
           'input-custom hover:before:border-t-2 before:border-black after:border-b-2 before:border-t flex flex-col relative ',
           {
             'after:border-b-primary-color': color === 'primary',
@@ -49,10 +55,14 @@ export default function Input({
             'input-custom-normal': touched,
             [classes?.constainerClassName || '']: classes?.constainerClassName,
           }
-        )}
-      >
+        ),
+      }
+  return (
+    <Clickaway onClickaway={() => setTouched(false)}>
+      <RenderComponent {...RenderComponentProps}>
         {!UserInput && (
           <input
+            defaultValue={defaultValue}
             id={id}
             autoComplete={autocomplete}
             autoFocus={autoFocus}
@@ -62,6 +72,7 @@ export default function Input({
             onFocus={() => {
               setTouched(true)
             }}
+            disabled={disabled}
           />
         )}
         {UserInput && <UserInput {...componentsProps?.input} />}

@@ -14,7 +14,7 @@ export const primary: Story = {
   args: {
     id: 'hola',
     color: 'info',
-    classes: { constainerClassName: 'bg-slate-500' },
+    classes: { constainerClassName: 'bg-slate-500 w-52' },
   },
 }
 export const secundary: Story = {
