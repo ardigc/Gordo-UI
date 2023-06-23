@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { ChangeEvent, ChangeEventHandler, useState } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, HTMLInputTypeAttribute, useState } from 'react'
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 
@@ -40,6 +40,7 @@ value?: string | ReadonlyArray<string> | number | undefined
 placeholder?: string |undefined
 readonly?:boolean
 required?: boolean
+type?: HTMLInputTypeAttribute
 }
 export default function Input({
   autocomplete,
@@ -68,6 +69,7 @@ value,
 placeholder,
 readonly,
 required,
+type,
 onChange
 }: InputProps) {
   const [touched, setTouched] = useState(false)
@@ -120,6 +122,7 @@ if (typeof rows==='string') {
             name={name}
             required={required}
               ref={inputRef}
+              type={type}
               defaultValue={defaultValue}
               id={id}
               autoComplete={autocomplete}
