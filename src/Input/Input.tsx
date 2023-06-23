@@ -24,6 +24,7 @@ interface InputProps {
   disabled?: boolean
   disaledUndeline?: boolean
   endAdornment?: ReactNode
+  startAdornment?: ReactNode
   error?: boolean
   inputComponent?: ElementType
   inputProps?: object
@@ -55,6 +56,7 @@ export default function Input({
   inputRef,
   multilineTextAreaRef,
   rows,
+  startAdornment,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent 
@@ -94,6 +96,7 @@ if (typeof rows==='string') {
       <RenderComponent {...RenderComponentProps}>
         {!UserInput && (
           <>
+          {startAdornment && startAdornment}
             <input
               ref={inputRef}
               defaultValue={defaultValue}
