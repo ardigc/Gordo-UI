@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, useState } from 'react'
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 
@@ -34,6 +34,11 @@ interface InputProps {
   multiline?:boolean
   multilineTextAreaRef?:React.LegacyRef<HTMLTextAreaElement> | undefined
 rows?:number|string
+name?:string
+onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+value?: string | ReadonlyArray<string> | number | undefined
+
+
 }
 export default function Input({
   autocomplete,
@@ -57,8 +62,12 @@ export default function Input({
   multilineTextAreaRef,
   rows,
   startAdornment,
+  name,
+value,
+onChange
 }: InputProps) {
   const [touched, setTouched] = useState(false)
+const[currentValue,setCurrentValue]= useState(value)
   const UserInput = components?.Input || inputComponent 
   const UserComponent = components?.Container
   const RenderComponent = UserComponent ? UserComponent : 'div'
@@ -81,7 +90,13 @@ export default function Input({
           [classes?.constainerClassName || '']: classes?.constainerClassName,
         }),
       }
-      const parseRows= (rows:string|number|undefined)=>{
+ const changeHandler: ChangeEventHandler<HTMLInputElement|HTMLTextAreaElement>=(ev)=>{
+setCurrentValue(ev.currentTarget.value)
+if (onChange) {
+  onChange(ev)
+}
+  }    
+const parseRows= (rows:string|number|undefined)=>{
 if (!rows) return
 if (typeof rows ==='number') {
   return rows
@@ -98,9 +113,11 @@ if (typeof rows==='string') {
           <>
           {startAdornment && startAdornment}
             <input
+            name={name}
               ref={inputRef}
               defaultValue={defaultValue}
               id={id}
+              onChange={changeHandler}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
               className={classNames('outline-none', {
@@ -119,11 +136,12 @@ if (typeof rows==='string') {
         {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
         {multiline && <textarea ref={multilineTextAreaRef}
               defaultValue={defaultValue}
+              name={name}
               id={id}
               rows={parseRows(rows)}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
-              className={classNames('outline-none', {
+              className={classNames('outline-none resize-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
               })}

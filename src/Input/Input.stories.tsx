@@ -15,6 +15,7 @@ export const primary: Story = {
     id: 'hola',
     error: true,
     multiline:true,
+    rows:3,
     classes: { constainerClassName: 'bg-slate-500', inputClassName: 'w-72' },
   },
 }
