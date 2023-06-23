@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 
@@ -28,7 +28,7 @@ interface InputProps {
   inputComponent?: ElementType
   inputProps?: object
   fullWidth?: boolean
-  inputRef?: React.LegacyRef<HTMLInputElement|HTMLTextAreaElement> | undefined
+  inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   margin?: 'dense' | 'none'
   multiline?:boolean
 }
@@ -48,9 +48,9 @@ export default function Input({
   inputComponent,
   inputProps,
   fullWidth,
-  inputRef,
   margin,
   multiline,
+  inputRef,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent 
@@ -75,6 +75,7 @@ export default function Input({
           [classes?.constainerClassName || '']: classes?.constainerClassName,
         }),
       }
+      
   return (
     <Clickaway onClickaway={() => setTouched(false)}>
       <RenderComponent {...RenderComponentProps}>
