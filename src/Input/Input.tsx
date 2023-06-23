@@ -113,10 +113,12 @@ if (typeof rows==='string') {
       }
       
   return (
-    <Clickaway onClickaway={() => setTouched(false)}>
+    <Clickaway onClickaway={() => {if(!currentValue)setTouched(false)}}>
       <RenderComponent {...RenderComponentProps}>
-        {!UserInput && (
+        {!multiline  && (
           <>
+         {(!UserInput&&
+           <>
           {startAdornment && startAdornment}
             <input
             name={name}
@@ -142,6 +144,7 @@ if (typeof rows==='string') {
               {...inputProps}
             />
             {endAdornment && endAdornment}
+          </>)}
           </>
         )}
         {UserInput && <UserInput {...inputProps} {...componentsProps?.input} />}
