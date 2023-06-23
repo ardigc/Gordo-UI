@@ -37,8 +37,9 @@ rows?:number|string
 name?:string
 onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 value?: string | ReadonlyArray<string> | number | undefined
-
-
+placeholder?: string |undefined
+readonly?:boolean
+required?: boolean
 }
 export default function Input({
   autocomplete,
@@ -64,6 +65,9 @@ export default function Input({
   startAdornment,
   name,
 value,
+placeholder,
+readonly,
+required,
 onChange
 }: InputProps) {
   const [touched, setTouched] = useState(false)
@@ -114,6 +118,7 @@ if (typeof rows==='string') {
           {startAdornment && startAdornment}
             <input
             name={name}
+            required={required}
               ref={inputRef}
               defaultValue={defaultValue}
               id={id}
@@ -121,6 +126,7 @@ if (typeof rows==='string') {
               onChange={changeHandler}
               value={currentValue}
               autoFocus={autoFocus}
+              placeholder={placeholder}
               className={classNames('outline-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
@@ -128,6 +134,7 @@ if (typeof rows==='string') {
               onFocus={() => {
                 setTouched(true)
               }}
+              readOnly={readonly}
               disabled={disabled}
               {...inputProps}
             />
@@ -144,6 +151,10 @@ if (typeof rows==='string') {
               autoFocus={autoFocus}
               onChange={changeHandler}
               value={currentValue}
+              placeholder={placeholder}
+              readOnly={readonly}
+              required={required}
+
               className={classNames('outline-none resize-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
