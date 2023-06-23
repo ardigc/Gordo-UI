@@ -4,7 +4,7 @@ import Option from './Option'
 const meta = {
   component: Option,
   title: 'GordoUI/Option',
-  tags: ['autodogs'],
+  tags: ['autodocs'],
 } satisfies Meta<typeof Option>
 
 export default meta

@@ -4,7 +4,7 @@ import Option from '../option/Option'
 const meta = {
   component: TextField,
   title: 'GordoUI/TextField',
-  tags: ['autodogs'],
+  tags: ['autodocs'],
 } satisfies Meta<typeof TextField>
 
 export default meta

@@ -6,7 +6,7 @@ import Option from '../option/Option'
 const meta = {
   component: ClickAway,
   title: 'GordoUI/Clickaway',
-  tags: ['autodogs'],
+  tags: ['autodocs'],
 } satisfies Meta<typeof ClickAway>
 
 export default meta

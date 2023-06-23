@@ -4,7 +4,7 @@ import Input from './Input'
 const meta = {
   component: Input,
   title: 'GordoUI/Input',
-  tags: ['autodogs'],
+  tags: ['autodocs'],
 } satisfies Meta<typeof Input>
 
 export default meta
