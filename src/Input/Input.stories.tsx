@@ -14,8 +14,8 @@ export const primary: Story = {
   args: {
     id: 'hola',
     error: true,
-    multiline:true,
-    rows:3,
+    multiline: true,
+    rows: 3,
     classes: { constainerClassName: 'bg-slate-500', inputClassName: 'w-72' },
   },
 }
@@ -25,7 +25,7 @@ export const secundary: Story = {
     color: 'secundary',
     autoFocus: true,
     fullWidth: true,
-    disaledUndeline: true,
+    type: 'number',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -40,7 +40,7 @@ export const startAdronemt: Story = {
     color: 'secundary',
     autoFocus: true,
     fullWidth: true,
-    margin:'dense',
+    margin: 'dense',
     disaledUndeline: true,
     startAdornment: (
       <div style={{ background: 'gray', width: '30px', height: '30px' }}></div>
@@ -53,9 +53,9 @@ export const component: Story = {
     color: 'secundary',
     autoFocus: true,
     fullWidth: true,
-    margin:'dense',
+    margin: 'dense',
     disaledUndeline: true,
-    components:{Input:'div'},
+    components: { Input: 'div' },
     startAdornment: (
       <div style={{ background: 'gray', width: '30px', height: '30px' }}></div>
     ),
