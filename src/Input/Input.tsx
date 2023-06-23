@@ -48,6 +48,7 @@ export default function Input({
   inputProps,
   fullWidth,
   inputRef,
+  margin,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
@@ -60,6 +61,7 @@ export default function Input({
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
           'w-full': fullWidth,
+          'mt-2 mb-1': margin === 'dense',
           'after:border-b-primary-color': color === 'primary',
           'after:border-b-secundary-color': color === 'secundary',
           'after:border-b-error-color': color === 'error',
@@ -82,7 +84,7 @@ export default function Input({
               id={id}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
-              className={classNames('outline-none ', {
+              className={classNames('outline-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
               })}
