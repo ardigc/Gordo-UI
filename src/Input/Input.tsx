@@ -117,8 +117,9 @@ if (typeof rows==='string') {
               ref={inputRef}
               defaultValue={defaultValue}
               id={id}
-              onChange={changeHandler}
               autoComplete={autocomplete}
+              onChange={changeHandler}
+              value={currentValue}
               autoFocus={autoFocus}
               className={classNames('outline-none', {
                 'w-full': fullWidth,
@@ -141,6 +142,8 @@ if (typeof rows==='string') {
               rows={parseRows(rows)}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
+              onChange={changeHandler}
+              value={currentValue}
               className={classNames('outline-none resize-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,

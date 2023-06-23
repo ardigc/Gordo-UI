@@ -26,6 +26,9 @@ export const secundary: Story = {
     autoFocus: true,
     fullWidth: true,
     disaledUndeline: true,
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
     endAdornment: (
       <div style={{ background: 'gray', width: '30px', height: '30px' }}></div>
     ),
