@@ -27,6 +27,7 @@ interface InputProps {
   error?: boolean
   inputComponent?: ElementType
   inputProps?: object
+  fullWidth?: boolean
 }
 export default function Input({
   autocomplete,
@@ -43,6 +44,7 @@ export default function Input({
   endAdornment,
   inputComponent,
   inputProps,
+  fullWidth,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
@@ -54,6 +56,7 @@ export default function Input({
         className: classNames('input-custom inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
+          'w-full': fullWidth,
           'after:border-b-primary-color': color === 'primary',
           'after:border-b-secundary-color': color === 'secundary',
           'after:border-b-error-color': color === 'error',
@@ -76,6 +79,8 @@ export default function Input({
               autoComplete={autocomplete}
               autoFocus={autoFocus}
               className={classNames('outline-none ', {
+                'w-full': fullWidth,
+
                 [classes?.inputClassName || '']: classes?.inputClassName,
               })}
               onFocus={() => {
