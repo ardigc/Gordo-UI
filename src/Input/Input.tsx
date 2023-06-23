@@ -15,6 +15,10 @@ interface inputProps {
     Input?: ElementType
     Container?: ElementType
   }
+  componentsProps?: {
+    root?: React.HTMLAttributes<HTMLDivElement>
+    input?: React.InputHTMLAttributes<HTMLInputElement>
+  }
 }
 export default function Input({
   autocomplete,
@@ -23,12 +27,15 @@ export default function Input({
   color = 'primary',
   classes,
   components,
+  componentsProps,
 }: inputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input
+  const UserComponent = components?.Container
+  const RenderComponent = UserComponent ? UserComponent : <div />
   return (
     <Clickaway onClickaway={() => setTouched(false)}>
-      <div
+      <RenderComponent
         className={classNames(
           'input-custom hover:before:border-t-2 before:border-black after:border-b-2 before:border-t flex flex-col relative ',
           {
@@ -57,8 +64,8 @@ export default function Input({
             }}
           />
         )}
-        {UserInput && <UserInput />}
-      </div>
+        {UserInput && <UserInput {...componentsProps?.input} />}
+      </RenderComponent>
     </Clickaway>
   )
 }
