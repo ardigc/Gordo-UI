@@ -28,6 +28,7 @@ interface InputProps {
   inputComponent?: ElementType
   inputProps?: object
   fullWidth?: boolean
+  inputRef?: React.LegacyRef<HTMLInputElement> | undefined
 }
 export default function Input({
   autocomplete,
@@ -45,6 +46,7 @@ export default function Input({
   inputComponent,
   inputProps,
   fullWidth,
+  inputRef,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
@@ -74,13 +76,13 @@ export default function Input({
         {!UserInput && (
           <>
             <input
+              ref={inputRef}
               defaultValue={defaultValue}
               id={id}
               autoComplete={autocomplete}
               autoFocus={autoFocus}
               className={classNames('outline-none ', {
                 'w-full': fullWidth,
-
                 [classes?.inputClassName || '']: classes?.inputClassName,
               })}
               onFocus={() => {
