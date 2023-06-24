@@ -22,13 +22,13 @@ export const secondary: Story = {
     label: 'hola ramonchu',
     type: 'password',
     disabled: true,
-    className:'bg-red-500',
+    className: 'bg-red-500',
   },
 }
 export const sinFondo: Story = {
   args: {
     label: 'sin nada de fondo',
-    className:'bg-opacity-0',
+    className: 'bg-opacity-0',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -38,8 +38,8 @@ export const numeros: Story = {
   args: {
     type: 'number',
     disableUnderline: true,
-    placeholder:'hola',
-    margin:'dense',
+    placeholder: 'hola',
+    margin: 'dense',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -59,11 +59,11 @@ export const Error: Story = {
     type: 'text',
     label: 'Error',
     color: 'error',
-    size:'small',
+    size: 'small',
 
     helperText: 'craso error',
     // classes: { inputClassName: ' border border-black' },
-    className:' border border-black',
+    className: ' border border-black',
 
     onChange(ev) {
       console.log(ev.currentTarget.value)
@@ -76,8 +76,8 @@ export const success: Story = {
     label: 'success',
     color: 'success',
     // classes: { inputClassName: 'rounded-xl border border-black' },
-    className:'rounded-t-xl border border-black',
-    fullWidth:true,
+    className: 'rounded-t-xl border border-black',
+    fullWidth: true,
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -245,6 +245,7 @@ export const helperText: Story = {
     type: 'text',
     label: 'info',
     helperText: 'holiwi',
+    variant: 'filled',
     color: 'info',
     inputProps: { startAdornment: <div>kg</div> },
 

@@ -63,16 +63,14 @@ export interface TextField {
   rows?: number
   className?: string
   fullWidth?: boolean
-  size?:'medium'|'small'
+  size?: 'medium' | 'small'
   margin?: 'dense' | 'none'
   name?: string
   placeholder?: string
-  
-
 }
 export default function TextField({
   label,
-  variant = 'filled',
+  variant = 'standard',
   error,
   color = error ? 'error' : 'primary',
   defaultValue,
@@ -123,103 +121,24 @@ export default function TextField({
   }, [ComponentValue])
   return (
     <Clickaway onClickaway={clickAwayHandler}>
-      <div id={id} className={classNames("relative inline-flex flex-col",{'w-full':fullWidth})}>
+      <div
+        id={id}
+        className={classNames('relative inline-flex flex-col', {
+          'w-full': fullWidth,
+        })}
+      >
         {!hiddenLabel && (
-          // <label
-          //   className={classNames(
-          //     'label-text-field',
-          //     'text-lg cursor-text left-0 z-10',
-          //     {
-          //       'normal-label-text-field-filled': !touched,
-          //       'mini-label-text-field-filled': touched,
-          //       'text-error-color': touched && color === 'error',
-          //       'text-primary-color': touched && color === 'primary',
-          //       'text-secundary-color': touched && color === 'secundary',
-          //       'text-warning-color': touched && color === 'warning',
-          //       'text-info-color': touched && color === 'info',
-          //       'text-success-color': touched && color === 'success',
-          //       [labelClassName || '']: labelClassName,
-          //     }
-          //   )}
-          //   htmlFor="filled-input"
-          // >
-          //   {label}
-          // </label>
           <InputLabel
             variant={variant}
-            shrink={touched|| inputProps?.startAdornment?true:false}
+            shrink={touched || inputProps?.startAdornment ? true : false}
             className={labelClassName}
             color={color}
-            
             htmlFor="filled-input"
           >
             {label}
           </InputLabel>
         )}
-        {/* <div
-          className={classNames(
-            'input-custom after:border-b-2 flex flex-col relative ',
-            {
-              'after:border-b-primary-color': color === 'primary',
-              'after:border-b-secundary-color': color === 'secundary',
-              'after:border-b-error-color': color === 'error',
-              'after:border-b-warning-color': color === 'warning',
-              'after:border-b-info-color': color === 'info',
-              'after:border-b-success-color': color === 'success',
-              'input-custom-none ': disableUnderline || !touched,
-              'input-custom-normal': !disableUnderline && touched,
-              [classes?.inputContainerClassName || '']:
-                classes?.inputContainerClassName,
-            }
-          )}
-        >
-          {!multiLine && (
-            <input
-              id="filled-input"
-              disabled={disabled}
-              defaultValue={defaultValue}
-              autoFocus={autoFocus}
-              value={ComponentValue}
-              ref={inputRef}
-              type={type}
-              readOnly={readOnly}
-              onChange={(ev) => changeEventHandler(ev)}
-              required={required}
-              onFocus={() => {
-                setTouched(true)
-                setOpened(true)
-              }}
-              className={classNames(
-                'input-text-field outline-none bg-gray-100 rounded-sm',
-                { [classes?.inputClassName || '']: classes?.inputClassName }
-              )}
-              {...inputProps}
-            />
-          )}
-          {multiLine && (
-            <textarea
-              id="filled-input"
-              disabled={disabled}
-              defaultValue={defaultValue}
-              autoFocus={autoFocus}
-              value={ComponentValue}
-              ref={TextAreaRef}
-              readOnly={readOnly}
-              onChange={(ev) => changeEventHandler(ev)}
-              required={required}
-              rows={rows}
-              onFocus={() => {
-                setTouched(true)
-                setOpened(true)
-              }}
-              className={classNames(
-                'input-text-field outline-none bg-gray-100 rounded-sm resize-none',
-                { [classes?.inputClassName || '']: classes?.inputClassName }
-              )}
-              {...inputProps}
-            />
-          )}
-        </div> */}
+
         <Input
           id="filled-input"
           disabled={disabled}
@@ -247,10 +166,12 @@ export default function TextField({
             setOpened(true)
           }}
           classes={{
-            inputClassName: classNames(
-              '  outline-none bg-white bg-opacity-0',
-              { [classes?.inputClassName || '']: classes?.inputClassName }
-            ),
+            constainerClassName: classNames({
+              'mt-4': label && variant === 'standard',
+            }),
+            inputClassName: classNames('  outline-none bg-white bg-opacity-0', {
+              [classes?.inputClassName || '']: classes?.inputClassName,
+            }),
           }}
           className={className}
           {...inputProps}
@@ -259,18 +180,6 @@ export default function TextField({
           {opened && select && <div className="max-w-input ">{children}</div>}
         </TextFieldContext.Provider>
         {helperText && (
-          // <p
-          //   className={classNames('text-sm mx-3', {
-          //     'text-error-color': color === 'error',
-          //     'text-primary-color': color === 'primary',
-          //     'text-secundary-color': color === 'secundary',
-          //     'text-warning-color': color === 'warning',
-          //     'text-info-color': color === 'info',
-          //     'text-success-color': color === 'success',
-          //   })}
-          // >
-          //   {helperText}
-          // </p>
           <FormHelper className="mx-3 " error={error}>
             {helperText}
           </FormHelper>

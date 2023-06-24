@@ -49,7 +49,7 @@ export interface InputProps {
   required?: boolean
   type?: HTMLInputTypeAttribute
   variant?: 'filled' | 'outlined' | 'standard'
-  size?:'medium'|'small'
+  size?: 'medium' | 'small'
 }
 export default function Input({
   autocomplete,
@@ -83,7 +83,7 @@ export default function Input({
   onFocus,
   className,
   variant,
-  size='medium',
+  size = 'medium',
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
@@ -95,12 +95,15 @@ export default function Input({
     : {
         className: classNames('input-custom inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
-            !disaledUndeline&&!disabled,
+            !disaledUndeline && !disabled,
           'w-full': fullWidth,
-          'bg-gray-100 rounded-t-sm':variant==='filled',
-          'pr-3 pl-3': variant==='filled',
+          'bg-gray-100 rounded-t-sm': variant === 'filled',
+          'pr-3 pl-3': variant === 'filled',
           'mt-2 mb-1': margin === 'dense',
-          'pt-6 pb-2':size==='medium','pt-5 pb-1':size==='small',
+          'pt-6 pb-2': size === 'medium' && variant === 'filled',
+          'pt-5 pb-1': size === 'small' && variant === 'filled',
+          'pt-1 pb-[5px]': size === 'medium' && variant === 'standard',
+          'pt-[1px] pb-[5px]': size === 'small' && variant === 'standard',
           'after:border-b-primary-color': color === 'primary',
           'after:border-b-secundary-color': color === 'secundary',
           'after:border-b-error-color': color === 'error',
@@ -137,9 +140,15 @@ export default function Input({
       <RenderComponent {...RenderComponentProps}>
         {renderMyInput && (
           <>
-            {startAdornment && <div className={classNames('flex items-center pl-3',{'mt-4':variant==='filled'})}>
-              {startAdornment}
-            </div>}
+            {startAdornment && (
+              <div
+                className={classNames('flex items-center pl-3', {
+                  'mt-4': variant === 'filled',
+                })}
+              >
+                {startAdornment}
+              </div>
+            )}
             <input
               name={name}
               required={required}
@@ -152,7 +161,7 @@ export default function Input({
               value={currentValue}
               autoFocus={autoFocus}
               placeholder={placeholder}
-              className={classNames('outline-none', {
+              className={classNames('outline-none ', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
                 // [className || '']: className,
@@ -167,7 +176,11 @@ export default function Input({
               disabled={disabled}
               {...inputProps}
             />
-            {endAdornment &&<div className={classNames('flex items-center pr-3')}>{endAdornment}</div> }
+            {endAdornment && (
+              <div className={classNames('flex items-center pr-3')}>
+                {endAdornment}
+              </div>
+            )}
           </>
         )}
 
