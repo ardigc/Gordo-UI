@@ -9,6 +9,7 @@ export interface FormHelperProps {
   disabled?: boolean
   error?: boolean
   margin?: 'dense' | 'none'
+  id?: string
 }
 export default function FormHelper({
   children,
@@ -18,11 +19,13 @@ export default function FormHelper({
   disabled,
   error,
   margin,
+  id,
 }: FormHelperProps) {
   const RederComponent = component ? component : 'p'
 
   return (
     <RederComponent
+      id={id}
       className={classNames('text-xs text-left tracking-wide', {
         'text-error-color': error,
         'mt-2 mb-1': margin === 'dense',
