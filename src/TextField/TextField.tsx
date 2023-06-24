@@ -64,6 +64,8 @@ export interface TextField {
   className?: string
   fullWidth?: boolean
   size?:'medium'|'small'
+  margin?: 'dense' | 'none'
+
 }
 export default function TextField({
   label,
@@ -93,6 +95,7 @@ export default function TextField({
   className,
   fullWidth,
   size='medium',
+  margin,
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -230,6 +233,7 @@ export default function TextField({
           variant={variant}
           multilineTextAreaRef={TextAreaRef}
           fullWidth={fullWidth}
+          margin={margin}
           onFocus={() => {
             setTouched(true)
             setOpened(true)
