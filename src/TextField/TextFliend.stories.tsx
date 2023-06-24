@@ -38,6 +38,7 @@ export const numeros: Story = {
   args: {
     type: 'number',
     disableUnderline: true,
+    margin:'dense',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
