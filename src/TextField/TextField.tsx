@@ -63,6 +63,7 @@ export interface TextField {
   rows?: number
   className?: string
   fullWidth?: boolean
+  size?:'medium'|'small'
 }
 export default function TextField({
   label,
@@ -235,7 +236,7 @@ export default function TextField({
           classes={{
             constainerClassName:classNames('bg-gray-100 rounded-t-sm'),
             inputClassName: classNames(
-              'input-text-field outline-none bg-white bg-opacity-0',
+              'pt-6 pb-2 pr-3 pl-3 outline-none bg-white bg-opacity-0',
               { [classes?.inputClassName || '']: classes?.inputClassName }
             ),
           }}
@@ -243,7 +244,7 @@ export default function TextField({
           {...inputProps}
         />
         <TextFieldContext.Provider value={{ setValue, setOpened }}>
-          {opened && select && <div className="max-w-input">{children}</div>}
+          {opened && select && <div className="max-w-input ">{children}</div>}
         </TextFieldContext.Provider>
         {helperText && (
           // <p
