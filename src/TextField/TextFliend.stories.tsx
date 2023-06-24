@@ -57,7 +57,8 @@ export const Error: Story = {
     label: 'Error',
     color: 'error',
     helperText: 'craso error',
-    classes: { inputClassName: ' border border-black' },
+    // classes: { inputClassName: ' border border-black' },
+    className:' border border-black',
 
     onChange(ev) {
       console.log(ev.currentTarget.value)
@@ -69,7 +70,8 @@ export const success: Story = {
     type: 'text',
     label: 'success',
     color: 'success',
-    classes: { inputClassName: 'rounded-xl border border-black' },
+    // classes: { inputClassName: 'rounded-xl border border-black' },
+    className:'rounded-xl border border-black',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },

@@ -8,7 +8,7 @@ import React, {
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 
-interface InputProps {
+export interface InputProps {
   autocomplete?: string
   id?: string
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
@@ -91,7 +91,7 @@ export default function Input({
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
     : {
-        className: classNames('input-custom inline-flex flex relative ', {
+        className: classNames('input-custom inline-flex flex relative pl-3', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
           'w-full': fullWidth,
@@ -132,8 +132,8 @@ export default function Input({
       <RenderComponent {...RenderComponentProps}>
         {renderMyInput && (
           <>
-            {startAdornment && <div className={classNames({'mx-4':variant==='filled'})}>
-              startAdornment
+            {startAdornment && <div className={classNames('flex items-center',{'mt-4':variant==='filled'})}>
+              {startAdornment}
             </div>}
             <input
               name={name}
@@ -150,7 +150,7 @@ export default function Input({
               className={classNames('outline-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
-                [className || '']: className,
+                // [className || '']: className,
               })}
               onFocus={() => {
                 setTouched(true)

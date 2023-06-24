@@ -11,7 +11,7 @@ import {
 } from 'react'
 import classNames from 'classnames'
 import Clickaway from '../ClickAway/ClickAway'
-import Input from '../Input/Input'
+import Input, { InputProps } from '../Input/Input'
 import InputLabel from '../InputLabel/InputLabel'
 import FormHelper from '../FormHelper/FormHelper'
 export type InputContextType = {
@@ -54,13 +54,14 @@ export interface TextField {
   children?: ReactNode
   readOnly?: boolean
   hiddenLabel?: boolean | undefined
-  inputProps?: {}
+  inputProps?: InputProps
   inputRef?: React.LegacyRef<HTMLInputElement> | undefined
   TextAreaRef?: React.LegacyRef<HTMLTextAreaElement> | undefined
   required?: boolean
   helperText?: string | undefined
   multiLine?: boolean
   rows?: number
+  className?: string
 }
 export default function TextField({
   label,
@@ -87,6 +88,7 @@ export default function TextField({
   hiddenLabel,
   inputProps,
   helperText,
+  className,
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -133,9 +135,10 @@ export default function TextField({
           // </label>
           <InputLabel
             variant={variant}
-            shrink={touched}
+            shrink={touched|| inputProps?.startAdornment?true:false}
             className={labelClassName}
             color={color}
+            
             htmlFor="filled-input"
           >
             {label}
@@ -227,11 +230,13 @@ export default function TextField({
             setOpened(true)
           }}
           classes={{
+            constainerClassName:classNames('bg-gray-100 '),
             inputClassName: classNames(
-              'input-text-field outline-none bg-gray-100 rounded-sm',
+              'input-text-field outline-none rounded-t-sm bg-gray-100',
               { [classes?.inputClassName || '']: classes?.inputClassName }
             ),
           }}
+          className={className}
           {...inputProps}
         />
         <TextFieldContext.Provider value={{ setValue, setOpened }}>
@@ -250,7 +255,7 @@ export default function TextField({
           // >
           //   {helperText}
           // </p>
-          <FormHelper className="mx-3" error={error}>
+          <FormHelper className="mx-3 " error={error}>
             {helperText}
           </FormHelper>
         )}
