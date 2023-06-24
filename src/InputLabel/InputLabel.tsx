@@ -10,6 +10,7 @@ export interface InputLabelProps {
   labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>
   disabled?: boolean
   error?: boolean
+  margin?: 'dense' | 'none'
 }
 export default function InputLabel({
   children,
@@ -21,6 +22,7 @@ export default function InputLabel({
   color = error ? 'error' : 'primary',
   labelProps,
   disabled,
+  margin,
 }: InputLabelProps) {
   return (
     <label
@@ -29,6 +31,8 @@ export default function InputLabel({
         'opacity-30': disabled,
         'transition-all': !disableAnimation,
         ' -translate-y-3  scale-75': shrink,
+        'mt-2 mb-1': margin === 'dense',
+
         'text-error-color': shrink && color === 'error',
         'text-primary-color': shrink && color === 'primary',
         'text-secundary-color': shrink && color === 'secundary',

@@ -18,6 +18,7 @@ export const disabled: Story = {
   args: {
     children: 'holaasdasdasd asd asd asd asd asd as',
     disabled: true,
+    margin: 'dense',
   },
 }
 export const component: Story = {

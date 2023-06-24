@@ -8,6 +8,7 @@ export interface FormHelperProps {
   componentProps?: React.HTMLAttributes<HTMLElement>
   disabled?: boolean
   error?: boolean
+  margin?: 'dense' | 'none'
 }
 export default function FormHelper({
   children,
@@ -16,6 +17,7 @@ export default function FormHelper({
   componentProps,
   disabled,
   error,
+  margin,
 }: FormHelperProps) {
   const RederComponent = component ? component : 'p'
 
@@ -23,6 +25,7 @@ export default function FormHelper({
     <RederComponent
       className={classNames('text-xs text-left tracking-wide', {
         'text-error-color': error,
+        'mt-2 mb-1': margin === 'dense',
 
         'opacity-30': disabled,
         [className || '']: className,
