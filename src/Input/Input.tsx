@@ -49,6 +49,7 @@ export interface InputProps {
   required?: boolean
   type?: HTMLInputTypeAttribute
   variant?: 'filled' | 'outlined' | 'standard'
+  size?:'medium'|'small'
 }
 export default function Input({
   autocomplete,
@@ -82,6 +83,7 @@ export default function Input({
   onFocus,
   className,
   variant,
+  size='medium',
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
@@ -95,7 +97,10 @@ export default function Input({
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline&&!disabled,
           'w-full': fullWidth,
+          'bg-gray-100 rounded-t-sm':variant==='filled',
+          'pr-3 pl-3': variant==='filled',
           'mt-2 mb-1': margin === 'dense',
+          'pt-6 pb-2':size==='medium','pt-5 pb-1':size==='small',
           'after:border-b-primary-color': color === 'primary',
           'after:border-b-secundary-color': color === 'secundary',
           'after:border-b-error-color': color === 'error',

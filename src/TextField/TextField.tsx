@@ -97,7 +97,7 @@ export default function TextField({
   helperText,
   className,
   fullWidth,
-  size='medium',
+  size,
   margin,
   name,
   placeholder,
@@ -235,6 +235,7 @@ export default function TextField({
           name={name}
           placeholder={placeholder}
           color={color}
+          size={size}
           rows={rows}
           multiline={multiLine}
           variant={variant}
@@ -246,10 +247,9 @@ export default function TextField({
             setOpened(true)
           }}
           classes={{
-            constainerClassName:classNames('bg-gray-100 rounded-t-sm'),
             inputClassName: classNames(
-              ' pr-3 pl-3 outline-none bg-white bg-opacity-0',
-              { 'pt-6 pb-2':size==='medium','pt-5 pb-1':size==='small',[classes?.inputClassName || '']: classes?.inputClassName }
+              '  outline-none bg-white bg-opacity-0',
+              { [classes?.inputClassName || '']: classes?.inputClassName }
             ),
           }}
           className={className}
