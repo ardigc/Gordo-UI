@@ -89,6 +89,7 @@ export default function Input({
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
+  const [hovered, setHovered] = useState(false)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
   const RenderComponent = UserComponent ? UserComponent : 'div'
@@ -160,6 +161,8 @@ export default function Input({
               value={currentValue}
               autoFocus={autoFocus}
               placeholder={placeholder}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
               className={classNames('outline-none ', {
                 'w-full': fullWidth,
                 'pt-6 pb-2': size === 'medium' && variant === 'filled',
@@ -201,6 +204,8 @@ export default function Input({
             rows={parseRows(rows)}
             autoComplete={autocomplete}
             autoFocus={autoFocus}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
             onChange={changeHandler}
             value={currentValue}
             placeholder={placeholder}
@@ -221,14 +226,19 @@ export default function Input({
           />
         )}
         {variant === 'outlined' && (
-          <fieldset className="absolute left-0 right-0 bottom-0 -top-[5px] px-2 border rounded-[4px] pointer-events-none">
+          <fieldset
+            className={classNames(
+              'absolute left-0 right-0 border-black  bottom-0 -top-[5px] px-2 border rounded-[4px] pointer-events-none',
+              { 'border-opacity-30': !hovered, 'border-opacity-90': hovered }
+            )}
+          >
             <legend
               className={classNames({
                 ' invisible max-w-0 transition-all': !touched,
                 ' invisible max-w-full transition-all': touched,
               })}
             >
-              <span className="opacity-0">{label}</span>
+              <span className="opacity-0 inline-block px-[5px]">{label}</span>
             </legend>
           </fieldset>
         )}
