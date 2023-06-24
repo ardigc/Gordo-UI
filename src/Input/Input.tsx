@@ -93,7 +93,7 @@ export default function Input({
     : {
         className: classNames('input-custom inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
-            !disaledUndeline,
+            !disaledUndeline&&!disabled,
           'w-full': fullWidth,
           'mt-2 mb-1': margin === 'dense',
           'after:border-b-primary-color': color === 'primary',

@@ -92,6 +92,7 @@ export default function TextField({
   helperText,
   className,
   fullWidth,
+  size='medium',
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -236,8 +237,8 @@ export default function TextField({
           classes={{
             constainerClassName:classNames('bg-gray-100 rounded-t-sm'),
             inputClassName: classNames(
-              'pt-6 pb-2 pr-3 pl-3 outline-none bg-white bg-opacity-0',
-              { [classes?.inputClassName || '']: classes?.inputClassName }
+              ' pr-3 pl-3 outline-none bg-white bg-opacity-0',
+              { 'pt-6 pb-2':size==='medium','pt-5 pb-1':size==='small',[classes?.inputClassName || '']: classes?.inputClassName }
             ),
           }}
           className={className}

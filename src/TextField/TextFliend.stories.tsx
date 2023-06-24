@@ -28,6 +28,7 @@ export const secondary: Story = {
 export const sinFondo: Story = {
   args: {
     label: 'sin nada de fondo',
+    className:'bg-opacity-0',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -56,6 +57,8 @@ export const Error: Story = {
     type: 'text',
     label: 'Error',
     color: 'error',
+    size:'small',
+
     helperText: 'craso error',
     // classes: { inputClassName: ' border border-black' },
     className:' border border-black',
