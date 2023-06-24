@@ -13,7 +13,7 @@ interface InputProps {
   id?: string
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
   autoFocus?: boolean
-  className?: 'string'
+  className?: string
   classes?: {
     constainerClassName?: string
     inputClassName?: string
