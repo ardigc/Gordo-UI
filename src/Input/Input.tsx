@@ -48,6 +48,7 @@ export interface InputProps {
   readonly?: boolean
   required?: boolean
   type?: HTMLInputTypeAttribute
+  label?: string
   variant?: 'filled' | 'outlined' | 'standard'
   size?: 'medium' | 'small'
 }
@@ -82,8 +83,9 @@ export default function Input({
   onChange,
   onFocus,
   className,
-  variant,
-  size,
+  variant = 'standard',
+  size = 'medium',
+  label,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
@@ -166,7 +168,7 @@ export default function Input({
                 'pt-[1px] pb-[5px]': size === 'small' && variant === 'standard',
                 'pr-3 pl-3': variant === 'filled',
                 'px-3 py-[16.5px]': size === 'medium' && variant === 'outlined',
-                'px-[8.5px] pb-[16.5px]':
+                'px-[8.5px] pb-[14px]':
                   size === 'small' && variant === 'outlined',
                 [classes?.inputClassName || '']: classes?.inputClassName,
                 // [className || '']: className,
@@ -219,7 +221,16 @@ export default function Input({
           />
         )}
         {variant === 'outlined' && (
-          <fieldset className="absolute left-0 right-0 bottom-0 -top-[5px] px-2 border rounded-[4px] pointer-events-none"></fieldset>
+          <fieldset className="absolute left-0 right-0 bottom-0 -top-[5px] px-2 border rounded-[4px] pointer-events-none">
+            <legend
+              className={classNames({
+                ' invisible max-w-0 transition-all': !touched,
+                ' invisible max-w-full transition-all': touched,
+              })}
+            >
+              <span className="opacity-0">{label}</span>
+            </legend>
+          </fieldset>
         )}
       </RenderComponent>
     </Clickaway>

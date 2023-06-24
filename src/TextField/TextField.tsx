@@ -156,6 +156,7 @@ export default function TextField({
           placeholder={placeholder}
           color={color}
           size={size}
+          label={label}
           rows={rows}
           multiline={multiLine}
           variant={variant}
