@@ -8,10 +8,21 @@ const meta = {
 export default meta
 
 type Story = StoryObj<typeof meta>
+
 export const primary: Story = {
   args: {
     children: 'holaasdasdasd asd asd asd asd asd as',
     className: 'bg-slate-100',
+    disableAnimation: false,
+    shrink: true,
+    color: 'warning',
+  },
+}
+export const disabled: Story = {
+  args: {
+    children: 'holaasdasdasd asd asd asd asd asd as',
+    className: 'bg-slate-100',
+    disabled: true,
     disableAnimation: false,
     shrink: true,
     color: 'warning',
