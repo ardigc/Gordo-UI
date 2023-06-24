@@ -65,6 +65,8 @@ export interface TextField {
   fullWidth?: boolean
   size?:'medium'|'small'
   margin?: 'dense' | 'none'
+  name?: string
+  placeholder?: string
 
 }
 export default function TextField({
@@ -96,6 +98,8 @@ export default function TextField({
   fullWidth,
   size='medium',
   margin,
+  name,
+  placeholder,
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -227,6 +231,8 @@ export default function TextField({
           readonly={readOnly}
           onChange={(ev) => changeEventHandler(ev)}
           required={required}
+          name={name}
+          placeholder={placeholder}
           color={color}
           rows={rows}
           multiline={multiLine}
