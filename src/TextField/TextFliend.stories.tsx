@@ -72,6 +72,7 @@ export const success: Story = {
     color: 'success',
     // classes: { inputClassName: 'rounded-xl border border-black' },
     className:'rounded-t-xl border border-black',
+    fullWidth:true,
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },

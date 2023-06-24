@@ -62,6 +62,7 @@ export interface TextField {
   multiLine?: boolean
   rows?: number
   className?: string
+  fullWidth?: boolean
 }
 export default function TextField({
   label,
@@ -89,6 +90,7 @@ export default function TextField({
   inputProps,
   helperText,
   className,
+  fullWidth,
 }: TextField) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -111,7 +113,7 @@ export default function TextField({
   }, [ComponentValue])
   return (
     <Clickaway onClickaway={clickAwayHandler}>
-      <div id={id} className="relative inline-flex flex-col">
+      <div id={id} className={classNames("relative inline-flex flex-col",{'w-full':fullWidth})}>
         {!hiddenLabel && (
           // <label
           //   className={classNames(
@@ -225,6 +227,7 @@ export default function TextField({
           multiline={multiLine}
           variant={variant}
           multilineTextAreaRef={TextAreaRef}
+          fullWidth={fullWidth}
           onFocus={() => {
             setTouched(true)
             setOpened(true)
