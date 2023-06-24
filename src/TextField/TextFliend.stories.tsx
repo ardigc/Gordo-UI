@@ -22,7 +22,7 @@ export const secondary: Story = {
     label: 'hola ramonchu',
     type: 'password',
     disabled: true,
-    classes: { inputClassName: 'bg-red-500' },
+    className:'bg-red-500',
   },
 }
 export const sinFondo: Story = {

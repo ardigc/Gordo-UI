@@ -230,9 +230,9 @@ export default function TextField({
             setOpened(true)
           }}
           classes={{
-            constainerClassName:classNames('bg-gray-100 '),
+            constainerClassName:classNames('bg-gray-100 rounded-t-sm'),
             inputClassName: classNames(
-              'input-text-field outline-none rounded-t-sm bg-gray-100',
+              'input-text-field outline-none bg-white bg-opacity-0',
               { [classes?.inputClassName || '']: classes?.inputClassName }
             ),
           }}
