@@ -90,7 +90,6 @@ export default function Input({
     ? { ...componentsProps?.container }
     : {
         className: classNames('input-custom inline-flex flex relative ', {
-          [className || '']: className,
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
           'w-full': fullWidth,
@@ -104,6 +103,7 @@ export default function Input({
           'input-custom-none ': !touched,
           'input-custom-normal': touched,
           [classes?.constainerClassName || '']: classes?.constainerClassName,
+          [className || '']: className,
         }),
       }
   const changeHandler: ChangeEventHandler<

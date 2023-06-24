@@ -13,6 +13,7 @@ import classNames from 'classnames'
 import Clickaway from '../ClickAway/ClickAway'
 import Input from '../Input/Input'
 import InputLabel from '../InputLabel/InputLabel'
+import FormHelper from '../FormHelper/FormHelper'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
   setValue?: Dispatch<
@@ -236,18 +237,21 @@ export default function TextField({
           {opened && select && <div className="max-w-input">{children}</div>}
         </TextFieldContext.Provider>
         {helperText && (
-          <p
-            className={classNames('text-sm mx-3', {
-              'text-error-color': color === 'error',
-              'text-primary-color': color === 'primary',
-              'text-secundary-color': color === 'secundary',
-              'text-warning-color': color === 'warning',
-              'text-info-color': color === 'info',
-              'text-success-color': color === 'success',
-            })}
-          >
+          // <p
+          //   className={classNames('text-sm mx-3', {
+          //     'text-error-color': color === 'error',
+          //     'text-primary-color': color === 'primary',
+          //     'text-secundary-color': color === 'secundary',
+          //     'text-warning-color': color === 'warning',
+          //     'text-info-color': color === 'info',
+          //     'text-success-color': color === 'success',
+          //   })}
+          // >
+          //   {helperText}
+          // </p>
+          <FormHelper className="mx-3" error={error}>
             {helperText}
-          </p>
+          </FormHelper>
         )}
       </div>
     </Clickaway>
