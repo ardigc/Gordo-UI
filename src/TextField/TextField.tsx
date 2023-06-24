@@ -95,7 +95,7 @@ export default function TextField({
   helperText,
   className,
   fullWidth,
-  size,
+  size = 'medium',
   margin,
   name,
   placeholder,

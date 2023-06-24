@@ -83,7 +83,7 @@ export default function Input({
   onFocus,
   className,
   variant,
-  size = 'medium',
+  size,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
@@ -100,10 +100,7 @@ export default function Input({
           'bg-gray-100 rounded-t-sm': variant === 'filled',
           'pr-3 pl-3': variant === 'filled',
           'mt-2 mb-1': margin === 'dense',
-          'pt-6 pb-2': size === 'medium' && variant === 'filled',
-          'pt-5 pb-1': size === 'small' && variant === 'filled',
-          'pt-1 pb-[5px]': size === 'medium' && variant === 'standard',
-          'pt-[1px] pb-[5px]': size === 'small' && variant === 'standard',
+
           'after:border-b-primary-color': color === 'primary',
           'after:border-b-secundary-color': color === 'secundary',
           'after:border-b-error-color': color === 'error',
@@ -163,6 +160,11 @@ export default function Input({
               placeholder={placeholder}
               className={classNames('outline-none ', {
                 'w-full': fullWidth,
+                'pt-6 pb-2': size === 'medium' && variant === 'filled',
+                'pt-5 pb-1': size === 'small' && variant === 'filled',
+
+                'pt-1 pb-[5px]': size === 'medium' && variant === 'standard',
+                'pt-[1px] pb-[5px]': size === 'small' && variant === 'standard',
                 [classes?.inputClassName || '']: classes?.inputClassName,
                 // [className || '']: className,
               })}
