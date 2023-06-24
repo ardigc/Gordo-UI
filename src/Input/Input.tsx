@@ -132,7 +132,7 @@ export default function Input({
       <RenderComponent {...RenderComponentProps}>
         {renderMyInput && (
           <>
-            {startAdornment && <div className={classNames('flex items-center',{'mt-4':variant==='filled'})}>
+            {startAdornment && <div className={classNames('flex items-center mr-4',{'mt-4':variant==='filled'})}>
               {startAdornment}
             </div>}
             <input
