@@ -7,6 +7,7 @@ export interface FormHelperProps {
   component?: ElementType
   componentProps?: React.HTMLAttributes<HTMLElement>
   disabled?: boolean
+  error?: boolean
 }
 export default function FormHelper({
   children,
@@ -14,12 +15,15 @@ export default function FormHelper({
   component,
   componentProps,
   disabled,
+  error,
 }: FormHelperProps) {
   const RederComponent = component ? component : 'p'
 
   return (
     <RederComponent
       className={classNames('text-xs text-left tracking-wide', {
+        'text-error-color': error,
+
         'opacity-30': disabled,
         [className || '']: className,
       })}

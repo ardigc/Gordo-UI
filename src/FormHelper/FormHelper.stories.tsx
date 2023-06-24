@@ -11,6 +11,7 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     children: 'holaasdasdasd asd asd asd asd asd as',
+    error: true,
   },
 }
 export const disabled: Story = {

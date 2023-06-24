@@ -9,6 +9,7 @@ export interface InputLabelProps {
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
   labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>
   disabled?: boolean
+  error?: boolean
 }
 export default function InputLabel({
   children,
@@ -16,7 +17,8 @@ export default function InputLabel({
   className,
   disableAnimation,
   shrink,
-  color,
+  error,
+  color = error ? 'error' : 'primary',
   labelProps,
   disabled,
 }: InputLabelProps) {
