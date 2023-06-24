@@ -34,9 +34,10 @@ export default function InputLabel({
         {
           'normal-label-text-field-filled': variant === 'filled' && !shrink,
           'mini-label-text-field-filled': variant === 'filled' && shrink,
+          ' translate-y-4': variant === 'standard' && !shrink,
+          ' -translate-y-1  scale-75': variant === 'standard' && shrink,
           'opacity-30': disabled,
           'transition-all': !disableAnimation,
-          ' -translate-y-3  scale-75': variant === 'standard' && shrink,
           'mt-2 mb-1': margin === 'dense',
 
           'text-error-color': shrink && color === 'error',

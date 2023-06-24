@@ -14,7 +14,6 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     label: 'hola',
-    classes: { labelClassName: 'bg-blue-200', inputClassName: 'bg-yellow-200' },
   },
 }
 export const secondary: Story = {
