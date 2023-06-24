@@ -238,6 +238,7 @@ export const helperText: Story = {
     label: 'info',
     helperText: 'holiwi',
     color: 'info',
+    inputProps: { startAdornment: <div>kg</div> },
 
     onChange(ev) {
       console.log(ev.currentTarget.value)
