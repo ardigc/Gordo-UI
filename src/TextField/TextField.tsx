@@ -11,6 +11,8 @@ import {
 } from 'react'
 import classNames from 'classnames'
 import Clickaway from '../ClickAway/ClickAway'
+import Input from '../Input/Input'
+import InputLabel from '../InputLabel/InputLabel'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
   setValue?: Dispatch<
@@ -61,7 +63,7 @@ export interface TextField {
 }
 export default function TextField({
   label,
-  variant,
+  variant = 'filled',
   error,
   color = error ? 'error' : 'primary',
   defaultValue,
@@ -108,28 +110,37 @@ export default function TextField({
     <Clickaway onClickaway={clickAwayHandler}>
       <div id={id} className="relative inline-flex flex-col">
         {!hiddenLabel && (
-          <label
-            className={classNames(
-              'label-text-field',
-              'text-lg cursor-text left-0 z-10',
-              {
-                'normal-label-text-field-filled': !touched,
-                'mini-label-text-field-filled': touched,
-                'text-error-color': touched && color === 'error',
-                'text-primary-color': touched && color === 'primary',
-                'text-secundary-color': touched && color === 'secundary',
-                'text-warning-color': touched && color === 'warning',
-                'text-info-color': touched && color === 'info',
-                'text-success-color': touched && color === 'success',
-                [labelClassName || '']: labelClassName,
-              }
-            )}
+          // <label
+          //   className={classNames(
+          //     'label-text-field',
+          //     'text-lg cursor-text left-0 z-10',
+          //     {
+          //       'normal-label-text-field-filled': !touched,
+          //       'mini-label-text-field-filled': touched,
+          //       'text-error-color': touched && color === 'error',
+          //       'text-primary-color': touched && color === 'primary',
+          //       'text-secundary-color': touched && color === 'secundary',
+          //       'text-warning-color': touched && color === 'warning',
+          //       'text-info-color': touched && color === 'info',
+          //       'text-success-color': touched && color === 'success',
+          //       [labelClassName || '']: labelClassName,
+          //     }
+          //   )}
+          //   htmlFor="filled-input"
+          // >
+          //   {label}
+          // </label>
+          <InputLabel
+            variant={variant}
+            shrink={touched}
+            className={labelClassName}
+            color={color}
             htmlFor="filled-input"
           >
             {label}
-          </label>
+          </InputLabel>
         )}
-        <div
+        {/* <div
           className={classNames(
             'input-custom after:border-b-2 flex flex-col relative ',
             {
@@ -192,7 +203,35 @@ export default function TextField({
               {...inputProps}
             />
           )}
-        </div>
+        </div> */}
+        <Input
+          id="filled-input"
+          disabled={disabled}
+          defaultValue={defaultValue}
+          autoFocus={autoFocus}
+          value={ComponentValue}
+          inputRef={inputRef}
+          type={type}
+          disaledUndeline={disableUnderline}
+          readonly={readOnly}
+          onChange={(ev) => changeEventHandler(ev)}
+          required={required}
+          color={color}
+          rows={rows}
+          multiline={multiLine}
+          multilineTextAreaRef={TextAreaRef}
+          onFocus={() => {
+            setTouched(true)
+            setOpened(true)
+          }}
+          classes={{
+            inputClassName: classNames(
+              'input-text-field outline-none bg-gray-100 rounded-sm',
+              { [classes?.inputClassName || '']: classes?.inputClassName }
+            ),
+          }}
+          {...inputProps}
+        />
         <TextFieldContext.Provider value={{ setValue, setOpened }}>
           {opened && select && <div className="max-w-input">{children}</div>}
         </TextFieldContext.Provider>

@@ -11,6 +11,7 @@ export interface InputLabelProps {
   disabled?: boolean
   error?: boolean
   margin?: 'dense' | 'none'
+  variant?: 'filled' | 'outlined' | 'standard'
 }
 export default function InputLabel({
   children,
@@ -23,24 +24,30 @@ export default function InputLabel({
   labelProps,
   disabled,
   margin,
+  variant = 'standard',
 }: InputLabelProps) {
   return (
     <label
       htmlFor={htmlFor}
-      className={classNames('absolute origin-top-left', {
-        'opacity-30': disabled,
-        'transition-all': !disableAnimation,
-        ' -translate-y-3  scale-75': shrink,
-        'mt-2 mb-1': margin === 'dense',
+      className={classNames(
+        'absolute origin-top-left text-lg cursor-text left-0 z-10 ',
+        {
+          'normal-label-text-field-filled': variant === 'filled' && !shrink,
+          'mini-label-text-field-filled': variant === 'filled' && shrink,
+          'opacity-30': disabled,
+          'transition-all': !disableAnimation,
+          ' -translate-y-3  scale-75': variant === 'standard' && shrink,
+          'mt-2 mb-1': margin === 'dense',
 
-        'text-error-color': shrink && color === 'error',
-        'text-primary-color': shrink && color === 'primary',
-        'text-secundary-color': shrink && color === 'secundary',
-        'text-warning-color': shrink && color === 'warning',
-        'text-info-color': shrink && color === 'info',
-        'text-success-color': shrink && color === 'success',
-        [className || '']: className,
-      })}
+          'text-error-color': shrink && color === 'error',
+          'text-primary-color': shrink && color === 'primary',
+          'text-secundary-color': shrink && color === 'secundary',
+          'text-warning-color': shrink && color === 'warning',
+          'text-info-color': shrink && color === 'info',
+          'text-success-color': shrink && color === 'success',
+          [className || '']: className,
+        }
+      )}
       {...labelProps}
     >
       {children}

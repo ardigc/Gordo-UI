@@ -42,6 +42,7 @@ interface InputProps {
   rows?: number | string
   name?: string
   onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  onFocus?: () => void
   value?: string | ReadonlyArray<string> | number | undefined
   placeholder?: string | undefined
   readonly?: boolean
@@ -77,6 +78,7 @@ export default function Input({
   required,
   type,
   onChange,
+  onFocus,
   className,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
@@ -144,9 +146,13 @@ export default function Input({
               className={classNames('outline-none', {
                 'w-full': fullWidth,
                 [classes?.inputClassName || '']: classes?.inputClassName,
+                [className || '']: className,
               })}
               onFocus={() => {
                 setTouched(true)
+                if (onFocus) {
+                  onFocus()
+                }
               }}
               readOnly={readonly}
               disabled={disabled}
@@ -177,6 +183,9 @@ export default function Input({
             })}
             onFocus={() => {
               setTouched(true)
+              if (onFocus) {
+                onFocus()
+              }
             }}
             disabled={disabled}
             {...inputProps}
