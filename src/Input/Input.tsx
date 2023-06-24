@@ -23,7 +23,7 @@ interface InputProps {
     Container?: ElementType
   }
   componentsProps?: {
-    container?: React.HTMLAttributes<HTMLDivElement>
+    container?: React.HTMLAttributes<HTMLElement>
     input?: React.InputHTMLAttributes<HTMLInputElement>
   }
   defaultValue?: string | number | ReadonlyArray<string> | undefined

@@ -7,7 +7,7 @@ export interface InputLabelProps {
   disableAnimation?: boolean
   shrink?: boolean
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
-  labelProps?: {}
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>
   disabled?: boolean
 }
 export default function InputLabel({
@@ -25,7 +25,6 @@ export default function InputLabel({
       htmlFor={htmlFor}
       className={classNames('absolute origin-top-left', {
         'opacity-30': disabled,
-        [className || '']: className,
         'transition-all': !disableAnimation,
         ' -translate-y-3  scale-75': shrink,
         'text-error-color': shrink && color === 'error',
@@ -34,6 +33,7 @@ export default function InputLabel({
         'text-warning-color': shrink && color === 'warning',
         'text-info-color': shrink && color === 'info',
         'text-success-color': shrink && color === 'success',
+        [className || '']: className,
       })}
       {...labelProps}
     >
