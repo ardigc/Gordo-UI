@@ -48,6 +48,7 @@ interface InputProps {
   readonly?: boolean
   required?: boolean
   type?: HTMLInputTypeAttribute
+  variant?: 'filled' | 'outlined' | 'standard'
 }
 export default function Input({
   autocomplete,
@@ -80,6 +81,7 @@ export default function Input({
   onChange,
   onFocus,
   className,
+  variant,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
@@ -130,7 +132,9 @@ export default function Input({
       <RenderComponent {...RenderComponentProps}>
         {renderMyInput && (
           <>
-            {startAdornment && startAdornment}
+            {startAdornment && <div className={classNames({'mx-4':variant==='filled'})}>
+              startAdornment
+            </div>}
             <input
               name={name}
               required={required}
@@ -158,7 +162,7 @@ export default function Input({
               disabled={disabled}
               {...inputProps}
             />
-            {endAdornment && endAdornment}
+            {endAdornment &&<div>endAdornment</div> }
           </>
         )}
 

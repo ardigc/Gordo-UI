@@ -34,7 +34,7 @@ export const TextFieldContext = createContext<InputContextType>({})
 // }
 export interface TextField {
   label?: string
-  variant?: 'filled'
+  variant?: 'filled' | 'outlined' | 'standard'
   classes?: {
     labelClassName?: string
     inputContainerClassName?: string
@@ -220,6 +220,7 @@ export default function TextField({
           color={color}
           rows={rows}
           multiline={multiLine}
+          variant={variant}
           multilineTextAreaRef={TextAreaRef}
           onFocus={() => {
             setTouched(true)
