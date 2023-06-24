@@ -71,7 +71,7 @@ export const success: Story = {
     label: 'success',
     color: 'success',
     // classes: { inputClassName: 'rounded-xl border border-black' },
-    className:'rounded-xl border border-black',
+    className:'rounded-t-xl border border-black',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -241,6 +241,19 @@ export const helperText: Story = {
     helperText: 'holiwi',
     color: 'info',
     inputProps: { startAdornment: <div>kg</div> },
+
+    onChange(ev) {
+      console.log(ev.currentTarget.value)
+    },
+  },
+}
+export const endadornment: Story = {
+  args: {
+    type: 'text',
+    label: 'info',
+    helperText: 'holiwi',
+    color: 'info',
+    inputProps: { endAdornment: <div>kg</div> },
 
     onChange(ev) {
       console.log(ev.currentTarget.value)

@@ -91,7 +91,7 @@ export default function Input({
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
     : {
-        className: classNames('input-custom inline-flex flex relative pl-3', {
+        className: classNames('input-custom inline-flex flex relative px-3', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline,
           'w-full': fullWidth,
@@ -162,7 +162,7 @@ export default function Input({
               disabled={disabled}
               {...inputProps}
             />
-            {endAdornment &&<div>endAdornment</div> }
+            {endAdornment &&<div className={classNames('flex items-center')}>{endAdornment}</div> }
           </>
         )}
 
