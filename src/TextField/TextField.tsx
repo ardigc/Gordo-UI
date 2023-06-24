@@ -133,6 +133,7 @@ export default function TextField({
             shrink={touched || inputProps?.startAdornment ? true : false}
             className={labelClassName}
             color={color}
+            disabled={disabled}
             htmlFor="filled-input"
           >
             {label}
@@ -178,6 +179,7 @@ export default function TextField({
           className={className}
           {...inputProps}
         />
+
         <TextFieldContext.Provider value={{ setValue, setOpened }}>
           {opened && select && <div className="max-w-input ">{children}</div>}
         </TextFieldContext.Provider>

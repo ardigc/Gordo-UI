@@ -13,10 +13,6 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     id: 'hola',
-    error: true,
-    multiline: true,
-    rows: 3,
-    classes: { constainerClassName: 'bg-slate-500', inputClassName: 'w-72' },
   },
 }
 export const secundary: Story = {
@@ -38,7 +34,6 @@ export const startAdronemt: Story = {
   args: {
     id: 'hola',
     color: 'secundary',
-    autoFocus: true,
     fullWidth: true,
     margin: 'dense',
     disaledUndeline: true,
@@ -51,7 +46,6 @@ export const component: Story = {
   args: {
     id: 'hola',
     color: 'secundary',
-    autoFocus: true,
     fullWidth: true,
     margin: 'dense',
     disaledUndeline: true,

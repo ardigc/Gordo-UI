@@ -37,6 +37,7 @@ export default function InputLabel({
           ' translate-y-4': variant === 'standard' && !shrink,
           ' -translate-y-1  scale-75': variant === 'standard' && shrink,
           'opacity-30': disabled,
+          'opacity-70': !disabled,
           'transition-all': !disableAnimation,
           'mt-2 mb-1': margin === 'dense',
 

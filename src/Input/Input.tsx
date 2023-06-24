@@ -95,10 +95,10 @@ export default function Input({
     : {
         className: classNames('input-custom inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
-            !disaledUndeline && !disabled,
+            !disaledUndeline && !disabled && !(variant === 'outlined'),
           'w-full': fullWidth,
           'bg-gray-100 rounded-t-sm': variant === 'filled',
-          'pr-3 pl-3': variant === 'filled',
+
           'mt-2 mb-1': margin === 'dense',
 
           'after:border-b-primary-color': color === 'primary',
@@ -162,9 +162,12 @@ export default function Input({
                 'w-full': fullWidth,
                 'pt-6 pb-2': size === 'medium' && variant === 'filled',
                 'pt-5 pb-1': size === 'small' && variant === 'filled',
-
                 'pt-1 pb-[5px]': size === 'medium' && variant === 'standard',
                 'pt-[1px] pb-[5px]': size === 'small' && variant === 'standard',
+                'pr-3 pl-3': variant === 'filled',
+                'px-3 py-[16.5px]': size === 'medium' && variant === 'outlined',
+                'px-[8.5px] pb-[16.5px]':
+                  size === 'small' && variant === 'outlined',
                 [classes?.inputClassName || '']: classes?.inputClassName,
                 // [className || '']: className,
               })}
@@ -214,6 +217,9 @@ export default function Input({
             disabled={disabled}
             {...inputProps}
           />
+        )}
+        {variant === 'outlined' && (
+          <fieldset className="absolute left-0 right-0 bottom-0 -top-[5px] px-2 border rounded-[4px] pointer-events-none"></fieldset>
         )}
       </RenderComponent>
     </Clickaway>

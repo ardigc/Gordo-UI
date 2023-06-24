@@ -22,6 +22,7 @@ export const secondary: Story = {
     type: 'password',
     disabled: true,
     className: 'bg-red-500',
+    classes: { inputClassName: 'pt-10' },
   },
 }
 export const sinFondo: Story = {
