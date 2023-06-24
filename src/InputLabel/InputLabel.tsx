@@ -7,6 +7,7 @@ export interface InputLabelProps {
   disableAnimation?: boolean
   shrink?: boolean
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  labelProps?: {}
 }
 export default function InputLabel({
   children,
@@ -15,6 +16,7 @@ export default function InputLabel({
   disableAnimation,
   shrink,
   color,
+  labelProps,
 }: InputLabelProps) {
   return (
     <label
@@ -30,6 +32,7 @@ export default function InputLabel({
         'text-info-color': shrink && color === 'info',
         'text-success-color': shrink && color === 'success',
       })}
+      {...labelProps}
     >
       {children}
     </label>
