@@ -50,7 +50,7 @@ export interface InputProps {
   readonly?: boolean
   required?: boolean
   type?: HTMLInputTypeAttribute
-  label?: string|ReactNode
+  label?: string | ReactNode
   variant?: 'filled' | 'outlined' | 'standard'
   size?: 'medium' | 'small'
   shrink?: boolean
@@ -94,14 +94,24 @@ export default function Input({
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
-  const { contextVariant, contextTouched,contextLabel,contextRequired,setContextValue,contextColor, contextDisabled, focused } = useContext(FormControlContext)
- autoFocus=focused?focused:autoFocus
+  const {
+    contextVariant,
+    contextTouched,
+    contextLabel,
+    contextRequired,
+    setContextValue,
+    contextColor,
+    contextDisabled,
+    focused,
+    hiddenLabel,
+  } = useContext(FormControlContext)
+  autoFocus = focused ? focused : autoFocus
   variant = contextVariant ? contextVariant : variant
-  color= contextColor?contextColor:color
-  shrink= contextTouched? contextTouched:shrink
-  label=contextLabel?contextLabel:label
-  disabled=contextDisabled?contextDisabled: disabled
-  required=contextRequired?contextRequired:required
+  color = contextColor ? contextColor : color
+  shrink = contextTouched ? contextTouched : shrink
+  label = contextLabel ? contextLabel : label
+  disabled = contextDisabled ? contextDisabled : disabled
+  required = contextRequired ? contextRequired : required
 
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
@@ -110,8 +120,7 @@ export default function Input({
         className: classNames('input-custom group inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline && !disabled && !(variant === 'outlined'),
-                          'mt-4': label && variant === 'standard',
-
+          'mt-4': label && variant === 'standard',
           'w-full': fullWidth,
           'bg-gray-100 rounded-t-sm': variant === 'filled',
           'px-[14px] py-4': multiline && variant === 'outlined',
@@ -124,21 +133,22 @@ export default function Input({
           'after:border-b-warning-color': color === 'warning',
           'after:border-b-info-color': color === 'info',
           'after:border-b-success-color': color === 'success',
-
           'input-custom-none ': !touched,
           'input-custom-normal': touched,
           [classes?.constainerClassName || '']: classes?.constainerClassName,
           [className || '']: className,
         }),
       }
-      const changeHandler: ChangeEventHandler<
-      HTMLInputElement | HTMLTextAreaElement
-    > = (ev) => {
-      if (setContextValue) { setContextValue(ev.currentTarget.value)}
-      if (onChange) {
-        onChange(ev)
-      }
+  const changeHandler: ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (ev) => {
+    if (setContextValue) {
+      setContextValue(ev.currentTarget.value)
     }
+    if (onChange) {
+      onChange(ev)
+    }
+  }
   const parseRows = (rows: string | number | undefined) => {
     if (!rows) return
     if (typeof rows === 'number') {
@@ -259,7 +269,7 @@ export default function Input({
                 ' invisible max-w-full transition-all': shrink,
               })}
             >
-              <span className="opacity-0 inline-block px-[5px]">{label}</span>
+              <span className={classNames("opacity-0 inline-block px-[5px]",{'hidden':hiddenLabel,})}>{label}</span>
             </legend>
           </fieldset>
         )}
