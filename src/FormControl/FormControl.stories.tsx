@@ -42,6 +42,7 @@ export const filled: Story = {
       console.log(formData.get('email'))
     },
     variant: 'filled',
+    hiddenLabel:true
   },
 }
 export const className: Story = {

@@ -29,6 +29,7 @@ export type FormControlContextType = {
     contextDisabled?: boolean
   // setTouched?: Dispatch<SetStateAction<boolean>>
   focused?:boolean
+  hiddenLabel?:boolean
 }
 export const FormControlContext = createContext<FormControlContextType>({})
 
@@ -44,6 +45,7 @@ component?: ElementType
   disabled?: boolean
   error?:boolean
   focused?:boolean
+  hiddenLabel?:boolean
 }
 export default function FormControl({
   children,
@@ -57,6 +59,7 @@ export default function FormControl({
   error,
   color = error?'error': 'primary',
   focused,
+  hiddenLabel,
 }: FormControlProps) {
   const [contextTouched, setTouched] = useState(false)
   const [contextLabel, setLabel] = useState<ReactNode>('')
@@ -91,7 +94,8 @@ export default function FormControl({
             setLabel,
             contextVariant: variant,
             contextDisabled: disabled,
-            focused
+            focused,
+            hiddenLabel,
           }}
         >
           {children}

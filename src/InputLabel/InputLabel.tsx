@@ -36,6 +36,7 @@ export default function InputLabel({
     setLabel,
     contextColor,
     contextDisabled,
+    hiddenLabel,
   } = useContext(FormControlContext)
   variant = contextVariant ? contextVariant : variant
   shrink = contextTouched ? contextTouched : shrink
@@ -50,7 +51,7 @@ export default function InputLabel({
         relative: !shrink && !variant,
         'absolute origin-top-left text-lg cursor-text left-0  z-10 ':
           !shrink || variant,
-
+'hidden':hiddenLabel,
         'normal-label-text-field-filled':
           (variant === 'filled' && !shrink) ||
           (variant === 'outlined' && !shrink && size === 'medium'),
