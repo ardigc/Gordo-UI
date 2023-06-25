@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import React, {
   ChangeEvent,
-  ChangeEventHandler,
   HTMLInputTypeAttribute,
   useContext,
   useState,
@@ -122,13 +121,6 @@ export default function Input({
           [className || '']: className,
         }),
       }
-  const changeHandler: ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  > = (ev) => {
-    if (onChange) {
-      onChange(ev)
-    }
-  }
   const parseRows = (rows: string | number | undefined) => {
     if (!rows) return
     if (typeof rows === 'number') {
@@ -161,7 +153,7 @@ export default function Input({
               defaultValue={defaultValue}
               id={id}
               autoComplete={autocomplete}
-              onChange={changeHandler}
+              onChange={onChange}
               value={value}
               autoFocus={autoFocus}
               placeholder={placeholder}
@@ -206,7 +198,7 @@ export default function Input({
             rows={parseRows(rows)}
             autoComplete={autocomplete}
             autoFocus={autoFocus}
-            onChange={changeHandler}
+            onChange={onChange}
             value={value}
             placeholder={placeholder}
             readOnly={readonly}
