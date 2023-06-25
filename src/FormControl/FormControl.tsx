@@ -39,7 +39,7 @@ export default function FormControl({
     }}}>
 
     <form
-      className={classNames('relative inline-flex flex-col bg-opacity-0', {
+      className={classNames('relative inline-flex flex-col', {
         'mt-2 mb-1': margin === 'dense',
         'mt-4 mb-2': margin === 'normal',
         'w-full': fullWidth,

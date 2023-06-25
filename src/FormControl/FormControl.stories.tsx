@@ -40,3 +40,20 @@ export const filled: Story = {
     variant: 'filled',
   },
 }
+export const className: Story = {
+  args: {
+    children: (
+      <>
+        <InputLabel>hola</InputLabel>
+        <Input name="email" /> <button type="submit">button</button>
+      </>
+    ),
+    className:'bg-red-300 bg-opacity-1',
+    onSubmit(ev) {
+      ev.preventDefault()
+      const formData = new FormData(ev.currentTarget)
+      console.log(formData.get('email'))
+    },
+    variant: 'filled',
+  },
+}
