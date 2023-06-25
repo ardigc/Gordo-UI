@@ -30,9 +30,10 @@ export default function InputLabel({
   size = 'medium',
   variant,
 }: InputLabelProps) {
-  const { contextVariant, contextTouched, setLabel } = useContext(FormControlContext)
+  const { contextVariant, contextTouched, setLabel, contextColor } = useContext(FormControlContext)
   variant = contextVariant ? contextVariant : variant
   shrink=contextTouched?contextTouched:shrink
+  color=contextColor?contextColor:color
   if(setLabel)setLabel(children)
   return (
     <label

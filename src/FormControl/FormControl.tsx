@@ -9,6 +9,7 @@ export type FormControlContextType = {
   contextLabel?:ReactNode
   contextValue?: string | ReadonlyArray<string> | number | undefined
   setContextValue?:Dispatch<SetStateAction<string | ReadonlyArray<string> | number | undefined>>
+  contextColor?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
 
   // setTouched?: Dispatch<SetStateAction<boolean>>
 }
@@ -19,6 +20,8 @@ export interface FormControlProps {
   onSubmit?: (ev: FormEvent<HTMLFormElement>) => void
   variant?: 'filled' | 'outlined' | 'standard'
   margin?: 'dense' | 'none' | 'normal'
+  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+
   fullWidth?: boolean
   className?:string
 }
@@ -29,6 +32,7 @@ export default function FormControl({
   margin = 'normal',
   fullWidth,
   className,
+  color='primary',
 }: FormControlProps) {
   const [contextTouched, setTouched]=useState(false)
   const[contextLabel, setLabel]=useState<ReactNode>('')
@@ -48,7 +52,7 @@ export default function FormControl({
       onFocus={()=>setTouched(true)}
       onSubmit={onSubmit}
       >
-      <FormControlContext.Provider value={{contextTouched, setContextValue,contextLabel,setLabel,contextVariant: variant }}>
+      <FormControlContext.Provider value={{contextTouched, contextColor:color,setContextValue,contextLabel,setLabel,contextVariant: variant }}>
         {children}
       </FormControlContext.Provider>
     </form>

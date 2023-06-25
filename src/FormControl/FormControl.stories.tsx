@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import FormControl from './FormControl'
 import Input from '../Input/Input'
 import InputLabel from '../InputLabel/InputLabel'
+import FormHelper from '../FormHelper/FormHelper'
 const meta = {
   component: FormControl,
   title: 'GordoUI/FormControl',
@@ -29,9 +30,12 @@ export const filled: Story = {
     children: (
       <>
         <InputLabel>hola</InputLabel>
-        <Input name="email" /> <button type="submit">button</button>
+        <Input name="email" />
+        <FormHelper>helper text</FormHelper>
+         <button type="submit">button</button>
       </>
     ),
+    color:'error',
     onSubmit(ev) {
       ev.preventDefault()
       const formData = new FormData(ev.currentTarget)
