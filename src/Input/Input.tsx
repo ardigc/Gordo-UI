@@ -167,7 +167,7 @@ export default function Input({
               value={currentValue}
               autoFocus={autoFocus}
               placeholder={placeholder}
-              className={classNames('outline-none ', {
+              className={classNames('outline-none bg-white bg-opacity-0', {
                 'w-full': fullWidth,
                 'pt-6 pb-2': size === 'medium' && variant === 'filled',
                 'pt-5 pb-1': size === 'small' && variant === 'filled',

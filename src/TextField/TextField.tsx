@@ -177,7 +177,7 @@ export default function TextField({
               [classes?.inputContainerClassName || '']:
                 classes?.inputContainerClassName,
             }),
-            inputClassName: classNames('  outline-none bg-white bg-opacity-0', {
+            inputClassName: classNames(' bg-white bg-opacity-0', {
               [classes?.inputClassName || '']: classes?.inputClassName,
             }),
           }}
