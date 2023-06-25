@@ -1,51 +1,19 @@
-import './button.css'
+import classNames from 'classnames'
+import { ReactNode } from 'react'
 
-interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large'
-  /**
-   * Button contents
-   */
-  label: string
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void
+export interface ButtonProps {
+  children?: ReactNode
+  variant?: 'contained' | 'outlined' | 'text'
 }
-
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary
-    ? 'storybook-button--primary'
-    : 'storybook-button--secondary'
+export default function Button({ children, variant = 'text' }: ButtonProps) {
   return (
     <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(
-        ' '
+      className={classNames(
+        'inline-flex items-center justify-center relative bg-transparent outline-none uppercase rounded-md',
+        { ' hover:bg-primary-color-10 ': true }
       )}
-      style={{ backgroundColor }}
-      {...props}
     >
-      {label}
+      {children}
     </button>
   )
 }
