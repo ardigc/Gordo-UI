@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --primary-color: #1976d2;
-  --secundary-color: #9c27b0;
-  --error-color: #d32f2f;
-  --warning-color: #ed6c02;
-  --info-color: #0288d1;
-  --success-color: #2e7d32;
+  --primary-color: 25 118 210;
+  --secondary-color: 156 39 176;
+  --error-color: 211 47 47;
+  --warning-color: 237 108 2;
+  --info-color: 2 136 209;
+  --success-color: 46 125 50;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --primary-color-10: rgba(25, 118, 210, 0.1);
+  /* --primary-color-10: rgba(25, 118, 210, 0.1);
   --primary-color-20: rgba(25, 118, 210, 0.2);
   --primary-color-30: rgba(25, 118, 210, 0.3);
   --primary-color-40: rgba(25, 118, 210, 0.4);
@@ -75,7 +75,7 @@
   --success-color-70: rgba(46, 125, 50, 0.7);
   --success-color-80: rgba(46, 125, 50, 0.8);
   --success-color-90: rgba(46, 125, 50, 0.9);
-  --success-color-100: rgba(46, 125, 50, 1);
+  --success-color-100: rgba(46, 125, 50, 1); */
 }
 
 .input-text-field {

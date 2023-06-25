@@ -18,11 +18,14 @@ export default function Button({ children, variant = 'text' }: ButtonProps) {
       className={classNames(
         'inline-flex items-center justify-center relative bg-transparent outline-none uppercase rounded-[4px] min-w-[64px]',
         'overflow-hidden',
-        { ' hover:bg-primary-color-10 py-[6px] px-2': variant === 'text' }
+        {
+          ' hover:bg-primary-color hover:bg-opacity-10 py-[6px] px-2':
+            variant === 'text',
+        }
       )}
     >
       {animation && (
-        <span className="animate-ripple absolute inline-flex w-full h-full rounded-full bg-primary-color-20 opacity-75"></span>
+        <span className="animate-ripple absolute inline-flex w-full h-full rounded-full bg-primary-color bg-opacity-25"></span>
       )}
       {children}
     </button>
