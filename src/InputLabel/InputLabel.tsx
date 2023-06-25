@@ -10,6 +10,7 @@ export interface InputLabelProps {
   labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>
   disabled?: boolean
   error?: boolean
+  size?: 'medium' | 'small'
   margin?: 'dense' | 'none'
   variant?: 'filled' | 'outlined' | 'standard'
 }
@@ -24,6 +25,7 @@ export default function InputLabel({
   labelProps,
   disabled,
   margin,
+  size = 'medium',
   variant = 'standard',
 }: InputLabelProps) {
   return (
@@ -32,7 +34,13 @@ export default function InputLabel({
       className={classNames(
         'absolute origin-top-left text-lg cursor-text left-0 z-10 ',
         {
-          'normal-label-text-field-filled': variant === 'filled' && !shrink,
+          'normal-label-text-field-filled':
+            (variant === 'filled' && !shrink) ||
+            (variant === 'outlined' && !shrink && size === 'medium'),
+          ' translate-x-3 translate-y-1 ':
+            variant === 'outlined' && !shrink && size === 'small',
+          '-translate-y-2 translate-x-4  scale-75':
+            variant === 'outlined' && shrink,
           'mini-label-text-field-filled': variant === 'filled' && shrink,
           ' translate-y-4': variant === 'standard' && !shrink,
           ' -translate-y-1  scale-75': variant === 'standard' && shrink,

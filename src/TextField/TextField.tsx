@@ -134,6 +134,7 @@ export default function TextField({
             className={labelClassName}
             color={color}
             disabled={disabled}
+            size={size}
             htmlFor="filled-input"
           >
             {label}

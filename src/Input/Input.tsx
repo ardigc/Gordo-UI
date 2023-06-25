@@ -163,7 +163,7 @@ export default function Input({
                 'pt-[1px] pb-[5px]': size === 'small' && variant === 'standard',
                 'pr-3 pl-3': variant === 'filled',
                 'px-3 py-[16.5px]': size === 'medium' && variant === 'outlined',
-                'px-[8.5px] pb-[14px]':
+                'px-[8.5px] py-[14px]':
                   size === 'small' && variant === 'outlined',
                 [classes?.inputClassName || '']: classes?.inputClassName,
                 // [className || '']: className,
@@ -223,7 +223,7 @@ export default function Input({
             )}
           >
             <legend
-              className={classNames({
+              className={classNames('text-sm', {
                 ' invisible max-w-0 transition-all': !touched,
                 ' invisible max-w-full transition-all': touched,
               })}
