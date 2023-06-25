@@ -178,10 +178,10 @@ const timeSlots = Array.from(new Array(24 * 2)).map(
       index % 2 === 0 ? '00' : '30'
     }`
 )
-export const hours: Story = {
-  args: {
-    options: timeSlots,
-    classes: { inputClassname: 'bg-slate-400 ' },
-    label: 'Horas',
-  },
-}
+// export const hours: Story = {
+//   args: {
+//     options: timeSlots,
+//     classes: { inputClassname: 'bg-slate-400 ' },
+//     label: 'Horas',
+//   },
+// }

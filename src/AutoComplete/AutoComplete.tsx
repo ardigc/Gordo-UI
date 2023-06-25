@@ -49,7 +49,7 @@ export default function AutoComplete({
         <div className={classes?.optionsClassName}>
           {options.map((option, index) => (
             <Option
-              onClick={() => handleOptionClick(option)}
+              onClick={() => handleOptionClick(option.value)}
               value={option.value}
               className={classes?.optionClassName}
               key={index}

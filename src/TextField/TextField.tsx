@@ -108,19 +108,11 @@ export default function TextField({
   const changeEventHandler: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   > = (ev) => {
+    console.log('component',ComponentValue)
     setValue(ev.currentTarget.value)
     if (onChange) {
       onChange(ev)
     }
-  }
-  const handleOptionClick = (option: string) => {
-    setValue(option)
-    const fakeEvent = {
-      currentTarget: {
-        value: option,
-      },
-    } as ChangeEvent<HTMLInputElement>
-    changeEventHandler(fakeEvent)
   }
   const clickAwayHandler = useCallback(() => {
     // console.log(ComponentValue)
@@ -129,6 +121,16 @@ export default function TextField({
     }
     setOpened(false)
   }, [ComponentValue])
+  const handleOptionClick = (option: string) => {
+
+    const fakeEvent = {
+      currentTarget: {
+        value: option,
+      },
+    } as ChangeEvent<HTMLInputElement>
+    changeEventHandler(fakeEvent)
+  }
+  console.log('comp',ComponentValue)
   return (
     <Clickaway onClickaway={clickAwayHandler}>
       <div

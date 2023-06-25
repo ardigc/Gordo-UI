@@ -92,7 +92,6 @@ export default function Input({
   label,
 }: InputProps) {
   const [touched, setTouched] = useState(false)
-  const [currentValue, setCurrentValue] = useState(value)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
   const { contextVariant } = useContext(FormControlContext)
@@ -126,7 +125,6 @@ export default function Input({
   const changeHandler: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   > = (ev) => {
-    setCurrentValue(ev.currentTarget.value)
     if (onChange) {
       onChange(ev)
     }
@@ -164,7 +162,7 @@ export default function Input({
               id={id}
               autoComplete={autocomplete}
               onChange={changeHandler}
-              value={currentValue}
+              value={value}
               autoFocus={autoFocus}
               placeholder={placeholder}
               className={classNames('outline-none bg-white bg-opacity-0', {
@@ -209,7 +207,7 @@ export default function Input({
             autoComplete={autocomplete}
             autoFocus={autoFocus}
             onChange={changeHandler}
-            value={currentValue}
+            value={value}
             placeholder={placeholder}
             readOnly={readonly}
             required={required}
