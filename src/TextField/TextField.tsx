@@ -96,7 +96,7 @@ export default function TextField({
   className,
   fullWidth,
   size = 'medium',
-  margin,
+  margin = 'none',
   name,
   placeholder,
 }: TextField) {
@@ -137,14 +137,14 @@ export default function TextField({
             color={color}
             disabled={disabled}
             size={size}
-            htmlFor="filled-input"
+            htmlFor="input"
           >
             {label}
           </InputLabel>
         )}
 
         <Input
-          id="filled-input"
+          id="input"
           disabled={disabled}
           defaultValue={defaultValue}
           autoFocus={autoFocus}
@@ -189,7 +189,7 @@ export default function TextField({
           {opened && select && <div className="max-w-input ">{children}</div>}
         </TextFieldContext.Provider>
         {helperText && (
-          <FormHelper className="mx-3 " error={error}>
+          <FormHelper className="mx-3 " error={error || color === 'error'}>
             {helperText}
           </FormHelper>
         )}

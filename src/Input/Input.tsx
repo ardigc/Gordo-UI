@@ -97,7 +97,6 @@ export default function Input({
   const UserComponent = components?.Container
   const { contextVariant } = useContext(FormControlContext)
   variant = contextVariant ? contextVariant : variant
-  // console.log(onFormControl)
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
@@ -111,6 +110,12 @@ export default function Input({
           'px-3 pt-[25px] pb-2': multiline && variant === 'filled',
           'mt-2 mb-1': margin === 'dense',
           [`after:border-b-${color}-color`]: color,
+          'after:border-b-primary-color': color === 'primary',
+          'after:border-b-secundary-color': color === 'secundary',
+          'after:border-b-error-color': color === 'error',
+          'after:border-b-warning-color': color === 'warning',
+          'after:border-b-info-color': color === 'info',
+          'after:border-b-success-color': color === 'success',
 
           'input-custom-none ': !touched,
           'input-custom-normal': touched,

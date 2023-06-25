@@ -24,3 +24,19 @@ export const primary: Story = {
     },
   },
 }
+export const filled: Story = {
+  args: {
+    children: (
+      <>
+        <InputLabel>hola</InputLabel>
+        <Input name="email" /> <button type="submit">button</button>
+      </>
+    ),
+    onSubmit(ev) {
+      ev.preventDefault()
+      const formData = new FormData(ev.currentTarget)
+      console.log(formData.get('email'))
+    },
+    variant: 'filled',
+  },
+}
