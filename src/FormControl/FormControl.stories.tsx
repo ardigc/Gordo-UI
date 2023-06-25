@@ -61,3 +61,21 @@ export const className: Story = {
     variant: 'filled',
   },
 }
+export const UserComponent: Story = {
+  args: {
+    children: (
+      <>
+        <InputLabel>hola</InputLabel>
+        <Input name="email" /> <button type="submit">button</button>
+      </>
+    ),
+    component:'div',
+    className:'bg-red-300 bg-opacity-1',
+    onSubmit(ev) {
+      ev.preventDefault()
+      const formData = new FormData(ev.currentTarget)
+      console.log(formData.get('email'))
+    },
+    variant: 'filled',
+  },
+}
