@@ -93,8 +93,9 @@ export default function Input({
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
-  const { contextVariant } = useContext(FormControlContext)
+  const { contextVariant, contextTouched } = useContext(FormControlContext)
   variant = contextVariant ? contextVariant : variant
+  shrink= contextTouched? contextTouched:shrink
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
