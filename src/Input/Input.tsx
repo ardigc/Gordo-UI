@@ -105,6 +105,8 @@ export default function Input({
         className: classNames('input-custom group inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline && !disabled && !(variant === 'outlined'),
+                          'mt-4': label && variant === 'standard',
+
           'w-full': fullWidth,
           'bg-gray-100 rounded-t-sm': variant === 'filled',
           'px-[14px] py-4': multiline && variant === 'outlined',
