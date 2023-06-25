@@ -51,6 +51,7 @@ export interface InputProps {
   label?: string
   variant?: 'filled' | 'outlined' | 'standard'
   size?: 'medium' | 'small'
+  shrink?: boolean
 }
 export default function Input({
   autocomplete,
@@ -80,6 +81,7 @@ export default function Input({
   readonly,
   required,
   type,
+  shrink,
   onChange,
   onFocus,
   className,
@@ -218,14 +220,24 @@ export default function Input({
         {variant === 'outlined' && (
           <fieldset
             className={classNames(
-              'absolute left-0 right-0 border-black  bottom-0 border-opacity-30 group-hover:border-opacity-90 -top-[5px] px-2 border rounded-[4px] pointer-events-none',
-              { [`border-${color}-color`]: color }
+              'absolute left-0 right-0   bottom-0   -top-[5px] px-2 border rounded-[4px] pointer-events-none',
+              {
+                ' border-opacity-100 border-2': touched,
+                'border-black group-hover:border-opacity-90 border-opacity-30':
+                  !touched,
+                'border-primary-color': color === 'primary' && touched,
+                'border-secundary-color': color === 'secundary' && touched,
+                'border-error-color': color === 'error' && touched,
+                'border-warning-color': color === 'warning' && touched,
+                'border-info-color': color === 'info' && touched,
+                'border-success-color': color === 'success' && touched,
+              }
             )}
           >
             <legend
               className={classNames('text-sm', {
-                ' invisible max-w-0 transition-all': !touched,
-                ' invisible max-w-full transition-all': touched,
+                ' invisible max-w-0 transition-all': !shrink,
+                ' invisible max-w-full transition-all': shrink,
               })}
             >
               <span className="opacity-0 inline-block px-[5px]">{label}</span>

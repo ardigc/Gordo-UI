@@ -159,6 +159,7 @@ export default function TextField({
           size={size}
           label={label}
           rows={rows}
+          shrink={touched || inputProps?.startAdornment ? true : false}
           multiline={multiLine}
           variant={variant}
           multilineTextAreaRef={TextAreaRef}

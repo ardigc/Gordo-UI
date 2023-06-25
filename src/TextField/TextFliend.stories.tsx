@@ -78,6 +78,7 @@ export const success: Story = {
     // classes: { inputClassName: 'rounded-xl border border-black' },
     className: 'rounded-t-xl border border-black',
     fullWidth: true,
+    variant: 'outlined',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
@@ -200,6 +201,8 @@ export const warning: Story = {
     type: 'text',
     label: 'warning',
     color: 'warning',
+    variant: 'outlined',
+
     select: true,
     children: options.map((option) => <Option value={option}>{option}</Option>),
     onChange(ev) {
@@ -222,6 +225,8 @@ export const info: Story = {
     type: 'text',
     label: 'info',
     color: 'info',
+    variant: 'outlined',
+
     inputProps: { type: 'number' },
     onChange(ev) {
       console.log(ev.currentTarget.value)
