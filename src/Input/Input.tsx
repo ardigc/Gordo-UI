@@ -94,7 +94,8 @@ export default function Input({
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
-  const { contextVariant, contextTouched,contextLabel,setContextValue,contextColor, contextDisabled } = useContext(FormControlContext)
+  const { contextVariant, contextTouched,contextLabel,setContextValue,contextColor, contextDisabled, focused } = useContext(FormControlContext)
+ autoFocus=focused?focused:autoFocus
   variant = contextVariant ? contextVariant : variant
   color= contextColor?contextColor:color
   shrink= contextTouched? contextTouched:shrink

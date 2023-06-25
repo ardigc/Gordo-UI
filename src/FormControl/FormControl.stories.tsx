@@ -78,5 +78,6 @@ export const UserComponent: Story = {
       console.log(formData.get('email'))
     },
     variant: 'filled',
+    focused:true
   },
 }
