@@ -3,6 +3,20 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      animation: {
+        ripple: 'ripple 1s cubic-bezier(0, 0, 0.2, 1) 1',
+      },
+      keyframes: {
+        ripple: {
+          '0%': {
+            width: '0',
+            height: '0',
+          },
+          '80%': { opacity: '1' },
+          '100%': { opacity: '0', transform: 'scale(2)' },
+        },
+      },
+
       colors: {
         'primary-color': {
           DEFAULT: 'var(--primary-color)',
@@ -82,7 +96,6 @@ export default {
           90: 'var(--success-color-90)', // 90% opacity
           100: 'var(--success-color-100)', // 100% opacity
         },
-        // Define más colores personalizados aquí
       },
       maxWidth: {
         input: '205px',
