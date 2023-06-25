@@ -59,6 +59,7 @@ export const className: Story = {
       console.log(formData.get('email'))
     },
     variant: 'filled',
+    disabled:true
   },
 }
 export const UserComponent: Story = {

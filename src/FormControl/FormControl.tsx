@@ -26,6 +26,7 @@ export type FormControlContextType = {
     | 'warning'
     | 'info'
     | 'success'
+    contextDisabled?: boolean
 
   // setTouched?: Dispatch<SetStateAction<boolean>>
 }
@@ -40,6 +41,7 @@ export interface FormControlProps {
 component?: ElementType
   fullWidth?: boolean
   className?: string
+  disabled?: boolean
 }
 export default function FormControl({
   children,
@@ -49,6 +51,7 @@ export default function FormControl({
   fullWidth,
   className,
   component,
+  disabled,
   color = 'primary',
 }: FormControlProps) {
   const [contextTouched, setTouched] = useState(false)
@@ -83,6 +86,7 @@ export default function FormControl({
             contextLabel,
             setLabel,
             contextVariant: variant,
+            contextDisabled:disabled,
           }}
         >
           {children}

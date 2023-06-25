@@ -23,7 +23,8 @@ export default function FormHelper({
   id,
 }: FormHelperProps) {
   const RederComponent = component ? component : 'p'
-const {contextVariant, contextColor}=useContext(FormControlContext)
+const {contextVariant, contextColor, contextDisabled}=useContext(FormControlContext)
+disabled=contextDisabled?contextDisabled: disabled
 error= contextColor==='error'? true:error
   return (
     <RederComponent
