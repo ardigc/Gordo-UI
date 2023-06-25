@@ -64,7 +64,7 @@ export interface TextField {
   className?: string
   fullWidth?: boolean
   size?: 'medium' | 'small'
-  margin?: 'dense' | 'none'
+  margin?: 'dense' | 'none' | 'normal'
   name?: string
   placeholder?: string
 }
@@ -124,6 +124,8 @@ export default function TextField({
       <div
         id={id}
         className={classNames('relative inline-flex flex-col', {
+          'mt-2 mb-1': margin === 'dense',
+          'mt-4 mb-2': margin === 'normal',
           'w-full': fullWidth,
         })}
       >
@@ -164,7 +166,7 @@ export default function TextField({
           variant={variant}
           multilineTextAreaRef={TextAreaRef}
           fullWidth={fullWidth}
-          margin={margin}
+          // margin={margin}
           onFocus={() => {
             setTouched(true)
             setOpened(true)

@@ -32,12 +32,12 @@ export default function InputLabel({
     <label
       htmlFor={htmlFor}
       className={classNames(
-        'absolute origin-top-left text-lg cursor-text left-0 z-10 ',
+        'absolute origin-top-left text-lg cursor-text left-0  z-10 ',
         {
           'normal-label-text-field-filled':
             (variant === 'filled' && !shrink) ||
             (variant === 'outlined' && !shrink && size === 'medium'),
-          ' translate-x-3 translate-y-1 ':
+          ' translate-x-3 translate-y-3 ':
             variant === 'outlined' && !shrink && size === 'small',
           '-translate-y-2 translate-x-4  scale-75':
             variant === 'outlined' && shrink,

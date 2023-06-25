@@ -215,6 +215,7 @@ export const search: Story = {
     type: 'search',
     label: 'warning',
     color: 'warning',
+    margin: 'normal',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },

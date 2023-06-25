@@ -102,7 +102,8 @@ export default function Input({
             !disaledUndeline && !disabled && !(variant === 'outlined'),
           'w-full': fullWidth,
           'bg-gray-100 rounded-t-sm': variant === 'filled',
-
+          'px-[14px] py-4': multiline && variant === 'outlined',
+          'px-3 pt-[25px] pb-2': multiline && variant === 'filled',
           'mt-2 mb-1': margin === 'dense',
           [`after:border-b-${color}-color`]: color,
 
@@ -205,6 +206,7 @@ export default function Input({
             required={required}
             className={classNames('outline-none resize-none', {
               'w-full': fullWidth,
+              'pb-2': variant === 'standard',
               [classes?.inputClassName || '']: classes?.inputClassName,
             })}
             onFocus={() => {
