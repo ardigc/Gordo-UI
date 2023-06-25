@@ -40,13 +40,8 @@ export default function InputLabel({
           'opacity-70': !disabled,
           'transition-all': !disableAnimation,
           'mt-2 mb-1': margin === 'dense',
+          [`text-${color}-color`]: shrink && color,
 
-          'text-error-color': shrink && color === 'error',
-          'text-primary-color': shrink && color === 'primary',
-          'text-secundary-color': shrink && color === 'secundary',
-          'text-warning-color': shrink && color === 'warning',
-          'text-info-color': shrink && color === 'info',
-          'text-success-color': shrink && color === 'success',
           [className || '']: className,
         }
       )}

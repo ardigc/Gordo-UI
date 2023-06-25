@@ -89,27 +89,21 @@ export default function Input({
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
-  const [hovered, setHovered] = useState(false)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
     : {
-        className: classNames('input-custom inline-flex flex relative ', {
+        className: classNames('input-custom group inline-flex flex relative ', {
           'hover:before:border-t-2 before:border-black after:border-b-2 before:border-t':
             !disaledUndeline && !disabled && !(variant === 'outlined'),
           'w-full': fullWidth,
           'bg-gray-100 rounded-t-sm': variant === 'filled',
 
           'mt-2 mb-1': margin === 'dense',
+          [`after:border-b-${color}-color`]: color,
 
-          'after:border-b-primary-color': color === 'primary',
-          'after:border-b-secundary-color': color === 'secundary',
-          'after:border-b-error-color': color === 'error',
-          'after:border-b-warning-color': color === 'warning',
-          'after:border-b-info-color': color === 'info',
-          'after:border-b-success-color': color === 'success',
           'input-custom-none ': !touched,
           'input-custom-normal': touched,
           [classes?.constainerClassName || '']: classes?.constainerClassName,
@@ -161,8 +155,6 @@ export default function Input({
               value={currentValue}
               autoFocus={autoFocus}
               placeholder={placeholder}
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
               className={classNames('outline-none ', {
                 'w-full': fullWidth,
                 'pt-6 pb-2': size === 'medium' && variant === 'filled',
@@ -204,8 +196,6 @@ export default function Input({
             rows={parseRows(rows)}
             autoComplete={autocomplete}
             autoFocus={autoFocus}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
             onChange={changeHandler}
             value={currentValue}
             placeholder={placeholder}
@@ -228,8 +218,8 @@ export default function Input({
         {variant === 'outlined' && (
           <fieldset
             className={classNames(
-              'absolute left-0 right-0 border-black  bottom-0 -top-[5px] px-2 border rounded-[4px] pointer-events-none',
-              { 'border-opacity-30': !hovered, 'border-opacity-90': hovered }
+              'absolute left-0 right-0 border-black  bottom-0 border-opacity-30 group-hover:border-opacity-90 -top-[5px] px-2 border rounded-[4px] pointer-events-none',
+              { [`border-${color}-color`]: color }
             )}
           >
             <legend
