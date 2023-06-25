@@ -30,9 +30,10 @@ export default function InputLabel({
   size = 'medium',
   variant,
 }: InputLabelProps) {
-  const { contextVariant, contextTouched } = useContext(FormControlContext)
+  const { contextVariant, contextTouched, setLabel } = useContext(FormControlContext)
   variant = contextVariant ? contextVariant : variant
-shrink=contextTouched?contextTouched:shrink
+  shrink=contextTouched?contextTouched:shrink
+  if(setLabel)setLabel(children)
   return (
     <label
       htmlFor={htmlFor}

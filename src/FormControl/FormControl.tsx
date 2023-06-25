@@ -5,6 +5,11 @@ import Clickaway from '../ClickAway/ClickAway'
 export type FormControlContextType = {
   contextVariant?: 'filled' | 'outlined' | 'standard'
   contextTouched?:boolean
+  setLabel?:Dispatch<SetStateAction<ReactNode>>
+  contextLabel?:ReactNode
+  contextValue?: string | ReadonlyArray<string> | number | undefined
+  setContextValue?:Dispatch<SetStateAction<string | ReadonlyArray<string> | number | undefined>>
+
   // setTouched?: Dispatch<SetStateAction<boolean>>
 }
 export const FormControlContext = createContext<FormControlContextType>({})
@@ -24,8 +29,12 @@ export default function FormControl({
   fullWidth,
 }: FormControlProps) {
   const [contextTouched, setTouched]=useState(false)
+  const[contextLabel, setLabel]=useState<ReactNode>('')
+  const [contextValue, setContextValue]=useState<string | ReadonlyArray<string> | number | undefined>()
   return (
-    <Clickaway onClickaway={()=>setTouched(false)}>
+    <Clickaway onClickaway={()=>{if (!contextValue) {
+      setTouched(false)
+    }}}>
 
     <form
       className={classNames('relative inline-flex flex-col bg-opacity-0', {
@@ -36,7 +45,7 @@ export default function FormControl({
       onFocus={()=>setTouched(true)}
       onSubmit={onSubmit}
       >
-      <FormControlContext.Provider value={{contextTouched, contextVariant: variant }}>
+      <FormControlContext.Provider value={{contextTouched, setContextValue,contextLabel,setLabel,contextVariant: variant }}>
         {children}
       </FormControlContext.Provider>
     </form>

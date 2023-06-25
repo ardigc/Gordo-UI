@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React, {
   ChangeEvent,
+  ChangeEventHandler,
   HTMLInputTypeAttribute,
   useContext,
   useState,
@@ -49,7 +50,7 @@ export interface InputProps {
   readonly?: boolean
   required?: boolean
   type?: HTMLInputTypeAttribute
-  label?: string
+  label?: string|ReactNode
   variant?: 'filled' | 'outlined' | 'standard'
   size?: 'medium' | 'small'
   shrink?: boolean
@@ -93,9 +94,10 @@ export default function Input({
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
-  const { contextVariant, contextTouched } = useContext(FormControlContext)
+  const { contextVariant, contextTouched,contextLabel,setContextValue } = useContext(FormControlContext)
   variant = contextVariant ? contextVariant : variant
   shrink= contextTouched? contextTouched:shrink
+  label=contextLabel?contextLabel:label
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
@@ -122,6 +124,14 @@ export default function Input({
           [className || '']: className,
         }),
       }
+      const changeHandler: ChangeEventHandler<
+      HTMLInputElement | HTMLTextAreaElement
+    > = (ev) => {
+      if (setContextValue) { setContextValue(ev.currentTarget.value)}
+      if (onChange) {
+        onChange(ev)
+      }
+    }
   const parseRows = (rows: string | number | undefined) => {
     if (!rows) return
     if (typeof rows === 'number') {
@@ -154,7 +164,7 @@ export default function Input({
               defaultValue={defaultValue}
               id={id}
               autoComplete={autocomplete}
-              onChange={onChange}
+              onChange={changeHandler}
               value={value}
               autoFocus={autoFocus}
               placeholder={placeholder}
