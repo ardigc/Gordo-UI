@@ -35,6 +35,7 @@ export default function InputLabel({
   shrink=contextTouched?contextTouched:shrink
   color=contextColor?contextColor:color
 disabled=contextDisabled?contextDisabled:disabled
+
   if(setLabel)setLabel(children)
   return (
     <label

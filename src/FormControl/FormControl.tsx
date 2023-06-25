@@ -27,7 +27,6 @@ export type FormControlContextType = {
     | 'info'
     | 'success'
     contextDisabled?: boolean
-
   // setTouched?: Dispatch<SetStateAction<boolean>>
 }
 export const FormControlContext = createContext<FormControlContextType>({})
@@ -42,6 +41,7 @@ component?: ElementType
   fullWidth?: boolean
   className?: string
   disabled?: boolean
+  error?:boolean
 }
 export default function FormControl({
   children,
@@ -52,7 +52,8 @@ export default function FormControl({
   className,
   component,
   disabled,
-  color = 'primary',
+  error,
+  color = error?'error': 'primary',
 }: FormControlProps) {
   const [contextTouched, setTouched] = useState(false)
   const [contextLabel, setLabel] = useState<ReactNode>('')
@@ -86,7 +87,8 @@ export default function FormControl({
             contextLabel,
             setLabel,
             contextVariant: variant,
-            contextDisabled:disabled,
+            contextDisabled: disabled,
+            
           }}
         >
           {children}
