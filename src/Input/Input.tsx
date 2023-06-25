@@ -3,10 +3,12 @@ import React, {
   ChangeEvent,
   ChangeEventHandler,
   HTMLInputTypeAttribute,
+  useContext,
   useState,
 } from 'react'
 import Clickaway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
+import { FormControlContext } from '../FormControl/FormControl'
 
 export interface InputProps {
   autocomplete?: string
@@ -93,6 +95,9 @@ export default function Input({
   const [currentValue, setCurrentValue] = useState(value)
   const UserInput = components?.Input || inputComponent
   const UserComponent = components?.Container
+  const { contextVariant } = useContext(FormControlContext)
+  variant = contextVariant ? contextVariant : variant
+  // console.log(onFormControl)
   const RenderComponent = UserComponent ? UserComponent : 'div'
   const RenderComponentProps = UserComponent
     ? { ...componentsProps?.container }
@@ -131,7 +136,6 @@ export default function Input({
     }
   }
   const renderMyInput = !multiline && !UserInput ? true : false
-  console.log(renderMyInput)
   return (
     <Clickaway onClickaway={() => setTouched(false)}>
       <RenderComponent {...RenderComponentProps}>

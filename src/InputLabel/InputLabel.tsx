@@ -1,5 +1,7 @@
 import classNames from 'classnames'
-import { ReactNode } from 'react'
+import { useContext, ReactNode } from 'react'
+import { FormControlContext } from '../FormControl/FormControl'
+
 export interface InputLabelProps {
   children?: ReactNode
   className?: string
@@ -26,33 +28,37 @@ export default function InputLabel({
   disabled,
   margin,
   size = 'medium',
-  variant = 'standard',
+  variant,
 }: InputLabelProps) {
+  const { contextVariant } = useContext(FormControlContext)
+  variant = contextVariant ? contextVariant : variant
+
   return (
     <label
       htmlFor={htmlFor}
-      className={classNames(
-        'absolute origin-top-left text-lg cursor-text left-0  z-10 ',
-        {
-          'normal-label-text-field-filled':
-            (variant === 'filled' && !shrink) ||
-            (variant === 'outlined' && !shrink && size === 'medium'),
-          ' translate-x-3 translate-y-3 ':
-            variant === 'outlined' && !shrink && size === 'small',
-          '-translate-y-2 translate-x-4  scale-75':
-            variant === 'outlined' && shrink,
-          'mini-label-text-field-filled': variant === 'filled' && shrink,
-          ' translate-y-4': variant === 'standard' && !shrink,
-          ' -translate-y-1  scale-75': variant === 'standard' && shrink,
-          'opacity-30': disabled,
-          'opacity-70': !disabled,
-          'transition-all': !disableAnimation,
-          'mt-2 mb-1': margin === 'dense',
-          [`text-${color}-color`]: shrink && color,
+      className={classNames({
+        relative: !shrink && !variant,
+        'absolute origin-top-left text-lg cursor-text left-0  z-10 ':
+          !shrink || variant,
 
-          [className || '']: className,
-        }
-      )}
+        'normal-label-text-field-filled':
+          (variant === 'filled' && !shrink) ||
+          (variant === 'outlined' && !shrink && size === 'medium'),
+        ' translate-x-3 translate-y-3 ':
+          variant === 'outlined' && !shrink && size === 'small',
+        '-translate-y-2 translate-x-4  scale-75':
+          variant === 'outlined' && shrink,
+        'mini-label-text-field-filled': variant === 'filled' && shrink,
+        ' translate-y-4': variant === 'standard' && !shrink,
+        ' -translate-y-1  scale-75': variant === 'standard' && shrink,
+        'opacity-30': disabled,
+        'opacity-70': !disabled,
+        'transition-all': !disableAnimation,
+        'mt-2 mb-1': margin === 'dense',
+        [`text-${color}-color`]: shrink && color,
+
+        [className || '']: className,
+      })}
       {...labelProps}
     >
       {children}
