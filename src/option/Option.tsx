@@ -14,14 +14,14 @@ export default function Option({
   onClick,
   value,
 }: OptionProps) {
-  const { setValue, setOpened } = useContext(TextFieldContext)
+  const { handleOptionClick, setOpened } = useContext(TextFieldContext)
 
   const clickHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     if (onClick) {
       onClick(ev)
     }
-    if (setValue && setOpened) {
-      setValue(value)
+    if (handleOptionClick && setOpened) {
+      handleOptionClick(value)
       setOpened(false)
     }
   }

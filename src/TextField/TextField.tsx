@@ -19,6 +19,7 @@ export type InputContextType = {
   setValue?: Dispatch<
     SetStateAction<string | ReadonlyArray<string> | number | undefined>
   >
+  handleOptionClick?: (option: string) => void
   setOpened?: Dispatch<SetStateAction<boolean>>
 }
 export const TextFieldContext = createContext<InputContextType>({})
@@ -89,7 +90,7 @@ export default function TextField({
   multiLine,
   TextAreaRef,
   children,
-  readOnly = select ? true : false,
+  readOnly,
   hiddenLabel,
   inputProps,
   helperText,
@@ -112,8 +113,17 @@ export default function TextField({
       onChange(ev)
     }
   }
+  const handleOptionClick = (option: string) => {
+    setValue(option)
+    const fakeEvent = {
+      currentTarget: {
+        value: option,
+      },
+    } as ChangeEvent<HTMLInputElement>
+    changeEventHandler(fakeEvent)
+  }
   const clickAwayHandler = useCallback(() => {
-    console.log(ComponentValue)
+    // console.log(ComponentValue)
     if (!ComponentValue) {
       setTouched(false)
     }
@@ -185,7 +195,7 @@ export default function TextField({
           {...inputProps}
         />
 
-        <TextFieldContext.Provider value={{ setValue, setOpened }}>
+        <TextFieldContext.Provider value={{ handleOptionClick, setOpened }}>
           {opened && select && <div className="max-w-input ">{children}</div>}
         </TextFieldContext.Provider>
         {helperText && (
