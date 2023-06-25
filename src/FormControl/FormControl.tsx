@@ -20,6 +20,7 @@ export interface FormControlProps {
   variant?: 'filled' | 'outlined' | 'standard'
   margin?: 'dense' | 'none' | 'normal'
   fullWidth?: boolean
+  className?:string
 }
 export default function FormControl({
   children,
@@ -27,6 +28,7 @@ export default function FormControl({
   variant = 'outlined',
   margin = 'normal',
   fullWidth,
+  className,
 }: FormControlProps) {
   const [contextTouched, setTouched]=useState(false)
   const[contextLabel, setLabel]=useState<ReactNode>('')
@@ -41,6 +43,7 @@ export default function FormControl({
         'mt-2 mb-1': margin === 'dense',
         'mt-4 mb-2': margin === 'normal',
         'w-full': fullWidth,
+        [className||'']:className,
       })}
       onFocus={()=>setTouched(true)}
       onSubmit={onSubmit}
