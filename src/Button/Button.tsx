@@ -105,6 +105,7 @@ export default function Button({
             color === 'inherit' && variant === 'text' && !disabled,
           'text-gray-400 py-[6px] px-2': disabled,
           'bg-gray-200': disabled && variant === 'contained',
+          'border-gray-200 border': disabled && variant === 'outlined',
           'shadow shadow-black':
             variant === 'contained' && !disabled && !disableElevation,
         }
