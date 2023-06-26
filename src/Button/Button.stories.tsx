@@ -95,3 +95,15 @@ export const endIcon: Story = {
     endIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
   },
 }
+export const classes: Story = {
+  args: {
+    children: 'contained',
+    onClick() {
+      console.log('hola')
+    },
+    className:'h-96',
+    classes:{buttonClassName:'bg-slate-100', rippleSpanClassName:'bg-red-500'},
+    variant: 'contained',
+    endIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
+  },
+}

@@ -24,8 +24,8 @@ export interface ButtonProps {
   endIcon?: ReactNode
   className?: string
   classes?:{
-    buttonClassName:string
-    rippleSpanClassName:string
+    buttonClassName?:string
+    rippleSpanClassName?:string
   }
 }
 export default function Button({
@@ -40,7 +40,8 @@ export default function Button({
   size='medium',
   startIcon,
   endIcon,
-  className
+  className,
+  classes,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -60,9 +61,10 @@ export default function Button({
     setTimeout(() => {
       setAnimation(false)
     }, 600)
-    if (onClick) {
-      onClick(ev)
-    }}
+  }
+  if (onClick) {
+    onClick(ev)
+  }
   }
   return (
     <RenderComponent
@@ -134,6 +136,7 @@ export default function Button({
           'shadow shadow-black':
             variant === 'contained' && !disabled && !disableElevation,
             [className||'']:className,
+            [classes?.buttonClassName||'']:classes?.buttonClassName,
         }
       )}
     >
@@ -173,6 +176,7 @@ export default function Button({
               color === 'inherit',
             'animate-ripple absolute inline-flex w-full h-full  bg-white rounded-full bg-opacity-25 origin-center':
               variant === 'contained',
+              [classes?.rippleSpanClassName||'']:classes?.rippleSpanClassName
           })}
         ></span>
       )}
