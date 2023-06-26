@@ -90,6 +90,7 @@ export const endIcon: Story = {
     onClick() {
       console.log('hola')
     },
+    className:'h-96',
     variant: 'contained',
     endIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
   },

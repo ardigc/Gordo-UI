@@ -22,6 +22,11 @@ export interface ButtonProps {
   | 'large'
   startIcon?: ReactNode
   endIcon?: ReactNode
+  className?: string
+  classes?:{
+    buttonClassName:string
+    rippleSpanClassName:string
+  }
 }
 export default function Button({
   children,
@@ -35,6 +40,7 @@ export default function Button({
   size='medium',
   startIcon,
   endIcon,
+  className
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -64,7 +70,7 @@ export default function Button({
       href={href}
       onClick={onClickHandler}
       className={classNames(
-        'inline-flex items-center justify-center  relative font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
+        'inline-flex items-center  justify-center  relative font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
         'overflow-hidden',
         {
           'py-[6px] px-2': size==='medium'&& variant==='text',
@@ -127,6 +133,7 @@ export default function Button({
           'border-gray-200 border': disabled && variant === 'outlined',
           'shadow shadow-black':
             variant === 'contained' && !disabled && !disableElevation,
+            [className||'']:className,
         }
       )}
     >
