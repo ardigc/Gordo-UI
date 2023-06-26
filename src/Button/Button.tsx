@@ -8,6 +8,7 @@ export interface ButtonProps {
   color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
   disabled?: boolean
   href?: string
+  disableElevation?: boolean
 }
 export default function Button({
   children,
@@ -16,6 +17,7 @@ export default function Button({
   color = 'primary',
   disabled,
   href,
+  disableElevation,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -75,7 +77,10 @@ export default function Button({
             color === 'info' && variant === 'text' && !disabled,
           'text-success-color hover:bg-success-color':
             color === 'success' && variant === 'text' && !disabled,
-          'text-gray-400': disabled,
+          'text-gray-400 py-[6px] px-2': disabled,
+          'bg-gray-200': disabled && variant === 'contained',
+          'shadow shadow-black':
+            variant === 'contained' && !disabled && !disableElevation,
         }
       )}
     >

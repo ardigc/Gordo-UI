@@ -53,3 +53,13 @@ export const contained: Story = {
     variant: 'contained',
   },
 }
+export const containedShadow: Story = {
+  args: {
+    children: 'contained',
+    onClick() {
+      console.log('hola')
+    },
+    variant: 'contained',
+    disableElevation: true,
+  },
+}
