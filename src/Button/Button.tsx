@@ -53,6 +53,16 @@ export default function Button({
             variant === 'contained' && !disabled,
           'bg-primary-color text-white bg-opacity-90 hover:bg-opacity-100':
             color === 'primary' && variant === 'contained' && !disabled,
+          'bg-secondary-color text-white bg-opacity-90 hover:bg-opacity-100':
+            color === 'secondary' && variant === 'contained' && !disabled,
+          'bg-error-color text-white bg-opacity-90 hover:bg-opacity-100':
+            color === 'error' && variant === 'contained' && !disabled,
+          'bg-warning-color text-white bg-opacity-90 hover:bg-opacity-100':
+            color === 'warning' && variant === 'contained' && !disabled,
+          'bg-success-color text-white bg-opacity-90 hover:bg-opacity-100':
+            color === 'success' && variant === 'contained' && !disabled,
+          'bg-info-color text-white bg-opacity-90 hover:bg-opacity-100':
+            color === 'info' && variant === 'contained' && !disabled,
           'text-primary-color hover:bg-primary-color':
             color === 'primary' && variant === 'text' && !disabled,
           'text-secondary-color hover:bg-secondary-color':
