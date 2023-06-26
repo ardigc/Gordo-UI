@@ -1,11 +1,16 @@
 import classNames from 'classnames'
-import { ReactNode, useState, MouseEventHandler } from 'react'
+import { ReactNode, useState, MouseEventHandler, MouseEvent } from 'react'
 
 export interface ButtonProps {
   children?: ReactNode
   variant?: 'contained' | 'outlined' | 'text'
+  onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
 }
-export default function Button({ children, variant = 'text' }: ButtonProps) {
+export default function Button({
+  children,
+  variant = 'text',
+  onClick,
+}: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
   const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
@@ -16,11 +21,13 @@ export default function Button({ children, variant = 'text' }: ButtonProps) {
       y: ev.clientY - location.top,
     }
     setClickCoord({ x: coord.x, y: coord.y })
-    console.log(coord)
     setAnimation(true)
     setTimeout(() => {
       setAnimation(false)
     }, 600)
+    if (onClick) {
+      onClick(ev)
+    }
   }
   return (
     <button
@@ -29,7 +36,7 @@ export default function Button({ children, variant = 'text' }: ButtonProps) {
         'inline-flex items-center justify-center relative bg-transparent outline-none uppercase rounded-[4px] min-w-[64px]',
         'overflow-hidden',
         {
-          ' hover:bg-primary-color hover:bg-opacity-10 py-[6px] px-2':
+          ' hover:bg-primary-color hover:transition-all hover:duration-200 hover:linear hover:bg-opacity-10 py-[6px] px-2':
             variant === 'text',
         }
       )}

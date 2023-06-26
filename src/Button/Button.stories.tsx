@@ -11,5 +11,8 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     children: 'holaas',
+    onClick() {
+      console.log('hola')
+    },
   },
 }
