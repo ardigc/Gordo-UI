@@ -20,7 +20,7 @@ export interface ButtonProps {
   size?: 	'small'
   | 'medium'
   | 'large'
-  startIcon?:
+  startIcon?: ReactNode
 }
 export default function Button({
   children,
@@ -32,6 +32,7 @@ export default function Button({
   disableElevation,
   disableRipple,
   size='medium',
+  startIcon,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -127,6 +128,7 @@ export default function Button({
         }
       )}
     >
+      {startIcon&&<span className={classNames('mr-2 -ml-1')}>{startIcon}</span>}
       {children}
       {animation && (
         <span

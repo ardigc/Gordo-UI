@@ -74,3 +74,13 @@ export const disableRipple: Story = {
     disableElevation: true,
   },
 }
+export const startIcon: Story = {
+  args: {
+    children: 'contained',
+    onClick() {
+      console.log('hola')
+    },
+    variant: 'contained',
+    startIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
+  },
+}
