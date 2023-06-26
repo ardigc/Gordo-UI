@@ -35,3 +35,12 @@ export const disabled: Story = {
     disabled: true,
   },
 }
+export const Link: Story = {
+  args: {
+    children: 'link',
+    onClick() {
+      console.log('hola')
+    },
+    href: 'https://www.google.com',
+  },
+}

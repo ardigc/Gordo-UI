@@ -4,9 +4,10 @@ import { ReactNode, useState, MouseEventHandler, MouseEvent } from 'react'
 export interface ButtonProps {
   children?: ReactNode
   variant?: 'contained' | 'outlined' | 'text'
-  onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
+  onClick?: (ev: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
   color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
   disabled?: boolean
+  href?: string
 }
 export default function Button({
   children,
@@ -14,10 +15,14 @@ export default function Button({
   onClick,
   color = 'primary',
   disabled,
+  href,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
-  const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
+  const RenderComponent = href ? 'a' : 'button'
+  const onClickHandler: MouseEventHandler<
+    HTMLButtonElement | HTMLAnchorElement
+  > = (ev) => {
     const target = ev.currentTarget
     const location = target.getBoundingClientRect()
     const coord = {
@@ -34,8 +39,9 @@ export default function Button({
     }
   }
   return (
-    <button
+    <RenderComponent
       disabled={disabled}
+      href={href}
       onClick={onClickHandler}
       className={classNames(
         'inline-flex items-center justify-center relative bg-transparent font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
@@ -72,6 +78,6 @@ export default function Button({
         ></span>
       )}
       {children}
-    </button>
+    </RenderComponent>
   )
 }
