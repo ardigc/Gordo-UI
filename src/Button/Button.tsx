@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ReactNode, useState, MouseEventHandler, MouseEvent } from 'react'
+import { ReactNode, useState, MouseEventHandler, MouseEvent, ElementType } from 'react'
 
 export interface ButtonProps {
   children?: ReactNode
@@ -27,6 +27,7 @@ export interface ButtonProps {
     buttonClassName?:string
     rippleSpanClassName?:string
   }
+  component?: ElementType
 }
 export default function Button({
   children,
@@ -42,11 +43,12 @@ export default function Button({
   endIcon,
   className,
   classes,
+  component,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
   // const isCustomcolor=color!==
-  const RenderComponent = href ? 'a' : 'button'
+  const RenderComponent =component?component: href ? 'a' : 'button'
   const onClickHandler: MouseEventHandler<
     HTMLButtonElement | HTMLAnchorElement
   > = (ev) => {
