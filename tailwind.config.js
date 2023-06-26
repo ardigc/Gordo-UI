@@ -22,7 +22,7 @@ export default {
 
       colors: {
         'primary-color': 'rgb(var(--primary-color) / <alpha-value>)',
-        'secundary-color': 'rgb(var(--secundary-color) / <alpha-value>)',
+        'secondary-color': 'rgb(var(--secondary-color) / <alpha-value>)',
         'error-color': 'rgb(var(--error-color) / <alpha-value>)',
         'warning-color': 'rgb(var(--warning-color) / <alpha-value>)',
         'info-color': 'rgb(var(--info-color) / <alpha-value>)',

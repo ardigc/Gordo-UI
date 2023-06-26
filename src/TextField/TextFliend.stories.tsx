@@ -16,7 +16,7 @@ export const primary: Story = {
     label: 'hola',
   },
 }
-export const secondary: Story = {
+export const secondarys: Story = {
   args: {
     label: 'hola ramonchu',
     type: 'password',
@@ -84,11 +84,11 @@ export const success: Story = {
     },
   },
 }
-export const secundary: Story = {
+export const secondary: Story = {
   args: {
     type: 'text',
-    label: 'secundary',
-    color: 'secundary',
+    label: 'secondary',
+    color: 'secondary',
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },

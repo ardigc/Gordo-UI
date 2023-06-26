@@ -13,7 +13,7 @@ import { FormControlContext } from '../FormControl/FormControl'
 export interface InputProps {
   autocomplete?: string
   id?: string
-  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
   autoFocus?: boolean
   className?: string
   classes?: {
@@ -128,7 +128,7 @@ export default function Input({
           'mt-2 mb-1': margin === 'dense',
           [`after:border-b-${color}-color`]: color,
           'after:border-b-primary-color': color === 'primary',
-          'after:border-b-secundary-color': color === 'secundary',
+          'after:border-b-secondary-color': color === 'secondary',
           'after:border-b-error-color': color === 'error',
           'after:border-b-warning-color': color === 'warning',
           'after:border-b-info-color': color === 'info',
@@ -255,7 +255,7 @@ export default function Input({
                 'border-black group-hover:border-opacity-90 border-opacity-30':
                   !touched,
                 'border-primary-color': color === 'primary' && touched,
-                'border-secundary-color': color === 'secundary' && touched,
+                'border-secondary-color': color === 'secondary' && touched,
                 'border-error-color': color === 'error' && touched,
                 'border-warning-color': color === 'warning' && touched,
                 'border-info-color': color === 'info' && touched,
@@ -269,7 +269,13 @@ export default function Input({
                 ' invisible max-w-full transition-all': shrink,
               })}
             >
-              <span className={classNames("opacity-0 inline-block px-[5px]",{'hidden':hiddenLabel,})}>{label}</span>
+              <span
+                className={classNames('opacity-0 inline-block px-[5px]', {
+                  hidden: hiddenLabel,
+                })}
+              >
+                {label}
+              </span>
             </legend>
           </fieldset>
         )}

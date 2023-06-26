@@ -49,7 +49,7 @@ export interface TextField {
   defaultValue?: string | number | ReadonlyArray<string> | undefined
   disabled?: boolean | undefined
   error?: boolean | undefined
-  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
   disableUnderline?: boolean | undefined
   select?: boolean
   children?: ReactNode
@@ -108,7 +108,7 @@ export default function TextField({
   const changeEventHandler: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   > = (ev) => {
-    console.log('component',ComponentValue)
+    console.log('component', ComponentValue)
     setValue(ev.currentTarget.value)
     if (onChange) {
       onChange(ev)
@@ -122,7 +122,6 @@ export default function TextField({
     setOpened(false)
   }, [ComponentValue])
   const handleOptionClick = (option: string) => {
-
     const fakeEvent = {
       currentTarget: {
         value: option,
@@ -130,7 +129,7 @@ export default function TextField({
     } as ChangeEvent<HTMLInputElement>
     changeEventHandler(fakeEvent)
   }
-  console.log('comp',ComponentValue)
+  console.log('comp', ComponentValue)
   return (
     <Clickaway onClickaway={clickAwayHandler}>
       <div

@@ -44,3 +44,12 @@ export const Link: Story = {
     href: 'https://www.google.com',
   },
 }
+export const contained: Story = {
+  args: {
+    children: 'contained',
+    onClick() {
+      console.log('hola')
+    },
+    variant: 'contained',
+  },
+}

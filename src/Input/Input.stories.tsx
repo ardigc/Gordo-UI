@@ -15,10 +15,10 @@ export const primary: Story = {
     id: 'hola',
   },
 }
-export const secundary: Story = {
+export const secondary: Story = {
   args: {
     id: 'hola',
-    color: 'secundary',
+    color: 'secondary',
     autoFocus: true,
     fullWidth: true,
     type: 'number',
@@ -33,7 +33,7 @@ export const secundary: Story = {
 export const startAdronemt: Story = {
   args: {
     id: 'hola',
-    color: 'secundary',
+    color: 'secondary',
     fullWidth: true,
     margin: 'dense',
     disaledUndeline: true,
@@ -45,7 +45,7 @@ export const startAdronemt: Story = {
 export const component: Story = {
   args: {
     id: 'hola',
-    color: 'secundary',
+    color: 'secondary',
     fullWidth: true,
     margin: 'dense',
     disaledUndeline: true,

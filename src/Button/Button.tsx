@@ -5,7 +5,7 @@ export interface ButtonProps {
   children?: ReactNode
   variant?: 'contained' | 'outlined' | 'text'
   onClick?: (ev: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
-  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
   disabled?: boolean
   href?: string
 }
@@ -44,15 +44,19 @@ export default function Button({
       href={href}
       onClick={onClickHandler}
       className={classNames(
-        'inline-flex items-center justify-center relative bg-transparent font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
+        'inline-flex items-center justify-center relative font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
         'overflow-hidden',
         {
-          ' hover:transition-all hover:duration-200 hover:linear hover:bg-opacity-10 py-[6px] px-2':
+          ' hover:transition-all hover:duration-200 hover:linear  bg-transparent hover:bg-opacity-10 py-[6px] px-2':
             variant === 'text' && !disabled,
+          ' hover:transition-all hover:duration-200 hover:linear  hover:bg-opacity-10 py-[6px] px-2':
+            variant === 'contained' && !disabled,
+          'bg-primary-color text-white bg-opacity-90 hover:bg-opacity-100':
+            color === 'primary' && variant === 'contained' && !disabled,
           'text-primary-color hover:bg-primary-color':
             color === 'primary' && variant === 'text' && !disabled,
-          'text-secundary-color hover:bg-secundary-color':
-            color === 'secundary' && variant === 'text' && !disabled,
+          'text-secondary-color hover:bg-secondary-color':
+            color === 'secondary' && variant === 'text' && !disabled,
           'text-error-color hover:bg-error-color':
             color === 'error' && variant === 'text' && !disabled,
           'text-warning-color hover:bg-warning-color':
@@ -72,9 +76,18 @@ export default function Button({
             left: clickCoord?.x,
             transform: 'translate(-50%, -50%)',
           }}
-          className={classNames(
-            'animate-ripple absolute inline-flex w-full h-full  bg-primary-color rounded-full bg-opacity-25 origin-center'
-          )}
+          className={classNames({
+            'animate-ripple absolute inline-flex w-full h-full   rounded-full bg-opacity-25 origin-center':
+              variant === 'text',
+            'bg-primary-color': variant === 'text' && color === 'primary',
+            'bg-secondary-color': variant === 'text' && color === 'secondary',
+            'bg-error-color': variant === 'text' && color === 'error',
+            'bg-warning-color': variant === 'text' && color === 'warning',
+            'bg-info-color': variant === 'text' && color === 'info',
+            'bg-success-color': variant === 'text' && color === 'success',
+            'animate-ripple absolute inline-flex w-full h-full  bg-white rounded-full bg-opacity-25 origin-center':
+              variant === 'contained',
+          })}
         ></span>
       )}
       {children}

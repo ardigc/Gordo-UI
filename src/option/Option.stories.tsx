@@ -20,7 +20,7 @@ export const primary: Story = {
     },
   },
 }
-export const secundary: Story = {
+export const secondary: Story = {
   args: {
     children: <div>hola</div>,
     className: 'bg-blue-200',

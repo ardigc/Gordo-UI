@@ -21,16 +21,16 @@ export type FormControlContextType = {
   >
   contextColor?:
     | 'primary'
-    | 'secundary'
+    | 'secondary'
     | 'error'
     | 'warning'
     | 'info'
     | 'success'
-    contextDisabled?: boolean
+  contextDisabled?: boolean
   // setTouched?: Dispatch<SetStateAction<boolean>>
-  focused?:boolean
-  hiddenLabel?:boolean
-  contextRequired?:boolean
+  focused?: boolean
+  hiddenLabel?: boolean
+  contextRequired?: boolean
 }
 export const FormControlContext = createContext<FormControlContextType>({})
 
@@ -39,14 +39,14 @@ export interface FormControlProps {
   onSubmit?: (ev: FormEvent<HTMLFormElement>) => void
   variant?: 'filled' | 'outlined' | 'standard'
   margin?: 'dense' | 'none' | 'normal'
-  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
-component?: ElementType
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+  component?: ElementType
   fullWidth?: boolean
   className?: string
   disabled?: boolean
-  error?:boolean
-  focused?:boolean
-  hiddenLabel?:boolean
+  error?: boolean
+  focused?: boolean
+  hiddenLabel?: boolean
   required?: boolean
 }
 export default function FormControl({
@@ -59,7 +59,7 @@ export default function FormControl({
   component,
   disabled,
   error,
-  color = error?'error': 'primary',
+  color = error ? 'error' : 'primary',
   focused,
   hiddenLabel,
   required,
@@ -69,7 +69,7 @@ export default function FormControl({
   const [contextValue, setContextValue] = useState<
     string | ReadonlyArray<string> | number | undefined
   >()
-  const RenderComponent=component?component:'form'
+  const RenderComponent = component ? component : 'form'
   return (
     <Clickaway
       onClickaway={() => {
@@ -99,7 +99,7 @@ export default function FormControl({
             contextDisabled: disabled,
             focused,
             hiddenLabel,
-            contextRequired:required,
+            contextRequired: required,
           }}
         >
           {children}

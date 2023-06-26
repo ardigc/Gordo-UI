@@ -8,7 +8,7 @@ export interface InputLabelProps {
   htmlFor?: string
   disableAnimation?: boolean
   shrink?: boolean
-  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
   labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>
   disabled?: boolean
   error?: boolean
@@ -51,7 +51,7 @@ export default function InputLabel({
         relative: !shrink && !variant,
         'absolute origin-top-left text-lg cursor-text left-0  z-10 ':
           !shrink || variant,
-'hidden':hiddenLabel,
+        hidden: hiddenLabel,
         'normal-label-text-field-filled':
           (variant === 'filled' && !shrink) ||
           (variant === 'outlined' && !shrink && size === 'medium'),
@@ -68,7 +68,7 @@ export default function InputLabel({
         'mt-2 mb-1': margin === 'dense',
         // [`text-${color}-color`]: shrink && color,
         'text-primary-color': shrink && color === 'primary',
-        'text-secundary-color': shrink && color === 'secundary',
+        'text-secondary-color': shrink && color === 'secondary',
         'text-error-color': shrink && color === 'error',
         'text-warning-color': shrink && color === 'warning',
         'text-info-color': shrink && color === 'info',
