@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        base: 'Roboto, sans-serif',
+      },
       animation: {
         ripple: 'ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
       },

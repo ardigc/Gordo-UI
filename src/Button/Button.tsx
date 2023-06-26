@@ -5,11 +5,15 @@ export interface ButtonProps {
   children?: ReactNode
   variant?: 'contained' | 'outlined' | 'text'
   onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
+  color?: 'primary' | 'secundary' | 'error' | 'warning' | 'info' | 'success'
+  disabled?: boolean
 }
 export default function Button({
   children,
   variant = 'text',
   onClick,
+  color = 'primary',
+  disabled,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -31,13 +35,27 @@ export default function Button({
   }
   return (
     <button
+      disabled={disabled}
       onClick={onClickHandler}
       className={classNames(
-        'inline-flex items-center justify-center relative bg-transparent outline-none uppercase rounded-[4px] min-w-[64px]',
+        'inline-flex items-center justify-center relative bg-transparent font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
         'overflow-hidden',
         {
-          ' hover:bg-primary-color hover:transition-all hover:duration-200 hover:linear hover:bg-opacity-10 py-[6px] px-2':
-            variant === 'text',
+          ' hover:transition-all hover:duration-200 hover:linear hover:bg-opacity-10 py-[6px] px-2':
+            variant === 'text' && !disabled,
+          'text-primary-color hover:bg-primary-color':
+            color === 'primary' && variant === 'text' && !disabled,
+          'text-secundary-color hover:bg-secundary-color':
+            color === 'secundary' && variant === 'text' && !disabled,
+          'text-error-color hover:bg-error-color':
+            color === 'error' && variant === 'text' && !disabled,
+          'text-warning-color hover:bg-warning-color':
+            color === 'warning' && variant === 'text' && !disabled,
+          'text-info-color hover:bg-info-color':
+            color === 'info' && variant === 'text' && !disabled,
+          'text-success-color hover:bg-success-color':
+            color === 'success' && variant === 'text' && !disabled,
+          'text-gray-400': disabled,
         }
       )}
     >
