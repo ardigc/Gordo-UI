@@ -10,7 +10,18 @@ export default meta
 type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
-    children: <StarIcon/>,
- 
+    children: <StarIcon />,
+    onClick() {
+      console.log('hola')
+    },
+  },
+}
+export const disabled: Story = {
+  args: {
+    children: <StarIcon />,
+    disabled: true,
+    onClick() {
+      console.log('hola')
+    },
   },
 }
