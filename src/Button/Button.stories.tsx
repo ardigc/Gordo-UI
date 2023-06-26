@@ -84,3 +84,13 @@ export const startIcon: Story = {
     startIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
   },
 }
+export const endIcon: Story = {
+  args: {
+    children: 'contained',
+    onClick() {
+      console.log('hola')
+    },
+    variant: 'contained',
+    endIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
+  },
+}
