@@ -16,6 +16,7 @@ export interface IconButonProps {
   // | 'success'
   // | 'inherit'
   disabled?: boolean
+  edge?: 'end' | 'start' | false
 }
 
 export default function IconButton({
@@ -26,6 +27,7 @@ export default function IconButton({
   disableRipple,
   // color='primary',
   disabled,
+  edge,
 }: IconButonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -58,6 +60,8 @@ export default function IconButton({
       className={classNames(
         'hover:rounded-full  inline-flex items-center  justify-center  relative overflow-hidden',
         {
+          '-mr-3': edge === 'end',
+          '-ml-3': edge === 'start',
           'p-2': size === 'medium',
           'p-[5px]': size === 'small',
           'p-3': size === 'large',

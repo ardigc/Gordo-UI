@@ -25,3 +25,13 @@ export const disabled: Story = {
     },
   },
 }
+export const edgeEnf: Story = {
+  args: {
+    children: <StarIcon />,
+    disabled: true,
+    edge: 'end',
+    onClick() {
+      console.log('hola')
+    },
+  },
+}
