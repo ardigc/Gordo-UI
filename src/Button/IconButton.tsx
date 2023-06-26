@@ -24,6 +24,7 @@ export default function IconButton({
   onClick,
   href,
   disableRipple,
+  // color='primary',
   disabled,
 }: IconButonProps) {
   const [animation, setAnimation] = useState(false)
