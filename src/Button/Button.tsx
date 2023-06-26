@@ -28,6 +28,7 @@ export interface ButtonProps {
     rippleSpanClassName?:string
   }
   component?: ElementType
+  fullWidth?: boolean
 }
 export default function Button({
   children,
@@ -44,6 +45,7 @@ export default function Button({
   className,
   classes,
   component,
+  fullWidth,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -77,6 +79,7 @@ export default function Button({
         'inline-flex items-center  justify-center  relative font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
         'overflow-hidden',
         {
+          'w-full':fullWidth,
           'py-[6px] px-2': size==='medium'&& variant==='text',
           'py-1 px-[5px]': size==='small'&& variant==='text',
           'py-2 px-[12px]': size==='large'&& variant==='text',

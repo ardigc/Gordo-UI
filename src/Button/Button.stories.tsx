@@ -42,6 +42,7 @@ export const Link: Story = {
       console.log('hola')
     },
     href: 'https://www.google.com',
+    fullWidth:true,
   },
 }
 export const contained: Story = {
