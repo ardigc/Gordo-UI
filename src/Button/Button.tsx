@@ -18,9 +18,9 @@ export default function Button({ children, variant = 'text' }: ButtonProps) {
     setClickCoord({ x: coord.x, y: coord.y })
     console.log(coord)
     setAnimation(true)
-    // setTimeout(() => {
-    //   setAnimation(false)
-    // }, 900)
+    setTimeout(() => {
+      setAnimation(false)
+    }, 900)
   }
   return (
     <button
@@ -36,9 +36,13 @@ export default function Button({ children, variant = 'text' }: ButtonProps) {
     >
       {animation && (
         <span
+          style={{
+            top: clickCoord?.y,
+            left: clickCoord?.x,
+            transform: 'translate(-50%, -50%)',
+          }}
           className={classNames(
-            'animate-ripple absolute inline-flex w-full h-full rounded-full bg-primary-color bg-opacity-25',
-            [`top-[${clickCoord?.y}px] left-[${clickCoord?.x}px]`]
+            'animate-ripple absolute inline-flex w-full h-full  bg-primary-color rounded-full bg-opacity-25 origin-center'
           )}
         ></span>
       )}
