@@ -7,6 +7,10 @@ export interface IconButonProps {
   onClick?: (ev: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
   href?: string
   disableRipple?: boolean
+  classes?: {
+    buttonClassName?: string
+    rippleSpanClassName?: string
+  }
   // color?:
   // | 'primary'
   // | 'secondary'
@@ -17,6 +21,7 @@ export interface IconButonProps {
   // | 'inherit'
   disabled?: boolean
   edge?: 'end' | 'start' | false
+  className?: string
 }
 
 export default function IconButton({
@@ -28,6 +33,8 @@ export default function IconButton({
   // color='primary',
   disabled,
   edge,
+  className,
+  classes,
 }: IconButonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -68,6 +75,8 @@ export default function IconButton({
           'rounded-full': animation,
           'hover:transition-all hover:duration-200 hover:linear hover:bg-slate-200':
             !disabled,
+          [className || '']: className,
+          [classes?.buttonClassName || '']: classes?.buttonClassName,
         }
       )}
     >
@@ -80,7 +89,11 @@ export default function IconButton({
             transform: 'translate(-50%, -50%)',
           }}
           className={classNames(
-            'animate-ripple  absolute inline-flex w-full h-full bg-slate-400  rounded-full bg-opacity-25 origin-center'
+            'animate-ripple  absolute inline-flex w-full h-full bg-slate-400  rounded-full bg-opacity-25 origin-center',
+            {
+              [classes?.rippleSpanClassName || '']:
+                classes?.rippleSpanClassName,
+            }
           )}
         ></span>
       )}
