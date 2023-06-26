@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        ripple: 'ripple 1500ms cubic-bezier(0, 0, 0.2, 1) 1',
+        ripple: 'ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
       },
       keyframes: {
         ripple: {

@@ -20,7 +20,7 @@ export default function Button({ children, variant = 'text' }: ButtonProps) {
     setAnimation(true)
     setTimeout(() => {
       setAnimation(false)
-    }, 900)
+    }, 600)
   }
   return (
     <button
