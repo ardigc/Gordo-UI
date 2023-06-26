@@ -16,6 +16,7 @@ export interface ButtonProps {
   disabled?: boolean
   href?: string
   disableElevation?: boolean
+  disableRipple?: boolean
 }
 export default function Button({
   children,
@@ -25,6 +26,7 @@ export default function Button({
   disabled,
   href,
   disableElevation,
+  disableRipple,
 }: ButtonProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -40,13 +42,13 @@ export default function Button({
       y: ev.clientY - location.top,
     }
     setClickCoord({ x: coord.x, y: coord.y })
-    setAnimation(true)
+    if(!disableRipple){setAnimation(true)
     setTimeout(() => {
       setAnimation(false)
     }, 600)
     if (onClick) {
       onClick(ev)
-    }
+    }}
   }
   return (
     <RenderComponent

@@ -63,3 +63,14 @@ export const containedShadow: Story = {
     disableElevation: true,
   },
 }
+export const disableRipple: Story = {
+  args: {
+    children: 'contained',
+    onClick() {
+      console.log('hola')
+    },
+    variant: 'contained',
+    disableRipple:true,
+    disableElevation: true,
+  },
+}
