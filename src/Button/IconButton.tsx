@@ -44,7 +44,7 @@ export default function IconButton({children, size='medium', onClick, href, disa
     onClick(ev)
   }
   }
-    return(<button onClick={onClickHandler} className={classNames(' inline-flex items-center  justify-center  relative overflow-hidden',{'p-2':size==='medium', 'p-[5px]': size==='small','p-3':size==='large', 'rounded-full':animation})}>
+    return(<RenderComponent onClick={onClickHandler} className={classNames('hover:rounded-full  inline-flex items-center  justify-center  relative overflow-hidden',{'p-2':size==='medium', 'p-[5px]': size==='small','p-3':size==='large', 'rounded-full':animation,'hover:transition-all hover:duration-200 hover:linear hover:bg-slate-200':true,})}>
         {children}
         {animation && (
         <span
@@ -54,8 +54,8 @@ export default function IconButton({children, size='medium', onClick, href, disa
             transform: 'translate(-50%, -50%)',
           }}
           className={classNames(
-            'animate-ripple absolute inline-flex w-full h-full bg-slate-200  rounded-full bg-opacity-25 origin-center')}
+            'animate-ripple  absolute inline-flex w-full h-full bg-slate-400  rounded-full bg-opacity-25 origin-center')}
             ></span>
       )}
-    </button>)
+    </RenderComponent>)
 }
