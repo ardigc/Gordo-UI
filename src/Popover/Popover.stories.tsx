@@ -1,7 +1,7 @@
 import { MouseEventHandler, useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
-import Popover from './Popover'
+import Popover, { PopoverProps } from './Popover'
 import Button from '../Button/Button'
 const meta = {
   component: Popover,
@@ -86,6 +86,27 @@ export const popovercenter: Story = {
   args:{
     open:false
   }
+}
+const TestFunc = ({args}: {args:PopoverProps}) => {
+  const [open, setOpen] = useState(args.open)
+  const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    setAnchorEl(ev.currentTarget)
+    setOpen(true)
+  }
 
+  return (
+    <>
+      <Button onClick={handleClick}>click aqui</Button>
+      <Popover onClose={() => setOpen(false)} anchorOrigin={args.anchorOrigin} anchorEl={anchorEl} open={open} />
+    </>
+  )
+}
 
+export const test: Story = {
+  render: (args) => <TestFunc args={args}  />,
+  args:{
+    open:false,
+    anchorOrigin:{vertical:'center', horizontal:'right'},
+  }
 }
