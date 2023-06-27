@@ -114,7 +114,9 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         anchorPosition={args.anchorPosition}
         anchorEl={anchorEl}
         open={open}
-      />
+      >
+        holaaasdfsadfadf
+      </Popover>
     </>
   )
 }

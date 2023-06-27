@@ -1,7 +1,9 @@
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 // import { useState } from 'react'
 import { createPortal } from 'react-dom'
 export interface PopoverProps {
+  children?: ReactNode
   open: boolean
   onClose?: () => void
   anchorReference?: 'anchorEl' | 'anchorPosition'
@@ -17,6 +19,7 @@ export interface PopoverProps {
   anchorPosition?: { left?: number; top?: number }
 }
 export default function Popover({
+  children,
   open,
   onClose,
   anchorReference = 'anchorEl',
@@ -103,9 +106,13 @@ export default function Popover({
                 left: position?.left,
                 translate: `${position?.transformX} ${position?.transformY}`,
               }}
-              className={classNames('absolute border')}
+              className={classNames(
+                'absolute  bg-white rounded-[4px] shadow-lg border-slate-100 border  shadow-gray-400 '
+              )}
             >
-              hola
+              <p className={classNames('font-base text-base font-normal p-4')}>
+                {children}
+              </p>
             </div>
           </div>,
           document.body
