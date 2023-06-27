@@ -1,5 +1,8 @@
+import { useState } from 'react'
+
 import { Meta, StoryObj } from '@storybook/react'
 import Popover from './Popover'
+import Button from '../Button/Button'
 const meta = {
   component: Popover,
   title: 'GordoUI/Popover',
@@ -16,5 +19,17 @@ export const primary: Story = {
     },
   },
 }
+const PopoverWithButton = () => {
+  const [open, setOpen] = useState(false)
 
-export const test
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>click aqui</Button>
+      <Popover onClose={() => setOpen(false)} open={open} />
+    </>
+  )
+}
+
+export const test: Story = {
+  render: () => <PopoverWithButton />,
+}
