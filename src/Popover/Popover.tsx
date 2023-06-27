@@ -6,7 +6,8 @@ export interface PopoverProps {
   onClose?: () => void
   anchorReference?: 'anchorEl' | 'anchorPosition'
   anchorEl?: Element | (() => Element)
-  anchorOrigin?:{ horizontal?: 'center' | 'left' | 'right' , vertical?: 'bottom' | 'center' | 'top' }
+  anchorOrigin?:{ horizontal?: 'center' | 'left' | 'right' , vertical?: 'bottom' | 'center' | 'top' },
+  transformOrigin?:	{ horizontal?: 'center'| 'left'| 'right', vertical?: 'bottom'| 'center'| 'top'},
 }
 export default function Popover({
   open,
@@ -14,6 +15,7 @@ export default function Popover({
   anchorReference = 'anchorEl',
   anchorEl,
   anchorOrigin={ vertical: 'top', horizontal: 'left' },
+  transformOrigin={ vertical: 'top', horizontal: 'left'}
 }: PopoverProps) {
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
@@ -35,7 +37,6 @@ if (anchorOrigin.vertical==='top') {
  const setPopoverLeftPosition=()=>{
   if (anchorOrigin.horizontal==='left') {
     return location?.left
-    
   }else if (anchorOrigin.horizontal==='right') {
     if (!location)return
     return location?.left+location?.width
@@ -43,12 +44,15 @@ if (anchorOrigin.vertical==='top') {
     if (!location)return
     return location?.left+(location?.width/2)
   }
+ }
+ const setPopoverTransformX=()=>{
 
  }
   const setPopoverPosition=()=>{
     if(anchorReference==='anchorEl'){
       const top= setPopoverTopPosition()
       const left= setPopoverLeftPosition()
+      const transformX= setPopoverTransformX()
       return {top:top, left:left}
       
     }
@@ -68,6 +72,7 @@ if (anchorOrigin.vertical==='top') {
               style={{
                 top: position?.top,
                 left: position?.left,
+                translate:`${} ${}`,
               }}
               className={classNames('absolute border')}
             >
