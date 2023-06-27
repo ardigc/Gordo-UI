@@ -21,7 +21,7 @@ export const primary: Story = {
 }
 const PopoverWithButton = () => {
   const [open, setOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
+  const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
     setOpen(true)
@@ -30,7 +30,7 @@ const PopoverWithButton = () => {
   return (
     <>
       <Button onClick={handleClick}>click aqui</Button>
-      <Popover onClose={() => setOpen(false)} open={open} />
+      <Popover onClose={() => setOpen(false)} anchorEl={anchorEl} open={open} />
     </>
   )
 }
