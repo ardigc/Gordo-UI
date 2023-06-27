@@ -4,8 +4,23 @@ import { createPortal } from 'react-dom'
 export interface PopoverProps {
   open?: boolean
   onClose?: () => void
+  anchorReference?: 'anchorEl' | 'anchorPosition'
+  anchorEl?: Element | (() => Element)
 }
-export default function Popover({ open, onClose }: PopoverProps) {
+export default function Popover({
+  open,
+  onClose,
+  anchorReference = 'anchorEl',
+  anchorEl,
+}: PopoverProps) {
+  function resolveAnchorEl(anchorEl: Element | (() => Element)) {
+    return typeof anchorEl === 'function' ? anchorEl() : anchorEl
+  }
+  const location = anchorEl
+    ? resolveAnchorEl(anchorEl).getBoundingClientRect()
+    : null
+  console.log(location)
+
   return (
     <>
       {open &&

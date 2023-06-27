@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
 import Popover from './Popover'
@@ -21,10 +21,15 @@ export const primary: Story = {
 }
 const PopoverWithButton = () => {
   const [open, setOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    setAnchorEl(ev.currentTarget)
+    setOpen(true)
+  }
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>click aqui</Button>
+      <Button onClick={handleClick}>click aqui</Button>
       <Popover onClose={() => setOpen(false)} open={open} />
     </>
   )
