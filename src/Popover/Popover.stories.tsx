@@ -30,16 +30,16 @@ const PopoverWithButton = () => {
   return (
     <>
       <Button onClick={handleClick}>click aqui</Button>
-      <Popover onClose={() => setOpen(false)}  anchorEl={anchorEl} open={open} />
+      <Popover onClose={() => setOpen(false)} anchorEl={anchorEl} open={open} />
     </>
   )
 }
 
 export const popovertop: Story = {
   render: () => <PopoverWithButton />,
-  args:{
-    open:false
-  }
+  args: {
+    open: false,
+  },
 }
 const PopoverWithButtonBottom = () => {
   const [open, setOpen] = useState(false)
@@ -52,18 +52,21 @@ const PopoverWithButtonBottom = () => {
   return (
     <>
       <Button onClick={handleClick}>click aqui</Button>
-      <Popover onClose={() => setOpen(false)} anchorOrigin={{vertical:'bottom', horizontal:'right'}} anchorEl={anchorEl} open={open} />
+      <Popover
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        anchorEl={anchorEl}
+        open={open}
+      />
     </>
   )
 }
 
 export const popoverbottom: Story = {
   render: () => <PopoverWithButtonBottom />,
-  args:{
-    open:false
-  }
-
-
+  args: {
+    open: false,
+  },
 }
 const PopoverWithButtonCenter = () => {
   const [open, setOpen] = useState(false)
@@ -76,18 +79,23 @@ const PopoverWithButtonCenter = () => {
   return (
     <>
       <Button onClick={handleClick}>click aqui</Button>
-      <Popover onClose={() => setOpen(false)} anchorOrigin={{vertical:'center', horizontal:'right'}} anchorEl={anchorEl} open={open} />
+      <Popover
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: 'center', horizontal: 'right' }}
+        anchorEl={anchorEl}
+        open={open}
+      />
     </>
   )
 }
 
 export const popovercenter: Story = {
   render: () => <PopoverWithButtonCenter />,
-  args:{
-    open:false
-  }
+  args: {
+    open: false,
+  },
 }
-const TestFunc = ({args}: {args:PopoverProps}) => {
+const TestFunc = ({ args }: { args: PopoverProps }) => {
   const [open, setOpen] = useState(args.open)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
@@ -98,15 +106,22 @@ const TestFunc = ({args}: {args:PopoverProps}) => {
   return (
     <>
       <Button onClick={handleClick}>click aqui</Button>
-      <Popover onClose={() => setOpen(false)} anchorOrigin={args.anchorOrigin} anchorEl={anchorEl} open={open} />
+      <Popover
+        onClose={() => setOpen(false)}
+        anchorOrigin={args.anchorOrigin}
+        transformOrigin={args.transformOrigin}
+        anchorEl={anchorEl}
+        open={open}
+      />
     </>
   )
 }
 
 export const test: Story = {
-  render: (args) => <TestFunc args={args}  />,
-  args:{
-    open:false,
-    anchorOrigin:{vertical:'center', horizontal:'right'},
-  }
+  render: (args) => <TestFunc args={args} />,
+  args: {
+    open: false,
+    anchorOrigin: { vertical: 'top', horizontal: 'left' },
+    transformOrigin: { vertical: 'center', horizontal: 'center' },
+  },
 }

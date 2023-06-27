@@ -6,16 +6,22 @@ export interface PopoverProps {
   onClose?: () => void
   anchorReference?: 'anchorEl' | 'anchorPosition'
   anchorEl?: Element | (() => Element)
-  anchorOrigin?:{ horizontal?: 'center' | 'left' | 'right' , vertical?: 'bottom' | 'center' | 'top' },
-  transformOrigin?:	{ horizontal?: 'center'| 'left'| 'right', vertical?: 'bottom'| 'center'| 'top'},
+  anchorOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
+  }
+  transformOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
+  }
 }
 export default function Popover({
   open,
   onClose,
   anchorReference = 'anchorEl',
   anchorEl,
-  anchorOrigin={ vertical: 'top', horizontal: 'left' },
-  transformOrigin={ vertical: 'top', horizontal: 'left'}
+  anchorOrigin = { vertical: 'top', horizontal: 'left' },
+  transformOrigin = { vertical: 'top', horizontal: 'left' },
 }: PopoverProps) {
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
@@ -23,41 +29,56 @@ export default function Popover({
   const location = anchorEl
     ? resolveAnchorEl(anchorEl).getBoundingClientRect()
     : null
- const setPopoverTopPosition=()=>{
-if (anchorOrigin.vertical==='top') {
-  return location?.top
-}else if (anchorOrigin.vertical==='bottom') {
-  if (!location)return
-  return location?.top+location?.height
-}else if (anchorOrigin.vertical==='center') {
-  if (!location)return
-  return location?.top+(location?.height/2)
-}
- }
- const setPopoverLeftPosition=()=>{
-  if (anchorOrigin.horizontal==='left') {
-    return location?.left
-  }else if (anchorOrigin.horizontal==='right') {
-    if (!location)return
-    return location?.left+location?.width
-  } else if (anchorOrigin.horizontal==='center') {
-    if (!location)return
-    return location?.left+(location?.width/2)
-  }
- }
- const setPopoverTransformX=()=>{
-
- }
-  const setPopoverPosition=()=>{
-    if(anchorReference==='anchorEl'){
-      const top= setPopoverTopPosition()
-      const left= setPopoverLeftPosition()
-      const transformX= setPopoverTransformX()
-      return {top:top, left:left}
-      
+  const setPopoverTopPosition = () => {
+    if (anchorOrigin.vertical === 'top') {
+      return location?.top
+    } else if (anchorOrigin.vertical === 'bottom') {
+      if (!location) return
+      return location?.top + location?.height
+    } else if (anchorOrigin.vertical === 'center') {
+      if (!location) return
+      return location?.top + location?.height / 2
     }
   }
-  const position= setPopoverPosition()
+  const setPopoverLeftPosition = () => {
+    if (anchorOrigin.horizontal === 'left') {
+      return location?.left
+    } else if (anchorOrigin.horizontal === 'right') {
+      if (!location) return
+      return location?.left + location?.width
+    } else if (anchorOrigin.horizontal === 'center') {
+      if (!location) return
+      return location?.left + location?.width / 2
+    }
+  }
+  const setPopoverTransformY = () => {
+    if (transformOrigin.vertical === 'top') {
+      return 0
+    } else if (transformOrigin.vertical === 'center') {
+      return '-50%'
+    } else if (transformOrigin.vertical === 'bottom') {
+      return '-100%'
+    }
+  }
+  const setPopoverTransformX = () => {
+    if (transformOrigin.horizontal === 'left') {
+      return 0
+    } else if (transformOrigin.horizontal === 'center') {
+      return '-50%'
+    } else if (transformOrigin.horizontal === 'right') {
+      return '-100%'
+    }
+  }
+  const setPopoverPosition = () => {
+    if (anchorReference === 'anchorEl') {
+      const top = setPopoverTopPosition()
+      const left = setPopoverLeftPosition()
+      const transformX = setPopoverTransformX()
+      const transformY = setPopoverTransformY()
+      return { top: top, left: left, transformX, transformY }
+    }
+  }
+  const position = setPopoverPosition()
 
   return (
     <>
@@ -72,7 +93,7 @@ if (anchorOrigin.vertical==='top') {
               style={{
                 top: position?.top,
                 left: position?.left,
-                translate:`${} ${}`,
+                translate: `${position?.transformX} ${position?.transformY}`,
               }}
               className={classNames('absolute border')}
             >
