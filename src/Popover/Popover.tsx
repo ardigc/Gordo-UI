@@ -36,6 +36,12 @@ if (anchorOrigin.vertical==='top') {
   if (anchorOrigin.horizontal==='left') {
     return location?.left
     
+  }else if (anchorOrigin.horizontal==='right') {
+    if (!location)return
+    return location?.left+location?.width
+  } else if (anchorOrigin.horizontal==='center') {
+    if (!location)return
+    return location?.left+(location?.width/2)
   }
 
  }
