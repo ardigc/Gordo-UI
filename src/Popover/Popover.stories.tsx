@@ -30,7 +30,7 @@ const PopoverWithButton = () => {
   return (
     <>
       <Button onClick={handleClick}>click aqui</Button>
-      <Popover onClose={() => setOpen(false)} anchorEl={anchorEl} open={open} />
+      <Popover onClose={() => setOpen(false)} anchorOrigin={{vertical:'bottom', horizontal:'left'}} anchorEl={anchorEl} open={open} />
     </>
   )
 }
