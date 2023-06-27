@@ -110,9 +110,7 @@ export default function Popover({
                 'absolute  bg-white rounded-[4px] shadow-lg border-slate-100 border  shadow-gray-400 '
               )}
             >
-              <p className={classNames('font-base text-base font-normal p-4')}>
-                {children}
-              </p>
+              {children}
             </div>
           </div>,
           document.body

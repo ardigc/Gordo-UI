@@ -3,6 +3,7 @@ import { MouseEventHandler, useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Popover, { PopoverProps } from './Popover'
 import Button from '../Button/Button'
+import classNames from 'classnames'
 const meta = {
   component: Popover,
   title: 'GordoUI/Popover',
@@ -115,7 +116,9 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         anchorEl={anchorEl}
         open={open}
       >
-        holaaasdfsadfadf
+        <p className={classNames('font-base text-base font-normal p-4')}>
+          holaaasdfsadfadf
+        </p>
       </Popover>
     </>
   )
