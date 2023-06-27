@@ -116,9 +116,11 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         anchorEl={anchorEl}
         open={open}
         className={args.className}
+        container={args.container}
+        elevation={args.elevation}
       >
         <p className={classNames('font-base text-base font-normal p-4')}>
-          holaaasdfsadfadf
+          The content of the Popover.
         </p>
       </Popover>
     </>
@@ -133,6 +135,8 @@ export const test: Story = {
     transformOrigin: { vertical: 'center', horizontal: 'center' },
     anchorReference: 'anchorPosition',
     anchorPosition: { top: 300, left: 250 },
-    className: 'bg-slate-800',
+    className: '!bg-slate-100',
+    container: 'div',
+    elevation: 5,
   },
 }
