@@ -17,6 +17,7 @@ export interface PopoverProps {
     vertical?: 'bottom' | 'center' | 'top'
   }
   anchorPosition?: { left?: number; top?: number }
+  className?: string
 }
 export default function Popover({
   children,
@@ -27,6 +28,7 @@ export default function Popover({
   anchorOrigin = { vertical: 'top', horizontal: 'left' },
   transformOrigin = { vertical: 'top', horizontal: 'left' },
   anchorPosition = { top: 0, left: 0 },
+  className,
 }: PopoverProps) {
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
@@ -107,7 +109,8 @@ export default function Popover({
                 translate: `${position?.transformX} ${position?.transformY}`,
               }}
               className={classNames(
-                'absolute  bg-white rounded-[4px] shadow-lg border-slate-100 border  shadow-gray-400 '
+                'absolute  bg-white rounded-[4px] shadow-lg   shadow-gray-400 ',
+                { [className || '']: className }
               )}
             >
               {children}
