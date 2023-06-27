@@ -37,6 +37,9 @@ const PopoverWithButton = () => {
 
 export const popovertop: Story = {
   render: () => <PopoverWithButton />,
+  args:{
+    open:false
+  }
 }
 const PopoverWithButtonBottom = () => {
   const [open, setOpen] = useState(false)
@@ -56,6 +59,9 @@ const PopoverWithButtonBottom = () => {
 
 export const popoverbottom: Story = {
   render: () => <PopoverWithButtonBottom />,
+  args:{
+    open:false
+  }
 
 
 }
