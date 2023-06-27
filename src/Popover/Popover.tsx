@@ -27,6 +27,9 @@ if (anchorOrigin.vertical==='top') {
 }else if (anchorOrigin.vertical==='bottom') {
   if (!location)return
   return location?.top+location?.height
+}else if (anchorOrigin.vertical==='center') {
+  if (!location)return
+  return location?.top+(location?.height/2)
 }
  }
  const setPopoverLeftPosition=()=>{
