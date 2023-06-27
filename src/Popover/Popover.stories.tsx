@@ -110,6 +110,8 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         onClose={() => setOpen(false)}
         anchorOrigin={args.anchorOrigin}
         transformOrigin={args.transformOrigin}
+        anchorReference={args.anchorReference}
+        anchorPosition={args.anchorPosition}
         anchorEl={anchorEl}
         open={open}
       />
@@ -123,5 +125,7 @@ export const test: Story = {
     open: false,
     anchorOrigin: { vertical: 'top', horizontal: 'left' },
     transformOrigin: { vertical: 'center', horizontal: 'center' },
+    anchorReference: 'anchorPosition',
+    anchorPosition: { top: 300, left: 250 },
   },
 }

@@ -14,6 +14,7 @@ export interface PopoverProps {
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   }
+  anchorPosition?: { left?: number; top?: number }
 }
 export default function Popover({
   open,
@@ -22,6 +23,7 @@ export default function Popover({
   anchorEl,
   anchorOrigin = { vertical: 'top', horizontal: 'left' },
   transformOrigin = { vertical: 'top', horizontal: 'left' },
+  anchorPosition = { top: 0, left: 0 },
 }: PopoverProps) {
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
@@ -73,6 +75,12 @@ export default function Popover({
     if (anchorReference === 'anchorEl') {
       const top = setPopoverTopPosition()
       const left = setPopoverLeftPosition()
+      const transformX = setPopoverTransformX()
+      const transformY = setPopoverTransformY()
+      return { top: top, left: left, transformX, transformY }
+    } else if (anchorReference === 'anchorPosition') {
+      const top = `${anchorPosition.top}px`
+      const left = `${anchorPosition.left}px`
       const transformX = setPopoverTransformX()
       const transformY = setPopoverTransformY()
       return { top: top, left: left, transformX, transformY }
