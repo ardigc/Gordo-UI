@@ -30,7 +30,15 @@ export default function Popover({
               onClick={onClose}
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
-            <div>hola</div>
+            <div
+              style={{
+                top: location!.top + location!.height,
+                left: location!.left + location!.width,
+              }}
+              className={classNames('absolute border')}
+            >
+              hola
+            </div>
           </div>,
           document.body
         )}
