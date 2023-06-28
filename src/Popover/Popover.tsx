@@ -42,6 +42,7 @@ export default function Popover({
   const popoverRef = useRef<HTMLElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
   const RenderComponent = slots?.paper ? slots.paper : 'div'
+  const RenderRoot = slots?.root ? slots.root : 'div'
   useEffect(() => {
     const currentRef = popoverRef.current
     if (!currentRef) return
@@ -135,7 +136,7 @@ export default function Popover({
     <>
       {open &&
         createPortal(
-          <div className={classNames('fixed inset-0 z-[1300]')}>
+          <RenderRoot className={classNames('fixed inset-0 z-[1300]')}>
             <div
               onClick={onClose}
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
@@ -170,7 +171,7 @@ export default function Popover({
             >
               {children}
             </RenderComponent>
-          </div>,
+          </RenderRoot>,
           container ? resolveContainer(container) : document.body
         )}
     </>

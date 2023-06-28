@@ -119,6 +119,7 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         container={args.container}
         elevation={args.elevation}
         marginThreshold={args.marginThreshold}
+        slots={args.slots}
       >
         <p className={classNames('font-base text-base font-normal  p-4')}>
           The content of the Popover.
@@ -140,5 +141,53 @@ export const test: Story = {
     // container: 'div',
     elevation: 5,
     marginThreshold: 300,
+  },
+}
+const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
+  const [open, setOpen] = useState(args.open)
+  const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    setAnchorEl(ev.currentTarget)
+    setOpen(true)
+  }
+
+  return (
+    <>
+      <Button onClick={handleClick}>click aqui</Button>
+      <Popover
+        onClose={() => setOpen(false)}
+        anchorOrigin={args.anchorOrigin}
+        transformOrigin={args.transformOrigin}
+        anchorReference={args.anchorReference}
+        anchorPosition={args.anchorPosition}
+        anchorEl={anchorEl}
+        open={open}
+        className={args.className}
+        container={args.container}
+        elevation={args.elevation}
+        marginThreshold={args.marginThreshold}
+        slots={args.slots}
+      >
+        <p className={classNames('font-base text-base font-normal  p-4')}>
+          The content of the Popover.
+        </p>
+      </Popover>
+    </>
+  )
+}
+
+export const testButton: Story = {
+  render: (args) => <TestButtonFunc args={args} />,
+  args: {
+    open: false,
+    anchorOrigin: { vertical: 'top', horizontal: 'left' },
+    transformOrigin: { vertical: 'center', horizontal: 'center' },
+    anchorReference: 'anchorEl',
+    anchorPosition: { top: 300, left: 250 },
+    className: '!bg-slate-100',
+    // container: 'div',
+    elevation: 5,
+    marginThreshold: 300,
+    slots: { root: 'button', paper: 'button' },
   },
 }
