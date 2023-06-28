@@ -180,6 +180,7 @@ const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
         marginThreshold={args.marginThreshold}
         disableTransition={args.disableTransition}
         slots={args.slots}
+        classes={args.classes}
       >
         <p className={classNames('font-base text-base font-normal  p-4')}>
           The content of the Popover.
@@ -201,6 +202,7 @@ export const testButton: Story = {
     // container: 'div',
     elevation: 5,
     disableTransition: true,
+    classes: { root: 'pointer-events-none' },
     marginThreshold: 300,
     slots: { root: 'button', paper: 'button' },
   },

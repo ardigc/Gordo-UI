@@ -25,6 +25,7 @@ export interface PopoverProps {
   slots?: { paper?: ElementType; root?: ElementType }
   id?: string
   disableTransition?: boolean
+  classes?: { root?: string; paper?: string }
   // Transition component will be render when we implent transition library
   // TransitionComponent?: ElementType
   // transitionDuration?:'auto'| number| { appear?: number, enter?: number, exit?: number }
@@ -47,6 +48,7 @@ export default function Popover({
   slotProps,
   id,
   disableTransition,
+  classes,
 }: PopoverProps) {
   const popoverRef = useRef<HTMLElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
@@ -148,7 +150,9 @@ export default function Popover({
           <RenderRoot
             id={id}
             {...slotProps?.root}
-            className={classNames('fixed inset-0 z-[1300]')}
+            className={classNames('fixed inset-0 z-[1300] ', {
+              [classes?.root || '']: classes?.root,
+            })}
           >
             <div
               onClick={onClose}
@@ -178,6 +182,7 @@ export default function Popover({
                 'shadow-12': elevation === 12,
                 'shadow-13': elevation === 13,
                 'shadow-14': elevation === 14,
+                [classes?.paper || '']: classes?.paper,
                 [className || '']: className,
               })}
             >
