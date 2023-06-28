@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode } from 'react'
-// import { useState } from 'react'
+import { ElementType, ReactNode, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 export interface PopoverProps {
   children?: ReactNode
@@ -20,6 +20,7 @@ export interface PopoverProps {
   className?: string
   container?: ElementType
   elevation?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
+  marginThreshold?: number
 }
 export default function Popover({
   children,
@@ -33,8 +34,17 @@ export default function Popover({
   className,
   container,
   elevation = 4,
+  marginThreshold = 16,
 }: PopoverProps) {
+  const popoverRef = useRef<HTMLElement>(null)
+  const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
   const RenderComponent = container ? container : 'div'
+
+  useEffect(() => {
+    const currentRef = popoverRef.current
+    if (!currentRef) return
+    setPopoverLocation(currentRef.getBoundingClientRect())
+  }, [popoverRef])
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }
@@ -67,8 +77,17 @@ export default function Popover({
     if (transformOrigin.vertical === 'top') {
       return 0
     } else if (transformOrigin.vertical === 'center') {
+      if (!anchorPosition.top || !popoverLocation?.height) return
+      if (anchorPosition.top + popoverLocation?.height / 2 < marginThreshold) {
+        console.log('hola')
+        return 0
+      }
       return '-50%'
     } else if (transformOrigin.vertical === 'bottom') {
+      if (!anchorPosition.top || !popoverLocation?.height) return
+      if (anchorPosition.top + popoverLocation?.height < marginThreshold) {
+        return 0
+      }
       return '-100%'
     }
   }
@@ -89,8 +108,8 @@ export default function Popover({
       const transformY = setPopoverTransformY()
       return { top: top, left: left, transformX, transformY }
     } else if (anchorReference === 'anchorPosition') {
-      const top = `${anchorPosition.top}px`
-      const left = `${anchorPosition.left}px`
+      const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
+      const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
       const transformX = setPopoverTransformX()
       const transformY = setPopoverTransformY()
       return { top: top, left: left, transformX, transformY }
@@ -108,6 +127,7 @@ export default function Popover({
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
             <RenderComponent
+              ref={popoverRef}
               style={{
                 top: position?.top,
                 left: position?.left,

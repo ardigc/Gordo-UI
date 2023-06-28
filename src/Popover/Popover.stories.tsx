@@ -133,7 +133,7 @@ export const test: Story = {
     open: false,
     anchorOrigin: { vertical: 'top', horizontal: 'left' },
     transformOrigin: { vertical: 'center', horizontal: 'center' },
-    anchorReference: 'anchorPosition',
+    anchorReference: 'anchorEl',
     anchorPosition: { top: 300, left: 250 },
     className: '!bg-slate-100',
     container: 'div',
