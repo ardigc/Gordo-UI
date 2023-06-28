@@ -24,6 +24,7 @@ export interface PopoverProps {
   slotProps?: { paper?: () => void | object; root?: () => void | object }
   slots?: { paper?: ElementType; root?: ElementType }
   id?: string
+  disableTransition?: boolean
   // Transition component will be render when we implent transition library
   // TransitionComponent?: ElementType
   // transitionDuration?:'auto'| number| { appear?: number, enter?: number, exit?: number }
@@ -45,6 +46,7 @@ export default function Popover({
   marginThreshold = 16,
   slotProps,
   id,
+  disableTransition,
 }: PopoverProps) {
   const popoverRef = useRef<HTMLElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
@@ -160,26 +162,24 @@ export default function Popover({
                 left: position?.left,
                 translate: `${position?.transformX} ${position?.transformY}`,
               }}
-              className={classNames(
-                'absolute  bg-white rounded-[4px]  animate-grow  ',
-                {
-                  'shadow-1': elevation === 1,
-                  'shadow-2': elevation === 2,
-                  'shadow-3': elevation === 3,
-                  'shadow-4': elevation === 4,
-                  'shadow-5': elevation === 5,
-                  'shadow-6': elevation === 6,
-                  'shadow-7': elevation === 7,
-                  'shadow-8': elevation === 8,
-                  'shadow-9': elevation === 9,
-                  'shadow-10': elevation === 10,
-                  'shadow-11': elevation === 11,
-                  'shadow-12': elevation === 12,
-                  'shadow-13': elevation === 13,
-                  'shadow-14': elevation === 14,
-                  [className || '']: className,
-                }
-              )}
+              className={classNames('absolute  bg-white rounded-[4px]  ', {
+                'animate-grow': !disableTransition,
+                'shadow-1': elevation === 1,
+                'shadow-2': elevation === 2,
+                'shadow-3': elevation === 3,
+                'shadow-4': elevation === 4,
+                'shadow-5': elevation === 5,
+                'shadow-6': elevation === 6,
+                'shadow-7': elevation === 7,
+                'shadow-8': elevation === 8,
+                'shadow-9': elevation === 9,
+                'shadow-10': elevation === 10,
+                'shadow-11': elevation === 11,
+                'shadow-12': elevation === 12,
+                'shadow-13': elevation === 13,
+                'shadow-14': elevation === 14,
+                [className || '']: className,
+              })}
             >
               {children}
             </RenderComponent>
