@@ -6,7 +6,7 @@ export interface TooltipProps {
 export default function Tooltip({ children }: TooltipProps) {
   const [open, setOpen]=useState(false)
   return <div>
-    <Popover open={open} classes={{root:'pointer-event-none'}}>
+    <Popover open={open} classes={{root:'pointer-events-none'}}>
 
     </Popover>
     <div onMouseEnter={()=>setOpen(true)} onMouseLeave={()=>setOpen(false)}>
