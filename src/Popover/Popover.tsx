@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode, useEffect, useState } from 'react'
+import { ElementType, ReactNode, SetStateAction, useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 export interface PopoverProps {
@@ -50,15 +50,16 @@ export default function Popover({
   disableTransition,
   classes,
 }: PopoverProps) {
-  const popoverRef = useRef<HTMLElement>(null)
-  const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
+  // const popoverRef = useRef<HTMLElement>(null)
+  const [popoverRef,setPopoverRef]=useState<HTMLElement>()
+  // const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
   const RenderComponent = slots?.paper ? slots.paper : 'div'
   const RenderRoot = slots?.root ? slots.root : 'div'
-  useEffect(() => {
-    const currentRef = popoverRef.current
-    if (!currentRef) return
-    setPopoverLocation(currentRef.getBoundingClientRect())
-  }, [popoverRef])
+  // useEffect(() => {
+  //   const currentRef = popoverRef?.getBoundingClientRect()
+  //   if (!currentRef) return
+  //   setPopoverLocation(currentRef)
+  // }, [popoverRef])
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
   }
@@ -90,25 +91,27 @@ export default function Popover({
       return location?.left + location?.width / 2
     }
   }
-  const setPopoverTransformY = () => {
+  const setPopoverTransformY = (popoverLocation: DOMRect) => {
     if (transformOrigin.vertical === 'top') {
       return 0
     } else if (transformOrigin.vertical === 'center') {
+      console.log(popoverLocation, anchorPosition)
       if (!anchorPosition.top || !popoverLocation?.height) return
+      console.log('despues')
       if (anchorPosition.top + popoverLocation?.height / 2 < marginThreshold) {
         console.log('hola')
         return 0
       }
-      return '-50%'
+      return ('-50%')
     } else if (transformOrigin.vertical === 'bottom') {
       if (!anchorPosition.top || !popoverLocation?.height) return
       if (anchorPosition.top + popoverLocation?.height < marginThreshold) {
         return 0
       }
-      return '-100%'
+      return ('-100%')
     }
   }
-  const setPopoverTransformX = () => {
+  const setPopoverTransformX = (popoverLocation:DOMRect) => {
     if (transformOrigin.horizontal === 'left') {
       return 0
     } else if (transformOrigin.horizontal === 'center') {
@@ -116,50 +119,56 @@ export default function Popover({
       if (anchorPosition.left + popoverLocation?.width / 2 < marginThreshold) {
         return 0
       }
-
-      return '-50%'
+      
+      return ('-50%')
     } else if (transformOrigin.horizontal === 'right') {
       if (!anchorPosition.left || !popoverLocation?.width) return
       if (anchorPosition.left + popoverLocation?.width < marginThreshold) {
         return 0
       }
-      return '-100%'
+      return ('-100%')
     }
   }
   const setPopoverPosition = () => {
     if (anchorReference === 'anchorEl') {
       const top = setPopoverTopPosition()
       const left = setPopoverLeftPosition()
-      const transformX = setPopoverTransformX()
-      const transformY = setPopoverTransformY()
+      const currentRef = popoverRef?.getBoundingClientRect()
+      if (!currentRef) return
+     
+      const transformX = setPopoverTransformX(currentRef)
+      const transformY = setPopoverTransformY(currentRef)
+      console.log(transformX, transformY)
       return { top: top, left: left, transformX, transformY }
     } else if (anchorReference === 'anchorPosition') {
       const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
       const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
-      const transformX = setPopoverTransformX()
-      const transformY = setPopoverTransformY()
+       const currentRef = popoverRef?.getBoundingClientRect()
+      if (!currentRef) return
+      const transformX = setPopoverTransformX(currentRef)
+      const transformY = setPopoverTransformY(currentRef)
       return { top: top, left: left, transformX, transformY }
     }
   }
   const position = setPopoverPosition()
-
+  
   return (
     <>
       {open &&
         createPortal(
           <RenderRoot
-            id={id}
-            {...slotProps?.root}
-            className={classNames('fixed inset-0 z-[1300] ', {
-              [classes?.root || '']: classes?.root,
-            })}
+          id={id}
+          {...slotProps?.root}
+          className={classNames('fixed inset-0 z-[1300] ', {
+            [classes?.root || '']: classes?.root,
+          })}
           >
             <div
               onClick={onClose}
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
             <RenderComponent
-              ref={popoverRef}
+              ref={(ref: HTMLElement)=>setPopoverRef(ref)}
               {...slotProps?.paper}
               style={{
                 top: position?.top,

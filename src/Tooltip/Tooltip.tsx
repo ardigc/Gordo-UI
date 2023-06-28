@@ -10,12 +10,16 @@ export default function Tooltip({ children }: TooltipProps) {
 setAnchorEl(ev.currentTarget)
 setOpen(true)
   }
+
+  const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement>=()=>{
+    console.log('hola')
+    // setOpen(false)
+      }
   return <div className='inline-flex'>
-    <Popover open={open} anchorOrigin={{vertical:'bottom', horizontal:'center'}}  anchorEl={anchorEl} classes={{root:'pointer-events-none'}}>
+    <Popover open={open} anchorOrigin={{vertical:'bottom', horizontal:'center'}} transformOrigin={{vertical:'center', horizontal:'center'}} anchorEl={anchorEl} classes={{root:'pointer-events-none'}}>
 holiwi
     </Popover>
-    <div onMouseEnter={onMouseEnterHandler} onMouseLeave={()=>setOpen(false)}>
-
+    <div onMouseEnter={onMouseEnterHandler} onMouseLeave={OnMouseLeaveHandler}>
 {children}  
     </div>
 </div>
