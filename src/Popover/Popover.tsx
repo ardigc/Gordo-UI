@@ -21,6 +21,8 @@ export interface PopoverProps {
   container?: Element | (() => Element)
   elevation?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
   marginThreshold?: number
+  // slotProps?:{ paper?: func | object, root?: func | object }
+  slots?: { paper?: ElementType; root?: ElementType }
 }
 export default function Popover({
   children,
@@ -34,11 +36,12 @@ export default function Popover({
   className,
   container,
   elevation = 4,
+  slots,
   marginThreshold = 16,
 }: PopoverProps) {
   const popoverRef = useRef<HTMLElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
-  const RenderComponent = 'div'
+  const RenderComponent = slots?.paper ? slots.paper : 'div'
   useEffect(() => {
     const currentRef = popoverRef.current
     if (!currentRef) return
