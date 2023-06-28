@@ -24,13 +24,12 @@ export default {
       },
       animation: {
         ripple: 'ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
-        grown: ' ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
+        grow: ' grow 200ms cubic-bezier(0, 0, 0.2, 1) 1',
       },
       keyframes: {
-        grown: {
+        grow: {
           '0%': {
-            width: '0',
-            height: '0',
+            transform: 'scale(0)',
           },
           '100%': {
             transform: 'scale(1)',

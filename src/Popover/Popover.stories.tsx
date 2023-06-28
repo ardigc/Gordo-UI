@@ -120,7 +120,7 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         elevation={args.elevation}
         marginThreshold={args.marginThreshold}
       >
-        <p className={classNames('font-base text-base font-normal p-4')}>
+        <p className={classNames('font-base text-base font-normal  p-4')}>
           The content of the Popover.
         </p>
       </Popover>

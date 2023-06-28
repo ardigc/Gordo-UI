@@ -143,7 +143,7 @@ export default function Popover({
                 translate: `${position?.transformX} ${position?.transformY}`,
               }}
               className={classNames(
-                'absolute  bg-white rounded-[4px]  animate-grown ',
+                'absolute  bg-white rounded-[4px]  animate-grow  ',
                 {
                   'shadow-1': elevation === 1,
                   'shadow-2': elevation === 2,
