@@ -24,8 +24,18 @@ export default {
       },
       animation: {
         ripple: 'ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
+        grown: ' ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
       },
       keyframes: {
+        grown: {
+          '0%': {
+            width: '0',
+            height: '0',
+          },
+          '100%': {
+            transform: 'scale(1)',
+          },
+        },
         ripple: {
           '0%': {
             width: '0',
