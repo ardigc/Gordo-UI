@@ -18,7 +18,7 @@ export interface PopoverProps {
   }
   anchorPosition?: { left?: number; top?: number }
   className?: string
-  container?: ElementType
+  container?: Element | (() => Element)
   elevation?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
   marginThreshold?: number
 }
@@ -38,13 +38,15 @@ export default function Popover({
 }: PopoverProps) {
   const popoverRef = useRef<HTMLElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
-  const RenderComponent = container ? container : 'div'
-
+  const RenderComponent = 'div'
   useEffect(() => {
     const currentRef = popoverRef.current
     if (!currentRef) return
     setPopoverLocation(currentRef.getBoundingClientRect())
   }, [popoverRef])
+  function resolveContainer(container: Element | (() => Element)) {
+    return typeof container === 'function' ? container() : container
+  }
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }
@@ -159,7 +161,6 @@ export default function Popover({
                   'shadow-12': elevation === 12,
                   'shadow-13': elevation === 13,
                   'shadow-14': elevation === 14,
-
                   [className || '']: className,
                 }
               )}
@@ -167,7 +168,7 @@ export default function Popover({
               {children}
             </RenderComponent>
           </div>,
-          document.body
+          container ? resolveContainer(container) : document.body
         )}
     </>
   )
