@@ -157,7 +157,13 @@ const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
 
   return (
     <>
-      <Button onMouseEnter={handleClick} onMouseLeave={() => setOpen(false)}>
+      <Button
+        onMouseEnter={handleClick}
+        onMouseLeave={() => {
+          console.log('adios')
+          setOpen(false)
+        }}
+      >
         click aqui
       </Button>
       <Popover
