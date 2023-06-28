@@ -33,6 +33,7 @@ export interface ButtonPropsForButton {
   }
   component?: ElementType
   fullWidth?: boolean
+  id?: string
 }
 export interface ButtonPropsForAnchor {
   children?: ReactNode
@@ -60,6 +61,7 @@ export interface ButtonPropsForAnchor {
   }
   component?: ElementType
   fullWidth?: boolean
+  id?: string
 }
 export default function Button({
   children,
@@ -77,6 +79,7 @@ export default function Button({
   classes,
   component,
   fullWidth,
+  id,
 }: ButtonPropsForAnchor | ButtonPropsForButton) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -126,6 +129,7 @@ export default function Button({
     <RenderComponent
       disabled={disabled}
       href={href}
+      id={id}
       onClick={href ? onClickAnchorHandler : onClickButtonHandler}
       className={classNames(
         'inline-flex items-center  justify-center  relative font-base  outline-none font-medium text-sm tracking-wide uppercase rounded-[4px] min-w-[64px]',
