@@ -95,8 +95,17 @@ export default function Popover({
     if (transformOrigin.horizontal === 'left') {
       return 0
     } else if (transformOrigin.horizontal === 'center') {
+      if (!anchorPosition.left || !popoverLocation?.width) return
+      if (anchorPosition.left + popoverLocation?.width / 2 < marginThreshold) {
+        return 0
+      }
+
       return '-50%'
     } else if (transformOrigin.horizontal === 'right') {
+      if (!anchorPosition.left || !popoverLocation?.width) return
+      if (anchorPosition.left + popoverLocation?.width < marginThreshold) {
+        return 0
+      }
       return '-100%'
     }
   }
