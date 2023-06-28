@@ -118,6 +118,7 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         className={args.className}
         container={args.container}
         elevation={args.elevation}
+        marginThreshold={args.marginThreshold}
       >
         <p className={classNames('font-base text-base font-normal p-4')}>
           The content of the Popover.
@@ -138,5 +139,6 @@ export const test: Story = {
     className: '!bg-slate-100',
     container: 'div',
     elevation: 5,
+    marginThreshold: 300,
   },
 }
