@@ -24,6 +24,10 @@ export interface PopoverProps {
   slotProps?: { paper?: () => void | object; root?: () => void | object }
   slots?: { paper?: ElementType; root?: ElementType }
   id?: string
+  // Transition component will be render when we implent transition library
+  // TransitionComponent?: ElementType
+  // transitionDuration?:'auto'| number| { appear?: number, enter?: number, exit?: number }
+  // TransitionProps?: object
 }
 export default function Popover({
   children,
