@@ -9,8 +9,22 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const primary: Story = {
+const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
+ 
+
+  return (
+    <>
+      <Tooltip>
+        <div>hola</div>
+      </Tooltip>
+    </>
+  )
+}
+
+export const testButton: Story = {
+  render: (args) => <TestButtonFunc args={args} />,
   args: {
-    children: 'hola',
+    children:<div>hola</div>,
   },
 }
+
