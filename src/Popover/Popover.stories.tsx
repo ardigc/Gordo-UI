@@ -52,7 +52,9 @@ const PopoverWithButtonBottom = () => {
 
   return (
     <>
-      <Button>click aqui</Button>
+      <Button onMouseEnter={handleClick} onMouseLeave={() => setOpen(false)}>
+        click aqui
+      </Button>
       <Popover
         onClose={() => setOpen(false)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -148,15 +150,18 @@ const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
   const [open, setOpen] = useState(args.open)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    console.log('hola')
     setAnchorEl(ev.currentTarget)
     setOpen(true)
   }
 
   return (
     <>
-      <Button onClick={handleClick}>click aqui</Button>
+      <Button onMouseEnter={handleClick} onMouseLeave={() => setOpen(false)}>
+        click aqui
+      </Button>
       <Popover
-        onClose={() => setOpen(false)}
+        // onClose={() => setOpen(false)}
         anchorOrigin={args.anchorOrigin}
         transformOrigin={args.transformOrigin}
         anchorReference={args.anchorReference}

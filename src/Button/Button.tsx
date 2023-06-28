@@ -5,9 +5,12 @@ import {
   MouseEventHandler,
   MouseEvent,
   ElementType,
+  DetailedHTMLProps,
+  ButtonHTMLAttributes,
+  AnchorHTMLAttributes,
 } from 'react'
 
-export interface ButtonPropsForButton {
+interface CommonProps {
   children?: ReactNode
   variant?: 'contained' | 'outlined' | 'text'
   color?:
@@ -19,8 +22,6 @@ export interface ButtonPropsForButton {
     | 'success'
     | 'inherit'
   disabled?: boolean
-  href?: undefined
-  onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
   disableElevation?: boolean
   disableRipple?: boolean
   size?: 'small' | 'medium' | 'large'
@@ -35,33 +36,25 @@ export interface ButtonPropsForButton {
   fullWidth?: boolean
   id?: string
 }
-export interface ButtonPropsForAnchor {
-  children?: ReactNode
-  variant?: 'contained' | 'outlined' | 'text'
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'warning'
-    | 'info'
-    | 'success'
-    | 'inherit'
-  disabled?: boolean
+type ButtonReactProps = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>
+export interface ButtonPropsForButton
+  extends CommonProps,
+    Omit<ButtonReactProps, 'color'> {
+  onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
+  href?: undefined
+}
+type AnchorReactProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>
+export interface ButtonPropsForAnchor
+  extends CommonProps,
+    Omit<AnchorReactProps, 'color'> {
   href: string
   onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
-  disableElevation?: boolean
-  disableRipple?: boolean
-  size?: 'small' | 'medium' | 'large'
-  startIcon?: ReactNode
-  endIcon?: ReactNode
-  className?: string
-  classes?: {
-    buttonClassName?: string
-    rippleSpanClassName?: string
-  }
-  component?: ElementType
-  fullWidth?: boolean
-  id?: string
 }
 export default function Button({
   children,
@@ -80,6 +73,7 @@ export default function Button({
   component,
   fullWidth,
   id,
+  ...rest
 }: ButtonPropsForAnchor | ButtonPropsForButton) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -127,6 +121,7 @@ export default function Button({
   }
   return (
     <RenderComponent
+      {...rest}
       disabled={disabled}
       href={href}
       id={id}
@@ -201,6 +196,7 @@ export default function Button({
         }
       )}
     >
+      <button></button>
       {startIcon && (
         <span className={classNames('mr-2 -ml-1')}>{startIcon}</span>
       )}
