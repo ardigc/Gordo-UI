@@ -1,5 +1,5 @@
 export const setPopoverTopPosition = (
-  ref: DOMRect,
+  ref: { height: number; width: number },
   marginThreshold: number,
   transformOrigin?: {
     horizontal?: 'center' | 'left' | 'right'
@@ -52,7 +52,7 @@ export const setPopoverTopPosition = (
 }
 
 export const setPopoverLeftPosition = (
-  ref: DOMRect,
+  ref: { height: number; width: number },
   marginThreshold: number,
   transformOrigin?: {
     horizontal?: 'center' | 'left' | 'right'
@@ -115,7 +115,7 @@ export const setPopoverPosition = (
     vertical?: 'bottom' | 'center' | 'top'
   },
   location?: DOMRect,
-  popoverLocation?: DOMRect
+  popoverLocation?: { height: number; width: number }
 ) => {
   if (anchorReference === 'anchorEl') {
     // const currentRef = popoverRef?.getBoundingClientRect()

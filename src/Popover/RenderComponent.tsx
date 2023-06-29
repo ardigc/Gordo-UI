@@ -71,9 +71,6 @@ export default function RenderComponent({
   return (
     <div
       ref={popoverRef}
-      onAnimationEnd={(ev) =>
-        console.log('fin animacion', ev.currentTarget.getBoundingClientRect())
-      }
       style={{
         top: position?.top,
         left: position?.left,
