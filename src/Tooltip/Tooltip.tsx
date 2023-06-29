@@ -1,10 +1,7 @@
-import React, {
-  ElementType,
+import {
   JSXElementConstructor,
   MouseEventHandler,
   ReactElement,
-  ReactNode,
-  useEffect,
   useState,
 } from 'react'
 import Popover from '../Popover/Popover'

@@ -1,12 +1,6 @@
 import classNames from 'classnames'
-import {
-  ElementType,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react'
-import { useRef } from 'react'
+import { ElementType, ReactNode } from 'react'
+
 import { createPortal } from 'react-dom'
 import RenderComponent from './RenderComponent'
 export interface PopoverProps {
