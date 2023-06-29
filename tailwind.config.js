@@ -24,7 +24,7 @@ export default {
       },
       animation: {
         ripple: 'ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
-        grow: ' grow 200ms cubic-bezier(0, 0, 0.2, 1) 1',
+        grow: ' grow 200ms cubic-bezier(0, 0, 0.2, 1) 1 forwards',
       },
       keyframes: {
         grow: {

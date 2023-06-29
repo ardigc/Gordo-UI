@@ -40,7 +40,10 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
         slots={args.slots}
         disableTransition={args.disableTransition}
       >
-        <p className={classNames('font-base text-base font-normal  p-4')}>
+        <p
+          id="hola"
+          className={classNames('font-base text-base font-normal  p-4')}
+        >
           The content of the Popover.
         </p>
       </Popover>
@@ -60,7 +63,7 @@ export const test: Story = {
     className: '!bg-slate-100',
     // container: 'div',
     elevation: 5,
-    marginThreshold: 300,
+    // marginThreshold: 300,
   },
 }
 const TestButtonFunc = ({ args }: { args: PopoverProps }) => {

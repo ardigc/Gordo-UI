@@ -1,16 +1,8 @@
 import classNames from 'classnames'
-import React, {
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-  ReactElement,
-  JSXElementConstructor,
-} from 'react'
+import { ReactNode, useEffect, useId, useRef, useState } from 'react'
 import { setPopoverPosition } from './helpers'
-
 interface RenderComponentProps {
-  children: ReactElement<any, string | JSXElementConstructor<any>>
+  children: ReactNode
   className: string
   marginThreshold: number
   anchorEl?: Element | (() => Element)
@@ -24,6 +16,7 @@ interface RenderComponentProps {
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   }
+  disableTransition?: boolean
 }
 export default function RenderComponent({
   children,
@@ -34,18 +27,29 @@ export default function RenderComponent({
   transformOrigin,
   anchorReference,
   anchorOrigin,
+  disableTransition,
 }: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
-
   useEffect(() => {
-    if (!open) return
-    if (!popoverRef.current) return
-    const currentRef = popoverRef?.current.getBoundingClientRect()
-    if (!currentRef) return
-    console.log(currentRef)
-    setPopoverLocation(currentRef)
-  }, [open])
+    if (disableTransition) {
+      if (!open) return
+      // if (!popoverRef.current) return
+      const popover = popoverRef.current
+      if (!popover) return
+      const currentRef = popover.getBoundingClientRect()
+      if (!currentRef) return
+      console.log(currentRef)
+      setPopoverLocation(currentRef)
+    }
+  }, [])
+  // useEffect(() => {
+  //     const popover= popoverRef.current
+  //     console.log(popover)
+  //     const currentRef = popover?.getBoundingClientRect()
+  //     console.log('este es el bueno',currentRef)
+  //   })
+
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }
@@ -62,15 +66,19 @@ export default function RenderComponent({
   )
   return (
     <div
-      //   ref={popoverRef}
+      ref={popoverRef}
+      onAnimationEnd={(ev) =>
+        console.log('fin animacion', ev.currentTarget.getBoundingClientRect())
+      }
       style={{
         top: position?.top,
         left: position?.left,
         // translate: `${position?.transformX} ${position?.transformY}`,
       }}
       className={classNames({ [className || '']: className })}
+      // className='absolute'
     >
-      {React.cloneElement(children, { ref: popoverRef })}
+      {children}
     </div>
   )
 }

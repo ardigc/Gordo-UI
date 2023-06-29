@@ -5,14 +5,12 @@ import {
   SetStateAction,
   useEffect,
   useState,
-  ReactElement,
-  JSXElementConstructor,
 } from 'react'
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 import RenderComponent from './RenderComponent'
 export interface PopoverProps {
-  children: ReactElement<any, string | JSXElementConstructor<any>>
+  children?: ReactNode
   open: boolean
   onClose?: () => void
   anchorReference?: 'anchorEl' | 'anchorPosition'
@@ -89,6 +87,7 @@ export default function Popover({
               //   left: position?.left,
               //   // translate: `${position?.transformX} ${position?.transformY}`,
               // }}
+              disableTransition={disableTransition}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
               anchorPosition={anchorPosition}
