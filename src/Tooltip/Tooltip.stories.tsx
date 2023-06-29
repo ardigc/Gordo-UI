@@ -12,8 +12,8 @@ type Story = StoryObj<typeof meta>
 const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
   return (
     <>
-      <div className="flex justify-center">
-        <Tooltip title={args.title}>
+      <div className="flex justify-center h-56 items-center">
+        <Tooltip title={args.title} placement={args.placement}>
           <div>hola</div>
         </Tooltip>
       </div>
@@ -26,5 +26,6 @@ export const testButton: Story = {
   args: {
     children: <div>hola</div>,
     title: 'Delete',
+    placement: 'left-start',
   },
 }

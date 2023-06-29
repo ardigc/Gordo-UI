@@ -32,31 +32,86 @@ export default function Tooltip({ children, title, placement }: TooltipProps) {
     setOpen(true)
   }
 
-  const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = (): {
-    vertical: 'bottom'
-    horizontal: 'center'
-  } => {
+  const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
     console.log('hola')
-    setOpen(false)
+    // setOpen(false)
   }
-  const anchorOrigin: {
+  const anchorOrigin = (): {
     horizontal: 'center' | 'left' | 'right'
     vertical: 'bottom' | 'center' | 'top'
-  } = () => {
+  } => {
     if (placement === 'bottom-end') {
       return { vertical: 'bottom', horizontal: 'center' }
     } else if (placement === 'bottom-start') {
       return { vertical: 'bottom', horizontal: 'left' }
+    } else if (placement === 'bottom') {
+      return { vertical: 'bottom', horizontal: 'center' }
+    } else if (placement === 'left') {
+      return { vertical: 'center', horizontal: 'left' }
+    } else if (placement === 'left-end') {
+      return { vertical: 'bottom', horizontal: 'left' }
+    } else if (placement === 'left-start') {
+      return { vertical: 'top', horizontal: 'left' }
+    } else if (placement === 'right') {
+      return { vertical: 'center', horizontal: 'right' }
+    } else if (placement === 'right-end') {
+      return { vertical: 'bottom', horizontal: 'right' }
+    } else if (placement === 'right-start') {
+      return { vertical: 'top', horizontal: 'right' }
+    } else if (placement === 'top') {
+      return { vertical: 'top', horizontal: 'center' }
+    } else if (placement === 'top-end') {
+      return { vertical: 'top', horizontal: 'right' }
+    } else if (placement === 'top-start') {
+      return { vertical: 'top', horizontal: 'left' }
     } else {
       return { vertical: 'bottom', horizontal: 'center' }
+    }
+  }
+  const transformOrigin = (): {
+    horizontal: 'center' | 'left' | 'right'
+    vertical: 'bottom' | 'center' | 'top'
+  } => {
+    if (placement === 'bottom-end') {
+      return { vertical: 'top', horizontal: 'center' }
+    } else if (placement === 'bottom-start') {
+      return { vertical: 'top', horizontal: 'center' }
+    } else if (placement === 'bottom') {
+      return { vertical: 'top', horizontal: 'center' }
+    } else if (placement === 'left') {
+      return { vertical: 'center', horizontal: 'right' }
+    } else if (placement === 'left-end') {
+      return { vertical: 'center', horizontal: 'right' }
+    } else if (placement === 'left-start') {
+      return { vertical: 'center', horizontal: 'right' }
+    } else if (placement === 'right') {
+      return { vertical: 'center', horizontal: 'left' }
+    } else if (placement === 'right-end') {
+      return { vertical: 'center', horizontal: 'left' }
+    } else if (placement === 'right-start') {
+      return { vertical: 'center', horizontal: 'left' }
+    } else if (placement === 'top') {
+      return { vertical: 'bottom', horizontal: 'center' }
+    } else if (placement === 'top-end') {
+      return { vertical: 'bottom', horizontal: 'center' }
+    } else if (placement === 'top-start') {
+      return { vertical: 'bottom', horizontal: 'center' }
+    } else {
+      return { vertical: 'top', horizontal: 'center' }
     }
   }
   return (
     <div className="inline-flex">
       <Popover
         open={open}
-        anchorOrigin={anchorOrigin}
-        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{
+          vertical: anchorOrigin().vertical,
+          horizontal: anchorOrigin().horizontal,
+        }}
+        transformOrigin={{
+          vertical: transformOrigin().vertical,
+          horizontal: transformOrigin().horizontal,
+        }}
         anchorEl={anchorEl}
         elevation={0}
         // className='bg-transparent'
