@@ -1,14 +1,16 @@
 import {
-  JSXElementConstructor,
+  // JSXElementConstructor,
   MouseEventHandler,
-  ReactElement,
+  // ReactElement,
+  ReactNode,
   useState,
 } from 'react'
 import Popover from '../Popover/Popover'
 export interface TooltipProps {
-  children: ReactElement<any, string | JSXElementConstructor<any>>
+  children: ReactNode
+  title?: ReactNode
 }
-export default function Tooltip({ children }: TooltipProps) {
+export default function Tooltip({ children, title }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const [open, setOpen] = useState(false)
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
@@ -29,7 +31,7 @@ export default function Tooltip({ children }: TooltipProps) {
         anchorEl={anchorEl}
         classes={{ root: 'pointer-events-none' }}
       >
-        <div>holiwi</div>
+        <div>{title}</div>
       </Popover>
       <div
         onMouseEnter={onMouseEnterHandler}

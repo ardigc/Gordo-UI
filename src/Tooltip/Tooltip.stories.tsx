@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>
 const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
   return (
     <>
-      <Tooltip>
+      <Tooltip title={args.title}>
         <div className="mt-32 ml-32">hola</div>
       </Tooltip>
     </>
@@ -23,5 +23,6 @@ export const testButton: Story = {
   render: (args) => <TestButtonFunc args={args} />,
   args: {
     children: <div>hola</div>,
+    title: 'holiwiii',
   },
 }
