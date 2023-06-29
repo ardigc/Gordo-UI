@@ -53,7 +53,7 @@ export default function Popover({
 }: PopoverProps) {
   // const popoverRef = useRef<HTMLElement>(null)
   // const [popoverRef, setPopoverRef] = useState<HTMLElement>()
-  // const RenderComponent = slots?.paper ? slots.paper : 'div'
+
   const RenderRoot = slots?.root ? slots.root : 'div'
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
@@ -83,6 +83,7 @@ export default function Popover({
               // }}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
+              slots={slots}
               anchorPosition={anchorPosition}
               anchorReference={anchorReference}
               transformOrigin={transformOrigin}

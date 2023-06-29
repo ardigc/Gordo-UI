@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ElementType, ReactNode, useEffect, useRef, useState } from 'react'
 import { setPopoverPosition } from './helpers'
 interface RenderComponentProps {
   children: ReactNode
@@ -16,6 +16,7 @@ interface RenderComponentProps {
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   }
+  slots?: { paper?: ElementType; root?: ElementType }
 }
 export default function RenderComponent({
   children,
@@ -26,6 +27,7 @@ export default function RenderComponent({
   transformOrigin,
   anchorReference,
   anchorOrigin,
+  slots,
 }: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
   const [popoverSize, setpopoverSize] = useState<{
@@ -47,7 +49,7 @@ export default function RenderComponent({
       width: popover.offsetWidth,
     })
   }, [])
-
+  const RenderComponent = slots?.paper ? slots.paper : 'div'
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }
@@ -64,7 +66,7 @@ export default function RenderComponent({
     popoverSize
   )
   return (
-    <div
+    <RenderComponent
       ref={popoverRef}
       style={{
         top: position?.top,
@@ -75,6 +77,6 @@ export default function RenderComponent({
       // className='absolute'
     >
       {children}
-    </div>
+    </RenderComponent>
   )
 }
