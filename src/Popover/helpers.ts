@@ -215,7 +215,7 @@ export const setPopoverPosition = (
   }
 }
 export const leftMargin = (
-  placement:
+  placement?:
     | 'bottom-end'
     | 'bottom-start'
     | 'bottom'
@@ -240,7 +240,7 @@ export const leftMargin = (
   }
 }
 export const topMargin = (
-  placement:
+  placement?:
     | 'bottom-end'
     | 'bottom-start'
     | 'bottom'
