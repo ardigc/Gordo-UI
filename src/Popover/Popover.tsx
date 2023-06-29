@@ -81,7 +81,6 @@ export default function Popover({
               //   left: position?.left,
               //   // translate: `${position?.transformX} ${position?.transformY}`,
               // }}
-              disableTransition={disableTransition}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
               anchorPosition={anchorPosition}

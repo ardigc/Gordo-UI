@@ -16,7 +16,6 @@ interface RenderComponentProps {
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   }
-  disableTransition?: boolean
 }
 export default function RenderComponent({
   children,
@@ -27,7 +26,6 @@ export default function RenderComponent({
   transformOrigin,
   anchorReference,
   anchorOrigin,
-  disableTransition,
 }: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
   const [popoverLocation, setPopoverLocation] = useState<{
@@ -35,24 +33,20 @@ export default function RenderComponent({
     width: number
   }>()
   useEffect(() => {
-    // if (!disableTransition) {
     if (!open) return
-    // if (!popoverRef.current) return
+
     const popover = popoverRef.current
     if (!popover) return
+    popover.style.opacity = '0' // Establecer opacidad inicial
+    setTimeout(() => {
+      popover.style.opacity = '1' // Establecer opacidad completa después de 100ms
+    }, 1)
 
     setPopoverLocation({
       height: popover.offsetHeight,
       width: popover.offsetWidth,
     })
-    // }
   }, [])
-  // useEffect(() => {
-  //     const popover= popoverRef.current
-  //     console.log(popover)
-  //     const currentRef = popover?.getBoundingClientRect()
-  //     console.log('este es el bueno',currentRef)
-  //   })
 
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
