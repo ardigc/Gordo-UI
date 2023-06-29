@@ -34,11 +34,19 @@ export default function Tooltip({ children, title }: TooltipProps) {
         // className='bg-transparent'
         classes={{ root: 'pointer-events-none' }}
       >
-        <div className={classNames({ 'mt-[14px]': true })}>{title}</div>
+        <div
+          className={classNames(
+            'bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
+            { 'mt-[14px] ': true }
+          )}
+        >
+          {title}
+        </div>
       </Popover>
       <div
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={OnMouseLeaveHandler}
+        // className={classNames('bg-gray-800 text-white')}
       >
         {children}
       </div>

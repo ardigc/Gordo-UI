@@ -25,6 +25,6 @@ export const testButton: Story = {
   render: (args) => <TestButtonFunc args={args} />,
   args: {
     children: <div>hola</div>,
-    title: 'holiwiii',
+    title: 'Delete',
   },
 }
