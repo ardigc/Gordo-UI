@@ -1,36 +1,48 @@
-export const setPopoverTopPosition = (ref: DOMRect) => {
-  if (anchorOrigin.vertical === 'top') {
-    if (transformOrigin.vertical === 'top' && location) {
+export const setPopoverTopPosition = (
+  ref: DOMRect,
+  marginThreshold: number,
+  transformOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
+  },
+  anchorOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
+  },
+  location?: DOMRect
+) => {
+  if (anchorOrigin?.vertical === 'top') {
+    if (transformOrigin?.vertical === 'top' && location) {
       return Math.max(marginThreshold, location.top)
-    } else if (transformOrigin.vertical === 'center' && location) {
+    } else if (transformOrigin?.vertical === 'center' && location) {
       return Math.max(marginThreshold, location.top - ref.height / 2)
-    } else if (transformOrigin.vertical === 'bottom' && location) {
+    } else if (transformOrigin?.vertical === 'bottom' && location) {
       return Math.max(marginThreshold, location.top - ref.height)
     }
-  } else if (anchorOrigin.vertical === 'bottom') {
-    if (transformOrigin.vertical === 'top' && location) {
+  } else if (anchorOrigin?.vertical === 'bottom') {
+    if (transformOrigin?.vertical === 'top' && location) {
       return Math.max(marginThreshold, location?.top + location?.height)
-    } else if (transformOrigin.vertical === 'center' && location) {
+    } else if (transformOrigin?.vertical === 'center' && location) {
       return Math.max(
         marginThreshold,
         location?.top + location?.height - ref.height / 2
       )
-    } else if (transformOrigin.vertical === 'bottom' && location) {
+    } else if (transformOrigin?.vertical === 'bottom' && location) {
       return Math.max(
         marginThreshold,
         location?.top + location?.height - ref.height
       )
     }
-  } else if (anchorOrigin.vertical === 'center') {
+  } else if (anchorOrigin?.vertical === 'center') {
     if (!location) return
-    if (transformOrigin.vertical === 'top' && location) {
+    if (transformOrigin?.vertical === 'top' && location) {
       return Math.max(marginThreshold, location?.top + location?.height / 2)
-    } else if (transformOrigin.vertical === 'center' && location) {
+    } else if (transformOrigin?.vertical === 'center' && location) {
       return Math.max(
         marginThreshold,
         location?.top + location?.height / 2 - ref.height / 2
       )
-    } else if (transformOrigin.vertical === 'bottom' && location) {
+    } else if (transformOrigin?.vertical === 'bottom' && location) {
       return Math.max(
         marginThreshold,
         location?.top + location?.height / 2 - ref.height
@@ -41,48 +53,49 @@ export const setPopoverTopPosition = (ref: DOMRect) => {
 
 export const setPopoverLeftPosition = (
   ref: DOMRect,
-  transformOrigin: {
-    horizontal: 'center' | 'left' | 'right'
-    vertical: 'bottom' | 'center' | 'top'
+  marginThreshold: number,
+  transformOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
   },
-  anchorOrigin: {
-    horizontal: 'center' | 'left' | 'right'
-    vertical: 'bottom' | 'center' | 'top'
+  anchorOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
   },
-  marginThreshold: number
+  location?: DOMRect
 ) => {
   console.log('ref:', ref, transformOrigin)
-  if (anchorOrigin.horizontal === 'left') {
-    if (transformOrigin.horizontal === 'left' && location) {
+  if (anchorOrigin?.horizontal === 'left') {
+    if (transformOrigin?.horizontal === 'left' && location) {
       return Math.max(marginThreshold, location.left)
-    } else if (transformOrigin.horizontal === 'center' && location) {
+    } else if (transformOrigin?.horizontal === 'center' && location) {
       return Math.max(marginThreshold, location.left - ref.width / 2)
-    } else if (transformOrigin.horizontal === 'right' && location) {
+    } else if (transformOrigin?.horizontal === 'right' && location) {
       return Math.max(marginThreshold, location.left - ref.width)
     }
-  } else if (anchorOrigin.horizontal === 'right') {
-    if (transformOrigin.horizontal === 'left' && location) {
+  } else if (anchorOrigin?.horizontal === 'right') {
+    if (transformOrigin?.horizontal === 'left' && location) {
       return Math.max(marginThreshold, location?.left + location?.width)
-    } else if (transformOrigin.horizontal === 'center' && location) {
+    } else if (transformOrigin?.horizontal === 'center' && location) {
       return Math.max(
         marginThreshold,
         location?.left + location?.width - ref.width / 2
       )
-    } else if (transformOrigin.horizontal === 'right' && location) {
+    } else if (transformOrigin?.horizontal === 'right' && location) {
       return Math.max(
         marginThreshold,
         location?.left + location?.width - ref.width
       )
     }
-  } else if (anchorOrigin.horizontal === 'center') {
-    if (transformOrigin.horizontal === 'left' && location) {
+  } else if (anchorOrigin?.horizontal === 'center') {
+    if (transformOrigin?.horizontal === 'left' && location) {
       return Math.max(marginThreshold, location?.left + location?.width / 2)
-    } else if (transformOrigin.horizontal === 'center' && location) {
+    } else if (transformOrigin?.horizontal === 'center' && location) {
       return Math.max(
         marginThreshold,
         location?.left + location?.width / 2 - ref.width / 2
       )
-    } else if (transformOrigin.horizontal === 'right' && location) {
+    } else if (transformOrigin?.horizontal === 'right' && location) {
       return Math.max(
         marginThreshold,
         location?.left + location?.width / 2 - ref.width
@@ -93,25 +106,33 @@ export const setPopoverLeftPosition = (
 export const setPopoverPosition = (
   anchorReference: 'anchorEl' | 'anchorPosition',
   marginThreshold: number,
-  transformOrigin: {
-    horizontal: 'center' | 'left' | 'right'
-    vertical: 'bottom' | 'center' | 'top'
+  transformOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
   },
-  anchorOrigin: {
-    horizontal: 'center' | 'left' | 'right'
-    vertical: 'bottom' | 'center' | 'top'
+  anchorOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
   },
+  location?: DOMRect,
   popoverLocation?: DOMRect
 ) => {
   if (anchorReference === 'anchorEl') {
     // const currentRef = popoverRef?.getBoundingClientRect()
     if (!popoverLocation) return
-    const top = setPopoverTopPosition(popoverLocation)
-    const left = setPopoverLeftPosition(
+    const top = setPopoverTopPosition(
       popoverLocation,
+      marginThreshold,
       transformOrigin,
       anchorOrigin,
-      marginThreshold
+      location
+    )
+    const left = setPopoverLeftPosition(
+      popoverLocation,
+      marginThreshold,
+      transformOrigin,
+      anchorOrigin,
+      location
     )
 
     // const transformX = setPopoverTransformX(currentRef)

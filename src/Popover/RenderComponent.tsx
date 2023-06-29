@@ -1,20 +1,28 @@
 import classNames from 'classnames'
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import React, {
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+  ReactElement,
+  JSXElementConstructor,
+} from 'react'
 import { setPopoverPosition } from './helpers'
+
 interface RenderComponentProps {
-  children: ReactNode
+  children: ReactElement<any, string | JSXElementConstructor<any>>
   className: string
   marginThreshold: number
-  anchorEl: Element | (() => Element)
+  anchorEl?: Element | (() => Element)
   anchorPosition: { left?: number; top?: number }
-  transformOrigin: {
-    horizontal: 'center' | 'left' | 'right'
-    vertical: 'bottom' | 'center' | 'top'
+  transformOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
   }
   anchorReference: 'anchorEl' | 'anchorPosition'
-  anchorOrigin: {
-    horizontal: 'center' | 'left' | 'right'
-    vertical: 'bottom' | 'center' | 'top'
+  anchorOrigin?: {
+    horizontal?: 'center' | 'left' | 'right'
+    vertical?: 'bottom' | 'center' | 'top'
   }
 }
 export default function RenderComponent({
@@ -43,17 +51,18 @@ export default function RenderComponent({
   }
   const location = anchorEl
     ? resolveAnchorEl(anchorEl).getBoundingClientRect()
-    : null
+    : undefined
   const position = setPopoverPosition(
     anchorReference,
     marginThreshold,
     transformOrigin,
     anchorOrigin,
+    location,
     popoverLocation
   )
   return (
     <div
-      ref={popoverRef}
+      //   ref={popoverRef}
       style={{
         top: position?.top,
         left: position?.left,
@@ -61,7 +70,7 @@ export default function RenderComponent({
       }}
       className={classNames({ [className || '']: className })}
     >
-      {children}
+      {React.cloneElement(children, { ref: popoverRef })}
     </div>
   )
 }

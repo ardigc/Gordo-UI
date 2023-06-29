@@ -5,12 +5,14 @@ import {
   SetStateAction,
   useEffect,
   useState,
+  ReactElement,
+  JSXElementConstructor,
 } from 'react'
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 import RenderComponent from './RenderComponent'
 export interface PopoverProps {
-  children?: ReactNode
+  children: ReactElement<any, string | JSXElementConstructor<any>>
   open: boolean
   onClose?: () => void
   anchorReference?: 'anchorEl' | 'anchorPosition'
