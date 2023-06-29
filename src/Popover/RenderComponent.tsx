@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ReactNode, useEffect, useId, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import { setPopoverPosition } from './helpers'
 interface RenderComponentProps {
   children: ReactNode
@@ -28,7 +28,7 @@ export default function RenderComponent({
   anchorOrigin,
 }: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
-  const [popoverLocation, setPopoverLocation] = useState<{
+  const [popoverSize, setpopoverSize] = useState<{
     height: number
     width: number
   }>()
@@ -42,7 +42,7 @@ export default function RenderComponent({
       popover.style.opacity = '1' // Establecer opacidad completa después de 100ms
     }, 1)
 
-    setPopoverLocation({
+    setpopoverSize({
       height: popover.offsetHeight,
       width: popover.offsetWidth,
     })
@@ -61,7 +61,7 @@ export default function RenderComponent({
     anchorOrigin,
     anchorPosition,
     location,
-    popoverLocation
+    popoverSize
   )
   return (
     <div
