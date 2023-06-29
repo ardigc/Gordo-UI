@@ -76,11 +76,6 @@ export default function Popover({
             ></div>
             <RenderComponent
               {...slotProps?.paper}
-              // style={{
-              //   top: position?.top,
-              //   left: position?.left,
-              //   // translate: `${position?.transformX} ${position?.transformY}`,
-              // }}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
               slots={slots}

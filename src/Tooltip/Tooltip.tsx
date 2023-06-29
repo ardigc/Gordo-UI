@@ -133,6 +133,12 @@ export default function Tooltip({
                 placement === 'bottom' ||
                 placement === 'bottom-start' ||
                 placement === 'bottom-end',
+              // 'mb-[14px] ': placement === 'top' || placement === 'top-start' ||placement === 'top-end',
+              // 'mr-[14px] ': placement === 'left' || placement === 'left-start' ||placement === 'left-end',
+              'ml-[14px] ':
+                placement === 'right' ||
+                placement === 'right-start' ||
+                placement === 'right-end',
             }
           )}
         >
