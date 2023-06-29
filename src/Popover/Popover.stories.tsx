@@ -71,7 +71,6 @@ const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
   const [open, setOpen] = useState(args.open)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const handleClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
-    console.log('hola')
     setAnchorEl(ev.currentTarget)
     setOpen(true)
   }
@@ -81,7 +80,6 @@ const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
       <Button
         onMouseEnter={handleClick}
         onMouseLeave={() => {
-          console.log('adios')
           setOpen(false)
         }}
       >

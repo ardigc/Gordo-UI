@@ -63,7 +63,6 @@ const setPopoverLeftPosition = (
   },
   location?: DOMRect
 ) => {
-  console.log('ref:', ref, transformOrigin)
   if (anchorOrigin?.horizontal === 'left') {
     if (transformOrigin?.horizontal === 'left' && location) {
       return Math.max(marginThreshold, location.left)

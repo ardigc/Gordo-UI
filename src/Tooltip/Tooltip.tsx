@@ -40,7 +40,6 @@ export default function Tooltip({
   }
 
   const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
-    console.log(open)
     if (!open) {
       setOpen(false)
     }
