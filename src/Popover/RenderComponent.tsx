@@ -30,18 +30,22 @@ export default function RenderComponent({
   disableTransition,
 }: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
-  const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
+  const [popoverLocation, setPopoverLocation] = useState<{
+    height: number
+    width: number
+  }>()
   useEffect(() => {
-    if (disableTransition) {
-      if (!open) return
-      // if (!popoverRef.current) return
-      const popover = popoverRef.current
-      if (!popover) return
-      const currentRef = popover.getBoundingClientRect()
-      if (!currentRef) return
-      console.log(currentRef)
-      setPopoverLocation(currentRef)
-    }
+    // if (!disableTransition) {
+    if (!open) return
+    // if (!popoverRef.current) return
+    const popover = popoverRef.current
+    if (!popover) return
+
+    setPopoverLocation({
+      height: popover.offsetHeight,
+      width: popover.offsetWidth,
+    })
+    // }
   }, [])
   // useEffect(() => {
   //     const popover= popoverRef.current

@@ -63,6 +63,7 @@ export const test: Story = {
     className: '!bg-slate-100',
     // container: 'div',
     elevation: 5,
+    disableTransition: true,
     // marginThreshold: 300,
   },
 }
@@ -121,6 +122,7 @@ export const testButton: Story = {
     anchorPosition: { top: 300, left: 250 },
     className: '!bg-slate-100',
     // container: 'div',
+
     elevation: 5,
     disableTransition: true,
     classes: { root: 'pointer-events-none' },
