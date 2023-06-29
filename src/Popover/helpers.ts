@@ -114,6 +114,7 @@ export const setPopoverPosition = (
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   },
+  anchorPosition?: { left?: number; top?: number },
   location?: DOMRect,
   popoverLocation?: { height: number; width: number }
 ) => {
@@ -139,13 +140,13 @@ export const setPopoverPosition = (
     // const transformY = setPopoverTransformY(currentRef)
     // console.log(transformX, transformY)
     return { top: top, left: left }
-    //   } else if (anchorReference === 'anchorPosition') {
-    //     const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
-    //     const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
-    //     // const currentRef = popoverRef?.getBoundingClientRect()
-    //     // if (!currentRef) return
-    //     const transformX = setPopoverTransformX(currentRef)
-    //     const transformY = setPopoverTransformY(currentRef)
-    //     return { top: top, left: left, transformX, transformY }
+  } else if (anchorReference === 'anchorPosition' && anchorPosition) {
+    const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
+    const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
+    // const currentRef = popoverRef?.getBoundingClientRect()
+    // if (!currentRef) return
+    // const transformX = setPopoverTransformX(currentRef)
+    // const transformY = setPopoverTransformY(currentRef)
+    return { top: top, left: left }
   }
 }

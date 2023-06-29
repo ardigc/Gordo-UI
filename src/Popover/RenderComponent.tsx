@@ -6,7 +6,7 @@ interface RenderComponentProps {
   className: string
   marginThreshold: number
   anchorEl?: Element | (() => Element)
-  anchorPosition: { left?: number; top?: number }
+  anchorPosition?: { left?: number; top?: number }
   transformOrigin?: {
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
@@ -59,6 +59,7 @@ export default function RenderComponent({
     marginThreshold,
     transformOrigin,
     anchorOrigin,
+    anchorPosition,
     location,
     popoverLocation
   )
