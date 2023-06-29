@@ -23,25 +23,34 @@ export interface TooltipProps {
     | 'top-end'
     | 'top-start'
     | 'top'
+  open?: boolean
 }
-export default function Tooltip({ children, title, placement }: TooltipProps) {
+export default function Tooltip({
+  children,
+  title,
+  placement,
+  open,
+}: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
-  const [open, setOpen] = useState(false)
+  const [opened, setOpen] = useState(open ? open : false)
+  // console.log(opened)
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
     setOpen(true)
   }
 
   const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
-    console.log('hola')
-    // setOpen(false)
+    console.log(open)
+    if (!open) {
+      setOpen(false)
+    }
   }
   const anchorOrigin = (): {
     horizontal: 'center' | 'left' | 'right'
     vertical: 'bottom' | 'center' | 'top'
   } => {
     if (placement === 'bottom-end') {
-      return { vertical: 'bottom', horizontal: 'center' }
+      return { vertical: 'bottom', horizontal: 'right' }
     } else if (placement === 'bottom-start') {
       return { vertical: 'bottom', horizontal: 'left' }
     } else if (placement === 'bottom') {
@@ -103,7 +112,7 @@ export default function Tooltip({ children, title, placement }: TooltipProps) {
   return (
     <div className="inline-flex">
       <Popover
-        open={open}
+        open={opened}
         anchorOrigin={{
           vertical: anchorOrigin().vertical,
           horizontal: anchorOrigin().horizontal,
@@ -120,7 +129,12 @@ export default function Tooltip({ children, title, placement }: TooltipProps) {
         <div
           className={classNames(
             'bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
-            { 'mt-[14px] ': true }
+            {
+              'mt-[14px] ':
+                placement === 'bottom' ||
+                placement === 'bottom-start' ||
+                placement === 'bottom-end',
+            }
           )}
         >
           {title}
