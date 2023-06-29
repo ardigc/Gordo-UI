@@ -18,7 +18,7 @@ export default function Tooltip({ children }: TooltipProps) {
 
   const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
     console.log('hola')
-    // setOpen(false)
+    setOpen(false)
   }
   return (
     <div className="inline-flex">

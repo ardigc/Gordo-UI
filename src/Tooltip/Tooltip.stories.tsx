@@ -10,12 +10,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
- 
-
   return (
     <>
       <Tooltip>
-        <div>hola</div>
+        <div className="mt-32 ml-32">hola</div>
       </Tooltip>
     </>
   )
@@ -24,7 +22,6 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
 export const testButton: Story = {
   render: (args) => <TestButtonFunc args={args} />,
   args: {
-    children:<div>hola</div>,
+    children: <div>hola</div>,
   },
 }
-
