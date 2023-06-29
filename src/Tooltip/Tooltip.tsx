@@ -3,10 +3,26 @@ import {
   MouseEventHandler,
   // ReactElement,
   ReactNode,
+  createContext,
   useState,
 } from 'react'
 import Popover from '../Popover/Popover'
 import classNames from 'classnames'
+export const TooltipContext = createContext<{
+  placement?:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top'
+}>({})
 export interface TooltipProps {
   children: ReactNode
   title?: ReactNode
@@ -110,41 +126,43 @@ export default function Tooltip({
   }
   return (
     <div className="inline-flex">
-      <Popover
-        open={opened}
-        anchorOrigin={{
-          vertical: anchorOrigin().vertical,
-          horizontal: anchorOrigin().horizontal,
-        }}
-        transformOrigin={{
-          vertical: transformOrigin().vertical,
-          horizontal: transformOrigin().horizontal,
-        }}
-        anchorEl={anchorEl}
-        elevation={0}
-        // className='bg-transparent'
-        classes={{ root: 'pointer-events-none' }}
-      >
-        <div
-          className={classNames(
-            'bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
-            {
-              'mt-[14px] ':
-                placement === 'bottom' ||
-                placement === 'bottom-start' ||
-                placement === 'bottom-end',
-              // 'mb-[14px] ': placement === 'top' || placement === 'top-start' ||placement === 'top-end',
-              // 'mr-[14px] ': placement === 'left' || placement === 'left-start' ||placement === 'left-end',
-              'ml-[14px] ':
-                placement === 'right' ||
-                placement === 'right-start' ||
-                placement === 'right-end',
-            }
-          )}
+      <TooltipContext.Provider value={{ placement }}>
+        <Popover
+          open={opened}
+          anchorOrigin={{
+            vertical: anchorOrigin().vertical,
+            horizontal: anchorOrigin().horizontal,
+          }}
+          transformOrigin={{
+            vertical: transformOrigin().vertical,
+            horizontal: transformOrigin().horizontal,
+          }}
+          anchorEl={anchorEl}
+          elevation={0}
+          // className='bg-transparent'
+          classes={{ root: 'pointer-events-none' }}
         >
-          {title}
-        </div>
-      </Popover>
+          <div
+            className={classNames(
+              'bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
+              {
+                'mt-[14px] ':
+                  placement === 'bottom' ||
+                  placement === 'bottom-start' ||
+                  placement === 'bottom-end',
+                // 'mb-[14px] ': placement === 'top' || placement === 'top-start' ||placement === 'top-end',
+                // 'mr-[14px] ': placement === 'left' || placement === 'left-start' ||placement === 'left-end',
+                'ml-[14px] ':
+                  placement === 'right' ||
+                  placement === 'right-start' ||
+                  placement === 'right-end',
+              }
+            )}
+          >
+            {title}
+          </div>
+        </Popover>
+      </TooltipContext.Provider>
       <div
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={OnMouseLeaveHandler}

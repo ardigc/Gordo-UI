@@ -191,26 +191,76 @@ export const setPopoverPosition = (
     // console.log(transformX, transformY)
     return { top: top, left: left }
   } else if (anchorReference === 'anchorPosition' && anchorPosition) {
-    const top = `${Math.max(
+    const top = Math.max(
       marginThreshold,
       setPopoverPositionTopPosition(
         anchorPosition,
         transformOrigin,
         popoverSize
       )
-    )}px`
-    const left = `${Math.max(
+    )
+    const left = Math.max(
       marginThreshold,
       setPopoverPositionLeftPosition(
         anchorPosition,
         transformOrigin,
         popoverSize
       )
-    )}px`
+    )
     // const currentRef = popoverRef?.getBoundingClientRect()
     // if (!currentRef) return
     // const transformX = setPopoverTransformX(currentRef)
     // const transformY = setPopoverTransformY(currentRef)
     return { top: top, left: left }
+  }
+}
+export const leftMargin = (
+  placement:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top'
+) => {
+  if (
+    placement === 'left' ||
+    placement === 'left-start' ||
+    placement === 'left-end'
+  ) {
+    return -14
+  } else {
+    return 0
+  }
+}
+export const topMargin = (
+  placement:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top'
+) => {
+  if (
+    placement === 'top' ||
+    placement === 'top-start' ||
+    placement === 'top-end'
+  ) {
+    return -14
+  } else {
+    return 0
   }
 }

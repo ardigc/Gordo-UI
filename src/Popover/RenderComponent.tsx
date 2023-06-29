@@ -1,6 +1,14 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode, useEffect, useRef, useState } from 'react'
-import { setPopoverPosition } from './helpers'
+import {
+  ElementType,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { leftMargin, setPopoverPosition, topMargin } from './helpers'
+import { TooltipContext } from '../Tooltip/Tooltip'
 interface RenderComponentProps {
   children: ReactNode
   className: string
@@ -49,6 +57,7 @@ export default function RenderComponent({
       width: popover.offsetWidth,
     })
   }, [])
+  const { placement } = useContext(TooltipContext)
   const RenderComponent = slots?.paper ? slots.paper : 'div'
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
@@ -65,12 +74,17 @@ export default function RenderComponent({
     location,
     popoverSize
   )
+
   return (
     <RenderComponent
       ref={popoverRef}
       style={{
-        top: position?.top,
-        left: position?.left,
+        top: position?.top
+          ? position?.top + topMargin(placement)
+          : position?.top,
+        left: position?.left
+          ? position?.left + leftMargin(placement)
+          : position?.left,
         // translate: `${position?.transformX} ${position?.transformY}`,
       }}
       className={classNames({ [className || '']: className })}
