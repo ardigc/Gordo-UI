@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react'
 import Popover from '../Popover/Popover'
+import classNames from 'classnames'
 export interface TooltipProps {
   children: ReactNode
   title?: ReactNode
@@ -27,11 +28,13 @@ export default function Tooltip({ children, title }: TooltipProps) {
       <Popover
         open={open}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        transformOrigin={{ vertical: 'center', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
         anchorEl={anchorEl}
+        elevation={0}
+        // className='bg-transparent'
         classes={{ root: 'pointer-events-none' }}
       >
-        <div>{title}</div>
+        <div className={classNames({ 'mt-[14px]': true })}>{title}</div>
       </Popover>
       <div
         onMouseEnter={onMouseEnterHandler}

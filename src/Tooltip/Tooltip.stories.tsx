@@ -12,9 +12,11 @@ type Story = StoryObj<typeof meta>
 const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
   return (
     <>
-      <Tooltip title={args.title}>
-        <div className="mt-32 ml-32">hola</div>
-      </Tooltip>
+      <div className="flex justify-center">
+        <Tooltip title={args.title}>
+          <div>hola</div>
+        </Tooltip>
+      </div>
     </>
   )
 }

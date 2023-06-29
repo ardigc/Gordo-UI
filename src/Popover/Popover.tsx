@@ -20,7 +20,7 @@ export interface PopoverProps {
   anchorPosition?: { left?: number; top?: number }
   className?: string
   container?: Element | (() => Element)
-  elevation?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
+  elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
   marginThreshold?: number
   slotProps?: { paper?: () => void | object; root?: () => void | object }
   slots?: { paper?: ElementType; root?: ElementType }
