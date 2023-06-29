@@ -39,7 +39,18 @@ export const setPopoverTopPosition = (ref: DOMRect) => {
   }
 }
 
-export const setPopoverLeftPosition = (ref: DOMRect) => {
+export const setPopoverLeftPosition = (
+  ref: DOMRect,
+  transformOrigin: {
+    horizontal: 'center' | 'left' | 'right'
+    vertical: 'bottom' | 'center' | 'top'
+  },
+  anchorOrigin: {
+    horizontal: 'center' | 'left' | 'right'
+    vertical: 'bottom' | 'center' | 'top'
+  },
+  marginThreshold: number
+) => {
   console.log('ref:', ref, transformOrigin)
   if (anchorOrigin.horizontal === 'left') {
     if (transformOrigin.horizontal === 'left' && location) {
@@ -79,24 +90,41 @@ export const setPopoverLeftPosition = (ref: DOMRect) => {
     }
   }
 }
-export const setPopoverPosition = () => {
+export const setPopoverPosition = (
+  anchorReference: 'anchorEl' | 'anchorPosition',
+  marginThreshold: number,
+  transformOrigin: {
+    horizontal: 'center' | 'left' | 'right'
+    vertical: 'bottom' | 'center' | 'top'
+  },
+  anchorOrigin: {
+    horizontal: 'center' | 'left' | 'right'
+    vertical: 'bottom' | 'center' | 'top'
+  },
+  popoverLocation?: DOMRect
+) => {
   if (anchorReference === 'anchorEl') {
     // const currentRef = popoverRef?.getBoundingClientRect()
     if (!popoverLocation) return
     const top = setPopoverTopPosition(popoverLocation)
-    const left = setPopoverLeftPosition(popoverLocation)
+    const left = setPopoverLeftPosition(
+      popoverLocation,
+      transformOrigin,
+      anchorOrigin,
+      marginThreshold
+    )
 
     // const transformX = setPopoverTransformX(currentRef)
     // const transformY = setPopoverTransformY(currentRef)
     // console.log(transformX, transformY)
     return { top: top, left: left }
-  } else if (anchorReference === 'anchorPosition') {
-    const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
-    const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
-    // const currentRef = popoverRef?.getBoundingClientRect()
-    // if (!currentRef) return
-    const transformX = setPopoverTransformX(currentRef)
-    const transformY = setPopoverTransformY(currentRef)
-    return { top: top, left: left, transformX, transformY }
+    //   } else if (anchorReference === 'anchorPosition') {
+    //     const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
+    //     const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
+    //     // const currentRef = popoverRef?.getBoundingClientRect()
+    //     // if (!currentRef) return
+    //     const transformX = setPopoverTransformX(currentRef)
+    //     const transformY = setPopoverTransformY(currentRef)
+    //     return { top: top, left: left, transformX, transformY }
   }
 }
