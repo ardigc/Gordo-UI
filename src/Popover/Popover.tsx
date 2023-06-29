@@ -8,6 +8,7 @@ import {
 } from 'react'
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
+import RenderComponent from './RenderComponent'
 export interface PopoverProps {
   children?: ReactNode
   open: boolean
@@ -57,15 +58,19 @@ export default function Popover({
   classes,
 }: PopoverProps) {
   // const popoverRef = useRef<HTMLElement>(null)
-  const [popoverRef, setPopoverRef] = useState<HTMLElement>()
-  // const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
-  const RenderComponent = slots?.paper ? slots.paper : 'div'
+  const popoverRef = useRef<HTMLElement>(null)
+  // const [popoverRef, setPopoverRef] = useState<HTMLElement>()
+  const [popoverLocation, setPopoverLocation] = useState<DOMRect>()
+  // const RenderComponent = slots?.paper ? slots.paper : 'div'
   const RenderRoot = slots?.root ? slots.root : 'div'
-  // useEffect(() => {
-  //   const currentRef = popoverRef?.getBoundingClientRect()
-  //   if (!currentRef) return
-  //   setPopoverLocation(currentRef)
-  // }, [popoverRef])
+  useEffect(() => {
+    if (!open) return
+    if (!popoverRef.current) return
+    const currentRef = popoverRef?.current.getBoundingClientRect()
+    if (!currentRef) return
+    console.log(currentRef)
+    setPopoverLocation(currentRef)
+  }, [open])
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
   }
@@ -116,6 +121,7 @@ export default function Popover({
     }
   }
   const setPopoverLeftPosition = (ref: DOMRect) => {
+    console.log('ref:', ref, transformOrigin)
     if (anchorOrigin.horizontal === 'left') {
       if (transformOrigin.horizontal === 'left' && location) {
         return Math.max(marginThreshold, location.left)
@@ -193,10 +199,10 @@ export default function Popover({
   }
   const setPopoverPosition = () => {
     if (anchorReference === 'anchorEl') {
-      const currentRef = popoverRef?.getBoundingClientRect()
-      if (!currentRef) return
-      const top = setPopoverTopPosition(currentRef)
-      const left = setPopoverLeftPosition(currentRef)
+      // const currentRef = popoverRef?.getBoundingClientRect()
+      if (!popoverLocation) return
+      const top = setPopoverTopPosition(popoverLocation)
+      const left = setPopoverLeftPosition(popoverLocation)
 
       // const transformX = setPopoverTransformX(currentRef)
       // const transformY = setPopoverTransformY(currentRef)
@@ -205,8 +211,8 @@ export default function Popover({
     } else if (anchorReference === 'anchorPosition') {
       const top = `${Math.max(marginThreshold, anchorPosition.top!)}px`
       const left = `${Math.max(marginThreshold, anchorPosition.left!)}px`
-      const currentRef = popoverRef?.getBoundingClientRect()
-      if (!currentRef) return
+      // const currentRef = popoverRef?.getBoundingClientRect()
+      // if (!currentRef) return
       const transformX = setPopoverTransformX(currentRef)
       const transformY = setPopoverTransformY(currentRef)
       return { top: top, left: left, transformX, transformY }
@@ -230,7 +236,7 @@ export default function Popover({
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
             <RenderComponent
-              ref={(ref: HTMLElement) => setPopoverRef(ref)}
+              ref={popoverRef}
               {...slotProps?.paper}
               style={{
                 top: position?.top,

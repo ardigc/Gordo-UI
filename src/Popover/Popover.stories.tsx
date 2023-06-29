@@ -108,7 +108,9 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
 
   return (
     <>
-      <Button onClick={handleClick}>click aqui</Button>
+      <Button onClick={handleClick} className="ml-64">
+        click aqui
+      </Button>
       <Popover
         onClose={() => setOpen(false)}
         anchorOrigin={args.anchorOrigin}
@@ -137,7 +139,7 @@ export const test: Story = {
   args: {
     open: false,
     anchorOrigin: { vertical: 'top', horizontal: 'left' },
-    transformOrigin: { vertical: 'center', horizontal: 'center' },
+    transformOrigin: { vertical: 'center', horizontal: 'right' },
     anchorReference: 'anchorEl',
     anchorPosition: { top: 300, left: 250 },
     className: '!bg-slate-100',
