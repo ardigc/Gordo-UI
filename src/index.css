@@ -54,12 +54,13 @@
   transform: translate(12px, 4px) scale(0.75);
 }
 .bocadillo::before {
-  border: 25px solid white;
+  border: 25px solid;
   content: '';
   border-left-color: transparent;
   border-bottom-color: transparent;
   border-right-color: transparent;
   position: absolute;
-  bottom: -48px;
+  scale: 0.2;
+  /* bottom: -px; */
   left: calc(50% - 25px);
 }

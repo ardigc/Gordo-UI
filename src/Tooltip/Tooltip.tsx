@@ -147,7 +147,7 @@ export default function Tooltip({
         >
           <div
             className={classNames(
-              'bocadillo bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
+              'bocadillo bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base before:border-t-neutral-500',
               {
                 'mt-[14px] ':
                   placement === 'bottom' ||
