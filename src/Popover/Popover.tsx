@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode } from 'react'
+import { ElementType, ReactNode, useId, useEffect, useState } from 'react'
 
 import { createPortal } from 'react-dom'
 import RenderComponent from './RenderComponent'
@@ -53,12 +53,44 @@ export default function Popover({
 }: PopoverProps) {
   // const popoverRef = useRef<HTMLElement>(null)
   // const [popoverRef, setPopoverRef] = useState<HTMLElement>()
-
+  const observedId = useId()
+  const [screenVariation, setScreenVariation] = useState<{
+    initialScreenW: number | null
+    initialScreenH: number | null
+    currentScreenW: number | null
+    currentScreenH: number | null
+  }>({
+    initialScreenW: null,
+    initialScreenH: null,
+    currentScreenW: null,
+    currentScreenH: null,
+  })
+  useEffect(() => {
+    if (open) {
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          if (
+            screenVariation.initialScreenW === null ||
+            screenVariation.initialScreenH === null
+          ) {
+            setScreenVariation({
+              initialScreenW: entry.contentRect.width,
+              initialScreenH: entry.contentRect.height,
+              currentScreenH: entry.contentRect.height,
+              currentScreenW: entry.contentRect.width,
+            })
+          }
+        }
+      })
+      const observedElement = document.getElementById(`observed-${observedId}`)
+      if (!observedElement) return
+      resizeObserver.observe(observedElement)
+    }
+  })
   const RenderRoot = slots?.root ? slots.root : 'div'
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
   }
-
   return (
     <>
       {open &&
@@ -71,6 +103,7 @@ export default function Popover({
             })}
           >
             <div
+              id={`observed-${observedId}`}
               onClick={onClose}
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
