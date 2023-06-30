@@ -48,7 +48,8 @@ export default function RenderComponent({
 RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
   // const triggerRef = useRef<HTMLDivElement>(null);
-  const [positioned, setPosition] = useState({ x: 0, y: 0 })
+  // const [positioned, setPosition] = useState({ x: 0, y: 0 })
+  const [location, setLocation] = useState<DOMRect>()
   const [popoverSize, setpopoverSize] = useState<{
     height: number
     width: number
@@ -79,10 +80,11 @@ RenderComponentProps) {
   const updatePosition = () => {
     if (anchorEl) {
       const rect = resolveAnchorEl(anchorEl).getBoundingClientRect()
-      setPosition({
-        x: rect.left + window.scrollX,
-        y: rect.top + window.scrollY,
-      })
+      setLocation(rect)
+      // setPosition({
+      //   x: rect.left + window.scrollX,
+      //   y: rect.top + window.scrollY,
+      // })
     }
     animationFrameId = requestAnimationFrame(updatePosition)
   }
@@ -91,10 +93,10 @@ RenderComponentProps) {
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }
-  const location = anchorEl
-    ? resolveAnchorEl(anchorEl).getBoundingClientRect()
-    : undefined
-  console.log(location)
+  // const location = anchorEl
+  //   ? resolveAnchorEl(anchorEl).getBoundingClientRect()
+  //   : undefined
+  // console.log(location)
   const position = setPopoverPosition(
     anchorReference,
     marginThreshold,

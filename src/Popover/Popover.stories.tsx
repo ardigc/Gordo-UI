@@ -22,7 +22,7 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
 
   return (
     <>
-      <div className="flex justify-center h-52 items-center">
+      <div className="flex justify-center h-56 items-center">
         <Button onClick={handleClick}>click aqui</Button>
         <Popover
           onClose={() => setOpen(false)}
