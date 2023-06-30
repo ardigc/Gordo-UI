@@ -25,13 +25,13 @@ interface RenderComponentProps {
     vertical?: 'bottom' | 'center' | 'top'
   }
   slots?: { paper?: ElementType; root?: ElementType }
-  screenVariation?: {
-    initialScreenW: number | null
-    initialScreenH: number | null
-    currentScreenW: number | null
-    currentScreenH: number | null
-  }
-  id: string
+  // screenVariation?: {
+  //   initialScreenW: number | null
+  //   initialScreenH: number | null
+  //   currentScreenW: number | null
+  //   currentScreenH: number | null
+  // }
+  // id: string
 }
 export default function RenderComponent({
   children,
@@ -43,10 +43,12 @@ export default function RenderComponent({
   anchorReference,
   anchorOrigin,
   slots,
-  screenVariation,
-  id,
-}: RenderComponentProps) {
+}: // screenVariation,
+// id,
+RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
+  // const triggerRef = useRef<HTMLDivElement>(null);
+  const [positioned, setPosition] = useState({ x: 0, y: 0 })
   const [popoverSize, setpopoverSize] = useState<{
     height: number
     width: number
@@ -59,13 +61,32 @@ export default function RenderComponent({
     setTimeout(() => {
       popover.style.opacity = '1' // Establecer opacidad completa después de 100ms
     }, 1)
-
     setpopoverSize({
       height: popover.offsetHeight,
       width: popover.offsetWidth,
     })
+    animationFrameId = requestAnimationFrame(updatePosition)
+    // updatePosition()
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
   }, [])
   const { placement } = useContext(TooltipContext)
+  let animationFrameId: number | null = null
+
+  const updatePosition = () => {
+    if (anchorEl) {
+      const rect = resolveAnchorEl(anchorEl).getBoundingClientRect()
+      setPosition({
+        x: rect.left + window.scrollX,
+        y: rect.top + window.scrollY,
+      })
+    }
+    animationFrameId = requestAnimationFrame(updatePosition)
+  }
+
   const RenderComponent = slots?.paper ? slots.paper : 'div'
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
@@ -73,6 +94,7 @@ export default function RenderComponent({
   const location = anchorEl
     ? resolveAnchorEl(anchorEl).getBoundingClientRect()
     : undefined
+  console.log(location)
   const position = setPopoverPosition(
     anchorReference,
     marginThreshold,
@@ -85,20 +107,20 @@ export default function RenderComponent({
 
   return (
     <RenderComponent
-      id={id}
+      // id={id}
       ref={popoverRef}
       style={{
         top: position?.top
           ? position?.top + topMargin(placement)
           : position?.top,
         left: position?.left
-          ? position?.left +
-            leftMargin(placement) -
-            (screenVariation?.currentScreenW && screenVariation.initialScreenW
-              ? screenVariation?.initialScreenW -
-                screenVariation?.initialScreenW
-              : 0)
-          : position?.left,
+          ? position?.left + leftMargin(placement)
+          : // -
+            // (screenVariation?.currentScreenW && screenVariation.initialScreenW
+            //   ? screenVariation?.initialScreenW -
+            //     screenVariation?.initialScreenW
+            //   : 0)
+            position?.left,
         // translate: `${position?.transformX} ${position?.transformY}`,
       }}
       className={classNames({ [className || '']: className })}

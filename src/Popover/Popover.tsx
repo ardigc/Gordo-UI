@@ -53,47 +53,47 @@ export default function Popover({
 }: PopoverProps) {
   // const popoverRef = useRef<HTMLElement>(null)
   // const [popoverRef, setPopoverRef] = useState<HTMLElement>()
-  const observedId = useId()
-  const [screenVariation, setScreenVariation] = useState<{
-    initialScreenW: number | null
-    initialScreenH: number | null
-    currentScreenW: number | null
-    currentScreenH: number | null
-  }>({
-    initialScreenW: null,
-    initialScreenH: null,
-    currentScreenW: null,
-    currentScreenH: null,
-  })
-  useEffect(() => {
-    if (open) {
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          console.log(entry)
-          if (
-            screenVariation.initialScreenW === null ||
-            screenVariation.initialScreenH === null
-          ) {
-            setScreenVariation({
-              initialScreenW: entry.contentRect.width,
-              initialScreenH: entry.contentRect.height,
-              currentScreenH: entry.contentRect.height,
-              currentScreenW: entry.contentRect.width,
-            })
-          } else {
-            setScreenVariation((prev) => ({
-              ...prev,
-              currentScreenH: entry.contentRect.height,
-              currentScreenW: entry.contentRect.width,
-            }))
-          }
-        }
-      })
-      const observedElement = document.getElementById(`observed-${observedId}`)
-      if (!observedElement) return
-      resizeObserver.observe(observedElement)
-    }
-  })
+  // const observedId = useId()
+  // const [screenVariation, setScreenVariation] = useState<{
+  //   initialScreenW: number | null
+  //   initialScreenH: number | null
+  //   currentScreenW: number | null
+  //   currentScreenH: number | null
+  // }>({
+  //   initialScreenW: null,
+  //   initialScreenH: null,
+  //   currentScreenW: null,
+  //   currentScreenH: null,
+  // })
+  // useEffect(() => {
+  //   if (open) {
+  //     const resizeObserver = new ResizeObserver((entries) => {
+  //       for (const entry of entries) {
+  //         console.log(entry)
+  //         if (
+  //           screenVariation.initialScreenW === null ||
+  //           screenVariation.initialScreenH === null
+  //         ) {
+  //           setScreenVariation({
+  //             initialScreenW: entry.contentRect.width,
+  //             initialScreenH: entry.contentRect.height,
+  //             currentScreenH: entry.contentRect.height,
+  //             currentScreenW: entry.contentRect.width,
+  //           })
+  //         } else {
+  //           setScreenVariation((prev) => ({
+  //             ...prev,
+  //             currentScreenH: entry.contentRect.height,
+  //             currentScreenW: entry.contentRect.width,
+  //           }))
+  //         }
+  //       }
+  //     })
+  //     const observedElement = document.getElementById(`observed-${observedId}`)
+  //     if (!observedElement) return
+  //     resizeObserver.observe(observedElement)
+  //   }
+  // })
   const RenderRoot = slots?.root ? slots.root : 'div'
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
@@ -115,14 +115,14 @@ export default function Popover({
             ></div>
             <RenderComponent
               {...slotProps?.paper}
-              id={`observed-${observedId}`}
+              // id={`observed-${observedId}`}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
               slots={slots}
               anchorPosition={anchorPosition}
               anchorReference={anchorReference}
               transformOrigin={transformOrigin}
-              screenVariation={screenVariation}
+              // screenVariation={screenVariation}
               anchorOrigin={anchorOrigin}
               className={classNames('absolute  bg-white rounded-[4px]  ', {
                 'animate-grow': !disableTransition,
