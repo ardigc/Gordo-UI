@@ -22,31 +22,31 @@ const TestFunc = ({ args }: { args: PopoverProps }) => {
 
   return (
     <>
-      <Button onClick={handleClick} className="ml-64 mt-36">
-        click aqui
-      </Button>
-      <Popover
-        onClose={() => setOpen(false)}
-        anchorOrigin={args.anchorOrigin}
-        transformOrigin={args.transformOrigin}
-        anchorReference={args.anchorReference}
-        anchorPosition={args.anchorPosition}
-        anchorEl={anchorEl}
-        open={open}
-        className={args.className}
-        container={args.container}
-        elevation={args.elevation}
-        marginThreshold={args.marginThreshold}
-        slots={args.slots}
-        disableTransition={args.disableTransition}
-      >
-        <p
-          id="hola"
-          className={classNames('font-base text-base font-normal  p-4')}
+      <div className="flex justify-center h-52 items-center">
+        <Button onClick={handleClick}>click aqui</Button>
+        <Popover
+          onClose={() => setOpen(false)}
+          anchorOrigin={args.anchorOrigin}
+          transformOrigin={args.transformOrigin}
+          anchorReference={args.anchorReference}
+          anchorPosition={args.anchorPosition}
+          anchorEl={anchorEl}
+          open={open}
+          className={args.className}
+          container={args.container}
+          elevation={args.elevation}
+          marginThreshold={args.marginThreshold}
+          slots={args.slots}
+          disableTransition={args.disableTransition}
         >
-          The content of the Popover.
-        </p>
-      </Popover>
+          <p
+            id="hola"
+            className={classNames('font-base text-base font-normal  p-4')}
+          >
+            The content of the Popover.
+          </p>
+        </Popover>
+      </div>
     </>
   )
 }

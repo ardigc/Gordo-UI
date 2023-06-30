@@ -13,7 +13,12 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
   return (
     <>
       <div className="flex justify-center h-56 items-center">
-        <Tooltip title={args.title} open={args.open} placement={args.placement}>
+        <Tooltip
+          title={args.title}
+          disableTransition={args.disableTransition}
+          open={args.open}
+          placement={args.placement}
+        >
           <div>hola</div>
         </Tooltip>
       </div>
@@ -28,5 +33,6 @@ export const testButton: Story = {
     title: 'Delete',
     placement: 'left-start',
     open: true,
+    disableTransition: false,
   },
 }

@@ -40,12 +40,14 @@ export interface TooltipProps {
     | 'top-start'
     | 'top'
   open?: boolean
+  disableTransition?: boolean
 }
 export default function Tooltip({
   children,
   title,
   placement,
   open,
+  disableTransition,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const [opened, setOpen] = useState(open ? open : false)
@@ -141,10 +143,11 @@ export default function Tooltip({
           elevation={0}
           // className='bg-transparent'
           classes={{ root: 'pointer-events-none' }}
+          disableTransition={disableTransition}
         >
           <div
             className={classNames(
-              'bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
+              'bocadillo bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
               {
                 'mt-[14px] ':
                   placement === 'bottom' ||

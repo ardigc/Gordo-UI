@@ -53,3 +53,13 @@
 .mini-label-text-field-filled {
   transform: translate(12px, 4px) scale(0.75);
 }
+.bocadillo::before {
+  border: 25px solid white;
+  content: '';
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  bottom: -48px;
+  left: calc(50% - 25px);
+}
