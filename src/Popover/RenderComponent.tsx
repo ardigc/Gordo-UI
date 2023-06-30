@@ -25,6 +25,13 @@ interface RenderComponentProps {
     vertical?: 'bottom' | 'center' | 'top'
   }
   slots?: { paper?: ElementType; root?: ElementType }
+  screenVariation?: {
+    initialScreenW: number | null
+    initialScreenH: number | null
+    currentScreenW: number | null
+    currentScreenH: number | null
+  }
+  id: string
 }
 export default function RenderComponent({
   children,
@@ -36,6 +43,8 @@ export default function RenderComponent({
   anchorReference,
   anchorOrigin,
   slots,
+  screenVariation,
+  id,
 }: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
   const [popoverSize, setpopoverSize] = useState<{
@@ -44,7 +53,6 @@ export default function RenderComponent({
   }>()
   useEffect(() => {
     if (!open) return
-
     const popover = popoverRef.current
     if (!popover) return
     popover.style.opacity = '0' // Establecer opacidad inicial
@@ -77,13 +85,19 @@ export default function RenderComponent({
 
   return (
     <RenderComponent
+      id={id}
       ref={popoverRef}
       style={{
         top: position?.top
           ? position?.top + topMargin(placement)
           : position?.top,
         left: position?.left
-          ? position?.left + leftMargin(placement)
+          ? position?.left +
+            leftMargin(placement) -
+            (screenVariation?.currentScreenW && screenVariation.initialScreenW
+              ? screenVariation?.initialScreenW -
+                screenVariation?.initialScreenW
+              : 0)
           : position?.left,
         // translate: `${position?.transformX} ${position?.transformY}`,
       }}

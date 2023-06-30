@@ -69,6 +69,7 @@ export default function Popover({
     if (open) {
       const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
+          console.log(entry)
           if (
             screenVariation.initialScreenW === null ||
             screenVariation.initialScreenH === null
@@ -79,6 +80,12 @@ export default function Popover({
               currentScreenH: entry.contentRect.height,
               currentScreenW: entry.contentRect.width,
             })
+          } else {
+            setScreenVariation((prev) => ({
+              ...prev,
+              currentScreenH: entry.contentRect.height,
+              currentScreenW: entry.contentRect.width,
+            }))
           }
         }
       })
@@ -103,18 +110,19 @@ export default function Popover({
             })}
           >
             <div
-              id={`observed-${observedId}`}
               onClick={onClose}
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
             <RenderComponent
               {...slotProps?.paper}
+              id={`observed-${observedId}`}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
               slots={slots}
               anchorPosition={anchorPosition}
               anchorReference={anchorReference}
               transformOrigin={transformOrigin}
+              screenVariation={screenVariation}
               anchorOrigin={anchorOrigin}
               className={classNames('absolute  bg-white rounded-[4px]  ', {
                 'animate-grow': !disableTransition,
