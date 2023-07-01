@@ -59,8 +59,10 @@
   border-left-color: transparent;
   border-bottom-color: transparent;
   border-right-color: transparent;
+  /* display: flex; */
+
   position: absolute;
   scale: 0.2;
   /* bottom: -px; */
-  left: calc(50% - 25px);
+  left: calc(20% - 25px);
 }

@@ -149,6 +149,7 @@ export default function Tooltip({
             className={classNames(
               'bocadillo bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base before:border-t-neutral-500',
               {
+                // 'before:left-[calc(0%)]':true,
                 'mt-[14px] ':
                   placement === 'bottom' ||
                   placement === 'bottom-start' ||
