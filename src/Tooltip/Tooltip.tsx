@@ -151,6 +151,7 @@ export default function Tooltip({
           disableTransition={disableTransition}
         >
           <div
+         
             className={classNames(
               'bocadillo bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base before:border-t-neutral-500',
               {
