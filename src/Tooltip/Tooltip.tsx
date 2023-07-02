@@ -1,8 +1,10 @@
 import {
+  Dispatch,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
   ReactNode,
+  SetStateAction,
   createContext,
   useState,
 } from 'react'
@@ -22,6 +24,7 @@ export const TooltipContext = createContext<{
     | 'top-end'
     | 'top-start'
     | 'top'
+    setAnchorRect?:Dispatch<SetStateAction<DOMRect|undefined>>
 }>({})
 export interface TooltipProps {
   children: ReactNode
@@ -41,6 +44,7 @@ export interface TooltipProps {
     | 'top'
   open?: boolean
   disableTransition?: boolean
+
 }
 export default function Tooltip({
   children,
@@ -50,6 +54,7 @@ export default function Tooltip({
   disableTransition,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
+  const [anchorRect, setAnchorRect] =useState<DOMRect|undefined>()
   const [opened, setOpen] = useState(open ? open : false)
   // console.log(opened)
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
@@ -128,7 +133,7 @@ export default function Tooltip({
   }
   return (
     <div className="inline-flex">
-      <TooltipContext.Provider value={{ placement }}>
+      <TooltipContext.Provider value={{ placement, setAnchorRect }}>
         <Popover
           open={opened}
           anchorOrigin={{
