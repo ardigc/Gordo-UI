@@ -6,6 +6,8 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useEffect,
+  useRef,
   useState,
 } from 'react'
 import Popover from '../Popover/Popover'
@@ -25,14 +27,14 @@ export const TooltipContext = createContext<{
     | 'top-start'
     | 'top'
   // setAnchorRect?: Dispatch<SetStateAction<DOMRect | undefined>>
-  setPopoverPosition?: Dispatch<
-    SetStateAction<{
-      height: number
-      width: number
-      top: number
-      left: number
-    }>
-  >
+  // setContextPopoverPosition?: Dispatch<
+  //   SetStateAction<{
+  //     height: number
+  //     width: number
+  //     top: number
+  //     left: number
+  //   }|undefined>
+  // >
 }>({})
 export interface TooltipProps {
   children: ReactNode
@@ -62,14 +64,27 @@ export default function Tooltip({
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const [anchorRect, setAnchorRect] = useState<DOMRect | undefined>()
-  const [popoverPosition, setPopoverPosition] = useState<{
+  const popoverRef = useRef<HTMLDivElement>(null)
+  const [popoverPosition, setContextPopoverPosition] = useState<{
     height: number
     width: number
     top: number
     left: number
   }>()
   const [opened, setOpen] = useState(open ? open : false)
-  // console.log(opened)
+  // useEffect(()=>{
+  //   const popover = popoverRef.current
+  //   if (!popover) return
+
+  //   console.log(popover.getBoundingClientRect())
+  //   console.log('hola',popoverPosition)
+  //    setContextPopoverPosition({
+  //       height: popover.offsetHeight,
+  //       width: popover.offsetWidth,
+  //       left: popover.offsetLeft,
+  //       top:popover.offsetTop,
+  //   })
+  // })
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
     setAnchorRect(ev.currentTarget.getBoundingClientRect())
@@ -140,11 +155,20 @@ export default function Tooltip({
     } else if (placement === 'top-end') {
       return { vertical: 'bottom', horizontal: 'center' }
     } else if (placement === 'top-start') {
-      return { vertical: 'bottom', horizontal: 'center' }
+      return { vertical: 'bottom', horizontal: 'left' }
     } else {
       return { vertical: 'top', horizontal: 'center' }
     }
   }
+  // const calcArrowPosition=()=>{
+  //   if (anchorRect&&popoverPosition) {
+
+  //     // console.log(anchorRect.left, popoverPosition.left)
+  //     const x = (anchorRect?.left-popoverPosition?.left)
+  //     // console.log(x)
+  //     return x
+  //   }
+  // }
   return (
     <div className="inline-flex">
       <TooltipContext.Provider value={{ placement }}>
@@ -165,6 +189,7 @@ export default function Tooltip({
           disableTransition={disableTransition}
         >
           <div
+            ref={popoverRef}
             className={classNames(
               ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base',
               {
@@ -184,10 +209,12 @@ export default function Tooltip({
           >
             {title}
             <span
-              // style={{transform:'translate(-250%, 0%)',}}
+              // style={{transform:`translate(${calcArrowPosition()}px, 0%)`,}}
               className={classNames('bocadillo ', {
-                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] top-0 translate-x-[-250%]':
+                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-1/2':
                   placement === 'top',
+                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-[10%]':
+                  placement === 'top-start',
               })}
             ></span>
           </div>

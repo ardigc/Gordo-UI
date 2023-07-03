@@ -67,6 +67,16 @@ RenderComponentProps) {
       height: popover.offsetHeight,
       width: popover.offsetWidth,
     })
+    //   if (setContextPopoverPosition) {
+
+    //     setContextPopoverPosition({
+    //       height: popover.offsetHeight,
+    //       width: popover.offsetWidth,
+    //       left: popover.offsetLeft,
+    //       top:popover.offsetTop,
+
+    //   })
+    // }
     animationFrameId = requestAnimationFrame(updatePosition)
     // updatePosition()
     return () => {
