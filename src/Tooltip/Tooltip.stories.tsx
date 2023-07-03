@@ -145,14 +145,14 @@ export const testButton3: Story = {
       </div>
     ),
     placement: 'top-start',
-    open: true,
+    open: false,
     disableTransition: false,
     arrow: true,
     followCursor: false,
     classes: {},
     components: {},
-    disableFocusListener: false,
-    disableHoverListener: false,
+    disableFocusListener: true,
+    disableHoverListener: true,
     disableTouchListener: false,
   },
 }
