@@ -1,5 +1,6 @@
 import {
   ElementType,
+  FocusEventHandler,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
@@ -61,6 +62,8 @@ export interface TooltipProps {
     popper?: object
     tooltip?: object
   }
+  disableFocusListener?: boolean
+  disableHoverListener?: boolean
 }
 export default function Tooltip({
   children,
@@ -73,6 +76,8 @@ export default function Tooltip({
   classes,
   components,
   componentsProps,
+  disableFocusListener,
+  disableHoverListener,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -82,13 +87,26 @@ export default function Tooltip({
   const PopperComponent = components?.Popper ? components.Popper : Popover
   const TooltipComponent = components?.Tooltip ? components.Tooltip : 'div'
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
+    if (disableHoverListener) return
+    if (!followCursor) {
+      setAnchorEl(ev.currentTarget)
+    }
+    setOpen(true)
+  }
+  const onFocusHandler: FocusEventHandler<HTMLDivElement> = (ev) => {
+    if (disableFocusListener) return
     if (!followCursor) {
       setAnchorEl(ev.currentTarget)
     }
     setOpen(true)
   }
 
-  const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
+  const onMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
+    if (!open) {
+      setOpen(false)
+    }
+  }
+  const onBlurHandler: FocusEventHandler<HTMLDivElement> = () => {
     if (!open) {
       setOpen(false)
     }
@@ -237,8 +255,11 @@ export default function Tooltip({
         </PopperComponent>
       </TooltipContext.Provider>
       <div
+        tabIndex={1}
         onMouseEnter={onMouseEnterHandler}
-        onMouseLeave={OnMouseLeaveHandler}
+        onFocus={onFocusHandler}
+        onMouseLeave={onMouseLeaveHandler}
+        onBlur={onBlurHandler}
         onMouseMove={onMouseMoveHandler}
       >
         {children}
