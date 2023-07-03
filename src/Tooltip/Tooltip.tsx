@@ -75,7 +75,7 @@ export default function Tooltip({
   }
   const onMouseMoveHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     if (followCursor) {
-      console.log(ev.clientX, ev.clientY)
+      setMouseMove({ x: ev.clientX, y: ev.clientY })
     }
   }
   const anchorOrigin = (): {

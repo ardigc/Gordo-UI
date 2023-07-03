@@ -54,7 +54,7 @@ RenderComponentProps) {
     height: number
     width: number
   }>()
-  const { placement } = useContext(TooltipContext)
+  const { placement, mouseMove } = useContext(TooltipContext)
   useEffect(() => {
     if (!open) return
     const popover = popoverRef.current
@@ -118,7 +118,8 @@ RenderComponentProps) {
     anchorOrigin,
     anchorPosition,
     location,
-    popoverSize
+    popoverSize,
+    mouseMove
   )
 
   return (

@@ -107,24 +107,40 @@ const setPopoverPositionTopPosition = (
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   },
-  popoverSize?: { height: number; width: number }
+  popoverSize?: { height: number; width: number },
+  mouseMove?: { x: number; y: number }
 ) => {
-  if (
-    !anchorPosition ||
-    !anchorPosition.top ||
-    !transformOrigin ||
-    !transformOrigin.vertical ||
-    !popoverSize
-  )
-    return 0
-  if (transformOrigin.vertical === 'top' && anchorPosition) {
-    return anchorPosition.top
-  } else if (transformOrigin.vertical === 'center') {
-    return anchorPosition.top - popoverSize.height / 2
-  } else if (transformOrigin.vertical === 'bottom') {
-    return anchorPosition.top - popoverSize.height
+  console.log(mouseMove)
+  if (mouseMove) {
+    if (!transformOrigin || !transformOrigin.vertical || !popoverSize) return 0
+    if (transformOrigin.vertical === 'top') {
+      return mouseMove.y
+    } else if (transformOrigin.vertical === 'center') {
+      return mouseMove.y - popoverSize.height / 2
+    } else if (transformOrigin.vertical === 'bottom') {
+      return mouseMove.y - popoverSize.height
+    } else {
+      return 0
+    }
   } else {
-    return 0
+    if (
+      !anchorPosition ||
+      !anchorPosition.top ||
+      !transformOrigin ||
+      !transformOrigin.vertical ||
+      !popoverSize
+    )
+      return 0
+
+    if (transformOrigin.vertical === 'top' && anchorPosition) {
+      return anchorPosition.top
+    } else if (transformOrigin.vertical === 'center') {
+      return anchorPosition.top - popoverSize.height / 2
+    } else if (transformOrigin.vertical === 'bottom') {
+      return anchorPosition.top - popoverSize.height
+    } else {
+      return 0
+    }
   }
 }
 const setPopoverPositionLeftPosition = (
@@ -133,24 +149,38 @@ const setPopoverPositionLeftPosition = (
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   },
-  popoverSize?: { height: number; width: number }
+  popoverSize?: { height: number; width: number },
+  mouseMove?: { x: number; y: number }
 ) => {
-  if (
-    !anchorPosition ||
-    !anchorPosition.left ||
-    !transformOrigin ||
-    !transformOrigin.vertical ||
-    !popoverSize
-  )
-    return 0
-  if (transformOrigin.horizontal === 'left' && anchorPosition) {
-    return anchorPosition.left
-  } else if (transformOrigin.horizontal === 'center') {
-    return anchorPosition.left - popoverSize.width / 2
-  } else if (transformOrigin.horizontal === 'right') {
-    return anchorPosition.left - popoverSize.width
+  if (mouseMove) {
+    if (!transformOrigin || !transformOrigin.vertical || !popoverSize) return 0
+    if (transformOrigin.horizontal === 'left') {
+      return mouseMove.x
+    } else if (transformOrigin.horizontal === 'center') {
+      return mouseMove.x - popoverSize.width / 2
+    } else if (transformOrigin.horizontal === 'right') {
+      return mouseMove.x - popoverSize.width
+    } else {
+      return 0
+    }
   } else {
-    return 0
+    if (
+      !anchorPosition ||
+      !anchorPosition.left ||
+      !transformOrigin ||
+      !transformOrigin.vertical ||
+      !popoverSize
+    )
+      return 0
+    if (transformOrigin.horizontal === 'left' && anchorPosition) {
+      return anchorPosition.left
+    } else if (transformOrigin.horizontal === 'center') {
+      return anchorPosition.left - popoverSize.width / 2
+    } else if (transformOrigin.horizontal === 'right') {
+      return anchorPosition.left - popoverSize.width
+    } else {
+      return 0
+    }
   }
 }
 export const setPopoverPosition = (
@@ -166,9 +196,10 @@ export const setPopoverPosition = (
   },
   anchorPosition?: { left?: number; top?: number },
   location?: DOMRect,
-  popoverSize?: { height: number; width: number }
+  popoverSize?: { height: number; width: number },
+  mouseMove?: { x: number; y: number }
 ) => {
-  if (anchorReference === 'anchorEl') {
+  if (anchorReference === 'anchorEl' && !mouseMove) {
     // const currentRef = popoverRef?.getBoundingClientRect()
     if (!popoverSize) return
     const top = setPopoverTopPosition(
@@ -190,13 +221,17 @@ export const setPopoverPosition = (
     // const transformY = setPopoverTransformY(currentRef)
     // console.log(transformX, transformY)
     return { top: top, left: left }
-  } else if (anchorReference === 'anchorPosition' && anchorPosition) {
+  } else if (
+    anchorReference === 'anchorPosition' ||
+    (mouseMove && anchorPosition)
+  ) {
     const top = Math.max(
       marginThreshold,
       setPopoverPositionTopPosition(
         anchorPosition,
         transformOrigin,
-        popoverSize
+        popoverSize,
+        mouseMove
       )
     )
     const left = Math.max(
@@ -204,7 +239,8 @@ export const setPopoverPosition = (
       setPopoverPositionLeftPosition(
         anchorPosition,
         transformOrigin,
-        popoverSize
+        popoverSize,
+        mouseMove
       )
     )
     // const currentRef = popoverRef?.getBoundingClientRect()
