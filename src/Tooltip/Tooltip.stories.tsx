@@ -30,7 +30,7 @@ export const testButton: Story = {
   render: (args) => <TestButtonFunc args={args} />,
   args: {
     children: <div>hola</div>,
-    title: 'Delete',
+    title: 'Deletdhgsgdgdgddgdgdgdgdggde',
     placement: 'left-start',
     open: true,
     disableTransition: false,

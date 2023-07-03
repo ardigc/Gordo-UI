@@ -171,7 +171,8 @@ export default function Tooltip({
           >
             {title}
             <span
-            style={{left: anchorRect?.left+anchorRect?.width/2}} className={classNames('bocadillo border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px]')}></span>
+            style={{transform:'translate(-250%, 0%)',}}
+             className={classNames('bocadillo border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] left-1/2')}></span>
           </div>
         </Popover>
       </TooltipContext.Provider>
