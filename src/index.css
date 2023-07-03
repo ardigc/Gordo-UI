@@ -56,13 +56,13 @@
 .bocadillo {
   /* border: 25px solid; */
   content: '';
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
+  /* border-left-color: transparent; */
+  /* border-bottom-color: transparent; */
+  /* border-right-color: transparent; */
   /* display: flex; */
 
   position: absolute;
   scale: 0.2;
-  bottom: 0px;
+  /* bottom: 0px; */
   left: calc(20% - 25px);
 }
