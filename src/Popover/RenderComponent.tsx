@@ -62,7 +62,7 @@ RenderComponentProps) {
     popover.style.opacity = '0' // Establecer opacidad inicial
     setTimeout(() => {
       popover.style.opacity = '1' // Establecer opacidad completa después de 100ms
-    }, 1)
+    }, 50)
     setpopoverSize({
       height: popover.offsetHeight,
       width: popover.offsetWidth,

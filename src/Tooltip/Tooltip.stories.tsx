@@ -119,7 +119,7 @@ export const testButton3: Story = {
       </div>
     ),
     placement: 'top-start',
-    // open: true,
+    open: true,
     disableTransition: false,
     arrow: true,
     followCursor: false,

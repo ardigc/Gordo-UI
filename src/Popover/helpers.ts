@@ -108,20 +108,7 @@ const setPopoverPositionTopPosition = (
     vertical?: 'bottom' | 'center' | 'top'
   },
   popoverSize?: { height: number; width: number },
-  mouseMove?: { x: number; y: number },
-  placement?:
-    | 'bottom-end'
-    | 'bottom-start'
-    | 'bottom'
-    | 'left-end'
-    | 'left-start'
-    | 'left'
-    | 'right-end'
-    | 'right-start'
-    | 'right'
-    | 'top-end'
-    | 'top-start'
-    | 'top'
+  mouseMove?: { x: number; y: number }
 ) => {
   console.log(mouseMove)
   if (mouseMove) {
@@ -181,11 +168,37 @@ const setPopoverPositionLeftPosition = (
   if (mouseMove) {
     if (!transformOrigin || !transformOrigin.vertical || !popoverSize) return 0
     if (transformOrigin.horizontal === 'left') {
-      return mouseMove.x
+      return (
+        mouseMove.x +
+        (placement === 'bottom-end' ||
+        placement === 'bottom-start' ||
+        placement === 'top-end' ||
+        placement === 'top-start'
+          ? -15
+          : 0)
+      )
     } else if (transformOrigin.horizontal === 'center') {
-      return mouseMove.x - popoverSize.width / 2
+      return (
+        mouseMove.x -
+        popoverSize.width / 2 +
+        (placement === 'bottom-end' ||
+        placement === 'bottom-start' ||
+        placement === 'top-end' ||
+        placement === 'top-start'
+          ? 15
+          : 0)
+      )
     } else if (transformOrigin.horizontal === 'right') {
-      return mouseMove.x - popoverSize.width
+      return (
+        mouseMove.x -
+        popoverSize.width +
+        (placement === 'bottom-end' ||
+        placement === 'bottom-start' ||
+        placement === 'top-end' ||
+        placement === 'top-start'
+          ? 15
+          : 0)
+      )
     } else {
       return 0
     }
@@ -270,8 +283,7 @@ export const setPopoverPosition = (
         anchorPosition,
         transformOrigin,
         popoverSize,
-        mouseMove,
-        placement
+        mouseMove
       )
     )
     const left = Math.max(
