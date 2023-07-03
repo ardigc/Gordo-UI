@@ -40,7 +40,7 @@ export const testButton: Story = {
       </div>
     ),
     title: 'Deletdhgsgdgdgddgdgdgdgdggde',
-    placement: 'right',
+    placement: 'left',
     // open: true,
     disableTransition: false,
     arrow: true,
@@ -72,7 +72,7 @@ export const testButton2: Story = {
   args: {
     children: <div>hola</div>,
     title: 'De',
-    placement: 'right-end',
+    placement: 'left-end',
     // open: true,
     disableTransition: false,
     arrow: true,
@@ -113,7 +113,7 @@ export const testButton3: Story = {
         <p>akldfalkfalskfalsfkaslfk</p>
       </div>
     ),
-    placement: 'right-start',
+    placement: 'left-start',
     // open: true,
     disableTransition: false,
     arrow: true,

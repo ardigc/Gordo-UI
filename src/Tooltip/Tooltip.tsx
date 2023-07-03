@@ -133,9 +133,9 @@ export default function Tooltip({
     } else if (placement === 'left') {
       return { vertical: 'center', horizontal: 'right' }
     } else if (placement === 'left-end') {
-      return { vertical: 'center', horizontal: 'right' }
+      return { vertical: 'bottom', horizontal: 'right' }
     } else if (placement === 'left-start') {
-      return { vertical: 'center', horizontal: 'right' }
+      return { vertical: 'top', horizontal: 'right' }
     } else if (placement === 'right') {
       return { vertical: 'center', horizontal: 'left' }
     } else if (placement === 'right-end') {
@@ -221,6 +221,12 @@ export default function Tooltip({
                   arrow && placement === 'right-end',
                 'border-neutral-500 border-t-transparent border-l-transparent border-b-transparent border-[25px] translate-x-[-150%] translate-y-[250%] bottom-[calc(100%-8px)] left-0':
                   arrow && placement === 'right-start',
+                'border-neutral-500 border-t-transparent border-r-transparent border-b-transparent border-[25px] translate-x-[300%] translate-y-[250%] bottom-1/2 right-0':
+                  arrow && placement === 'left',
+                'border-neutral-500 border-t-transparent border-r-transparent border-b-transparent border-[25px] translate-x-[300%] translate-y-[250%] bottom-2 right-0':
+                  arrow && placement === 'left-end',
+                'border-neutral-500 border-t-transparent border-r-transparent border-b-transparent border-[25px] translate-x-[300%] translate-y-[250%] bottom-[calc(100%-8px)] right-0':
+                  arrow && placement === 'left-start',
               })}
             ></span>
           </div>
