@@ -18,8 +18,12 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
           disableTransition={args.disableTransition}
           open={args.open}
           placement={args.placement}
+          arrow={args.arrow}
         >
-          <div>hola</div>
+          <div>
+            <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
+            <p>akjaksjasklfj</p>
+          </div>
         </Tooltip>
       </div>
     </>
@@ -29,11 +33,17 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
 export const testButton: Story = {
   render: (args) => <TestButtonFunc args={args} />,
   args: {
-    children: <div>hola</div>,
+    children: (
+      <div>
+        <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
+        <p>akjaksjasklfj</p>
+      </div>
+    ),
     title: 'Deletdhgsgdgdgddgdgdgdgdggde',
-    placement: 'top-end',
+    placement: 'right',
     // open: true,
     disableTransition: false,
+    arrow: true,
   },
 }
 const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
@@ -45,8 +55,12 @@ const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
           disableTransition={args.disableTransition}
           open={args.open}
           placement={args.placement}
+          arrow={args.arrow}
         >
-          <div>hola</div>
+          <div>
+            <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
+            <p>akjaksjasklfj</p>
+          </div>
         </Tooltip>
       </div>
     </>
@@ -58,9 +72,10 @@ export const testButton2: Story = {
   args: {
     children: <div>hola</div>,
     title: 'De',
-    placement: 'top-end',
+    placement: 'right-end',
     // open: true,
     disableTransition: false,
+    arrow: true,
   },
 }
 const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
@@ -72,8 +87,12 @@ const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
           disableTransition={args.disableTransition}
           open={args.open}
           placement={args.placement}
+          arrow={args.arrow}
         >
-          <div>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</div>
+          <div>
+            <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
+            <p>akjaksjasklfj</p>
+          </div>{' '}
         </Tooltip>
       </div>
     </>
@@ -85,8 +104,9 @@ export const testButton3: Story = {
   args: {
     children: <div>hola</div>,
     title: 'Deletdhgsgdgdgddgdgdgdgdggde',
-    placement: 'top-end',
+    placement: 'right-start',
     // open: true,
     disableTransition: false,
+    arrow: true,
   },
 }

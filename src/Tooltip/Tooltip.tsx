@@ -1,12 +1,9 @@
 import {
-  Dispatch,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
   ReactNode,
-  SetStateAction,
   createContext,
-  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -54,6 +51,7 @@ export interface TooltipProps {
     | 'top'
   open?: boolean
   disableTransition?: boolean
+  arrow?: boolean
 }
 export default function Tooltip({
   children,
@@ -61,16 +59,11 @@ export default function Tooltip({
   placement,
   open,
   disableTransition,
+  arrow,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
-  const [anchorRect, setAnchorRect] = useState<DOMRect | undefined>()
   const popoverRef = useRef<HTMLDivElement>(null)
-  const [popoverPosition, setContextPopoverPosition] = useState<{
-    height: number
-    width: number
-    top: number
-    left: number
-  }>()
+
   const [opened, setOpen] = useState(open ? open : false)
   // useEffect(()=>{
   //   const popover = popoverRef.current
@@ -87,7 +80,6 @@ export default function Tooltip({
   // })
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
-    setAnchorRect(ev.currentTarget.getBoundingClientRect())
     setOpen(true)
   }
 
@@ -133,9 +125,9 @@ export default function Tooltip({
     vertical: 'bottom' | 'center' | 'top'
   } => {
     if (placement === 'bottom-end') {
-      return { vertical: 'top', horizontal: 'center' }
+      return { vertical: 'top', horizontal: 'right' }
     } else if (placement === 'bottom-start') {
-      return { vertical: 'top', horizontal: 'center' }
+      return { vertical: 'top', horizontal: 'left' }
     } else if (placement === 'bottom') {
       return { vertical: 'top', horizontal: 'center' }
     } else if (placement === 'left') {
@@ -147,9 +139,9 @@ export default function Tooltip({
     } else if (placement === 'right') {
       return { vertical: 'center', horizontal: 'left' }
     } else if (placement === 'right-end') {
-      return { vertical: 'center', horizontal: 'right' }
+      return { vertical: 'bottom', horizontal: 'left' }
     } else if (placement === 'right-start') {
-      return { vertical: 'center', horizontal: 'left' }
+      return { vertical: 'top', horizontal: 'left' }
     } else if (placement === 'top') {
       return { vertical: 'bottom', horizontal: 'center' }
     } else if (placement === 'top-end') {
@@ -211,12 +203,24 @@ export default function Tooltip({
             <span
               // style={{transform:`translate(${calcArrowPosition()}px, 0%)`,}}
               className={classNames('bocadillo ', {
-                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-1/2':
-                  placement === 'top',
-                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-4':
-                  placement === 'top-start',
-                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-[calc(100%-16px)]':
-                  placement === 'top-end',
+                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-1/2':
+                  arrow && placement === 'top',
+                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-4':
+                  arrow && placement === 'top-start',
+                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-[calc(100%-16px)]':
+                  arrow && placement === 'top-end',
+                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-40%] translate-x-[-250%] bottom-0 left-1/2':
+                  arrow && placement === 'bottom',
+                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-40%] translate-x-[-250%] bottom-0 left-4':
+                  arrow && placement === 'bottom-start',
+                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-40%] translate-x-[-250%] bottom-0 left-[calc(100%-16px)]':
+                  arrow && placement === 'bottom-end',
+                'border-neutral-500 border-t-transparent border-l-transparent border-b-transparent border-[25px] translate-x-[-150%] translate-y-[250%] bottom-1/2 left-0':
+                  arrow && placement === 'right',
+                'border-neutral-500 border-t-transparent border-l-transparent border-b-transparent border-[25px] translate-x-[-150%] translate-y-[250%] bottom-2 left-0':
+                  arrow && placement === 'right-end',
+                'border-neutral-500 border-t-transparent border-l-transparent border-b-transparent border-[25px] translate-x-[-150%] translate-y-[250%] bottom-[calc(100%-8px)] left-0':
+                  arrow && placement === 'right-start',
               })}
             ></span>
           </div>
