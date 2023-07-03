@@ -108,7 +108,20 @@ const setPopoverPositionTopPosition = (
     vertical?: 'bottom' | 'center' | 'top'
   },
   popoverSize?: { height: number; width: number },
-  mouseMove?: { x: number; y: number }
+  mouseMove?: { x: number; y: number },
+  placement?:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top'
 ) => {
   console.log(mouseMove)
   if (mouseMove) {
@@ -150,7 +163,20 @@ const setPopoverPositionLeftPosition = (
     vertical?: 'bottom' | 'center' | 'top'
   },
   popoverSize?: { height: number; width: number },
-  mouseMove?: { x: number; y: number }
+  mouseMove?: { x: number; y: number },
+  placement?:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top'
 ) => {
   if (mouseMove) {
     if (!transformOrigin || !transformOrigin.vertical || !popoverSize) return 0
@@ -197,7 +223,20 @@ export const setPopoverPosition = (
   anchorPosition?: { left?: number; top?: number },
   location?: DOMRect,
   popoverSize?: { height: number; width: number },
-  mouseMove?: { x: number; y: number }
+  mouseMove?: { x: number; y: number },
+  placement?:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top'
 ) => {
   if (anchorReference === 'anchorEl' && !mouseMove) {
     // const currentRef = popoverRef?.getBoundingClientRect()
@@ -231,7 +270,8 @@ export const setPopoverPosition = (
         anchorPosition,
         transformOrigin,
         popoverSize,
-        mouseMove
+        mouseMove,
+        placement
       )
     )
     const left = Math.max(
@@ -240,7 +280,8 @@ export const setPopoverPosition = (
         anchorPosition,
         transformOrigin,
         popoverSize,
-        mouseMove
+        mouseMove,
+        placement
       )
     )
     // const currentRef = popoverRef?.getBoundingClientRect()

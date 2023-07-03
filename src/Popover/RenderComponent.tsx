@@ -119,7 +119,8 @@ RenderComponentProps) {
     anchorPosition,
     location,
     popoverSize,
-    mouseMove
+    mouseMove,
+    placement
   )
 
   return (
