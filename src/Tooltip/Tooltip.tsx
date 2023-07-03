@@ -1,4 +1,5 @@
 import {
+  ElementType,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
@@ -50,6 +51,11 @@ export interface TooltipProps {
     tooltip?: string
     popover?: string
   }
+  components?: {
+    Arrow?: ElementType
+    Popper?: ElementType
+    Tooltip?: ElementType
+  }
 }
 export default function Tooltip({
   children,
@@ -60,11 +66,15 @@ export default function Tooltip({
   arrow,
   followCursor,
   classes,
+  components,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
   const [opened, setOpen] = useState(open ? open : false)
   const [mouseMove, setMouseMove] = useState<{ x: number; y: number }>()
+  const ArrowComponent = components?.Arrow ? components.Arrow : 'span'
+  const PopperComponent = components?.Popper ? components.Popper : Popover
+  const TooltipComponent = components?.Tooltip ? components.Tooltip : 'div'
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     if (!followCursor) {
       setAnchorEl(ev.currentTarget)
@@ -150,7 +160,7 @@ export default function Tooltip({
   return (
     <div className="inline-flex">
       <TooltipContext.Provider value={{ placement, mouseMove }}>
-        <Popover
+        <PopperComponent
           open={opened}
           anchorOrigin={{
             vertical: anchorOrigin().vertical,
@@ -166,7 +176,7 @@ export default function Tooltip({
           classes={{ root: 'pointer-events-none' }}
           disableTransition={disableTransition}
         >
-          <div
+          <TooltipComponent
             ref={popoverRef}
             className={classNames(
               ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base',
@@ -184,7 +194,7 @@ export default function Tooltip({
             )}
           >
             {title}
-            <span
+            <ArrowComponent
               // style={{transform:`translate(${calcArrowPosition()}px, 0%)`,}}
               className={classNames('bocadillo ', {
                 'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[300%] translate-x-[-250%] bottom-0 left-1/2':
@@ -213,9 +223,9 @@ export default function Tooltip({
                   arrow && placement === 'left-start',
                 [classes?.arrow || '']: classes?.arrow,
               })}
-            ></span>
-          </div>
-        </Popover>
+            ></ArrowComponent>
+          </TooltipComponent>
+        </PopperComponent>
       </TooltipContext.Provider>
       <div
         onMouseEnter={onMouseEnterHandler}

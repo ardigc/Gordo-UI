@@ -20,6 +20,8 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
           placement={args.placement}
           arrow={args.arrow}
           followCursor={args.followCursor}
+          classes={args.classes}
+          components={args.components}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -46,6 +48,8 @@ export const testButton: Story = {
     disableTransition: false,
     arrow: true,
     followCursor: false,
+    classes: {},
+    components: {},
   },
 }
 const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
@@ -59,6 +63,8 @@ const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
           placement={args.placement}
           arrow={args.arrow}
           followCursor={args.followCursor}
+          classes={args.classes}
+          components={args.components}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -80,6 +86,8 @@ export const testButton2: Story = {
     disableTransition: false,
     arrow: true,
     followCursor: false,
+    classes: {},
+    components: {},
   },
 }
 const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
@@ -93,6 +101,8 @@ const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
           placement={args.placement}
           arrow={args.arrow}
           followCursor={args.followCursor}
+          classes={args.classes}
+          components={args.components}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -123,5 +133,7 @@ export const testButton3: Story = {
     disableTransition: false,
     arrow: true,
     followCursor: false,
+    classes: {},
+    components: {},
   },
 }
