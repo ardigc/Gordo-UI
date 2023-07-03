@@ -45,7 +45,7 @@ export const testButton: Story = {
     // open: true,
     disableTransition: false,
     arrow: true,
-    followCursor: true,
+    followCursor: false,
   },
 }
 const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
@@ -79,7 +79,7 @@ export const testButton2: Story = {
     // open: true,
     disableTransition: false,
     arrow: true,
-    followCursor: true,
+    followCursor: false,
   },
 }
 const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
@@ -122,6 +122,6 @@ export const testButton3: Story = {
     // open: true,
     disableTransition: false,
     arrow: true,
-    followCursor: true,
+    followCursor: false,
   },
 }

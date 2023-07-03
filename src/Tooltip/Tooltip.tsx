@@ -193,17 +193,17 @@ export default function Tooltip({
             <span
               // style={{transform:`translate(${calcArrowPosition()}px, 0%)`,}}
               className={classNames('bocadillo ', {
-                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-1/2':
+                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[300%] translate-x-[-250%] bottom-0 left-1/2':
                   arrow && placement === 'top',
-                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-4':
+                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[300%] translate-x-[-250%] bottom-0 left-4':
                   arrow && placement === 'top-start',
-                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-[calc(100%-16px)]':
+                'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[300%] translate-x-[-250%] bottom-0 left-[calc(100%-16px)]':
                   arrow && placement === 'top-end',
-                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-40%] translate-x-[-250%] bottom-0 left-1/2':
+                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-150%] translate-x-[-250%] top-0 left-1/2':
                   arrow && placement === 'bottom',
-                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-40%] translate-x-[-250%] bottom-0 left-4':
+                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-150%] translate-x-[-250%] top-0 left-4':
                   arrow && placement === 'bottom-start',
-                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-40%] translate-x-[-250%] bottom-0 left-[calc(100%-16px)]':
+                'border-neutral-500 border-t-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[-150%] translate-x-[-250%] top-0 left-[calc(100%-16px)]':
                   arrow && placement === 'bottom-end',
                 'border-neutral-500 border-t-transparent border-l-transparent border-b-transparent border-[25px] translate-x-[-150%] translate-y-[250%] bottom-1/2 left-0':
                   arrow && placement === 'right',
