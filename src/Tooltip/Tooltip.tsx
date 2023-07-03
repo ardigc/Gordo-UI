@@ -147,17 +147,17 @@ export default function Tooltip({
     } else if (placement === 'right') {
       return { vertical: 'center', horizontal: 'left' }
     } else if (placement === 'right-end') {
-      return { vertical: 'center', horizontal: 'left' }
+      return { vertical: 'center', horizontal: 'right' }
     } else if (placement === 'right-start') {
       return { vertical: 'center', horizontal: 'left' }
     } else if (placement === 'top') {
       return { vertical: 'bottom', horizontal: 'center' }
     } else if (placement === 'top-end') {
-      return { vertical: 'bottom', horizontal: 'center' }
+      return { vertical: 'bottom', horizontal: 'right' }
     } else if (placement === 'top-start') {
       return { vertical: 'bottom', horizontal: 'left' }
     } else {
-      return { vertical: 'top', horizontal: 'center' }
+      return { vertical: 'top', horizontal: 'right' }
     }
   }
   // const calcArrowPosition=()=>{
@@ -215,6 +215,8 @@ export default function Tooltip({
                   placement === 'top',
                 'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-4':
                   placement === 'top-start',
+                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-[calc(100%-16px)]':
+                  placement === 'top-end',
               })}
             ></span>
           </div>

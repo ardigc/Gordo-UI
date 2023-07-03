@@ -31,7 +31,7 @@ export const testButton: Story = {
   args: {
     children: <div>hola</div>,
     title: 'Deletdhgsgdgdgddgdgdgdgdggde',
-    placement: 'top-start',
+    placement: 'top-end',
     // open: true,
     disableTransition: false,
   },
@@ -58,7 +58,7 @@ export const testButton2: Story = {
   args: {
     children: <div>hola</div>,
     title: 'De',
-    placement: 'top-start',
+    placement: 'top-end',
     // open: true,
     disableTransition: false,
   },
@@ -85,7 +85,7 @@ export const testButton3: Story = {
   args: {
     children: <div>hola</div>,
     title: 'Deletdhgsgdgdgddgdgdgdgdggde',
-    placement: 'top-start',
+    placement: 'top-end',
     // open: true,
     disableTransition: false,
   },
