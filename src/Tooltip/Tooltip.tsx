@@ -5,6 +5,7 @@ import {
   MouseEventHandler,
   // ReactElement,
   ReactNode,
+  TouchEventHandler,
   createContext,
   useRef,
   useState,
@@ -64,6 +65,7 @@ export interface TooltipProps {
   }
   disableFocusListener?: boolean
   disableHoverListener?: boolean
+  disableTouchListener?: boolean
 }
 export default function Tooltip({
   children,
@@ -78,6 +80,7 @@ export default function Tooltip({
   componentsProps,
   disableFocusListener,
   disableHoverListener,
+  disableTouchListener,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -95,6 +98,13 @@ export default function Tooltip({
   }
   const onFocusHandler: FocusEventHandler<HTMLDivElement> = (ev) => {
     if (disableFocusListener) return
+    if (!followCursor) {
+      setAnchorEl(ev.currentTarget)
+    }
+    setOpen(true)
+  }
+  const onTouchHandler: TouchEventHandler<HTMLDivElement> = (ev) => {
+    if (disableTouchListener) return
     if (!followCursor) {
       setAnchorEl(ev.currentTarget)
     }
@@ -261,6 +271,7 @@ export default function Tooltip({
         onMouseLeave={onMouseLeaveHandler}
         onBlur={onBlurHandler}
         onMouseMove={onMouseMoveHandler}
+        onTouchStart={onTouchHandler}
       >
         {children}
       </div>

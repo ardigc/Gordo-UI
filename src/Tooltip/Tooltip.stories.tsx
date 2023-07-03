@@ -24,6 +24,7 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
           components={args.components}
           disableFocusListener={args.disableFocusListener}
           disableHoverListener={args.disableHoverListener}
+          disableTouchListener={args.disableTouchListener}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -54,6 +55,7 @@ export const testButton: Story = {
     components: {},
     disableFocusListener: false,
     disableHoverListener: false,
+    disableTouchListener: false,
   },
 }
 const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
@@ -71,6 +73,7 @@ const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
           components={args.components}
           disableFocusListener={args.disableFocusListener}
           disableHoverListener={args.disableHoverListener}
+          disableTouchListener={args.disableTouchListener}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -94,6 +97,8 @@ export const testButton2: Story = {
     followCursor: false,
     disableFocusListener: false,
     disableHoverListener: false,
+    disableTouchListener: false,
+
     classes: {},
     components: {},
   },
@@ -113,6 +118,7 @@ const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
           components={args.components}
           disableFocusListener={args.disableFocusListener}
           disableHoverListener={args.disableHoverListener}
+          disableTouchListener={args.disableTouchListener}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -147,5 +153,6 @@ export const testButton3: Story = {
     components: {},
     disableFocusListener: false,
     disableHoverListener: false,
+    disableTouchListener: false,
   },
 }
