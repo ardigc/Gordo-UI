@@ -103,7 +103,16 @@ export const testButton3: Story = {
   render: (args) => <TestButtonFunc3 args={args} />,
   args: {
     children: <div>hola</div>,
-    title: 'Deletdhgsgdgdgddgdgdgdgdggde',
+    title: (
+      <div>
+        <p>'Deletdhgsgdgdgddgdgdgdgdggde'</p>
+        <p>adfjkaklfkalfkafkl</p>
+        <p>akldfalkfalskfalsfkaslfk</p>
+        <p>akldfalkfalskfalsfkaslfk</p>
+        <p>akldfalkfalskfalsfkaslfk</p>
+        <p>akldfalkfalskfalsfkaslfk</p>
+      </div>
+    ),
     placement: 'right-start',
     // open: true,
     disableTransition: false,
