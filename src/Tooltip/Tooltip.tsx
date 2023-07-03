@@ -1,8 +1,10 @@
 import {
+  Dispatch,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
   ReactNode,
+  SetStateAction,
   createContext,
   useRef,
   useState,
@@ -23,15 +25,7 @@ export const TooltipContext = createContext<{
     | 'top-end'
     | 'top-start'
     | 'top'
-  // setAnchorRect?: Dispatch<SetStateAction<DOMRect | undefined>>
-  // setContextPopoverPosition?: Dispatch<
-  //   SetStateAction<{
-  //     height: number
-  //     width: number
-  //     top: number
-  //     left: number
-  //   }|undefined>
-  // >
+  mouseMove?: { x: number; y: number }
 }>({})
 export interface TooltipProps {
   children: ReactNode
@@ -52,6 +46,7 @@ export interface TooltipProps {
   open?: boolean
   disableTransition?: boolean
   arrow?: boolean
+  followCursor?: boolean
 }
 export default function Tooltip({
   children,
@@ -60,32 +55,27 @@ export default function Tooltip({
   open,
   disableTransition,
   arrow,
+  followCursor,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
-
   const [opened, setOpen] = useState(open ? open : false)
-  // useEffect(()=>{
-  //   const popover = popoverRef.current
-  //   if (!popover) return
-
-  //   console.log(popover.getBoundingClientRect())
-  //   console.log('hola',popoverPosition)
-  //    setContextPopoverPosition({
-  //       height: popover.offsetHeight,
-  //       width: popover.offsetWidth,
-  //       left: popover.offsetLeft,
-  //       top:popover.offsetTop,
-  //   })
-  // })
+  const [mouseMove, setMouseMove] = useState<{ x: number; y: number }>()
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
-    setAnchorEl(ev.currentTarget)
+    if (!followCursor) {
+      setAnchorEl(ev.currentTarget)
+    }
     setOpen(true)
   }
 
   const OnMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
     if (!open) {
       setOpen(false)
+    }
+  }
+  const onMouseMoveHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
+    if (followCursor) {
+      console.log(ev.clientX, ev.clientY)
     }
   }
   const anchorOrigin = (): {
@@ -163,7 +153,7 @@ export default function Tooltip({
   // }
   return (
     <div className="inline-flex">
-      <TooltipContext.Provider value={{ placement }}>
+      <TooltipContext.Provider value={{ placement, mouseMove }}>
         <Popover
           open={opened}
           anchorOrigin={{
@@ -235,6 +225,7 @@ export default function Tooltip({
       <div
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={OnMouseLeaveHandler}
+        onMouseMove={onMouseMoveHandler}
         // className={classNames('bg-gray-800 text-white')}
       >
         {children}

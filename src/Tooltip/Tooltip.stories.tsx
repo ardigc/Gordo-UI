@@ -88,6 +88,7 @@ const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
           open={args.open}
           placement={args.placement}
           arrow={args.arrow}
+          followCursor={args.followCursor}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -117,5 +118,6 @@ export const testButton3: Story = {
     // open: true,
     disableTransition: false,
     arrow: true,
+    followCursor: true,
   },
 }
