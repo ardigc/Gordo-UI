@@ -172,7 +172,7 @@ export const primary: Story = {
     },
   },
 }
-const timeSlots = Array.from(new Array(24 * 2)).map(
+const timecomponents = Array.from(new Array(24 * 2)).map(
   (_, index) =>
     `${index < 20 ? '0' : ''}${Math.floor(index / 2)}:${
       index % 2 === 0 ? '00' : '30'
@@ -180,7 +180,7 @@ const timeSlots = Array.from(new Array(24 * 2)).map(
 )
 // export const hours: Story = {
 //   args: {
-//     options: timeSlots,
+//     options: timecomponents,
 //     classes: { inputClassname: 'bg-slate-400 ' },
 //     label: 'Horas',
 //   },

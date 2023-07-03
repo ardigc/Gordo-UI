@@ -24,7 +24,7 @@ interface RenderComponentProps {
     horizontal?: 'center' | 'left' | 'right'
     vertical?: 'bottom' | 'center' | 'top'
   }
-  slots?: { paper?: ElementType; root?: ElementType }
+  components?: { paper?: ElementType; root?: ElementType }
   // screenVariation?: {
   //   initialScreenW: number | null
   //   initialScreenH: number | null
@@ -42,7 +42,7 @@ export default function RenderComponent({
   transformOrigin,
   anchorReference,
   anchorOrigin,
-  slots,
+  components,
 }: // screenVariation,
 // id,
 RenderComponentProps) {
@@ -103,7 +103,7 @@ RenderComponentProps) {
     animationFrameId = requestAnimationFrame(updatePosition)
   }
 
-  const RenderComponent = slots?.paper ? slots.paper : 'div'
+  const RenderComponent = components?.paper ? components.paper : 'div'
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }

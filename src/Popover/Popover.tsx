@@ -22,8 +22,8 @@ export interface PopoverProps {
   container?: Element | (() => Element)
   elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
   marginThreshold?: number
-  slotProps?: { paper?: () => void | object; root?: () => void | object }
-  slots?: { paper?: ElementType; root?: ElementType }
+  componentProps?: { paper?: () => void | object; root?: () => void | object }
+  components?: { paper?: ElementType; root?: ElementType }
   id?: string
   disableTransition?: boolean
   classes?: { root?: string; paper?: string }
@@ -44,14 +44,14 @@ export default function Popover({
   className,
   container,
   elevation = 4,
-  slots,
+  components,
   marginThreshold = 16,
-  slotProps,
+  componentProps,
   id,
   disableTransition,
   classes,
 }: PopoverProps) {
-  const RenderRoot = slots?.root ? slots.root : 'div'
+  const RenderRoot = components?.root ? components.root : 'div'
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
   }
@@ -61,7 +61,7 @@ export default function Popover({
         createPortal(
           <RenderRoot
             id={id}
-            {...slotProps?.root}
+            {...componentProps?.root}
             className={classNames('fixed inset-0 z-[1300] ', {
               [classes?.root || '']: classes?.root,
             })}
@@ -71,11 +71,11 @@ export default function Popover({
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
             <RenderComponent
-              {...slotProps?.paper}
+              {...componentProps?.paper}
               // id={`observed-${observedId}`}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
-              slots={slots}
+              components={components}
               anchorPosition={anchorPosition}
               anchorReference={anchorReference}
               transformOrigin={transformOrigin}
