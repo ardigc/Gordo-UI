@@ -153,7 +153,7 @@ export default function Tooltip({
           <div
          
             className={classNames(
-              ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base  relative',
+              ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base',
               {
                 // 'before:left-[calc(0%)]':true,
                 'mt-[14px] ':
@@ -172,7 +172,7 @@ export default function Tooltip({
             {title}
             <span
             // style={{transform:'translate(-250%, 0%)',}}
-             className={classNames('bocadillo ',{'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] left-1/2 translate-y-[40%] top-0 translate-x-[-250%]':placement==='top'})}></span>
+             className={classNames('bocadillo ',{'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] top-0 translate-x-[-250%]':placement==='top'})}></span>
           </div>
         </Popover>
       </TooltipContext.Provider>
