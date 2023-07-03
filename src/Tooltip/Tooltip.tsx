@@ -24,7 +24,15 @@ export const TooltipContext = createContext<{
     | 'top-end'
     | 'top-start'
     | 'top'
-    setAnchorRect?:Dispatch<SetStateAction<DOMRect|undefined>>
+  // setAnchorRect?: Dispatch<SetStateAction<DOMRect | undefined>>
+  setPopoverPosition?: Dispatch<
+    SetStateAction<{
+      height: number
+      width: number
+      top: number
+      left: number
+    }>
+  >
 }>({})
 export interface TooltipProps {
   children: ReactNode
@@ -44,7 +52,6 @@ export interface TooltipProps {
     | 'top'
   open?: boolean
   disableTransition?: boolean
-
 }
 export default function Tooltip({
   children,
@@ -54,11 +61,18 @@ export default function Tooltip({
   disableTransition,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
-  const [anchorRect, setAnchorRect] =useState<DOMRect|undefined>()
+  const [anchorRect, setAnchorRect] = useState<DOMRect | undefined>()
+  const [popoverPosition, setPopoverPosition] = useState<{
+    height: number
+    width: number
+    top: number
+    left: number
+  }>()
   const [opened, setOpen] = useState(open ? open : false)
   // console.log(opened)
   const onMouseEnterHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
+    setAnchorRect(ev.currentTarget.getBoundingClientRect())
     setOpen(true)
   }
 
@@ -133,7 +147,7 @@ export default function Tooltip({
   }
   return (
     <div className="inline-flex">
-      <TooltipContext.Provider value={{ placement, setAnchorRect }}>
+      <TooltipContext.Provider value={{ placement }}>
         <Popover
           open={opened}
           anchorOrigin={{
@@ -151,7 +165,6 @@ export default function Tooltip({
           disableTransition={disableTransition}
         >
           <div
-         
             className={classNames(
               ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base',
               {
@@ -171,8 +184,12 @@ export default function Tooltip({
           >
             {title}
             <span
-            // style={{transform:'translate(-250%, 0%)',}}
-             className={classNames('bocadillo ',{'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] top-0 translate-x-[-250%]':placement==='top'})}></span>
+              // style={{transform:'translate(-250%, 0%)',}}
+              className={classNames('bocadillo ', {
+                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] top-0 translate-x-[-250%]':
+                  placement === 'top',
+              })}
+            ></span>
           </div>
         </Popover>
       </TooltipContext.Provider>

@@ -54,7 +54,7 @@ RenderComponentProps) {
     height: number
     width: number
   }>()
-  const { placement, setAnchorRect } = useContext(TooltipContext)
+  const { placement } = useContext(TooltipContext)
   useEffect(() => {
     if (!open) return
     const popover = popoverRef.current
@@ -81,10 +81,10 @@ RenderComponentProps) {
     if (anchorEl) {
       const rect = resolveAnchorEl(anchorEl).getBoundingClientRect()
       setLocation(rect)
-      if (setAnchorRect) {
-        
-        setAnchorRect(rect)
-      }
+      // if (setAnchorRect) {
+
+      //   setAnchorRect(rect)
+      // }
       // setPosition({
       //   x: rect.left + window.scrollX,
       //   y: rect.top + window.scrollY,
