@@ -56,6 +56,11 @@ export interface TooltipProps {
     Popper?: ElementType
     Tooltip?: ElementType
   }
+  componentsProps?: {
+    arrow?: object
+    popper?: object
+    tooltip?: object
+  }
 }
 export default function Tooltip({
   children,
@@ -67,6 +72,7 @@ export default function Tooltip({
   followCursor,
   classes,
   components,
+  componentsProps,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -161,6 +167,7 @@ export default function Tooltip({
     <div className="inline-flex">
       <TooltipContext.Provider value={{ placement, mouseMove }}>
         <PopperComponent
+          {...componentsProps?.popper}
           open={opened}
           anchorOrigin={{
             vertical: anchorOrigin().vertical,
@@ -178,6 +185,7 @@ export default function Tooltip({
         >
           <TooltipComponent
             ref={popoverRef}
+            {...componentsProps?.tooltip}
             className={classNames(
               ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base',
               {
@@ -195,6 +203,7 @@ export default function Tooltip({
           >
             {title}
             <ArrowComponent
+              {...componentsProps?.arrow}
               // style={{transform:`translate(${calcArrowPosition()}px, 0%)`,}}
               className={classNames('bocadillo ', {
                 'border-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[300%] translate-x-[-250%] bottom-0 left-1/2':
