@@ -153,7 +153,7 @@ export default function Tooltip({
           <div
          
             className={classNames(
-              'bocadillo bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base before:border-t-neutral-500',
+              ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base ',
               {
                 // 'before:left-[calc(0%)]':true,
                 'mt-[14px] ':
@@ -170,6 +170,7 @@ export default function Tooltip({
             )}
           >
             {title}
+            <span className={classNames('bocadillo border-t-neutral-500 border-t-[25px] border')}></span>
           </div>
         </Popover>
       </TooltipContext.Provider>
