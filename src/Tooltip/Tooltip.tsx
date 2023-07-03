@@ -68,6 +68,7 @@ export interface TooltipProps {
   disableTouchListener?: boolean
   enterDelay?: number
   enterNextDelay?: number
+  enterTouchDelay?: number
 }
 export default function Tooltip({
   children,
@@ -85,6 +86,7 @@ export default function Tooltip({
   disableTouchListener,
   enterDelay = 100,
   enterNextDelay = 0,
+  enterTouchDelay = 700,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -135,7 +137,7 @@ export default function Tooltip({
           nextTimeOutRef.current = null
         }, enterNextDelay)
       }
-    }, enterDelay)
+    }, enterTouchDelay)
   }
 
   const onMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
