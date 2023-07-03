@@ -66,6 +66,7 @@ export interface TooltipProps {
   disableFocusListener?: boolean
   disableHoverListener?: boolean
   disableTouchListener?: boolean
+  enterDelay?: number
 }
 export default function Tooltip({
   children,
@@ -81,9 +82,11 @@ export default function Tooltip({
   disableFocusListener,
   disableHoverListener,
   disableTouchListener,
+  enterDelay = 100,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
+  const timeOutRef = useRef<NodeJS.Timeout | null>(null)
   const [opened, setOpen] = useState(open ? open : false)
   const [mouseMove, setMouseMove] = useState<{ x: number; y: number }>()
   const ArrowComponent = components?.Arrow ? components.Arrow : 'span'
@@ -94,30 +97,42 @@ export default function Tooltip({
     if (!followCursor) {
       setAnchorEl(ev.currentTarget)
     }
-    setOpen(true)
+    timeOutRef.current = setTimeout(() => {
+      setOpen(true)
+    }, enterDelay)
   }
   const onFocusHandler: FocusEventHandler<HTMLDivElement> = (ev) => {
     if (disableFocusListener) return
     if (!followCursor) {
       setAnchorEl(ev.currentTarget)
     }
-    setOpen(true)
+    timeOutRef.current = setTimeout(() => {
+      setOpen(true)
+    }, enterDelay)
   }
   const onTouchHandler: TouchEventHandler<HTMLDivElement> = (ev) => {
     if (disableTouchListener) return
     if (!followCursor) {
       setAnchorEl(ev.currentTarget)
     }
-    setOpen(true)
+    timeOutRef.current = setTimeout(() => {
+      setOpen(true)
+    }, enterDelay)
   }
 
   const onMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
     if (!open) {
+      if (timeOutRef.current) {
+        clearTimeout(timeOutRef.current)
+      }
       setOpen(false)
     }
   }
   const onBlurHandler: FocusEventHandler<HTMLDivElement> = () => {
     if (!open) {
+      if (timeOutRef.current) {
+        clearTimeout(timeOutRef.current)
+      }
       setOpen(false)
     }
   }
