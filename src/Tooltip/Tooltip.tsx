@@ -1,10 +1,8 @@
 import {
-  Dispatch,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
   ReactNode,
-  SetStateAction,
   createContext,
   useRef,
   useState,
@@ -47,6 +45,11 @@ export interface TooltipProps {
   disableTransition?: boolean
   arrow?: boolean
   followCursor?: boolean
+  classes?: {
+    arrow?: string
+    tooltip?: string
+    popover?: string
+  }
 }
 export default function Tooltip({
   children,
@@ -56,6 +59,7 @@ export default function Tooltip({
   disableTransition,
   arrow,
   followCursor,
+  classes,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -142,15 +146,7 @@ export default function Tooltip({
       return { vertical: 'top', horizontal: 'right' }
     }
   }
-  // const calcArrowPosition=()=>{
-  //   if (anchorRect&&popoverPosition) {
 
-  //     // console.log(anchorRect.left, popoverPosition.left)
-  //     const x = (anchorRect?.left-popoverPosition?.left)
-  //     // console.log(x)
-  //     return x
-  //   }
-  // }
   return (
     <div className="inline-flex">
       <TooltipContext.Provider value={{ placement, mouseMove }}>
@@ -165,8 +161,8 @@ export default function Tooltip({
             horizontal: transformOrigin().horizontal,
           }}
           anchorEl={anchorEl}
+          className={classNames({ [classes?.popover || '']: classes?.popover })}
           elevation={0}
-          // className='bg-transparent'
           classes={{ root: 'pointer-events-none' }}
           disableTransition={disableTransition}
         >
@@ -175,17 +171,15 @@ export default function Tooltip({
             className={classNames(
               ' bg-neutral-500 rounded text-white px-2 py-1 font-medium text-xs font-base',
               {
-                // 'before:left-[calc(0%)]':true,
                 'mt-[14px] ':
                   placement === 'bottom' ||
                   placement === 'bottom-start' ||
                   placement === 'bottom-end',
-                // 'mb-[14px] ': placement === 'top' || placement === 'top-start' ||placement === 'top-end',
-                // 'mr-[14px] ': placement === 'left' || placement === 'left-start' ||placement === 'left-end',
                 'ml-[14px] ':
                   placement === 'right' ||
                   placement === 'right-start' ||
                   placement === 'right-end',
+                [classes?.tooltip || '']: classes?.tooltip,
               }
             )}
           >
@@ -217,6 +211,7 @@ export default function Tooltip({
                   arrow && placement === 'left-end',
                 'border-neutral-500 border-t-transparent border-r-transparent border-b-transparent border-[25px] translate-x-[300%] translate-y-[250%] bottom-[calc(100%-8px)] right-0':
                   arrow && placement === 'left-start',
+                [classes?.arrow || '']: classes?.arrow,
               })}
             ></span>
           </div>
@@ -226,7 +221,6 @@ export default function Tooltip({
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={OnMouseLeaveHandler}
         onMouseMove={onMouseMoveHandler}
-        // className={classNames('bg-gray-800 text-white')}
       >
         {children}
       </div>
