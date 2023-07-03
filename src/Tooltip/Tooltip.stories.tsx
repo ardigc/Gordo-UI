@@ -31,8 +31,62 @@ export const testButton: Story = {
   args: {
     children: <div>hola</div>,
     title: 'Deletdhgsgdgdgddgdgdgdgdggde',
-    placement: 'left-start',
-    open: true,
+    placement: 'top-start',
+    // open: true,
+    disableTransition: false,
+  },
+}
+const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
+  return (
+    <>
+      <div className="flex justify-center h-56 items-center">
+        <Tooltip
+          title={args.title}
+          disableTransition={args.disableTransition}
+          open={args.open}
+          placement={args.placement}
+        >
+          <div>hola</div>
+        </Tooltip>
+      </div>
+    </>
+  )
+}
+
+export const testButton2: Story = {
+  render: (args) => <TestButtonFunc2 args={args} />,
+  args: {
+    children: <div>hola</div>,
+    title: 'De',
+    placement: 'top-start',
+    // open: true,
+    disableTransition: false,
+  },
+}
+const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
+  return (
+    <>
+      <div className="flex justify-center h-56 items-center">
+        <Tooltip
+          title={args.title}
+          disableTransition={args.disableTransition}
+          open={args.open}
+          placement={args.placement}
+        >
+          <div>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</div>
+        </Tooltip>
+      </div>
+    </>
+  )
+}
+
+export const testButton3: Story = {
+  render: (args) => <TestButtonFunc3 args={args} />,
+  args: {
+    children: <div>hola</div>,
+    title: 'Deletdhgsgdgdgddgdgdgdgdggde',
+    placement: 'top-start',
+    // open: true,
     disableTransition: false,
   },
 }

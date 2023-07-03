@@ -213,7 +213,7 @@ export default function Tooltip({
               className={classNames('bocadillo ', {
                 'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-1/2':
                   placement === 'top',
-                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-[10%]':
+                'border-t-neutral-500 border-b-transparent border-l-transparent border-r-transparent border-[25px] translate-y-[40%] translate-x-[-250%] top-0 left-4':
                   placement === 'top-start',
               })}
             ></span>
