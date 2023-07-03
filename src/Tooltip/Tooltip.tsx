@@ -67,6 +67,7 @@ export interface TooltipProps {
   disableHoverListener?: boolean
   disableTouchListener?: boolean
   enterDelay?: number
+  enterNextDelay?: number
 }
 export default function Tooltip({
   children,
@@ -83,10 +84,12 @@ export default function Tooltip({
   disableHoverListener,
   disableTouchListener,
   enterDelay = 100,
+  enterNextDelay = 0,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
   const timeOutRef = useRef<NodeJS.Timeout | null>(null)
+  const nextTimeOutRef = useRef<NodeJS.Timeout | null>(null)
   const [opened, setOpen] = useState(open ? open : false)
   const [mouseMove, setMouseMove] = useState<{ x: number; y: number }>()
   const ArrowComponent = components?.Arrow ? components.Arrow : 'span'
@@ -98,7 +101,12 @@ export default function Tooltip({
       setAnchorEl(ev.currentTarget)
     }
     timeOutRef.current = setTimeout(() => {
-      setOpen(true)
+      if (!nextTimeOutRef.current) {
+        setOpen(true)
+        nextTimeOutRef.current = setTimeout(() => {
+          nextTimeOutRef.current = null
+        }, enterNextDelay)
+      }
     }, enterDelay)
   }
   const onFocusHandler: FocusEventHandler<HTMLDivElement> = (ev) => {
@@ -107,7 +115,12 @@ export default function Tooltip({
       setAnchorEl(ev.currentTarget)
     }
     timeOutRef.current = setTimeout(() => {
-      setOpen(true)
+      if (!nextTimeOutRef.current) {
+        setOpen(true)
+        nextTimeOutRef.current = setTimeout(() => {
+          nextTimeOutRef.current = null
+        }, enterNextDelay)
+      }
     }, enterDelay)
   }
   const onTouchHandler: TouchEventHandler<HTMLDivElement> = (ev) => {
@@ -116,7 +129,12 @@ export default function Tooltip({
       setAnchorEl(ev.currentTarget)
     }
     timeOutRef.current = setTimeout(() => {
-      setOpen(true)
+      if (!nextTimeOutRef.current) {
+        setOpen(true)
+        nextTimeOutRef.current = setTimeout(() => {
+          nextTimeOutRef.current = null
+        }, enterNextDelay)
+      }
     }, enterDelay)
   }
 

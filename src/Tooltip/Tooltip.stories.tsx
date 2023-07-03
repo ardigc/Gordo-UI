@@ -26,6 +26,7 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
           disableHoverListener={args.disableHoverListener}
           disableTouchListener={args.disableTouchListener}
           enterDelay={args.enterDelay}
+          enterNextDelay={args.enterNextDelay}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -58,6 +59,7 @@ export const testButton: Story = {
     disableHoverListener: false,
     disableTouchListener: false,
     enterDelay: 100,
+    enterNextDelay: 0,
   },
 }
 const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
@@ -77,6 +79,7 @@ const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
           disableHoverListener={args.disableHoverListener}
           disableTouchListener={args.disableTouchListener}
           enterDelay={args.enterDelay}
+          enterNextDelay={args.enterNextDelay}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -102,7 +105,7 @@ export const testButton2: Story = {
     disableHoverListener: false,
     disableTouchListener: false,
     enterDelay: 100,
-
+    enterNextDelay: 0,
     classes: {},
     components: {},
   },
@@ -124,6 +127,7 @@ const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
           disableHoverListener={args.disableHoverListener}
           disableTouchListener={args.disableTouchListener}
           enterDelay={args.enterDelay}
+          enterNextDelay={args.enterNextDelay}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -160,5 +164,6 @@ export const testButton3: Story = {
     disableHoverListener: true,
     disableTouchListener: false,
     enterDelay: 100,
+    enterNextDelay: 0,
   },
 }
