@@ -1,10 +1,13 @@
 import {
   ElementType,
+  FocusEvent,
   FocusEventHandler,
+  MouseEvent,
   // JSXElementConstructor,
   MouseEventHandler,
   // ReactElement,
   ReactNode,
+  TouchEvent,
   TouchEventHandler,
   createContext,
   useRef,
@@ -71,6 +74,15 @@ export interface TooltipProps {
   enterTouchDelay?: number
   id?: string
   leaveDelay?: number
+  onClose?: (
+    ev: FocusEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>
+  ) => void
+  onOpen?: (
+    ev:
+      | FocusEvent<HTMLDivElement>
+      | MouseEvent<HTMLDivElement>
+      | TouchEvent<HTMLDivElement>
+  ) => void
 }
 export default function Tooltip({
   children,
@@ -91,6 +103,8 @@ export default function Tooltip({
   enterTouchDelay = 700,
   id,
   leaveDelay = 0,
+  onClose,
+  onOpen,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -114,6 +128,9 @@ export default function Tooltip({
         }, enterNextDelay)
       }
     }, enterDelay)
+    if (onOpen) {
+      onOpen(ev)
+    }
   }
   const onFocusHandler: FocusEventHandler<HTMLDivElement> = (ev) => {
     if (disableFocusListener) return
@@ -128,6 +145,9 @@ export default function Tooltip({
         }, enterNextDelay)
       }
     }, enterDelay)
+    if (onOpen) {
+      onOpen(ev)
+    }
   }
   const onTouchHandler: TouchEventHandler<HTMLDivElement> = (ev) => {
     if (disableTouchListener) return
@@ -142,9 +162,12 @@ export default function Tooltip({
         }, enterNextDelay)
       }
     }, enterTouchDelay)
+    if (onOpen) {
+      onOpen(ev)
+    }
   }
 
-  const onMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = () => {
+  const onMouseLeaveHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     if (!open) {
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current)
@@ -153,8 +176,11 @@ export default function Tooltip({
         setOpen(false)
       }, leaveDelay)
     }
+    if (onClose) {
+      onClose(ev)
+    }
   }
-  const onBlurHandler: FocusEventHandler<HTMLDivElement> = () => {
+  const onBlurHandler: FocusEventHandler<HTMLDivElement> = (ev) => {
     if (!open) {
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current)
@@ -162,6 +188,9 @@ export default function Tooltip({
       setTimeout(() => {
         setOpen(false)
       }, leaveDelay)
+    }
+    if (onClose) {
+      onClose(ev)
     }
   }
   const onMouseMoveHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
