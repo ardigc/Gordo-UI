@@ -11,8 +11,8 @@ type Story = StoryObj<typeof meta>
 
 const TestButtonFunc = ({ args }: { args: MenuProps }) => {
     return (<>
-    <Menu >
-        
+    <Menu open={args.open}>
+
     </Menu>
     </>)
 }
