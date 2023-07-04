@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import Menu, { MenuProps } from './Menu'
 import MenuItem from '../MenuItem/MenuItem'
 import Button from '../Button/Button'
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 
 const meta = {
   component: Menu,
@@ -14,12 +14,15 @@ type Story = StoryObj<typeof meta>
 
 const TestButtonFunc = ({ args }: { args: MenuProps }) => {
   const [open, setOpen]=useState(args.open)
-  const clickhandler=()=>{
+  const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
+
+  const clickHandler: MouseEventHandler<HTMLButtonElement>=(ev)=>{
+    setAnchorEl(ev.currentTarget)
 setOpen(true)
   }
     return (<>
-    <Button onClick={clickhandler}>hola</Button>
-    <Menu open={open}>
+    <Button onClick={clickHandler}>hola</Button>
+    <Menu open={open} anchorEl={anchorEl}>
 <MenuItem>opcion 1</MenuItem>
 <MenuItem>opcion 2</MenuItem>
 <MenuItem>opcion 3</MenuItem>
