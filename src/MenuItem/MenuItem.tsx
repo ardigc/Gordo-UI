@@ -1,6 +1,8 @@
 import classNames from 'classnames'
-import { ElementType, MouseEventHandler, ReactNode, useState } from 'react'
-export interface MenuItemProps {
+import { DetailedHTMLProps, ElementType, LiHTMLAttributes, MouseEventHandler, ReactNode, useState } from 'react'
+
+type LiReactProps=DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>,HTMLLIElement>
+export interface   MenuItemProps extends  LiReactProps{
   children?: ReactNode
   className?: string
   component?: ElementType
@@ -15,6 +17,7 @@ export default function MenuItem({
   dense,
   disableGutters,
   divider,
+
 }: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
