@@ -12,6 +12,7 @@ type Story = StoryObj<typeof meta>
 export const primary: Story = {
   args: {
     children: 'hola',
-    //   className: 'bg-slate-400',
+    className: 'text-blue-500',
+    dense: false,
   },
 }
