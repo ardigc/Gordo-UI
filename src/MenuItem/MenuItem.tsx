@@ -7,7 +7,7 @@ export default function MenuItem({ children }: MenuItemProps) {
   return (
     <li
       className={classNames(
-        'flex font-normal text-base font-base bg-transparent justify-start py-[6px] px-4'
+        'flex font-normal text-base font-base bg-transparent justify-start py-[6px] px-4 hover:bg-neutral-50'
       )}
     >
       {children}
