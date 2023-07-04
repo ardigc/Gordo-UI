@@ -1,9 +1,10 @@
 import classNames from 'classnames'
 import { MouseEventHandler, ReactNode, useState } from 'react'
 export interface MenuItemProps {
-  children: ReactNode
+  children?: ReactNode
+  className?: string
 }
-export default function MenuItem({ children }: MenuItemProps) {
+export default function MenuItem({ children, className }: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
 
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -23,7 +24,8 @@ export default function MenuItem({ children }: MenuItemProps) {
   return (
     <li
       className={classNames(
-        'flex font-normal text-base font-base bg-transparent justify-start py-[6px] px-4 hover:bg-neutral-50 relative'
+        'flex font-normal text-base font-base bg-transparent justify-start py-[6px] px-4 hover:bg-neutral-50 relative',
+        { [className || '']: className }
       )}
       onClick={onClickHandler}
     >
