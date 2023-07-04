@@ -27,6 +27,8 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
           disableTouchListener={args.disableTouchListener}
           enterDelay={args.enterDelay}
           enterNextDelay={args.enterNextDelay}
+          id={args.id}
+          leaveDelay={args.leaveDelay}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -60,6 +62,8 @@ export const testButton: Story = {
     disableTouchListener: false,
     enterDelay: 100,
     enterNextDelay: 0,
+    id: 'hola',
+    leaveDelay: 0,
   },
 }
 const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
@@ -80,6 +84,8 @@ const TestButtonFunc2 = ({ args }: { args: TooltipProps }) => {
           disableTouchListener={args.disableTouchListener}
           enterDelay={args.enterDelay}
           enterNextDelay={args.enterNextDelay}
+          id={args.id}
+          leaveDelay={args.leaveDelay}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -108,6 +114,8 @@ export const testButton2: Story = {
     enterNextDelay: 0,
     classes: {},
     components: {},
+    id: 'hola',
+    leaveDelay: 0,
   },
 }
 const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
@@ -128,6 +136,8 @@ const TestButtonFunc3 = ({ args }: { args: TooltipProps }) => {
           disableTouchListener={args.disableTouchListener}
           enterDelay={args.enterDelay}
           enterNextDelay={args.enterNextDelay}
+          id={args.id}
+          leaveDelay={args.leaveDelay}
         >
           <div>
             <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
@@ -158,12 +168,17 @@ export const testButton3: Story = {
     disableTransition: false,
     arrow: true,
     followCursor: false,
-    classes: {},
+    classes: {
+      tooltip: 'bg-yellow-500 text-black',
+      arrow: 'border-yellow-500',
+    },
     components: {},
-    disableFocusListener: true,
-    disableHoverListener: true,
+    disableFocusListener: false,
+    disableHoverListener: false,
     disableTouchListener: false,
     enterDelay: 100,
     enterNextDelay: 0,
+    id: 'hola',
+    leaveDelay: 0,
   },
 }

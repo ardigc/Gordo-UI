@@ -70,6 +70,7 @@ export interface TooltipProps {
   enterNextDelay?: number
   enterTouchDelay?: number
   id?: string
+  leaveDelay?: number
 }
 export default function Tooltip({
   children,
@@ -89,6 +90,7 @@ export default function Tooltip({
   enterNextDelay = 0,
   enterTouchDelay = 700,
   id,
+  leaveDelay = 0,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -147,7 +149,9 @@ export default function Tooltip({
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current)
       }
-      setOpen(false)
+      setTimeout(() => {
+        setOpen(false)
+      }, leaveDelay)
     }
   }
   const onBlurHandler: FocusEventHandler<HTMLDivElement> = () => {
@@ -155,6 +159,7 @@ export default function Tooltip({
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current)
       }
+
       setOpen(false)
     }
   }
