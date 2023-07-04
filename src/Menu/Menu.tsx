@@ -1,27 +1,25 @@
-import {ReactNode, useEffect, useState} from 'react'
+import {ReactNode, useEffect} from 'react'
 import Popover from '../Popover/Popover'
 import Clickaway from '../ClickAway/ClickAway'
 export interface MenuProps{
     children?:ReactNode
     open: boolean
     anchorEl?: Element | (() => Element)
+    onClose?: ()=>void
 }
-export default function Menu({children, open, anchorEl}:MenuProps) {
-    const [opened, setOpen] = useState(false)
-    useEffect(()=>{
-        if (open) {
-            setOpen(true)
-        }
-
-    },[open])
+export default function Menu({children, open, anchorEl ,onClose}:MenuProps) {
+ const clickAwayHandler=()=>{
+    if (onClose) {
+        
+        onClose()
+    }
+ }
     return( 
-    <Clickaway onClickaway={()=>setOpen(false)}>
 
-  <Popover anchorEl={anchorEl} className='bg-white' open={opened}>
+  <Popover anchorEl={anchorEl} anchorOrigin={{vertical:'bottom'}} onClose={clickAwayHandler} className='bg-white' open={open}>
         <ul>
             {children}
         </ul>
     </Popover>
-    </Clickaway>
     ) 
 }

@@ -20,9 +20,12 @@ const TestButtonFunc = ({ args }: { args: MenuProps }) => {
     setAnchorEl(ev.currentTarget)
 setOpen(true)
   }
+  const onCloseHandler=()=>{
+    setOpen(false)
+  }
     return (<>
     <Button onClick={clickHandler}>hola</Button>
-    <Menu open={open} anchorEl={anchorEl}>
+    <Menu open={open} onClose={onCloseHandler} anchorEl={anchorEl}>
 <MenuItem>opcion 1</MenuItem>
 <MenuItem>opcion 2</MenuItem>
 <MenuItem>opcion 3</MenuItem>
