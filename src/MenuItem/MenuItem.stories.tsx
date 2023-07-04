@@ -15,5 +15,6 @@ export const primary: Story = {
     className: 'text-blue-500',
     dense: false,
     disableGutters: false,
+    divider: false,
   },
 }

@@ -6,6 +6,7 @@ export interface MenuItemProps {
   component?: ElementType
   dense?: boolean
   disableGutters?: boolean
+  divider?: boolean
 }
 export default function MenuItem({
   children,
@@ -13,6 +14,7 @@ export default function MenuItem({
   component,
   dense,
   disableGutters,
+  divider,
 }: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -38,6 +40,7 @@ export default function MenuItem({
         {
           'py-[6px]': !dense && !disableGutters,
           'px-4': !disableGutters,
+          'border-b': divider,
           [className || '']: className,
         }
       )}
