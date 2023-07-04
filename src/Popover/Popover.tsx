@@ -72,7 +72,6 @@ export default function Popover({
             ></div>
             <RenderComponent
               {...componentProps?.paper}
-              // id={`observed-${observedId}`}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
               components={components}
