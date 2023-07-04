@@ -83,6 +83,7 @@ export interface TooltipProps {
       | MouseEvent<HTMLDivElement>
       | TouchEvent<HTMLDivElement>
   ) => void
+  className?: string
 }
 export default function Tooltip({
   children,
@@ -105,6 +106,7 @@ export default function Tooltip({
   leaveDelay = 0,
   onClose,
   onOpen,
+  className,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -299,6 +301,7 @@ export default function Tooltip({
                   placement === 'right-start' ||
                   placement === 'right-end',
                 [classes?.tooltip || '']: classes?.tooltip,
+                [className || '']: className,
               }
             )}
           >
