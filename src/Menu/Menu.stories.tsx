@@ -24,12 +24,15 @@ setOpen(true)
     setOpen(false)
   }
     return (<>
+    <div className="flex justify-center h-56 items-center">
+
     <Button onClick={clickHandler}>hola</Button>
     <Menu open={open} onClose={onCloseHandler} anchorEl={anchorEl}>
 <MenuItem>opcion 1</MenuItem>
 <MenuItem>opcion 2</MenuItem>
 <MenuItem>opcion 3</MenuItem>
     </Menu>
+    </div>
     </>)
 }
 export const testButton: Story = {
