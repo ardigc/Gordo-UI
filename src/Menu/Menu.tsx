@@ -16,7 +16,7 @@ export default function Menu({children, open, anchorEl ,onClose}:MenuProps) {
  }
     return( 
 
-  <Popover anchorEl={anchorEl} anchorOrigin={{vertical:'bottom'}} onClose={clickAwayHandler} className='bg-white' open={open}>
+  <Popover anchorEl={anchorEl} anchorOrigin={{vertical:'bottom', horizontal:'left'}} onClose={clickAwayHandler} className='bg-white' open={open}>
         <ul>
             {children}
         </ul>
