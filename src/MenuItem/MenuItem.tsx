@@ -37,8 +37,10 @@ export default function MenuItem({
       setAnimation(false)
     }, 600)
     if (onClick) {
-      
-      onClick(ev)
+      setTimeout(()=>{
+
+        onClick(ev)
+      },200)
     }
   }
   return (

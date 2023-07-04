@@ -29,9 +29,9 @@ setOpen(true)
 
     <Button onClick={clickHandler}>hola</Button>
     <Menu open={open} onClose={onCloseHandler} anchorEl={anchorEl}>
-<MenuItem onClick={onCloseHandler}>opcion 1</MenuItem>
-<MenuItem onClick={onCloseHandler}>opcion 2</MenuItem>
-<MenuItem onClick={onCloseHandler}>opcion 3</MenuItem>
+    <MenuItem divider onClick={onCloseHandler}>opcion 1</MenuItem>
+    <MenuItem onClick={onCloseHandler}>opcion 2</MenuItem>
+    <MenuItem onClick={onCloseHandler}>opcion 3</MenuItem>
     </Menu>
     </div>
     </>)
