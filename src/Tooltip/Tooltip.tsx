@@ -69,6 +69,7 @@ export interface TooltipProps {
   enterDelay?: number
   enterNextDelay?: number
   enterTouchDelay?: number
+  id?: string
 }
 export default function Tooltip({
   children,
@@ -87,6 +88,7 @@ export default function Tooltip({
   enterDelay = 100,
   enterNextDelay = 0,
   enterTouchDelay = 700,
+  id,
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -247,6 +249,7 @@ export default function Tooltip({
           disableTransition={disableTransition}
         >
           <TooltipComponent
+            id={id}
             ref={popoverRef}
             {...componentsProps?.tooltip}
             className={classNames(
