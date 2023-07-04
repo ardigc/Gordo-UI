@@ -21,6 +21,7 @@ const TestButtonFunc = ({ args }: { args: MenuProps }) => {
 setOpen(true)
   }
   const onCloseHandler=()=>{
+    console.log('close')
     setOpen(false)
   }
     return (<>
@@ -28,9 +29,9 @@ setOpen(true)
 
     <Button onClick={clickHandler}>hola</Button>
     <Menu open={open} onClose={onCloseHandler} anchorEl={anchorEl}>
-<MenuItem>opcion 1</MenuItem>
-<MenuItem>opcion 2</MenuItem>
-<MenuItem>opcion 3</MenuItem>
+<MenuItem onClick={onCloseHandler}>opcion 1</MenuItem>
+<MenuItem onClick={onCloseHandler}>opcion 2</MenuItem>
+<MenuItem onClick={onCloseHandler}>opcion 3</MenuItem>
     </Menu>
     </div>
     </>)
