@@ -5,7 +5,11 @@ export interface MenuItemProps {
 }
 export default function MenuItem({ children }: MenuItemProps) {
   return (
-    <li className={classNames('flex font-normal text-base font-base')}>
+    <li
+      className={classNames(
+        'flex font-normal text-base font-base bg-transparent justify-start py-[6px] px-4'
+      )}
+    >
       {children}
     </li>
   )
