@@ -159,8 +159,9 @@ export default function Tooltip({
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current)
       }
-
-      setOpen(false)
+      setTimeout(() => {
+        setOpen(false)
+      }, leaveDelay)
     }
   }
   const onMouseMoveHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
