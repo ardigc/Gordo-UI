@@ -1,13 +1,20 @@
 import classNames from 'classnames'
-import { MouseEventHandler, ReactNode, useState } from 'react'
+import { ElementType, MouseEventHandler, ReactNode, useState } from 'react'
 export interface MenuItemProps {
   children?: ReactNode
   className?: string
+  component?: ElementType
+  dense?: boolean
 }
-export default function MenuItem({ children, className }: MenuItemProps) {
+export default function MenuItem({
+  children,
+  className,
+  component,
+  dense,
+}: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
-
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
+  const CustomComponent = component ? component : 'li'
   const onClickHandler: MouseEventHandler<HTMLLIElement> = (ev) => {
     const target = ev.currentTarget
     const location = target.getBoundingClientRect()
@@ -22,10 +29,11 @@ export default function MenuItem({ children, className }: MenuItemProps) {
     }, 600)
   }
   return (
-    <li
+    <CustomComponent
       className={classNames(
-        'flex font-normal text-base font-base bg-transparent justify-start py-[6px] px-4 hover:bg-neutral-50 relative',
-        { [className || '']: className }
+        'flex font-normal text-base font-base bg-transparent justify-start px-4 hover:bg-neutral-50 relative',
+
+        { 'py-[6px]': !dense, [className || '']: className }
       )}
       onClick={onClickHandler}
     >
@@ -45,6 +53,6 @@ export default function MenuItem({ children, className }: MenuItemProps) {
           ></span>
         )}
       </span>
-    </li>
+    </CustomComponent>
   )
 }
