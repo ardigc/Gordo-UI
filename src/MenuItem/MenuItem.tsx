@@ -5,12 +5,14 @@ export interface MenuItemProps {
   className?: string
   component?: ElementType
   dense?: boolean
+  disableGutters?: boolean
 }
 export default function MenuItem({
   children,
   className,
   component,
   dense,
+  disableGutters,
 }: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -31,9 +33,13 @@ export default function MenuItem({
   return (
     <CustomComponent
       className={classNames(
-        'flex font-normal text-base font-base bg-transparent justify-start px-4 hover:bg-neutral-50 relative',
+        'flex font-normal text-base font-base bg-transparent justify-start  hover:bg-neutral-50 relative',
 
-        { 'py-[6px]': !dense, [className || '']: className }
+        {
+          'py-[6px]': !dense && !disableGutters,
+          'px-4': !disableGutters,
+          [className || '']: className,
+        }
       )}
       onClick={onClickHandler}
     >

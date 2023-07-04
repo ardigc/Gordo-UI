@@ -14,5 +14,6 @@ export const primary: Story = {
     children: 'hola',
     className: 'text-blue-500',
     dense: false,
+    disableGutters: false,
   },
 }
