@@ -8,10 +8,11 @@ export interface MenuProps extends Omit<PopoverProps,'classes'>{
     anchorEl?: Element | (() => Element)
     onClose?: ()=>void
     classes?:{Popover?:string, MenuList?: string}
-    menuListProps?: MenuListProps
+    MenuListProps?: MenuListProps
+    PopoverClasses?: { root?: string; paper?: string }
 
 }
-export default function Menu({children, open, anchorEl ,onClose, classes, menuListProps, ...rest}:MenuProps) {
+export default function Menu({children, open, anchorEl ,onClose, classes, MenuListProps,PopoverClasses, ...rest}:MenuProps) {
  const clickAwayHandler=()=>{
     if (onClose) {
         
@@ -20,8 +21,8 @@ export default function Menu({children, open, anchorEl ,onClose, classes, menuLi
  }
     return( 
 
-  <Popover anchorEl={anchorEl}  anchorOrigin={{vertical:'bottom', horizontal:'left'}} onClose={clickAwayHandler} className={classNames('bg-white', {[classes?.Popover||'']:classes?.Popover})} open={open} {...rest}>
-        <MenuList {...menuListProps} className={classNames({[classes?.MenuList||'']:classes?.MenuList})}>
+  <Popover anchorEl={anchorEl} classes={PopoverClasses} anchorOrigin={{vertical:'bottom', horizontal:'left'}} onClose={clickAwayHandler} className={classNames('bg-white', {[classes?.Popover||'']:classes?.Popover})} open={open} {...rest}>
+        <MenuList {...MenuListProps} className={classNames({[classes?.MenuList||'']:classes?.MenuList})}>
             {children}
         </MenuList>
     </Popover>
