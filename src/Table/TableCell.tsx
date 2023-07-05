@@ -1,8 +1,13 @@
-import { DetailedHTMLProps, TdHTMLAttributes } from "react";
+import { DetailedHTMLProps, ReactNode, TdHTMLAttributes } from "react";
 
-type TableReactProps= DetailedHTMLProps<TdHTMLAttributes<HTMLTableDataCellElement>,HTMLTableDataCellElement>,
-export default function TableCell({}:TableCellProps) {
+type TableReactProps= DetailedHTMLProps<TdHTMLAttributes<HTMLTableCellElement>,HTMLTableCellElement>
+export interface TableCellProps extends TableReactProps{
+children:ReactNode
+}
+export default function TableCell({children,...rest}:TableCellProps) {
     return (
-        <td></td>
+        <td {...rest}>
+ {children}
+        </td>
     )
 }
