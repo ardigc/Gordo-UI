@@ -49,6 +49,7 @@ export default function RenderComponent({
   anchorReference,
   anchorOrigin,
   components,
+  ...rest
 }: // screenVariation,
 // id,
 RenderComponentProps) {
@@ -150,6 +151,7 @@ RenderComponentProps) {
       }}
       className={classNames({ [className || '']: className })}
       // className='absolute'
+      {...rest}
     >
       {children}
     </RenderComponent>

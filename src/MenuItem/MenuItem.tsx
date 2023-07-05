@@ -1,15 +1,26 @@
 import classNames from 'classnames'
-import { DetailedHTMLProps, ElementType, LiHTMLAttributes, MouseEvent, MouseEventHandler, ReactNode, useState } from 'react'
+import {
+  DetailedHTMLProps,
+  ElementType,
+  LiHTMLAttributes,
+  MouseEvent,
+  MouseEventHandler,
+  ReactNode,
+  useState,
+} from 'react'
 
-type LiReactProps=DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>,HTMLLIElement>
-export interface   MenuItemProps extends  LiReactProps{
+type LiReactProps = DetailedHTMLProps<
+  LiHTMLAttributes<HTMLLIElement>,
+  HTMLLIElement
+>
+export interface MenuItemProps extends LiReactProps {
   children?: ReactNode
   className?: string
   component?: ElementType
   dense?: boolean
   disableGutters?: boolean
   divider?: boolean
-  onClick?: (ev:MouseEvent<HTMLLIElement>)=>void
+  onClick?: (ev: MouseEvent<HTMLLIElement>) => void
 }
 export default function MenuItem({
   children,
@@ -19,7 +30,7 @@ export default function MenuItem({
   disableGutters,
   divider,
   onClick,
-
+  ...rest
 }: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
@@ -37,14 +48,14 @@ export default function MenuItem({
       setAnimation(false)
     }, 600)
     if (onClick) {
-      setTimeout(()=>{
-
+      setTimeout(() => {
         onClick(ev)
-      },200)
+      }, 200)
     }
   }
   return (
     <CustomComponent
+      {...rest}
       className={classNames(
         'flex font-normal text-base font-base bg-transparent justify-start  hover:bg-neutral-50 relative',
 

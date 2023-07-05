@@ -54,14 +54,19 @@ export default function Popover({
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    return () => {
-      setIsOpen((prev) => !prev)
-      console.log(isOpen)
+    if (open) {
+      setIsOpen(true)
     }
   }, [open])
   const RenderRoot = components?.root ? components.root : 'div'
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
+  }
+  const animationEndHandler = () => {
+    console.log('hola')
+    if (!open) {
+      setIsOpen(false)
+    }
   }
 
   return (
@@ -80,6 +85,7 @@ export default function Popover({
               className={classNames('fixed inset-0 flex bg-transparent -z-[1]')}
             ></div>
             <RenderComponent
+              onAnimationEnd={animationEndHandler}
               {...componentProps?.paper}
               marginThreshold={marginThreshold}
               anchorEl={anchorEl}
