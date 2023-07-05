@@ -7,7 +7,7 @@ children:ReactNode
 }
 export default function TableCell({children,...rest}:TableCellProps) {
     return (
-        <td className={classNames('font-base text-base font-normal')} {...rest}>
+        <td className={classNames('font-base text-base font-normal p-4 border-b border-b-gray-100')} {...rest}>
  {children}
         </td>
     )
