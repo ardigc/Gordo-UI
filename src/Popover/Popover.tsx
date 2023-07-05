@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode } from 'react'
+import { ElementType, ReactNode, useEffect, useState } from 'react'
 
 import { createPortal } from 'react-dom'
 import RenderComponent from './RenderComponent'
@@ -51,13 +51,23 @@ export default function Popover({
   disableTransition,
   classes,
 }: PopoverProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (!open) {
+      return () => setIsOpen(false)
+    } else {
+      setIsOpen(true)
+    }
+  }, [open])
   const RenderRoot = components?.root ? components.root : 'div'
   function resolveContainer(container: Element | (() => Element)) {
     return typeof container === 'function' ? container() : container
   }
+
   return (
     <>
-      {open &&
+      {isOpen &&
         createPortal(
           <RenderRoot
             id={id}
@@ -83,7 +93,8 @@ export default function Popover({
               className={classNames(
                 'absolute  bg-transparent rounded-[4px]  ',
                 {
-                  'animate-grow': !disableTransition,
+                  'animate-grow': open && !disableTransition,
+                  'animate-dwarf': !open && !disableTransition,
                   'shadow-1': elevation === 1,
                   'shadow-2': elevation === 2,
                   'shadow-3': elevation === 3,
