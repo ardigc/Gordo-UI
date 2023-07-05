@@ -1,14 +1,15 @@
 import {ReactNode} from 'react'
-import Popover from '../Popover/Popover'
+import Popover, { PopoverProps } from '../Popover/Popover'
 import MenuList, { MenuListProps } from '../MenuList/MenuList'
 import classNames from 'classnames'
-export interface MenuProps{
+export interface MenuProps extends Omit<PopoverProps,'classes'>{
     children?:ReactNode
     open: boolean
     anchorEl?: Element | (() => Element)
     onClose?: ()=>void
     classes?:{Popover?:string, MenuList?: string}
     menuListProps?: MenuListProps
+    
 }
 export default function Menu({children, open, anchorEl ,onClose, classes, menuListProps}:MenuProps) {
  const clickAwayHandler=()=>{
