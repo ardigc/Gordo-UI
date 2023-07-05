@@ -17,6 +17,7 @@ export interface TableCellProps extends TableReactProps {
   component?: ElementType
   padding?: 'checkbox' | 'none' | 'normal'
   size?: 'medium' | 'small'
+  // sortDirection?:'asc'|'desc'
 }
 export default function TableCell({
   children,
@@ -25,9 +26,11 @@ export default function TableCell({
   component,
   padding = 'normal',
   size = 'medium',
+  // sortDirection,
   ...rest
 }: TableCellProps) {
   const RenderComponent = component ? component : 'td'
+  // const ariaSort=sortDirection==='asc'?'ascending':sortDirection==='desc'?'descending':false
   return (
     <RenderComponent
       className={classNames(
