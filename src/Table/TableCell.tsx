@@ -31,8 +31,8 @@ export default function TableCell({
       className={classNames(
         'font-base text-base font-normal border-b table-cell border-b-gray-100',
         {
-          'p-4': (padding = 'normal'),
-          'pl-1': (padding = 'checkbox'),
+          'p-4': padding === 'normal',
+          'pl-1': padding === 'checkbox',
           'text-center': align === 'center',
           'text-justify': align === 'justify',
           'text-left': align === 'left',

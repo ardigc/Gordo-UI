@@ -14,5 +14,7 @@ export const primary: Story = {
   args: {
     children: 'hola',
     className: 'bg-slate-400',
+    align: 'center',
+    padding: 'checkbox',
   },
 }
