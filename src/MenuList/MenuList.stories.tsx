@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>
 const TestButtonFunc = ({ args }: { args: MenuListProps }) => {
  
     return (<>
-    <div className="flex justify-center h-56 items-center">
+    <div className="flex bg-slate-100 justify-center h-56 items-center">
 
     <MenuList >
     <MenuItem divider >opcion 1</MenuItem>
