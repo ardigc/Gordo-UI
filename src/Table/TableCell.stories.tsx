@@ -15,7 +15,7 @@ export const primary: Story = {
     children: 'hola',
     className: 'bg-slate-400',
     align: 'center',
-    padding: 'checkbox',
+    padding: 'normal',
     size: 'medium',
     variant: 'body',
   },
