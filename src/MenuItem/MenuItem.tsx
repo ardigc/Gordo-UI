@@ -78,7 +78,7 @@ export default function MenuItem({
               transform: 'translate(-50%, -50%)',
             }}
             className={classNames({
-              'animate-ripple absolute inline-flex w-full h-full   rounded-full bg-opacity-25 origin-center bg-neutral-300':
+              'animate-ripple absolute inline-flex w-full h-full   rounded-full bg-opacity-25 origin-center bg-neutral-500':
                 true,
             })}
           ></span>
