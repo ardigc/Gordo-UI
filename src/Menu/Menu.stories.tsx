@@ -28,7 +28,7 @@ setOpen(true)
     <div className="flex justify-center h-56 items-center">
 
     <Button onClick={clickHandler}>hola</Button>
-    <Menu open={open} onClose={onCloseHandler} anchorEl={anchorEl}>
+    <Menu open={open} onClose={onCloseHandler} classes={args.classes} anchorEl={anchorEl}>
     <MenuItem divider onClick={onCloseHandler}>opcion 1</MenuItem>
     <MenuItem onClick={onCloseHandler}>opcion 2</MenuItem>
     <MenuItem onClick={onCloseHandler}>opcion 3</MenuItem>
@@ -41,5 +41,6 @@ export const testButton: Story = {
     args: {
       children:<div></div>,
       open:false,
+      classes:{Popover:'hover:bg-gray-600'}
     }
 }
