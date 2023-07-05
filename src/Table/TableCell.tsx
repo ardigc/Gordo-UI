@@ -16,6 +16,7 @@ export interface TableCellProps extends TableReactProps {
   className?: string
   component?: ElementType
   padding?: 'checkbox' | 'none' | 'normal'
+  size?: 'medium' | 'small'
 }
 export default function TableCell({
   children,
@@ -23,6 +24,7 @@ export default function TableCell({
   className,
   component,
   padding = 'normal',
+  size = 'medium',
   ...rest
 }: TableCellProps) {
   const RenderComponent = component ? component : 'td'
@@ -31,7 +33,8 @@ export default function TableCell({
       className={classNames(
         'font-base text-base font-normal border-b table-cell border-b-gray-100',
         {
-          'p-4': padding === 'normal',
+          'p-4': padding === 'normal' && size === 'medium',
+          'px-4 py-[6px]': padding === 'normal' && size === 'small',
           'pl-1': padding === 'checkbox',
           'text-center': align === 'center',
           'text-justify': align === 'justify',
