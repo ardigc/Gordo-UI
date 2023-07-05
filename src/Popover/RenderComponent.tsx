@@ -1,15 +1,21 @@
 import classNames from 'classnames'
 import {
+  DetailedHTMLProps,
   ElementType,
   ReactNode,
   useContext,
   useEffect,
   useRef,
   useState,
+  HTMLAttributes,
 } from 'react'
 import { leftMargin, setPopoverPosition, topMargin } from './helpers'
 import { TooltipContext } from '../Tooltip/Tooltip'
-interface RenderComponentProps {
+type DivReactProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+export interface RenderComponentProps extends DivReactProps {
   children: ReactNode
   className: string
   marginThreshold: number
@@ -126,6 +132,7 @@ RenderComponentProps) {
   return (
     <RenderComponent
       // id={id}
+
       ref={popoverRef}
       style={{
         top: position?.top

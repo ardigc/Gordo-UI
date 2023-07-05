@@ -54,10 +54,9 @@ export default function Popover({
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    if (!open) {
-      return () => setIsOpen(false)
-    } else {
-      setIsOpen(true)
+    return () => {
+      setIsOpen((prev) => !prev)
+      console.log(isOpen)
     }
   }, [open])
   const RenderRoot = components?.root ? components.root : 'div'
