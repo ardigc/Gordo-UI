@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { DetailedHTMLProps, ReactNode, TdHTMLAttributes } from "react";
 
 type TableReactProps= DetailedHTMLProps<TdHTMLAttributes<HTMLTableCellElement>,HTMLTableCellElement>
@@ -6,7 +7,7 @@ children:ReactNode
 }
 export default function TableCell({children,...rest}:TableCellProps) {
     return (
-        <td {...rest}>
+        <td className={classNames('font-base text-base font-normal')} {...rest}>
  {children}
         </td>
     )
