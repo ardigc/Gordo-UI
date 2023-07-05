@@ -21,6 +21,7 @@ export interface MenuItemProps extends LiReactProps {
   disableGutters?: boolean
   divider?: boolean
   onClick?: (ev: MouseEvent<HTMLLIElement>) => void
+  selected?: boolean
 }
 export default function MenuItem({
   children,
@@ -30,6 +31,7 @@ export default function MenuItem({
   disableGutters,
   divider,
   onClick,
+  selected,
   ...rest
 }: MenuItemProps) {
   const [animation, setAnimation] = useState(false)
@@ -67,6 +69,7 @@ export default function MenuItem({
         }
       )}
       onClick={onClickHandler}
+      tabIndex={selected ? 0 : -1}
     >
       {children}
       <span className={classNames('inset-0 overflow-hidden absolute')}>
