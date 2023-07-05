@@ -9,9 +9,9 @@ export interface MenuProps extends Omit<PopoverProps,'classes'>{
     onClose?: ()=>void
     classes?:{Popover?:string, MenuList?: string}
     menuListProps?: MenuListProps
-    
+
 }
-export default function Menu({children, open, anchorEl ,onClose, classes, menuListProps}:MenuProps) {
+export default function Menu({children, open, anchorEl ,onClose, classes, menuListProps, ...rest}:MenuProps) {
  const clickAwayHandler=()=>{
     if (onClose) {
         
@@ -20,7 +20,7 @@ export default function Menu({children, open, anchorEl ,onClose, classes, menuLi
  }
     return( 
 
-  <Popover anchorEl={anchorEl}  anchorOrigin={{vertical:'bottom', horizontal:'left'}} onClose={clickAwayHandler} className={classNames('bg-white', {[classes?.Popover||'']:classes?.Popover})} open={open}>
+  <Popover anchorEl={anchorEl}  anchorOrigin={{vertical:'bottom', horizontal:'left'}} onClose={clickAwayHandler} className={classNames('bg-white', {[classes?.Popover||'']:classes?.Popover})} open={open} {...rest}>
         <MenuList {...menuListProps} className={classNames({[classes?.MenuList||'']:classes?.MenuList})}>
             {children}
         </MenuList>
