@@ -22,14 +22,17 @@ export default function TableCell({
   align = 'left',
   className,
   component,
+  padding = 'normal',
   ...rest
 }: TableCellProps) {
   const RenderComponent = component ? component : 'td'
   return (
     <RenderComponent
       className={classNames(
-        'font-base text-base font-normal p-4 border-b table-cell border-b-gray-100',
+        'font-base text-base font-normal border-b table-cell border-b-gray-100',
         {
+          'p-4': (padding = 'normal'),
+          'pl-1': (padding = 'checkbox'),
           'text-center': align === 'center',
           'text-justify': align === 'justify',
           'text-left': align === 'left',
