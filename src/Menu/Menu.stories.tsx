@@ -28,13 +28,16 @@ const TestButtonFunc = ({ args }: { args: MenuProps }) => {
     <>
       <div className="flex justify-center h-56 items-center">
         <Button onClick={clickHandler}>hola</Button>
-        <Menu open={open} onClose={onCloseHandler} anchorEl={anchorEl}>
+        <Menu
+          {...args}
+          open={open}
+          onClose={onCloseHandler}
+          anchorEl={anchorEl}
+        >
           <MenuItem divider onClick={onCloseHandler}>
             opcion 1
           </MenuItem>
-          <MenuItem onClick={onCloseHandler} selected>
-            opcion 2
-          </MenuItem>
+          <MenuItem onClick={onCloseHandler}>opcion 2</MenuItem>
           <MenuItem onClick={onCloseHandler}>opcion 3</MenuItem>
         </Menu>
       </div>
@@ -46,5 +49,7 @@ export const testButton: Story = {
   args: {
     children: <div></div>,
     open: false,
+    classes: { Popover: 'hover:bg-gray-600' },
+    anchorOrigin: { horizontal: 'right', vertical: 'top' },
   },
 }
