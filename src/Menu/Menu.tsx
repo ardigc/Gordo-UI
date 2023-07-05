@@ -1,6 +1,7 @@
 import {ReactNode, useEffect} from 'react'
 import Popover from '../Popover/Popover'
 import Clickaway from '../ClickAway/ClickAway'
+import MenuList from '../MenuList/MenuList'
 export interface MenuProps{
     children?:ReactNode
     open: boolean
@@ -17,9 +18,9 @@ export default function Menu({children, open, anchorEl ,onClose}:MenuProps) {
     return( 
 
   <Popover anchorEl={anchorEl} anchorOrigin={{vertical:'bottom', horizontal:'left'}} onClose={clickAwayHandler} className='bg-white' open={open}>
-        <ul>
+        <MenuList>
             {children}
-        </ul>
+        </MenuList>
     </Popover>
     ) 
 }
