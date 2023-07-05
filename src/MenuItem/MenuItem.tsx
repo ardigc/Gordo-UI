@@ -63,6 +63,7 @@ export default function MenuItem({
 
         {
           'py-[6px]': !dense && !disableGutters,
+          'bg-sky-50': selected,
           'px-4': !disableGutters,
           'border-b': divider,
           [className || '']: className,
