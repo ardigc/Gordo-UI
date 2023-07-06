@@ -7,5 +7,5 @@ export interface TableProps extends TableReactPops {
   children: ReactNode
 }
 export default function Table({ children }: TableProps) {
-  return <table></table>
+  return <table>{children}</table>
 }
