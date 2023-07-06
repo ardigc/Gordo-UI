@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
 import TableCell from './TableCell'
-import Button from '../Button/Button'
-import { MouseEventHandler, useState } from 'react'
 
 const meta = {
   component: TableCell,
