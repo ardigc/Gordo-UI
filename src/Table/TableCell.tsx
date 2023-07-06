@@ -6,11 +6,11 @@ import {
   TdHTMLAttributes,
 } from 'react'
 
-type TableReactProps = DetailedHTMLProps<
+type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
   HTMLTableCellElement
 >
-export interface TableCellProps extends TableReactProps {
+export interface TableCellProps extends TableCellReactProps {
   children?: ReactNode
   align?: 'center' | 'justify' | 'left' | 'right'
   className?: string
