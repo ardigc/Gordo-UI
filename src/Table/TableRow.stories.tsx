@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 const TestFunc = ({ args }: { args: TableRowProps }) => {
     return(
 <>
-<TableRow className={args.className}>
+<TableRow {...args}>
     <TableCell> hola</TableCell>
     <TableCell> hola</TableCell>
     <TableCell> hola</TableCell>
@@ -27,6 +27,7 @@ const TestFunc = ({ args }: { args: TableRowProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
-className:'rounded '
+className:'rounded ',
+hover:true
     },
 }
