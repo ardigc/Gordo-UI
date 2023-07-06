@@ -1,15 +1,17 @@
 import classNames from "classnames"
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react"
+import { DetailedHTMLProps, ElementType, HTMLAttributes, ReactNode } from "react"
 
 type TableRowReactProps= DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>,HTMLTableRowElement>
 export interface TableRowProps extends TableRowReactProps{
     children?: ReactNode
     className?: string
+    component?: ElementType
 }
-export default function TableRow({children, className}:TableRowProps) {
+export default function TableRow({children, className, component}:TableRowProps) {
+   const RenderComponent= component?component:'tr'
     return(
-        <tr className={classNames({[className||'']:className})}>
+        <RenderComponent className={classNames({[className||'']:className})}>
            {children} 
-        </tr>
+        </RenderComponent>
     )
 }
