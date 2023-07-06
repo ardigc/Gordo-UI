@@ -31,7 +31,7 @@ export default function TableCell({
   variant = 'body',
   ...rest
 }: TableCellProps) {
-  const RenderComponent = component ? component : 'td'
+  const RenderComponent = component ? component :variant==='head'?'th': 'td'
   // const ariaSort=sortDirection==='asc'?'ascending':sortDirection==='desc'?'descending':false
   return (
     <RenderComponent
