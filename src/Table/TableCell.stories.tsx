@@ -17,6 +17,6 @@ export const primary: Story = {
     align: 'center',
     padding: 'normal',
     size: 'medium',
-    variant: 'body',
+    variant: 'head',
   },
 }
