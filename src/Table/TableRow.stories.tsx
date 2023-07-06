@@ -28,6 +28,7 @@ export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
 className:'rounded ',
-hover:true
+hover:false,
+selected:true,
     },
 }

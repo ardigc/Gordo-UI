@@ -30,6 +30,7 @@ export default function TableRow({
     <RenderComponent
       className={classNames('table-row text-inherit align-middle outline-0', {
         'hover:bg-slate-200': hover,
+        'bg-blue-50 hover:bg-blue-100':selected,
         [className || '']: className,
       })}
       {...rest}
