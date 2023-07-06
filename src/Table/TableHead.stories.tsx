@@ -22,12 +22,12 @@ const TestFunc = ({ args }: { args: TableHeadProps }) => {
         </TableRow>
         <TableRow>
           <TableCell> hola</TableCell>
-          <TableCell> hola</TableCell>
+          <TableCell variant="body"> hola</TableCell>
           <TableCell> hola</TableCell>
         </TableRow>
         <TableRow>
           <TableCell> hola</TableCell>
-          <TableCell> hola</TableCell>
+          <TableCell variant="footer"> hola</TableCell>
           <TableCell> hola</TableCell>
         </TableRow>
       </TableHead>

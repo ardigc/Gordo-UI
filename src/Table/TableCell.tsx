@@ -34,7 +34,7 @@ export default function TableCell({
   ...rest
 }: TableCellProps) {
   const { head } = useContext(TableHeadContext)
-  variant = head ? 'head' : variant ? variant : 'body'
+  variant = variant ? variant : head ? 'head' : 'body'
   const RenderComponent = component
     ? component
     : variant === 'head'
