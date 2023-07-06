@@ -1,5 +1,10 @@
 import classNames from 'classnames'
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import {
+  DetailedHTMLProps,
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+} from 'react'
 
 type TableBodyReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableSectionElement>,
@@ -8,20 +13,23 @@ type TableBodyReactProps = DetailedHTMLProps<
 export interface TableBodyProps extends TableBodyReactProps {
   children?: ReactNode
   className?: string
+  component?: ElementType
 }
 export default function TableBody({
   children,
   className,
+  component,
   ...rest
 }: TableBodyProps) {
+  const RenderComponent = component ? component : 'tbody'
   return (
-    <tbody
+    <RenderComponent
       className={classNames('table-row-group', {
         [className || '']: className,
       })}
       {...rest}
     >
       {children}
-    </tbody>
+    </RenderComponent>
   )
 }
