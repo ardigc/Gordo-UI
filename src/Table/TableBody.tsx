@@ -7,6 +7,6 @@ type TableBodyReactProps = DetailedHTMLProps<
 export interface TableBodyProps extends TableBodyReactProps {
   children?: ReactNode
 }
-export default function TableBody({ children }: TableBodyProps) {
-  return <tbody>{children}</tbody>
+export default function TableBody({ children, ...rest }: TableBodyProps) {
+  return <tbody {...rest}>{children}</tbody>
 }
