@@ -24,6 +24,6 @@ const TestFunc = ({ args }: { args: TableRowProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
-
+className:'bg-slate-200'
     },
 }
