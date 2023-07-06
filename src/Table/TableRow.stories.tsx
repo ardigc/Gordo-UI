@@ -3,6 +3,7 @@ import TableRow, { TableRowProps } from './TableRow'
 import Button from '../Button/Button'
 import { MouseEventHandler, useState } from 'react'
 import TableCell from './TableCell'
+import { className } from '../FormControl/FormControl.stories'
 
 const meta = {
   component: TableRow,
@@ -15,7 +16,9 @@ type Story = StoryObj<typeof meta>
 const TestFunc = ({ args }: { args: TableRowProps }) => {
     return(
 <>
-<TableRow {...args}>
+<TableRow className={args.className}>
+    <TableCell> hola</TableCell>
+    <TableCell> hola</TableCell>
     <TableCell> hola</TableCell>
 </TableRow>
 </>
@@ -24,6 +27,6 @@ const TestFunc = ({ args }: { args: TableRowProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
-className:'bg-slate-200'
+className:'rounded '
     },
 }
