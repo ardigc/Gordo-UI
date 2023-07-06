@@ -15,18 +15,23 @@ export interface TableRowProps extends TableRowReactProps {
   className?: string
   component?: ElementType
   hover?: boolean
+  selected?: boolean
 }
 export default function TableRow({
   children,
   hover,
   className,
   component,
+  selected,
   ...rest
 }: TableRowProps) {
   const RenderComponent = component ? component : 'tr'
   return (
     <RenderComponent
-      className={classNames({'hover:bg-slate-200':hover ,[className || '']: className })}
+      className={classNames('table-row text-inherit align-middle outline-0', {
+        'hover:bg-slate-200': hover,
+        [className || '']: className,
+      })}
       {...rest}
     >
       {children}
