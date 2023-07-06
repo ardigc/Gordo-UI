@@ -4,7 +4,9 @@ import {
   ElementType,
   ReactNode,
   TdHTMLAttributes,
+  useContext,
 } from 'react'
+import { TableHeadContext } from './TableHead'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -28,10 +30,16 @@ export default function TableCell({
   padding = 'normal',
   size = 'medium',
   // sortDirection,
-  variant = 'body',
+  variant,
   ...rest
 }: TableCellProps) {
-  const RenderComponent = component ? component :variant==='head'?'th': 'td'
+  const { head } = useContext(TableHeadContext)
+  variant = head ? 'head' : variant ? variant : 'body'
+  const RenderComponent = component
+    ? component
+    : variant === 'head'
+    ? 'th'
+    : 'td'
   // const ariaSort=sortDirection==='asc'?'ascending':sortDirection==='desc'?'descending':false
   return (
     <RenderComponent

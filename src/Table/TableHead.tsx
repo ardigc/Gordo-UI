@@ -4,8 +4,13 @@ import {
   ElementType,
   HTMLAttributes,
   ReactNode,
+  createContext,
 } from 'react'
+export type TableHeadContextType = {
+  head?: boolean
+}
 
+export const TableHeadContext = createContext<TableHeadContextType>({})
 type TableHeadReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableSectionElement>,
   HTMLTableSectionElement
@@ -23,13 +28,15 @@ export default function TableHead({
 }: TableHeadProps) {
   const RenderComponent = component ? component : 'thead'
   return (
-    <RenderComponent
-      className={classNames('table-row-group', {
-        [className || '']: className,
-      })}
-      {...rest}
-    >
-      {children}
-    </RenderComponent>
+    <TableHeadContext.Provider value={{ head: true }}>
+      <RenderComponent
+        className={classNames('table-row-group', {
+          [className || '']: className,
+        })}
+        {...rest}
+      >
+        {children}
+      </RenderComponent>
+    </TableHeadContext.Provider>
   )
 }
