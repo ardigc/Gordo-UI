@@ -15,7 +15,12 @@ export default function TableBody({
   ...rest
 }: TableBodyProps) {
   return (
-    <tbody className={classNames({ [className || '']: className })} {...rest}>
+    <tbody
+      className={classNames('table-row-group', {
+        [className || '']: className,
+      })}
+      {...rest}
+    >
       {children}
     </tbody>
   )
