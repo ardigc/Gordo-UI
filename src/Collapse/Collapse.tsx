@@ -15,7 +15,7 @@ export default function Collapse({children, open, className }:CollapseProps) {
             setChildrenHeight(  childrenRef.current?.offsetHeight)
         }
     },[open])
-    return(<div style={{height:open?childrenHeight:0}} className={classNames('transition-all duration-300',{' min-h-0  overflow-visible':open, 'min-h-0 overflow-hidden':!open})}>
+    return(<div style={{height:open?childrenHeight:0}} className={classNames('transition-all duration-300 overflow-hidden',{' min-h-0  ':open, 'min-h-0 ':!open})}>
 {/* {children} */}
 <>{React.cloneElement(children, { ref: childrenRef })}</>
     </div>)
