@@ -31,6 +31,7 @@ export default function Table({
   padding = 'normal',
   size = 'medium',
   stickyHeader,
+  ...rest
 }: TableProps) {
   const RenderComponent = component ? component : 'table'
   return (
@@ -48,6 +49,7 @@ export default function Table({
             [className || '']: className,
           }
         )}
+        {...rest}
       >
         {children}
       </RenderComponent>
