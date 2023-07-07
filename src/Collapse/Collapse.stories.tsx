@@ -76,7 +76,7 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
               
               <TableCell align="right">{row.protein}</TableCell>
             </TableRow>
-            <TableRow > <TableCell className='p-0' colSpan={5}><Collapse {...args}><div>gola</div></Collapse></TableCell></TableRow>
+            <TableRow > <TableCell className='!p-0' colSpan={5}><Collapse {...args}><div>gola</div></Collapse></TableCell></TableRow>
             </>
           ))}
         </TableBody>
