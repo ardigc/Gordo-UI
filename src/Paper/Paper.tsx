@@ -23,7 +23,7 @@ export default function Paper({
 }: PaperProps) {
   return (
     <div
-      className={classNames({
+      className={classNames('bg-white rounded', {
         'shadow-1': elevation === 1,
         'shadow-2': elevation === 2,
         'shadow-3': elevation === 3,
