@@ -7,7 +7,7 @@ export interface CollapseProps{
     className?:string
 }
 export default function Collapse({children, open, className }:CollapseProps) {
-    return(<div className={classNames({'h-auto min-h-0  overflow-visible':open, 'h-0 min-h-0 overflow-hidden':!open})}>
+    return(<div className={classNames({'h-auto min-h-0  overflow-visible':open, 'h-0 min-h-0 overflow-hidden hidden':!open})}>
 {children}
     </div>)
 }
