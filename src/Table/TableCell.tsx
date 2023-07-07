@@ -28,14 +28,15 @@ export default function TableCell({
   align = 'left',
   className,
   component,
-  padding = 'normal',
+  padding,
   size = 'medium',
   // sortDirection,
   variant,
   ...rest
 }: TableCellProps) {
   const { head } = useContext(TableHeadContext)
-  const { padding } = useContext(TableContext)
+  const { contextPadding } = useContext(TableContext)
+  padding = padding ? padding : contextPadding ? contextPadding : 'normal'
   variant = variant ? variant : head ? 'head' : 'body'
   const RenderComponent = component
     ? component
