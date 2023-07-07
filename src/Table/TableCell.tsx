@@ -35,7 +35,8 @@ export default function TableCell({
   ...rest
 }: TableCellProps) {
   const { head } = useContext(TableHeadContext)
-  const { contextPadding, contextSize } = useContext(TableContext)
+  const { contextPadding, contextSize, contextSticky } =
+    useContext(TableContext)
   padding = padding ? padding : contextPadding ? contextPadding : 'normal'
   size = size ? size : contextSize ? contextSize : 'medium'
   variant = variant ? variant : head ? 'head' : 'body'
@@ -58,6 +59,7 @@ export default function TableCell({
         'font-base text-base font-normal': variant === 'body',
         'font-base text-base text-black font-medium': variant === 'head',
         'font-base text-sm text-gray-600 font-normal': variant === 'footer',
+        'sticky top-0 z-10 bg-white': contextSticky && head,
         [className || '']: className,
       })}
       {...rest}
