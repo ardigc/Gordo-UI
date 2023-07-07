@@ -26,6 +26,7 @@ export default {
         ripple: 'ripple 700ms cubic-bezier(0, 0, 0.2, 1) 1',
         grow: ' grow 200ms cubic-bezier(0, 0, 0.2, 1) 1 forwards',
         dwarf: ' dwarf 200ms cubic-bezier(0, 0, 0.2, 1) 1 forwards',
+        height: ' height 200ms cubic-bezier(0, 0, 0.2, 1) 1 forwards',
       },
       keyframes: {
         grow: {
@@ -46,6 +47,14 @@ export default {
           '100%': {
             transform: 'scale(0)',
             opacity: '0',
+          },
+        },
+        height: {
+          '0%': {
+           height:'0',
+          },
+          '100%': {
+           height:'auto',
           },
         },
         ripple: {
