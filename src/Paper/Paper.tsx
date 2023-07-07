@@ -24,6 +24,7 @@ export default function Paper({
   elevation = 4,
   square,
   variant = 'elevation',
+  ...rest
 }: PaperProps) {
   const RenderComponent = component ? component : 'div'
   return (
@@ -47,6 +48,7 @@ export default function Paper({
         'border border-neutral-400': variant === 'outlined',
         [className || '']: className,
       })}
+      {...rest}
     >
       {children}
     </RenderComponent>
