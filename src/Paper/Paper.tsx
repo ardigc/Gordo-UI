@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 type PaperReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -5,7 +6,12 @@ type PaperReactProps = DetailedHTMLProps<
 >
 export interface PaperProps extends PaperReactProps {
   children: ReactNode
+  className?: string
 }
-export default function Paper({ children }: PaperProps) {
-  return <div>{children}</div>
+export default function Paper({ children, className }: PaperProps) {
+  return (
+    <div className={classNames({ [className || '']: className })}>
+      {children}
+    </div>
+  )
 }
