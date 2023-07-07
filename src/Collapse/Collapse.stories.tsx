@@ -53,8 +53,7 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
   ]
 
   return (
-    <div className="h-48 overflow-auto">
-      <Table {...args}>
+      <Table >
         <TableHead>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
@@ -66,6 +65,7 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
+            <>
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
@@ -73,13 +73,14 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
               <TableCell align="right">{row.calories}</TableCell>
               <TableCell align="right">{row.fat}</TableCell>
               <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell><Collapse><div>gola</div></Collapse></TableCell>
+              
               <TableCell align="right">{row.protein}</TableCell>
             </TableRow>
+            <TableRow > <TableCell className='p-0' colSpan={5}><Collapse {...args}><div>gola</div></Collapse></TableCell></TableRow>
+            </>
           ))}
         </TableBody>
       </Table>
-    </div>
   )
 }
 export const test: Story = {
