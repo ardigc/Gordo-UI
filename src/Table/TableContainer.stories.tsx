@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Table, { TableProps } from './Table'
+import Table from './Table'
 import TableCell from './TableCell'
 import TableRow from './TableRow'
 import TableHead from './TableHead'
