@@ -25,8 +25,9 @@ export default function Paper({
   square,
   variant = 'elevation',
 }: PaperProps) {
+  const RenderComponent = component ? component : 'div'
   return (
-    <div
+    <RenderComponent
       className={classNames('bg-white ', {
         rounded: !square,
         'shadow-1': elevation === 1 && variant === 'elevation',
@@ -48,6 +49,6 @@ export default function Paper({
       })}
     >
       {children}
-    </div>
+    </RenderComponent>
   )
 }
