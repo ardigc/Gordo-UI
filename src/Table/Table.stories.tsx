@@ -3,6 +3,7 @@ import Table, { TableProps } from './Table'
 import TableCell from './TableCell'
 import TableRow from './TableRow'
 import TableHead from './TableHead'
+import TableBody from './TableBody'
 
 const meta = {
   component: Table,
@@ -22,6 +23,8 @@ const TestFunc = ({ args }: { args: TableProps }) => {
             <TableCell> hola</TableCell>
             <TableCell> hola</TableCell>
           </TableRow>
+        </TableHead>
+        <TableBody>
           <TableRow>
             <TableCell> hola</TableCell>
             <TableCell variant="body"> hola</TableCell>
@@ -32,7 +35,7 @@ const TestFunc = ({ args }: { args: TableProps }) => {
             <TableCell variant="footer"> hola</TableCell>
             <TableCell> hola</TableCell>
           </TableRow>
-        </TableHead>
+        </TableBody>
       </Table>
     </>
   )
@@ -40,6 +43,7 @@ const TestFunc = ({ args }: { args: TableProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
+    children: <div></div>,
     className: 'rounded ',
   },
 }
