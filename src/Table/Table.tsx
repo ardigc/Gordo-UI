@@ -28,7 +28,7 @@ export default function Table({
 }: TableProps) {
   const RenderComponent = component ? component : 'table'
   return (
-    <TableContext.Provider value={{ contextPadding: { padding } }}>
+    <TableContext.Provider value={{ contextPadding: padding }}>
       <RenderComponent
         className={classNames('table w-full border-collapse border-spacing-0', {
           [className || '']: className,

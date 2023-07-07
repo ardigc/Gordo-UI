@@ -45,5 +45,6 @@ export const test: Story = {
   args: {
     children: <div></div>,
     className: 'rounded ',
+    padding: 'normal',
   },
 }
