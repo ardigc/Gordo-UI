@@ -43,7 +43,7 @@ export default function Table({
     >
       <RenderComponent
         className={classNames(
-          'table w-full  border-collapse border-spacing-0',
+          'table w-full  border-separate border-spacing-0',
           {
             [className || '']: className,
           }
