@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import React, { JSXElementConstructor, ReactElement, ReactNode, useEffect, useRef } from "react"
+import React, { JSXElementConstructor, ReactElement, ReactNode, useEffect, useRef, useState } from "react"
 
 export interface CollapseProps{
     children: ReactElement<any, string | JSXElementConstructor<any>>    
@@ -8,10 +8,14 @@ export interface CollapseProps{
 }
 export default function Collapse({children, open, className }:CollapseProps) {
     const childrenRef=useRef<HTMLElement>(null)
+    const [childrenHeight, setChildrenHeight] = useState(0)
     useEffect(()=>{
-      console.log(  childrenRef.current?.offsetWidth)
-    })
-    return(<div className={classNames('transition-all',{'h-auto min-h-0  overflow-visible':open, 'h-0 min-h-0 overflow-hidden ':!open})}>
+        if (childrenRef.current?.offsetHeight) {
+            
+            setChildrenHeight(  childrenRef.current?.offsetHeight)
+        }
+    },[open])
+    return(<div style={{height:open?childrenHeight:0}} className={classNames('transition-all duration-300',{' min-h-0  overflow-visible':open, 'min-h-0 overflow-hidden':!open})}>
 {/* {children} */}
 <>{React.cloneElement(children, { ref: childrenRef })}</>
     </div>)
