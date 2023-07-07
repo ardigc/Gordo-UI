@@ -14,16 +14,19 @@ export interface PaperProps extends PaperReactProps {
   className?: string
   component?: ElementType
   elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
+  square?: boolean
 }
 export default function Paper({
   children,
   className,
   component,
   elevation = 4,
+  square,
 }: PaperProps) {
   return (
     <div
-      className={classNames('bg-white rounded', {
+      className={classNames('bg-white ', {
+        rounded: !square,
         'shadow-1': elevation === 1,
         'shadow-2': elevation === 2,
         'shadow-3': elevation === 3,
