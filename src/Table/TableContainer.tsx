@@ -9,15 +9,15 @@ type TableContainerReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
-export interface TableContainerPops extends TableContainerReactProps {
+export interface TableContainerProps extends TableContainerReactProps {
   children: ReactNode
-  component: ElementType
+  component?: ElementType
 }
 export default function TableContainer({
   children,
   component,
   ...rest
-}: TableContainerPops) {
+}: TableContainerProps) {
   const RenderComponent = component ? component : 'div'
   return (
     <>
