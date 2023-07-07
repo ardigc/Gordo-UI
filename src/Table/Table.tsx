@@ -8,6 +8,7 @@ import {
 } from 'react'
 export type TableContextType = {
   contextPadding?: 'checkbox' | 'none' | 'normal'
+  contextSize?: 'medium' | 'small'
 }
 export const TableContext = createContext<TableContextType>({})
 type TableReactPops = DetailedHTMLProps<
@@ -19,16 +20,20 @@ export interface TableProps extends TableReactPops {
   className?: string
   component?: ElementType
   padding?: 'checkbox' | 'none' | 'normal'
+  size?: 'medium' | 'small'
 }
 export default function Table({
   children,
   className,
   component,
-  padding,
+  padding = 'normal',
+  size = 'medium',
 }: TableProps) {
   const RenderComponent = component ? component : 'table'
   return (
-    <TableContext.Provider value={{ contextPadding: padding }}>
+    <TableContext.Provider
+      value={{ contextPadding: padding, contextSize: size }}
+    >
       <RenderComponent
         className={classNames('table w-full border-collapse border-spacing-0', {
           [className || '']: className,
