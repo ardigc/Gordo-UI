@@ -7,6 +7,7 @@ import {
   useContext,
 } from 'react'
 import { TableHeadContext } from './TableHead'
+import { TableContext } from './Table'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -34,6 +35,7 @@ export default function TableCell({
   ...rest
 }: TableCellProps) {
   const { head } = useContext(TableHeadContext)
+  const { padding } = useContext(TableContext)
   variant = variant ? variant : head ? 'head' : 'body'
   const RenderComponent = component
     ? component
