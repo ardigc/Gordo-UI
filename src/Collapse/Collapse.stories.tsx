@@ -88,6 +88,7 @@ export const test: Story = {
   args: {
     children: <div></div>,
     className: 'rounded ',
+    collapsedSize:'30px',
 
   },
 }
