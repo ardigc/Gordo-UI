@@ -18,7 +18,7 @@ export default function Collapse({children, open, className, collapsedSize, comp
         }
     },[open])
 const RenderComponent= component?component:'div'
-    return(<div style={{height:open?childrenHeight:collapsedSize? collapsedSize:0}} className={classNames('transition-all duration-300 overflow-hidden',{' min-h-0  ':open, 'min-h-0 ':!open})}>
+    return(<div style={{height:open?childrenHeight:collapsedSize? collapsedSize:0}} className={classNames('transition-all duration-300 overflow-hidden',{[className||'']:className,' min-h-0  ':open, 'min-h-0 ':!open})}>
 {/* {children} */}
 <>{React.cloneElement(children, { ref: childrenRef })}</>
     </div>)
