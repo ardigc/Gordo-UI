@@ -121,5 +121,6 @@ export const test: Story = {
     className: 'rounded',
     collapsedSize: '0px',
     easing: 'ease-in',
+    timeout: 0,
   },
 }
