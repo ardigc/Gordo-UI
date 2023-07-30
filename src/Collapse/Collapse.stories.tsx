@@ -53,19 +53,19 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
   ]
 
   return (
-      <Table >
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Dessert (100g serving)</TableCell>
+          <TableCell align="right">Calories</TableCell>
+          <TableCell align="right">Fat&nbsp;(g)</TableCell>
+          <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+          <TableCell align="right">Protein&nbsp;(g)</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <>
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
@@ -73,14 +73,21 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
               <TableCell align="right">{row.calories}</TableCell>
               <TableCell align="right">{row.fat}</TableCell>
               <TableCell align="right">{row.carbs}</TableCell>
-              
+
               <TableCell align="right">{row.protein}</TableCell>
             </TableRow>
-            <TableRow > <TableCell className='!p-0' colSpan={5}><Collapse {...args}><div>gola</div></Collapse></TableCell></TableRow>
-            </>
-          ))}
-        </TableBody>
-      </Table>
+            <TableRow>
+              {' '}
+              <TableCell className="!p-0" colSpan={5}>
+                <Collapse {...args}>
+                  <div>gola</div>
+                </Collapse>
+              </TableCell>
+            </TableRow>
+          </>
+        ))}
+      </TableBody>
+    </Table>
   )
 }
 export const test: Story = {
@@ -88,7 +95,6 @@ export const test: Story = {
   args: {
     children: <div></div>,
     className: 'rounded ',
-    collapsedSize:'30px',
-
+    collapsedSize: '0px',
   },
 }
