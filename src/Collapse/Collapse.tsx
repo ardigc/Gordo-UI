@@ -36,7 +36,7 @@ export default function Collapse({
       style={{
         height: open ? childrenHeight : collapsedSize ? collapsedSize : 0,
       }}
-      className={classNames('transition-all duration-00  overflow-hidden', {
+      className={classNames('transition-all duration-500  overflow-hidden', {
         [className || '']: className,
         ' min-h-0  ': open,
         'min-h-0 ': !open,

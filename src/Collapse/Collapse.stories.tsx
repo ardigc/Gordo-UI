@@ -27,29 +27,29 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
 
   const rows = [
     createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    // createData('Eclair', 262, 16.0, 24, 6.0),
+    // createData('Cupcake', 305, 3.7, 67, 4.3),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
+    // createData('Gingerbread', 356, 16.0, 49, 3.9),
   ]
 
   return (
@@ -80,7 +80,31 @@ const TestFunc = ({ args }: { args: CollapseProps }) => {
               {' '}
               <TableCell className="!p-0" colSpan={5}>
                 <Collapse {...args}>
-                  <div>gola</div>
+                  <div>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                    <p>gola</p>
+                  </div>
                 </Collapse>
               </TableCell>
             </TableRow>
@@ -94,7 +118,7 @@ export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
     children: <div></div>,
-    className: 'rounded ',
+    className: 'rounded',
     collapsedSize: '0px',
   },
 }
