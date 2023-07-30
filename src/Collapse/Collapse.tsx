@@ -3,7 +3,6 @@ import React, {
   ElementType,
   JSXElementConstructor,
   ReactElement,
-  ReactNode,
   useEffect,
   useRef,
   useState,
@@ -15,8 +14,7 @@ export interface CollapseProps {
   className?: string
   collapsedSize?: number | string
   component?: ElementType
-  orientation?:	'horizontal'
-  | 'vertical'
+  orientation?: 'horizontal' | 'vertical'
 }
 export default function Collapse({
   children,
@@ -34,7 +32,7 @@ export default function Collapse({
   }, [open])
   const RenderComponent = component ? component : 'div'
   return (
-    <div
+    <RenderComponent
       style={{
         height: open ? childrenHeight : collapsedSize ? collapsedSize : 0,
       }}
@@ -46,6 +44,6 @@ export default function Collapse({
     >
       {/* {children} */}
       <>{React.cloneElement(children, { ref: childrenRef })}</>
-    </div>
+    </RenderComponent>
   )
 }
