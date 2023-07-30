@@ -15,7 +15,6 @@ export interface CollapseProps {
   collapsedSize?: number | string
   component?: ElementType
   orientation?: 'horizontal' | 'vertical'
-  timeout?: number
 }
 export default function Collapse({
   children,
@@ -23,7 +22,6 @@ export default function Collapse({
   className,
   collapsedSize,
   component,
-  timeout = 300,
 }: CollapseProps) {
   const childrenRef = useRef<HTMLElement>(null)
   const [childrenHeight, setChildrenHeight] = useState(0)
@@ -38,8 +36,7 @@ export default function Collapse({
       style={{
         height: open ? childrenHeight : collapsedSize ? collapsedSize : 0,
       }}
-      className={classNames('transition-all  overflow-hidden', {
-        [`duration-${timeout}`]: true,
+      className={classNames('transition-all duration-00  overflow-hidden', {
         [className || '']: className,
         ' min-h-0  ': open,
         'min-h-0 ': !open,
