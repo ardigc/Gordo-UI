@@ -120,5 +120,6 @@ export const test: Story = {
     children: <div></div>,
     className: 'rounded',
     collapsedSize: '0px',
+    easing: 'ease-in',
   },
 }
