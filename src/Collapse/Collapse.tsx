@@ -15,6 +15,7 @@ export interface CollapseProps {
   collapsedSize?: number | string
   component?: ElementType
   orientation?: 'horizontal' | 'vertical'
+  easing?: 'ease-linear' | 'ease-in' | 'ease-out' | 'ease-in-out'
 }
 export default function Collapse({
   children,
@@ -22,6 +23,7 @@ export default function Collapse({
   className,
   collapsedSize,
   component,
+  easing,
 }: CollapseProps) {
   const childrenRef = useRef<HTMLElement>(null)
   const [childrenHeight, setChildrenHeight] = useState(0)
@@ -40,6 +42,10 @@ export default function Collapse({
         [className || '']: className,
         ' min-h-0  ': open,
         'min-h-0 ': !open,
+        'ease-linear': easing === 'ease-linear',
+        'ease-in': easing === 'ease-in',
+        'ease-out': easing === 'ease-out',
+        'ease-in-out': easing === 'ease-in-out',
       })}
     >
       {/* {children} */}
