@@ -4,8 +4,8 @@ type TableFooterReactProps=DetailedHTMLProps<HTMLAttributes<HTMLTableSectionElem
 export interface TableFooterProps extends TableFooterReactProps{
     children?: ReactNode
 }
-export default function TableFooter(params:TableFooterProps) {
-    return(<tfoot>
+export default function TableFooter({children,...rest}:TableFooterProps) {
+    return(<tfoot {...rest}>
         {children}
     </tfoot>)
 }
