@@ -56,7 +56,7 @@ const meta = {
     return (
       // <div className="h-48 overflow-auto">
       <TableContainer
-        {...args}
+       
         component={({ children }: { children: ReactNode }) => (
           <Paper elevation={10}>{children}</Paper>
         )}
@@ -84,7 +84,7 @@ const meta = {
               </TableRow>
             ))}
           </TableBody>
-          <TableFooter><TableRow><TableCell>hola</TableCell></TableRow></TableFooter>
+          <TableFooter  {...args}><TableRow><TableCell>hola</TableCell></TableRow></TableFooter>
         </Table>
       </TableContainer>
       // </div>
@@ -95,7 +95,7 @@ const meta = {
     args: {
       children: <div></div>,
   
-      // className: 'rounded ',
+      className: 'bg-gray-200 ',
       // padding: 'normal',
       // size: 'medium',
       // stickyHeader: true,
