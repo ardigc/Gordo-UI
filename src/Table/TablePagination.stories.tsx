@@ -16,8 +16,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 const TestFunc = ({ args }: { args: TablePaginationProps }) => {
-  const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
+  const [page, setPage] = useState(args.page)
+  const [rowsPerPage, setRowsPerPage] = useState(args.rowsPerPage)
 
   const handleChangePage = (
     event: React.MouseEvent<Element, MouseEvent> | null,
@@ -85,7 +85,7 @@ export const test: Story = {
   args: {
     count: 30,
     page: 0,
-    rowsPerPage: 3,
+    rowsPerPage: 5,
     // children: <div></div>,
 
     // className: 'bg-gray-200 ',
