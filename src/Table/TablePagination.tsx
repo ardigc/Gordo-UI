@@ -8,7 +8,9 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   NextPageIcon,
+  NextPageIconDis,
   PrevPageIcon,
+  PrevPageIconDis,
 } from '../components/icons/StarIcon'
 import IconButton from '../Button/IconButton'
 
@@ -43,7 +45,7 @@ export default function TablePagination({
     onPageChange(ev, page + 1)
   }
   const setPage = () => {
-    const iniPag = Math.max(0, Math.min(count, 1 + page * rowsPerPage))
+    const iniPag = Math.max(1, Math.min(count, 1 + page * rowsPerPage))
     const finPag = Math.max(
       rowsPerPage,
       Math.min(count, rowsPerPage + rowsPerPage * page)
@@ -70,12 +72,24 @@ export default function TablePagination({
           {setPage().iniPag}-{setPage().finPag} of {count}
         </p>
         <div className="ml-5 flex-shrink-0">
-          <IconButton onClick={onPrevClick}>
-            <PrevPageIcon />
-          </IconButton>
-          <IconButton onClick={onNextClick}>
-            <NextPageIcon />
-          </IconButton>
+          {page > 0 ? (
+            <IconButton onClick={onPrevClick}>
+              <PrevPageIcon />
+            </IconButton>
+          ) : (
+            <IconButton disabled>
+              <PrevPageIconDis />
+            </IconButton>
+          )}
+          {setPage().finPag !== count ? (
+            <IconButton onClick={onNextClick}>
+              <NextPageIcon />
+            </IconButton>
+          ) : (
+            <IconButton disabled>
+              <NextPageIconDis />
+            </IconButton>
+          )}
         </div>
       </div>
     </td>
