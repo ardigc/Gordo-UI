@@ -11,8 +11,10 @@ type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
   HTMLTableCellElement
 >
-export interface TablePaginationProps extends TableCellReactProps {}
-export default function TablePagination({}: TablePaginationProps) {
+export interface TablePaginationProps extends TableCellReactProps {
+  count: number
+}
+export default function TablePagination({ count }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const onClickHandler = () => {
     setOpen(!open)
@@ -32,7 +34,7 @@ export default function TablePagination({}: TablePaginationProps) {
           </div>
         </div>
         <p className="font-base text-base font-normal">
-          {'1'}-{'5'} of {'15'}
+          {'1'}-{'5'} of {count}
         </p>
         <div className="ml-5 flex-shrink-0">
           <IconButton>
