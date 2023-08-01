@@ -25,6 +25,9 @@ export default function TablePagination({}: TablePaginationProps) {
             {!open ? <ArrowDownIcon /> : <ArrowUpIcon />}
           </div>
         </div>
+        <p>
+          {'1'}-{'5'} of {'15'}
+        </p>
       </div>
     </td>
   )
