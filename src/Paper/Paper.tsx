@@ -29,7 +29,7 @@ export default function Paper({
   const RenderComponent = component ? component : 'div'
   return (
     <RenderComponent
-      className={classNames('bg-white ', {
+      className={classNames('bg-white w-full overflow-auto', {
         rounded: !square,
         'shadow-1': elevation === 1 && variant === 'elevation',
         'shadow-2': elevation === 2 && variant === 'elevation',
