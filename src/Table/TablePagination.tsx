@@ -12,7 +12,7 @@ export default function TablePagination({}: TablePaginationProps) {
       <div className="flex relative items-center pl-6 pr-1 justify-end">
         <p className="my-4">Rows per page:</p>
         <div className="inline-flex ml-2 mr-8 items-center relative cursor-pointer">
-          <div className="overflow-hidden overflow-ellipsis block pl-2 pr-6 pt-1 pb-[5px] min-w-[16px]  min-h-[1.4375em] "></div>
+          <div className="overflow-hidden overflow-ellipsis block pl-2 pr-6 pt-1 pb-[5px] min-w-[48px]   min-h-[29.125px] "></div>
           <input className="b-0 l-0 absolute w-full opacity-0 pointer-events-none"></input>
         </div>
       </div>
