@@ -97,9 +97,9 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
-    children: <div></div>,
+    // children: <div></div>,
 
-    className: 'bg-gray-200 ',
+    // className: 'bg-gray-200 ',
     // padding: 'normal',
     // size: 'medium',
     // stickyHeader: true,

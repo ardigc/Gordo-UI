@@ -8,5 +8,5 @@ export interface TablePaginationProps extends TableCellReactProps{
 
 }
 export default function TablePagination({}:TablePaginationProps) {
-    return (<div></div>)
+    return (<div className="flex"></div>)
 }
