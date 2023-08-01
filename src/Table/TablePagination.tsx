@@ -46,10 +46,14 @@ export default function TablePagination({
   }
   const setPage = () => {
     const iniPag = Math.max(1, Math.min(count, 1 + page * rowsPerPage))
-    const finPag = Math.max(
-      rowsPerPage,
-      Math.min(count, rowsPerPage + rowsPerPage * page)
-    )
+
+    const finPag =
+      rowsPerPage === -1
+        ? count
+        : Math.max(
+            rowsPerPage,
+            Math.min(count, rowsPerPage + rowsPerPage * page)
+          )
     return { iniPag: iniPag, finPag: finPag }
   }
   return (
@@ -61,7 +65,7 @@ export default function TablePagination({
           onClick={onClickHandler}
         >
           <div className="overflow-hidden overflow-ellipsis block pl-2 pr-6 pt-1 pb-[5px] min-w-[16px] box-content  min-h-[20.125px] ">
-            {rowsPerPage}
+            {rowsPerPage === -1 ? 'All' : rowsPerPage}
           </div>
           <input className="b-0 l-0 absolute w-full opacity-0 pointer-events-none"></input>
           <div className="absolute w-6 h-6 right-0 flex justify-center items-center ">

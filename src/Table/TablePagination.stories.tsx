@@ -85,7 +85,7 @@ export const test: Story = {
   args: {
     count: 30,
     page: 0,
-    rowsPerPage: 8,
+    rowsPerPage: 4,
     // children: <div></div>,
 
     // className: 'bg-gray-200 ',
