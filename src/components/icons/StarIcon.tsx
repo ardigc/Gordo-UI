@@ -40,3 +40,23 @@ export function StarIconFilled() {
     </div>
   )
 }
+
+export function ArrowDownIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-caret-down"
+      width={15}
+      height={15}
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <path d="M6 10l6 6 6-6H6" />
+    </svg>
+  )
+}
