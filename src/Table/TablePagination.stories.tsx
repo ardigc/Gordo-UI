@@ -16,7 +16,7 @@ const meta = {
   } satisfies Meta<typeof TablePagination>
   export default meta
   type Story = StoryObj<typeof meta>
-  const TestFunc = ({ args }: { args: TableFooterProps }) => {
+  const TestFunc = ({ args }: { args: TablePaginationProps }) => {
     function createData(
       name: string,
       calories: number,
