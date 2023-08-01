@@ -1,11 +1,17 @@
 import classNames from 'classnames'
-import { MouseEvent, MouseEventHandler, ReactNode, useState } from 'react'
-
-export interface IconButonProps {
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  ElementType,
+  MouseEvent,
+  MouseEventHandler,
+  ReactNode,
+  useState,
+} from 'react'
+interface CommonProps {
   children?: ReactNode
   size?: 'small' | 'medium' | 'large'
-  onClick?: (ev: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
-  href?: string
   disableRipple?: boolean
   classes?: {
     buttonClassName?: string
@@ -23,6 +29,48 @@ export interface IconButonProps {
   edge?: 'end' | 'start' | false
   className?: string
 }
+type ButtonReactProps = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>
+export interface ButtonPropsForButton
+  extends CommonProps,
+    Omit<ButtonReactProps, 'color'> {
+  onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
+  href?: undefined
+}
+type AnchorReactProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>
+export interface ButtonPropsForAnchor
+  extends CommonProps,
+    Omit<AnchorReactProps, 'color'> {
+  href: string
+  onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
+}
+// export interface IconButonProps {
+//   children?: ReactNode
+//   size?: 'small' | 'medium' | 'large'
+//   disableRipple?: boolean
+//   classes?: {
+//     buttonClassName?: string
+//     rippleSpanClassName?: string
+//   }
+//   // color?:
+//   // | 'primary'
+//   // | 'secondary'
+//   // | 'error'
+//   // | 'warning'
+//   // | 'info'
+//   // | 'success'
+//   // | 'inherit'
+//   disabled?: boolean
+//   edge?: 'end' | 'start' | false
+//   className?: string
+//   href?: string
+//   onClick?: (ev: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
+// }
 
 export default function IconButton({
   children,
@@ -35,14 +83,35 @@ export default function IconButton({
   edge,
   className,
   classes,
-}: IconButonProps) {
+  ...rest
+}: ButtonPropsForAnchor | ButtonPropsForButton) {
   const [animation, setAnimation] = useState(false)
   const [clickCoord, setClickCoord] = useState<{ x: number; y: number }>()
   // const isCustomcolor=color!==
-  const RenderComponent = href ? 'a' : 'button'
-  const onClickHandler: MouseEventHandler<
-    HTMLButtonElement | HTMLAnchorElement
-  > = (ev) => {
+  const RenderComponent = href ? 'a' : ('button' as ElementType)
+  const onClickButtonHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    if (href !== undefined) return
+
+    const target = ev.currentTarget
+    const location = target.getBoundingClientRect()
+    const coord = {
+      x: ev.clientX - location.left,
+      y: ev.clientY - location.top,
+    }
+    setClickCoord({ x: coord.x, y: coord.y })
+    if (!disableRipple) {
+      setAnimation(true)
+      setTimeout(() => {
+        setAnimation(false)
+      }, 600)
+    }
+    if (onClick) {
+      onClick(ev)
+    }
+  }
+  const onClickAnchorHandler: MouseEventHandler<HTMLAnchorElement> = (ev) => {
+    if (!href) return
+
     const target = ev.currentTarget
     const location = target.getBoundingClientRect()
     const coord = {
@@ -63,7 +132,8 @@ export default function IconButton({
   return (
     <RenderComponent
       disabled={disabled}
-      onClick={onClickHandler}
+      href={href}
+      onClick={href ? onClickAnchorHandler : onClickButtonHandler}
       className={classNames(
         'hover:rounded-full  inline-flex items-center  justify-center  relative overflow-hidden',
         {
@@ -79,6 +149,7 @@ export default function IconButton({
           [classes?.buttonClassName || '']: classes?.buttonClassName,
         }
       )}
+      {...rest}
     >
       {children}
       {animation && (

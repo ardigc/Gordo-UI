@@ -1,4 +1,9 @@
-import { DetailedHTMLProps, TdHTMLAttributes, useState } from 'react'
+import {
+  DetailedHTMLProps,
+  MouseEventHandler,
+  TdHTMLAttributes,
+  useState,
+} from 'react'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -15,11 +20,13 @@ export interface TablePaginationProps extends TableCellReactProps {
   count: number
   rowPerPage: number
   page: number
+  onPageChange: (event: React.MouseEvent | null, page: number) => void
 }
 export default function TablePagination({
   count,
   rowPerPage,
   page,
+  onPageChange,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -29,7 +36,9 @@ export default function TablePagination({
   const onClickHandler = () => {
     setOpen(!open)
   }
-  const onPrevClick = () => {}
+  const onPrevClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    onPageChange(ev, page - 1)
+  }
   const setPage = () => {
     const iniPag = Math.max(0, Math.min(count, 1 + page * rowPerPage))
     const finPag = Math.max(
