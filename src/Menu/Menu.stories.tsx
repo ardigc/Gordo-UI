@@ -50,6 +50,7 @@ export const testButton: Story = {
     children: <div></div>,
     open: false,
     classes: { Popover: 'hover:bg-gray-600' },
-    anchorOrigin: { horizontal: 'right', vertical: 'top' },
+    anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
+transformOrigin:{horizontal:'center', vertical:'top'}
   },
 }
