@@ -6,7 +6,7 @@ import TableHead from './TableHead'
 import TableBody from './TableBody'
 import TablePagination, { TablePaginationProps } from './TablePagination'
 import Paper from '../Paper/Paper'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import TableContainer from './TableContainer'
 import TableFooter from './TableFooter'
 const meta = {
@@ -17,81 +17,68 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 const TestFunc = ({ args }: { args: TablePaginationProps }) => {
-  function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number
-  ) {
-    return { name, calories, fat, carbs, protein }
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
+
+  const handleChangePage = (
+    event: React.MouseEvent<Element, MouseEvent> | null,
+    newPage: number
+  ) => {
+    setPage(newPage)
+  }
+  function createData(name: string, calories: number, fat: number) {
+    return { name, calories, fat }
   }
 
   const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ]
-
+    createData('Cupcake', 305, 3.7),
+    createData('Donut', 452, 25.0),
+    createData('Eclair', 262, 16.0),
+    createData('Frozen yoghurt', 159, 6.0),
+    createData('Gingerbread', 356, 16.0),
+    createData('Honeycomb', 408, 3.2),
+    createData('Ice cream sandwich', 237, 9.0),
+    createData('Jelly Bean', 375, 0.0),
+    createData('KitKat', 518, 26.0),
+    createData('Lollipop', 392, 0.2),
+    createData('Marshmallow', 318, 0),
+    createData('Nougat', 360, 19.0),
+    createData('Oreo', 437, 18.0),
+  ].sort((a, b) => (a.calories < b.calories ? -1 : 1))
   return (
     // <div className="h-48 overflow-auto">
-    <TableContainer
-      component={({ children }: { children: ReactNode }) => (
-        <Paper elevation={10}>{children}</Paper>
-      )}
-    >
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
+    <TableContainer component={Paper}>
+      <Table aria-label="custom pagination table">
         <TableBody>
-          {rows.map((row) => (
+          {(rowsPerPage > 0
+            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : rows
+          ).map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.calories}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.fat}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TablePagination {...args}></TablePagination>
+            <TablePagination
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+            />
           </TableRow>
         </TableFooter>
       </Table>
     </TableContainer>
-    // </div>
   )
 }
 export const test: Story = {
@@ -99,7 +86,7 @@ export const test: Story = {
   args: {
     count: 30,
     page: 0,
-    rowPerPage: 3,
+    rowsPerPage: 3,
     // children: <div></div>,
 
     // className: 'bg-gray-200 ',

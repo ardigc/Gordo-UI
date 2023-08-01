@@ -18,20 +18,20 @@ type TableCellReactProps = DetailedHTMLProps<
 >
 export interface TablePaginationProps extends TableCellReactProps {
   count: number
-  rowPerPage: number
+  rowsPerPage: number
   page: number
   onPageChange: (event: React.MouseEvent | null, page: number) => void
 }
 export default function TablePagination({
   count,
-  rowPerPage,
+  rowsPerPage,
   page,
   onPageChange,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
   //   iniPag: 1,
-  //   finPag: rowPerPage,
+  //   finPag: rowsPerPage,
   // })
   const onClickHandler = () => {
     setOpen(!open)
@@ -43,10 +43,10 @@ export default function TablePagination({
     onPageChange(ev, page + 1)
   }
   const setPage = () => {
-    const iniPag = Math.max(0, Math.min(count, 1 + page * rowPerPage))
+    const iniPag = Math.max(0, Math.min(count, 1 + page * rowsPerPage))
     const finPag = Math.max(
-      rowPerPage,
-      Math.min(count, rowPerPage + rowPerPage * page)
+      rowsPerPage,
+      Math.min(count, rowsPerPage + rowsPerPage * page)
     )
     return { iniPag: iniPag, finPag: finPag }
   }
@@ -59,7 +59,7 @@ export default function TablePagination({
           onClick={onClickHandler}
         >
           <div className="overflow-hidden overflow-ellipsis block pl-2 pr-6 pt-1 pb-[5px] min-w-[16px] box-content  min-h-[20.125px] ">
-            {rowPerPage}
+            {rowsPerPage}
           </div>
           <input className="b-0 l-0 absolute w-full opacity-0 pointer-events-none"></input>
           <div className="absolute w-6 h-6 right-0 flex justify-center items-center ">
