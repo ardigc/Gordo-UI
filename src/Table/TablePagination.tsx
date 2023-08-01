@@ -22,14 +22,22 @@ export default function TablePagination({
   page,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
-  const [actualPage, setActualPage] = useState({
-    iniPag: 1,
-    finPag: rowPerPage,
-  })
+  // const [actualPage, setActualPage] = useState({
+  //   iniPag: 1,
+  //   finPag: rowPerPage,
+  // })
   const onClickHandler = () => {
     setOpen(!open)
   }
-
+  const onPrevClick = () => {}
+  const setPage = () => {
+    const iniPag = Math.max(0, Math.min(count, 1 + page * rowPerPage))
+    const finPag = Math.max(
+      rowPerPage,
+      Math.min(count, rowPerPage + rowPerPage * page)
+    )
+    return { iniPag: iniPag, finPag: finPag }
+  }
   return (
     <td className="p-0" colSpan={1000}>
       <div className="flex relative items-center pl-6 pr-1 justify-end">
@@ -47,10 +55,10 @@ export default function TablePagination({
           </div>
         </div>
         <p className="font-base text-base font-normal">
-          {actualPage.iniPag}-{actualPage.finPag} of {count}
+          {setPage().iniPag}-{setPage().finPag} of {count}
         </p>
         <div className="ml-5 flex-shrink-0">
-          <IconButton>
+          <IconButton onClick={onPrevClick}>
             <PrevPageIcon />
           </IconButton>
           <IconButton>
