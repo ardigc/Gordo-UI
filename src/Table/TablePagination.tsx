@@ -1,5 +1,11 @@
 import { DetailedHTMLProps, TdHTMLAttributes, useState } from 'react'
-import { ArrowDownIcon, ArrowUpIcon } from '../components/icons/StarIcon'
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  NextPageIcon,
+  PrevPageIcon,
+} from '../components/icons/StarIcon'
+import IconButton from '../Button/IconButton'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -14,7 +20,7 @@ export default function TablePagination({}: TablePaginationProps) {
   return (
     <td className="p-0" colSpan={1000}>
       <div className="flex relative items-center pl-6 pr-1 justify-end">
-        <p className="my-4">Rows per page:</p>
+        <p className="my-4 font-base text-base font-normal">Rows per page:</p>
         <div
           className="inline-flex ml-2 mr-8 items-center relative cursor-pointer"
           onClick={onClickHandler}
@@ -25,9 +31,17 @@ export default function TablePagination({}: TablePaginationProps) {
             {!open ? <ArrowDownIcon /> : <ArrowUpIcon />}
           </div>
         </div>
-        <p>
+        <p className="font-base text-base font-normal">
           {'1'}-{'5'} of {'15'}
         </p>
+        <div className="ml-5 flex-shrink-0">
+          <IconButton>
+            <PrevPageIcon />
+          </IconButton>
+          <IconButton>
+            <NextPageIcon />
+          </IconButton>
+        </div>
       </div>
     </td>
   )
