@@ -39,6 +39,9 @@ export default function TablePagination({
   const onPrevClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, page - 1)
   }
+  const onNextClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    onPageChange(ev, page + 1)
+  }
   const setPage = () => {
     const iniPag = Math.max(0, Math.min(count, 1 + page * rowPerPage))
     const finPag = Math.max(
@@ -70,7 +73,7 @@ export default function TablePagination({
           <IconButton onClick={onPrevClick}>
             <PrevPageIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={onNextClick}>
             <NextPageIcon />
           </IconButton>
         </div>
