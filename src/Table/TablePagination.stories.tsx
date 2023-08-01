@@ -97,6 +97,9 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
+    count: 30,
+    page: 0,
+    rowPerPage: 3,
     // children: <div></div>,
 
     // className: 'bg-gray-200 ',
