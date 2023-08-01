@@ -50,6 +50,8 @@ export default function TablePagination({
     const finPag =
       rowsPerPage === -1
         ? count
+        : count === -1
+        ? rowsPerPage + rowsPerPage * page
         : Math.max(
             rowsPerPage,
             Math.min(count, rowsPerPage + rowsPerPage * page)
@@ -73,7 +75,8 @@ export default function TablePagination({
           </div>
         </div>
         <p className="font-base text-base font-normal">
-          {setPage().iniPag}-{setPage().finPag} of {count}
+          {setPage().iniPag}-{setPage().finPag} of{' '}
+          {count === -1 ? `more than ${setPage().finPag}` : `${count}`}
         </p>
         <div className="ml-5 flex-shrink-0">
           {page > 0 ? (
