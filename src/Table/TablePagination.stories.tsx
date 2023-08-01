@@ -69,8 +69,8 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
         <TableFooter>
           <TableRow>
             <TablePagination
-              // count={rows.length}
-              count={-1}
+              count={rows.length}
+              // count={-1}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
@@ -84,7 +84,7 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
-    count: -1,
+    count: 30,
     page: 0,
     rowsPerPage: 4,
     // children: <div></div>,
