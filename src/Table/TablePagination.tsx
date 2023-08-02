@@ -1,5 +1,6 @@
 import {
   DetailedHTMLProps,
+  ElementType,
   MouseEventHandler,
   TdHTMLAttributes,
   useState,
@@ -23,12 +24,14 @@ export interface TablePaginationProps extends TableCellReactProps {
   rowsPerPage: number
   page: number
   onPageChange: (event: React.MouseEvent | null, page: number) => void
+  ActionsComponent?: ElementType
 }
 export default function TablePagination({
   count,
   rowsPerPage,
   page,
   onPageChange,
+  ActionsComponent,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -78,26 +81,33 @@ export default function TablePagination({
           {setPage().iniPag}-{setPage().finPag} of{' '}
           {count === -1 ? `more than ${setPage().finPag}` : `${count}`}
         </p>
-        <div className="ml-5 flex-shrink-0">
-          {page > 0 ? (
-            <IconButton onClick={onPrevClick}>
-              <PrevPageIcon />
-            </IconButton>
-          ) : (
-            <IconButton disabled>
-              <PrevPageIconDis />
-            </IconButton>
-          )}
-          {setPage().finPag !== count ? (
-            <IconButton onClick={onNextClick}>
-              <NextPageIcon />
-            </IconButton>
-          ) : (
-            <IconButton disabled>
-              <NextPageIconDis />
-            </IconButton>
-          )}
-        </div>
+        {!ActionsComponent && (
+          <div className="ml-5 flex-shrink-0">
+            {page > 0 ? (
+              <IconButton onClick={onPrevClick}>
+                <PrevPageIcon />
+              </IconButton>
+            ) : (
+              <IconButton disabled>
+                <PrevPageIconDis />
+              </IconButton>
+            )}
+            {setPage().finPag !== count ? (
+              <IconButton onClick={onNextClick}>
+                <NextPageIcon />
+              </IconButton>
+            ) : (
+              <IconButton disabled>
+                <NextPageIconDis />
+              </IconButton>
+            )}
+          </div>
+        )}
+        {ActionsComponent && (
+          <div className="ml-5 flex-shrink-0">
+            <ActionsComponent />
+          </div>
+        )}
       </div>
     </td>
   )
