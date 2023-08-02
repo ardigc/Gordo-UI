@@ -82,7 +82,7 @@ export default function TablePagination({
           {count === -1 ? `more than ${setPage().finPag}` : `${count}`}
         </p>
         {!ActionsComponent && (
-          <div className="ml-5 flex-shrink-0">
+          <div>
             {page > 0 ? (
               <IconButton onClick={onPrevClick}>
                 <PrevPageIcon />
