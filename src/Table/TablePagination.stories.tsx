@@ -188,7 +188,7 @@ const rows = [
   createData('Oreo', 437, 18.0),
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1))
 
-export function TestFunc2({ args }: { args: TablePaginationProps }) {
+function TestFunc2({ args }: { args: TablePaginationProps }) {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
 
