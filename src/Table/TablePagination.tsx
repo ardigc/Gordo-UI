@@ -105,7 +105,12 @@ export default function TablePagination({
         )}
         {ActionsComponent && (
           <div className="ml-5 flex-shrink-0">
-            <ActionsComponent />
+            <ActionsComponent
+              onPageChange={onPageChange}
+              count={count}
+              rowsPerPage={rowsPerPage}
+              page={page}
+            />
           </div>
         )}
       </div>
