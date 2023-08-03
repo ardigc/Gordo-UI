@@ -13,7 +13,7 @@ import {
   NextPageIconDis,
   PrevPageIcon,
   PrevPageIconDis,
-} from '../components/icons/StarIcon'
+} from '../components/icons/Icons'
 import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
 import classNames from 'classnames'
 import Menu, { MenuProps } from '../Menu/Menu'

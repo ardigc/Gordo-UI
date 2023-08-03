@@ -9,7 +9,7 @@ import { useState } from 'react'
 import TableContainer from './TableContainer'
 import TableFooter from './TableFooter'
 import IconButton from '../Button/IconButton'
-import { NextPageIcon, PrevPageIcon } from '../components/icons/StarIcon'
+import { NextPageIcon, PrevPageIcon } from '../components/icons/Icons'
 const meta = {
   component: TablePagination,
   title: 'GordoUI/TablePagination',

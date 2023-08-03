@@ -1,6 +1,6 @@
 import './task.css'
 import React from 'react'
-import { StarIcon, StarIconFilled } from '../components/icons/StarIcon'
+import { StarIcon, StarIconFilled } from '../components/icons/Icons'
 export interface TaskProps {
   task: {
     id: string
