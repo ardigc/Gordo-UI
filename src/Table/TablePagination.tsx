@@ -51,9 +51,10 @@ export default function TablePagination({
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
+  const [finalRowsPerPage, setFinalRowPerPage] = useState(rowsPerPage)
   // const [actualPage, setActualPage] = useState({
   //   iniPag: 1,
-  //   finPag: rowsPerPage,
+  //   finPag: finalRowsPerPage,
   // })
   const RenderComponent = component ? component : 'td'
   function defaultLabelDisplayedRows({
@@ -72,8 +73,8 @@ export default function TablePagination({
     setAnchorEl(ev.currentTarget)
     setOpen(!open)
   }
-  const onSelectRow = (ev: MouseEventHandler<HTMLLIElement>, item: number) => {
-    console.log(item)
+  const onSelectRow = (item: number) => {
+    setFinalRowPerPage(item)
   }
   const onCloseHandler = () => {
     setOpen(false)
@@ -85,16 +86,16 @@ export default function TablePagination({
     onPageChange(ev, page + 1)
   }
   const setPage = () => {
-    const iniPag = Math.max(1, Math.min(count, 1 + page * rowsPerPage))
+    const iniPag = Math.max(1, Math.min(count, 1 + page * finalRowsPerPage))
 
     const finPag =
-      rowsPerPage === -1
+      finalRowsPerPage === -1
         ? count
         : count === -1
-        ? rowsPerPage + rowsPerPage * page
+        ? finalRowsPerPage + finalRowsPerPage * page
         : Math.max(
-            rowsPerPage,
-            Math.min(count, rowsPerPage + rowsPerPage * page)
+            finalRowsPerPage,
+            Math.min(count, finalRowsPerPage + finalRowsPerPage * page)
           )
     return { iniPag: iniPag, finPag: finPag }
   }
@@ -119,11 +120,11 @@ export default function TablePagination({
           onClick={onClickHandler}
         >
           <div className="overflow-hidden overflow-ellipsis block pl-2 pr-6 pt-1 pb-[5px] min-w-[16px] box-content  min-h-[20.125px] ">
-            {rowsPerPage === -1 ? 'All' : rowsPerPage}
+            {finalRowsPerPage === -1 ? 'All' : finalRowsPerPage}
           </div>
           <input
             className="b-0 l-0 absolute w-full opacity-0 pointer-events-none"
-            value={rowsPerPage}
+            value={finalRowsPerPage}
           ></input>
           <div className="absolute w-6 h-6 right-0 flex justify-center items-center ">
             {!open ? <ArrowDownIcon /> : <ArrowUpIcon />}
@@ -132,8 +133,8 @@ export default function TablePagination({
         <Menu open={open} anchorEl={anchorEl} onClose={onCloseHandler}>
           {arrayRowPerPage.map((item) => (
             <MenuItem
-              onClick={(ev) => {
-                onCloseHandler(), onSelectRow(ev, item)
+              onClick={() => {
+                onCloseHandler(), onSelectRow(item)
               }}
             >
               {item}
@@ -176,7 +177,7 @@ export default function TablePagination({
             <ActionsComponent
               onPageChange={onPageChange}
               count={count}
-              rowsPerPage={rowsPerPage}
+              finalRowsPerPage={finalRowsPerPage}
               page={page}
             />
           </div>
