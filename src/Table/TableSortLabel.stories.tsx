@@ -112,9 +112,10 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
                   // sortDirection={orderBy === headCell.id ? order : false}
                 >
                   <TableSortLabel
-                  //   active={orderBy === headCell.id}
-                  //   direction={orderBy === headCell.id ? order : 'asc'}
-                  //   onClick={createSortHandler(headCell.id)}
+                    //   active={orderBy === headCell.id}
+                    //   direction={orderBy === headCell.id ? order : 'asc'}
+                    //   onClick={createSortHandler(headCell.id)}
+                    active={args.active}
                   >
                     {headCell.label}
                   </TableSortLabel>
@@ -162,5 +163,6 @@ export const test: Story = {
   render: (args) => <TestFunc args={args} />,
   args: {
     children: <div></div>,
+    active: false,
   },
 }
