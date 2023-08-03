@@ -13,7 +13,7 @@ import {
   PrevPageIcon,
   PrevPageIconDis,
 } from '../components/icons/StarIcon'
-import IconButton from '../Button/IconButton'
+import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -25,6 +25,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   page: number
   onPageChange: (event: React.MouseEvent | null, page: number) => void
   ActionsComponent?: ElementType
+  backIconButtonProps?: ButtonPropsForButton
 }
 export default function TablePagination({
   count,
@@ -32,6 +33,7 @@ export default function TablePagination({
   page,
   onPageChange,
   ActionsComponent,
+  backIconButtonProps,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -84,7 +86,7 @@ export default function TablePagination({
         {!ActionsComponent && (
           <div>
             {page > 0 ? (
-              <IconButton onClick={onPrevClick}>
+              <IconButton onClick={onPrevClick} {...backIconButtonProps}>
                 <PrevPageIcon />
               </IconButton>
             ) : (
