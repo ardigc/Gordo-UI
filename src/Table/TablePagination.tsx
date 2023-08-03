@@ -9,6 +9,7 @@ import {
 import {
   ArrowDownIcon,
   ArrowUpIcon,
+  FirstPageIcon,
   NextPageIcon,
   NextPageIconDis,
   PrevPageIcon,
@@ -91,6 +92,9 @@ export default function TablePagination({
   }
   const onCloseHandler = () => {
     setOpen(false)
+  }
+  const onFirstClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    onPageChange(ev, 0)
   }
   const onPrevClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, page - 1)
@@ -186,6 +190,11 @@ export default function TablePagination({
         </p>
         {!ActionsComponent && (
           <div>
+            {showFirstButton && (
+              <IconButton onClick={onFirstClick}>
+                <FirstPageIcon />
+              </IconButton>
+            )}
             {page > 0 ? (
               <IconButton onClick={onPrevClick} {...backIconButtonProps}>
                 <PrevPageIcon />

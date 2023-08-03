@@ -80,6 +80,7 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
               className={args.className}
               labelDisplayedRows={args.labelDisplayedRows}
               labelRowsPerPage={args.labelRowsPerPage}
+              showFirstButton={args.showFirstButton}
             />
           </TableRow>
         </TableFooter>
@@ -99,6 +100,8 @@ export const test: Story = {
     //   return 'hola hola hola'
     // },
     // children: <div></div>,
+    showFirstButton: true,
+
     className: 'bg-gray-300',
     // className: 'bg-gray-200 ',
     // padding: 'normal',
