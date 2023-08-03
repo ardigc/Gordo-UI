@@ -76,6 +76,7 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
+              nextIconButtonProps={args.nextIconButtonProps}
             />
           </TableRow>
         </TableFooter>
@@ -89,6 +90,7 @@ export const test: Story = {
     count: 30,
     page: 0,
     rowsPerPage: 4,
+    nextIconButtonProps: { className: 'bg-red-200' },
     // children: <div></div>,
 
     // className: 'bg-gray-200 ',
