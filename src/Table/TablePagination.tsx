@@ -16,6 +16,7 @@ import {
 } from '../components/icons/StarIcon'
 import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
 import classNames from 'classnames'
+import Menu from '../Menu/Menu'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -48,6 +49,7 @@ export default function TablePagination({
   labelRowsPerPage,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   // const [actualPage, setActualPage] = useState({
   //   iniPag: 1,
   //   finPag: rowsPerPage,
@@ -64,8 +66,13 @@ export default function TablePagination({
   }) {
     return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`
   }
-  const onClickHandler = () => {
+
+  const onClickHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
+    setAnchorEl(ev.currentTarget)
     setOpen(!open)
+  }
+  const onCloseHandler = () => {
+    setOpen(false)
   }
   const onPrevClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, page - 1)
@@ -110,11 +117,15 @@ export default function TablePagination({
           <div className="overflow-hidden overflow-ellipsis block pl-2 pr-6 pt-1 pb-[5px] min-w-[16px] box-content  min-h-[20.125px] ">
             {rowsPerPage === -1 ? 'All' : rowsPerPage}
           </div>
-          <input className="b-0 l-0 absolute w-full opacity-0 pointer-events-none"></input>
+          <input
+            className="b-0 l-0 absolute w-full opacity-0 pointer-events-none"
+            value={rowsPerPage}
+          ></input>
           <div className="absolute w-6 h-6 right-0 flex justify-center items-center ">
             {!open ? <ArrowDownIcon /> : <ArrowUpIcon />}
           </div>
         </div>
+        <Menu open={open} anchorEl={anchorEl} onClose={onCloseHandler}></Menu>
         <p className="font-base text-base font-normal">
           {labelDisplayedRows
             ? labelDisplayedRows(setPage().iniPag, setPage().finPag, count)
