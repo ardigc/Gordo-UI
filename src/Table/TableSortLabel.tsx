@@ -12,7 +12,7 @@ export default function TableSortLabel({
   ...rest
 }: TableSortLabelProps) {
   return (
-    <span className="inline-flex flex-inherit relative" {...rest}>
+    <span className="inline-flex flex-inherit relative text-black" {...rest}>
       {children}
       <div>
         <ArrowDown />
