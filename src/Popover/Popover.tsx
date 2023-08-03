@@ -63,7 +63,6 @@ export default function Popover({
     return typeof container === 'function' ? container() : container
   }
   const animationEndHandler = () => {
-    console.log('hola')
     if (!open) {
       setIsOpen(false)
     }
