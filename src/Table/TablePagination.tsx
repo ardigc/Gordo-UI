@@ -72,11 +72,14 @@ export default function TablePagination({
     return { iniPag: iniPag, finPag: finPag }
   }
   return (
-    <RenderComponent className="p-0" colSpan={1000}>
+    <RenderComponent
+      className={classNames('p-0', { [className || '']: className })}
+      colSpan={1000}
+    >
       <div
         className={classNames(
-          'flex relative items-center pl-6 pr-1 justify-end',
-          { [className || '']: className }
+          'flex relative items-center pl-6 pr-1 justify-end'
+          // { [className || '']: className }
         )}
       >
         <p className="my-4 font-base text-base font-normal">Rows per page:</p>
