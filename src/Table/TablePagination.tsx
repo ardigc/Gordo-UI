@@ -10,6 +10,7 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   FirstPageIcon,
+  FirstPageIconDis,
   NextPageIcon,
   NextPageIconDis,
   PrevPageIcon,
@@ -191,9 +192,17 @@ export default function TablePagination({
         {!ActionsComponent && (
           <div>
             {showFirstButton && (
-              <IconButton onClick={onFirstClick}>
-                <FirstPageIcon />
-              </IconButton>
+              <>
+                {page > 0 ? (
+                  <IconButton onClick={onFirstClick}>
+                    <FirstPageIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton disabled>
+                    <FirstPageIconDis />
+                  </IconButton>
+                )}
+              </>
             )}
             {page > 0 ? (
               <IconButton onClick={onPrevClick} {...backIconButtonProps}>
