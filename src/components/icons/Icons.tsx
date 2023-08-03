@@ -234,3 +234,41 @@ export function LastPageIconDis() {
     </svg>
   )
 }
+export function ArrowDown() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-arrow-down"
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <path d="M12 5v14M18 13l-6 6M6 13l6 6" />
+    </svg>
+  )
+}
+export function ArrowUp() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-arrow-up"
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <path d="M12 5v14M18 11l-6-6M6 11l6-6" />
+    </svg>
+  )
+}
