@@ -163,11 +163,30 @@ export function FirstPageIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-chevron-left-pipe"
-      width={24}
-      height={24}
+      width={20}
+      height={20}
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <path d="M7 6v12M18 6l-6 6 6 6" />
+    </svg>
+  )
+}
+export function FirstPageIconDis() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-chevron-left-pipe"
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="gray"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -182,11 +201,30 @@ export function LastPageIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-chevron-right-pipe"
-      width={24}
-      height={24}
+      width={20}
+      height={20}
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <path d="M6 6l6 6-6 6M17 5v13" />
+    </svg>
+  )
+}
+export function LastPageIconDis() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-chevron-right-pipe"
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="gray"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
