@@ -14,7 +14,7 @@ export default function TableSortLabel({
 }: TableSortLabelProps) {
   return (
     <span
-      className="inline-flex flex-inherit relative text-black bg-transparent"
+      className="inline-flex flex-inherit relative text-black bg-transparent select-none cursor-pointer align-middle justify-start items-center"
       {...rest}
     >
       {children}
