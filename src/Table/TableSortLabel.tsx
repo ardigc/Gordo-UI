@@ -12,7 +12,7 @@ export default function TableSortLabel({
   ...rest
 }: TableSortLabelProps) {
   return (
-    <span className="inline-flex flex-row-reverse relative" {...rest}>
+    <span className="inline-flex  relative" {...rest}>
       {children}
       <div>
         <ArrowDown />

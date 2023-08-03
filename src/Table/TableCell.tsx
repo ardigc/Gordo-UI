@@ -55,7 +55,7 @@ export default function TableCell({
         'text-center': align === 'center',
         'text-justify': align === 'justify',
         'text-left': align === 'left',
-        'text-right': align === 'right',
+        'text-right flex-row-reverse': align === 'right',
         'font-base text-base font-normal': variant === 'body',
         'font-base text-base text-black font-medium': variant === 'head',
         'font-base text-sm text-gray-600 font-normal': variant === 'footer',
