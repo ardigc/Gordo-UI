@@ -30,6 +30,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   nextIconButtonProps?: ButtonPropsForButton
   className?: string
   component?: ElementType
+  labelDisplayedRows?: (from: number, to: number, count: number) => string
 }
 export default function TablePagination({
   count,
@@ -41,6 +42,7 @@ export default function TablePagination({
   nextIconButtonProps,
   className,
   component,
+  labelDisplayedRows,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -53,9 +55,9 @@ export default function TablePagination({
     to,
     count,
   }: {
-    from: number | string
-    to: number | string
-    count: number | string
+    from: number
+    to: number
+    count: number
   }) {
     return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`
   }
@@ -107,11 +109,13 @@ export default function TablePagination({
           </div>
         </div>
         <p className="font-base text-base font-normal">
-          {defaultLabelDisplayedRows({
-            from: setPage().iniPag,
-            to: setPage().finPag,
-            count,
-          })}
+          {labelDisplayedRows
+            ? labelDisplayedRows(setPage().iniPag, setPage().finPag, count)
+            : defaultLabelDisplayedRows({
+                from: setPage().iniPag,
+                to: setPage().finPag,
+                count,
+              })}
         </p>
         {!ActionsComponent && (
           <div>
