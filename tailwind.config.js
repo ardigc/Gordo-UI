@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      flexDirection: {
+        inherit: 'inherit',
+      },
       fontFamily: {
         base: 'Roboto, sans-serif',
       },
@@ -51,10 +54,10 @@ export default {
         },
         height: {
           '0%': {
-           height:'0',
+            height: '0',
           },
           '100%': {
-           height:'100%',
+            height: '100%',
           },
         },
         ripple: {
