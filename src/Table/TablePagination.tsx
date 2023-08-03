@@ -48,6 +48,9 @@ export default function TablePagination({
   //   finPag: rowsPerPage,
   // })
   const RenderComponent = component ? component : 'td'
+  function defaultLabelDisplayedRows({ from, to, count }) {
+    return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`
+  }
   const onClickHandler = () => {
     setOpen(!open)
   }
@@ -96,8 +99,11 @@ export default function TablePagination({
           </div>
         </div>
         <p className="font-base text-base font-normal">
-          {setPage().iniPag}-{setPage().finPag} of{' '}
-          {count === -1 ? `more than ${setPage().finPag}` : `${count}`}
+          {defaultLabelDisplayedRows({
+            from: setPage().iniPag,
+            to: setPage().finPag,
+            count,
+          })}
         </p>
         {!ActionsComponent && (
           <div>
