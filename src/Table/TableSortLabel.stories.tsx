@@ -107,7 +107,7 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
               {headCells.map((headCell) => (
                 <TableCell
                   key={headCell.id}
-                  align={'right'}
+                  align={'left'}
                   padding={headCell.disablePadding ? 'none' : 'normal'}
                   // sortDirection={orderBy === headCell.id ? order : false}
                 >

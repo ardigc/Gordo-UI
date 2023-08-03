@@ -67,3 +67,6 @@
   /* bottom: 0px; */
   /* left: calc(20% - 25px); */
 }
+.flex-inherit {
+  flex-direction: inherit;
+}
