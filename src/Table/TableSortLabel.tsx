@@ -6,13 +6,17 @@ type SpanReactProps = DetailedHTMLProps<
 >
 export interface TableSortLabelProps extends SpanReactProps {
   children?: ReactNode
+  active?: boolean
 }
 export default function TableSortLabel({
   children,
   ...rest
 }: TableSortLabelProps) {
   return (
-    <span className="inline-flex flex-inherit relative text-black" {...rest}>
+    <span
+      className="inline-flex flex-inherit relative text-black bg-transparent"
+      {...rest}
+    >
       {children}
       <div>
         <ArrowDown />
