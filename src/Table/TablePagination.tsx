@@ -4,6 +4,7 @@ import {
   MouseEventHandler,
   TdHTMLAttributes,
   useState,
+  ReactNode,
 } from 'react'
 import {
   ArrowDownIcon,
@@ -31,6 +32,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   className?: string
   component?: ElementType
   labelDisplayedRows?: (from: number, to: number, count: number) => string
+  labelRowsPerPage?: ReactNode
 }
 export default function TablePagination({
   count,
@@ -43,6 +45,7 @@ export default function TablePagination({
   className,
   component,
   labelDisplayedRows,
+  labelRowsPerPage,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -95,7 +98,11 @@ export default function TablePagination({
           // { [className || '']: className }
         )}
       >
-        <p className="my-4 font-base text-base font-normal">Rows per page:</p>
+        {labelRowsPerPage ? (
+          labelRowsPerPage
+        ) : (
+          <p className="my-4 font-base text-base font-normal">Rows per page:</p>
+        )}
         <div
           className="inline-flex ml-2 mr-8 items-center relative cursor-pointer"
           onClick={onClickHandler}

@@ -79,6 +79,7 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
               nextIconButtonProps={args.nextIconButtonProps}
               className={args.className}
               labelDisplayedRows={args.labelDisplayedRows}
+              labelRowsPerPage={args.labelRowsPerPage}
             />
           </TableRow>
         </TableFooter>
@@ -93,6 +94,7 @@ export const test: Story = {
     page: 0,
     rowsPerPage: 4,
     nextIconButtonProps: { className: 'bg-red-200' },
+    // labelRowsPerPage: 'jaasjkfak',
     // labelDisplayedRows(from, to, count) {
     //   return 'hola hola hola'
     // },
