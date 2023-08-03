@@ -14,6 +14,7 @@ import {
   PrevPageIconDis,
 } from '../components/icons/StarIcon'
 import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
+import classNames from 'classnames'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -27,6 +28,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   ActionsComponent?: ElementType
   backIconButtonProps?: ButtonPropsForButton
   nextIconButtonProps?: ButtonPropsForButton
+  className?: string
 }
 export default function TablePagination({
   count,
@@ -36,6 +38,7 @@ export default function TablePagination({
   ActionsComponent,
   backIconButtonProps,
   nextIconButtonProps,
+  className,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -67,7 +70,12 @@ export default function TablePagination({
   }
   return (
     <td className="p-0" colSpan={1000}>
-      <div className="flex relative items-center pl-6 pr-1 justify-end">
+      <div
+        className={classNames(
+          'flex relative items-center pl-6 pr-1 justify-end',
+          { [className || '']: className }
+        )}
+      >
         <p className="my-4 font-base text-base font-normal">Rows per page:</p>
         <div
           className="inline-flex ml-2 mr-8 items-center relative cursor-pointer"
