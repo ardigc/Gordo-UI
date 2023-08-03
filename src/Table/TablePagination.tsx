@@ -11,6 +11,8 @@ import {
   ArrowUpIcon,
   FirstPageIcon,
   FirstPageIconDis,
+  LastPageIcon,
+  LastPageIconDis,
   NextPageIcon,
   NextPageIconDis,
   PrevPageIcon,
@@ -41,6 +43,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   rowsPerPageOptions?: Array<number | { label: string; value: number }>
   MenuProps?: { MenuProps?: MenuProps; MenuItemProps?: MenuItemProps }
   showFirstButton?: boolean
+  showLastButton?: boolean
 }
 export default function TablePagination({
   count,
@@ -58,6 +61,7 @@ export default function TablePagination({
   rowsPerPageOptions,
   MenuProps,
   showFirstButton,
+  showLastButton,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
@@ -97,6 +101,7 @@ export default function TablePagination({
   const onFirstClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, 0)
   }
+  const onLastClick: MouseEventHandler<HTMLButtonElement> = (ev) => {}
   const onPrevClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, page - 1)
   }
@@ -221,6 +226,19 @@ export default function TablePagination({
               <IconButton disabled {...nextIconButtonProps}>
                 <NextPageIconDis />
               </IconButton>
+            )}
+            {showLastButton && (
+              <>
+                {setPage().finPag !== count ? (
+                  <IconButton onClick={onLastClick}>
+                    <LastPageIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton disabled>
+                    <LastPageIconDis />
+                  </IconButton>
+                )}
+              </>
             )}
           </div>
         )}
