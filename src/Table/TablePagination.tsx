@@ -36,6 +36,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   labelDisplayedRows?: (from: number, to: number, count: number) => string
   labelRowsPerPage?: ReactNode
   onRowsPerPageChange?: (finalRows: number) => void
+  rowsPerPageOptions?: Array<number | { label: string; value: number }>
 }
 export default function TablePagination({
   count,
@@ -50,6 +51,7 @@ export default function TablePagination({
   labelDisplayedRows,
   labelRowsPerPage,
   onRowsPerPageChange,
+  rowsPerPageOptions,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
@@ -70,7 +72,9 @@ export default function TablePagination({
   }) {
     return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`
   }
-  const arrayRowPerPage = [10, 25, 50, 100]
+  const arrayRowPerPage = rowsPerPageOptions
+    ? rowsPerPageOptions
+    : [10, 25, 50, 100]
   const onClickHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
     setOpen(!open)
@@ -136,15 +140,29 @@ export default function TablePagination({
           </div>
         </div>
         <Menu open={open} anchorEl={anchorEl} onClose={onCloseHandler}>
-          {arrayRowPerPage.map((item) => (
-            <MenuItem
-              onClick={() => {
-                onCloseHandler(), onSelectRow(item)
-              }}
-            >
-              {item}
-            </MenuItem>
-          ))}
+          {arrayRowPerPage.map((item) => {
+            if (typeof item === 'number') {
+              return (
+                <MenuItem
+                  onClick={() => {
+                    onCloseHandler(), onSelectRow(item)
+                  }}
+                >
+                  {item}
+                </MenuItem>
+              )
+            } else {
+              return (
+                <MenuItem
+                  onClick={() => {
+                    onCloseHandler(), onSelectRow(item.value)
+                  }}
+                >
+                  {item.label}
+                </MenuItem>
+              )
+            }
+          })}
         </Menu>
         <p className="font-base text-base font-normal">
           {labelDisplayedRows
