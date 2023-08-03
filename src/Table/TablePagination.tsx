@@ -29,6 +29,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   backIconButtonProps?: ButtonPropsForButton
   nextIconButtonProps?: ButtonPropsForButton
   className?: string
+  component?: ElementType
 }
 export default function TablePagination({
   count,
@@ -39,12 +40,14 @@ export default function TablePagination({
   backIconButtonProps,
   nextIconButtonProps,
   className,
+  component,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
   //   iniPag: 1,
   //   finPag: rowsPerPage,
   // })
+  const RenderComponent = component ? component : 'td'
   const onClickHandler = () => {
     setOpen(!open)
   }
@@ -69,7 +72,7 @@ export default function TablePagination({
     return { iniPag: iniPag, finPag: finPag }
   }
   return (
-    <td className="p-0" colSpan={1000}>
+    <RenderComponent className="p-0" colSpan={1000}>
       <div
         className={classNames(
           'flex relative items-center pl-6 pr-1 justify-end',
@@ -126,6 +129,6 @@ export default function TablePagination({
           </div>
         )}
       </div>
-    </td>
+    </RenderComponent>
   )
 }
