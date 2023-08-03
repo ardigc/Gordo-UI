@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import { ArrowDown } from '../components/icons/Icons'
 type SpanReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLSpanElement>,
   HTMLSpanElement
@@ -13,6 +14,9 @@ export default function TableSortLabel({
   return (
     <span className="flex flex-row-reverse" {...rest}>
       {children}
+      <div>
+        <ArrowDown />
+      </div>
     </span>
   )
 }
