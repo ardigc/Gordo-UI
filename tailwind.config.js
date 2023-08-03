@@ -3,9 +3,6 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      flexDirection: {
-        inherit: 'inherit',
-      },
       fontFamily: {
         base: 'Roboto, sans-serif',
       },
