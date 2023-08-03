@@ -5,6 +5,7 @@ import {
   TdHTMLAttributes,
   useState,
   ReactNode,
+  ChangeEventHandler,
 } from 'react'
 import {
   ArrowDownIcon,
@@ -35,6 +36,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   component?: ElementType
   labelDisplayedRows?: (from: number, to: number, count: number) => string
   labelRowsPerPage?: ReactNode
+  onRowsPerPageChange?: (finalRows: number) => void
 }
 export default function TablePagination({
   count,
@@ -48,6 +50,7 @@ export default function TablePagination({
   component,
   labelDisplayedRows,
   labelRowsPerPage,
+  onRowsPerPageChange,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
@@ -73,8 +76,11 @@ export default function TablePagination({
     setAnchorEl(ev.currentTarget)
     setOpen(!open)
   }
+
   const onSelectRow = (item: number) => {
     setFinalRowPerPage(item)
+    if (!onRowsPerPageChange) return
+    onRowsPerPageChange(item)
   }
   const onCloseHandler = () => {
     setOpen(false)

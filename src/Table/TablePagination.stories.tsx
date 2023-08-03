@@ -212,10 +212,8 @@ function TestFunc2({ args }: { args: TablePaginationProps }) {
     setPage(newPage)
   }
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10))
+  const handleChangeRowsPerPage = (finalRowsPerPage: number) => {
+    setRowsPerPage(finalRowsPerPage)
     setPage(0)
   }
 
@@ -260,7 +258,7 @@ function TestFunc2({ args }: { args: TablePaginationProps }) {
               //   native: true,
               // }}
               onPageChange={handleChangePage}
-              // onRowsPerPageChange={handleChangeRowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
             />
           </TableRow>
