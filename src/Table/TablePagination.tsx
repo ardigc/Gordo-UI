@@ -101,7 +101,10 @@ export default function TablePagination({
   const onFirstClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, 0)
   }
-  const onLastClick: MouseEventHandler<HTMLButtonElement> = (ev) => {}
+  const onLastClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    const lastPage = Math.floor(count / finalRowsPerPage)
+    onPageChange(ev, lastPage)
+  }
   const onPrevClick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     onPageChange(ev, page - 1)
   }
