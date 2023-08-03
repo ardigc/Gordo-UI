@@ -17,6 +17,7 @@ import {
 import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
 import classNames from 'classnames'
 import Menu from '../Menu/Menu'
+import MenuItem from '../MenuItem/MenuItem'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -66,10 +67,13 @@ export default function TablePagination({
   }) {
     return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`
   }
-
+  const arrayRowPerPage = [10, 25, 50, 100]
   const onClickHandler: MouseEventHandler<HTMLDivElement> = (ev) => {
     setAnchorEl(ev.currentTarget)
     setOpen(!open)
+  }
+  const onSelectRow = (ev: MouseEventHandler<HTMLLIElement>, item: number) => {
+    console.log(item)
   }
   const onCloseHandler = () => {
     setOpen(false)
@@ -125,7 +129,17 @@ export default function TablePagination({
             {!open ? <ArrowDownIcon /> : <ArrowUpIcon />}
           </div>
         </div>
-        <Menu open={open} anchorEl={anchorEl} onClose={onCloseHandler}></Menu>
+        <Menu open={open} anchorEl={anchorEl} onClose={onCloseHandler}>
+          {arrayRowPerPage.map((item) => (
+            <MenuItem
+              onClick={(ev) => {
+                onCloseHandler(), onSelectRow(ev, item)
+              }}
+            >
+              {item}
+            </MenuItem>
+          ))}
+        </Menu>
         <p className="font-base text-base font-normal">
           {labelDisplayedRows
             ? labelDisplayedRows(setPage().iniPag, setPage().finPag, count)
