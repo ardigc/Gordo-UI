@@ -48,7 +48,15 @@ export default function TablePagination({
   //   finPag: rowsPerPage,
   // })
   const RenderComponent = component ? component : 'td'
-  function defaultLabelDisplayedRows({ from, to, count }) {
+  function defaultLabelDisplayedRows({
+    from,
+    to,
+    count,
+  }: {
+    from: number | string
+    to: number | string
+    count: number | string
+  }) {
     return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`
   }
   const onClickHandler = () => {
