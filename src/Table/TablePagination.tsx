@@ -26,6 +26,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   onPageChange: (event: React.MouseEvent | null, page: number) => void
   ActionsComponent?: ElementType
   backIconButtonProps?: ButtonPropsForButton
+  nextIconButtonProps?: ButtonPropsForButton
 }
 export default function TablePagination({
   count,
@@ -34,6 +35,7 @@ export default function TablePagination({
   onPageChange,
   ActionsComponent,
   backIconButtonProps,
+  nextIconButtonProps,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   // const [actualPage, setActualPage] = useState({
@@ -90,16 +92,16 @@ export default function TablePagination({
                 <PrevPageIcon />
               </IconButton>
             ) : (
-              <IconButton disabled>
+              <IconButton disabled {...backIconButtonProps}>
                 <PrevPageIconDis />
               </IconButton>
             )}
             {setPage().finPag !== count ? (
-              <IconButton onClick={onNextClick}>
+              <IconButton onClick={onNextClick} {...nextIconButtonProps}>
                 <NextPageIcon />
               </IconButton>
             ) : (
-              <IconButton disabled>
+              <IconButton disabled {...nextIconButtonProps}>
                 <NextPageIconDis />
               </IconButton>
             )}
