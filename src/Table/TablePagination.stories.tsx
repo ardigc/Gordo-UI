@@ -63,9 +63,9 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
     createData('Marshmallow', 318, 0),
     createData('Nougat', 360, 19.0),
     createData('Oreo', 437, 18.0),
-  ]
+  ].sort((a, b) => (a.calories < b.calories ? -1 : 1))
   console.log('page' + page)
-  console.log('page' + page)
+  console.log('rowsperpage' + rowsPerPage)
   return (
     // <div className="h-48 overflow-auto">
     <TableContainer component={Paper}>
@@ -74,8 +74,8 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
           {(rowsPerPage > 0
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
-          ).map((row) => (
-            <TableRow key={row.name}>
+          ).map((row, index) => (
+            <TableRow key={index} id={`${index}`}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
@@ -95,6 +95,7 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
               // count={-1}
               rowsPerPage={rowsPerPage}
               page={page}
+              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               onPageChange={handleChangePage}
               nextIconButtonProps={args.nextIconButtonProps}
               className={args.className}
