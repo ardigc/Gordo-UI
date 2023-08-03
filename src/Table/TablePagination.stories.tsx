@@ -20,6 +20,10 @@ type Story = StoryObj<typeof meta>
 const TestFunc = ({ args }: { args: TablePaginationProps }) => {
   const [page, setPage] = useState(args.page)
   const [rowsPerPage, setRowsPerPage] = useState(args.rowsPerPage)
+  const handleChangeRowsPerPage = (finalRowsPerPage: number) => {
+    setRowsPerPage(finalRowsPerPage)
+    setPage(0)
+  }
 
   const handleChangePage = (
     event: React.MouseEvent<Element, MouseEvent> | null,
@@ -45,7 +49,23 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
     createData('Marshmallow', 318, 0),
     createData('Nougat', 360, 19.0),
     createData('Oreo', 437, 18.0),
-  ].sort((a, b) => (a.calories < b.calories ? -1 : 1))
+    createData('Ice cream sandwich', 237, 9.0),
+    createData('Jelly Bean', 375, 0.0),
+    createData('KitKat', 518, 26.0),
+    createData('Lollipop', 392, 0.2),
+    createData('Marshmallow', 318, 0),
+    createData('Nougat', 360, 19.0),
+    createData('Oreo', 437, 18.0),
+    createData('Ice cream sandwich', 237, 9.0),
+    createData('Jelly Bean', 375, 0.0),
+    createData('KitKat', 518, 26.0),
+    createData('Lollipop', 392, 0.2),
+    createData('Marshmallow', 318, 0),
+    createData('Nougat', 360, 19.0),
+    createData('Oreo', 437, 18.0),
+  ]
+  console.log('page' + page)
+  console.log('page' + page)
   return (
     // <div className="h-48 overflow-auto">
     <TableContainer component={Paper}>
@@ -81,6 +101,8 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
               labelDisplayedRows={args.labelDisplayedRows}
               labelRowsPerPage={args.labelRowsPerPage}
               showFirstButton={args.showFirstButton}
+              showLastButton={args.showLastButton}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </TableRow>
         </TableFooter>
@@ -101,6 +123,7 @@ export const test: Story = {
     // },
     // children: <div></div>,
     showFirstButton: true,
+    showLastButton: true,
 
     className: 'bg-gray-300',
     // className: 'bg-gray-200 ',
