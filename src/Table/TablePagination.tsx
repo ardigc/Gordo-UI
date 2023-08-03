@@ -38,6 +38,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   onRowsPerPageChange?: (finalRows: number) => void
   rowsPerPageOptions?: Array<number | { label: string; value: number }>
   MenuProps?: { MenuProps?: MenuProps; MenuItemProps?: MenuItemProps }
+  showFirstButton?: boolean
 }
 export default function TablePagination({
   count,
@@ -54,6 +55,7 @@ export default function TablePagination({
   onRowsPerPageChange,
   rowsPerPageOptions,
   MenuProps,
+  showFirstButton,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
