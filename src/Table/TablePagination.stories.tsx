@@ -257,6 +257,7 @@ function TestFunc2({ args }: { args: TablePaginationProps }) {
               //   },
               //   native: true,
               // }}
+              MenuProps={args.MenuProps}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
@@ -273,6 +274,7 @@ export const test2: Story = {
     count: 30,
     page: 0,
     rowsPerPage: 4,
+    MenuProps: { MenuItemProps: { className: 'text-blue-500' } },
     // children: <div></div>,
 
     // className: 'bg-gray-200 ',

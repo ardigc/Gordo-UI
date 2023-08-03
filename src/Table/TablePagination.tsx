@@ -37,7 +37,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   labelRowsPerPage?: ReactNode
   onRowsPerPageChange?: (finalRows: number) => void
   rowsPerPageOptions?: Array<number | { label: string; value: number }>
-  MenuProps?: { MenuProps: MenuProps; MenuItemProps: MenuItemProps }
+  MenuProps?: { MenuProps?: MenuProps; MenuItemProps?: MenuItemProps }
 }
 export default function TablePagination({
   count,
@@ -154,6 +154,7 @@ export default function TablePagination({
                   onClick={() => {
                     onCloseHandler(), onSelectRow(item)
                   }}
+                  {...MenuProps?.MenuItemProps}
                 >
                   {item}
                 </MenuItem>
