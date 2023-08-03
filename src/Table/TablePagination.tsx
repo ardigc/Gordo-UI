@@ -16,8 +16,8 @@ import {
 } from '../components/icons/StarIcon'
 import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
 import classNames from 'classnames'
-import Menu from '../Menu/Menu'
-import MenuItem from '../MenuItem/MenuItem'
+import Menu, { MenuProps } from '../Menu/Menu'
+import MenuItem, { MenuItemProps } from '../MenuItem/MenuItem'
 
 type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -37,6 +37,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   labelRowsPerPage?: ReactNode
   onRowsPerPageChange?: (finalRows: number) => void
   rowsPerPageOptions?: Array<number | { label: string; value: number }>
+  MenuProps?: { MenuProps: MenuProps; MenuItemProps: MenuItemProps }
 }
 export default function TablePagination({
   count,
@@ -52,6 +53,7 @@ export default function TablePagination({
   labelRowsPerPage,
   onRowsPerPageChange,
   rowsPerPageOptions,
+  MenuProps,
 }: TablePaginationProps) {
   const [open, setOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
@@ -139,7 +141,12 @@ export default function TablePagination({
             {!open ? <ArrowDownIcon /> : <ArrowUpIcon />}
           </div>
         </div>
-        <Menu open={open} anchorEl={anchorEl} onClose={onCloseHandler}>
+        <Menu
+          open={open}
+          anchorEl={anchorEl}
+          onClose={onCloseHandler}
+          {...MenuProps?.MenuProps}
+        >
           {arrayRowPerPage.map((item) => {
             if (typeof item === 'number') {
               return (
@@ -157,6 +164,7 @@ export default function TablePagination({
                   onClick={() => {
                     onCloseHandler(), onSelectRow(item.value)
                   }}
+                  {...MenuProps?.MenuItemProps}
                 >
                   {item.label}
                 </MenuItem>
