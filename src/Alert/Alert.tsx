@@ -8,6 +8,7 @@ import {
   InfoIcon,
   XIcon,
 } from '../components/icons/Icons'
+import IconButton from '../Button/IconButton'
 import Button from '../Button/Button'
 
 export interface AlertProps extends Omit<PaperProps, 'children'> {
@@ -56,7 +57,11 @@ export default function Alert({
       )}
       {!action && onClose && (
         <div className={classNames('ml-auto -mr-2 pl-4 ')}>
-          <Button color={severity} onClick={(ev) => onClose(ev)}>
+          <Button
+            className="rounded-full w-9 h-9 min-w-0"
+            color={severity}
+            onClick={(ev) => onClose(ev)}
+          >
             <XIcon />
           </Button>
         </div>
