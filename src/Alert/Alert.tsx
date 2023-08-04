@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, MouseEvent } from 'react'
 import Paper, { PaperProps } from '../Paper/Paper'
 import classNames from 'classnames'
 import {
@@ -7,16 +7,19 @@ import {
   WarningIcon,
   InfoIcon,
 } from '../components/icons/Icons'
+import Button from '../Button/Button'
 
 export interface AlertProps extends Omit<PaperProps, 'children'> {
   children?: ReactNode
   severity?: 'error' | 'info' | 'success' | 'warning'
   action?: ReactNode
+  onClose?: (ev: MouseEvent<HTMLButtonElement>) => void
 }
 export default function Alert({
   children,
   severity = 'success',
   action,
+  onClose,
 }: AlertProps) {
   return (
     <Paper
@@ -49,6 +52,11 @@ export default function Alert({
       </div>
       {action && (
         <div className={classNames('ml-auto -mr-2 pl-4 pt-1')}>{action}</div>
+      )}
+      {!action && onClose && (
+        <div className={classNames('ml-auto -mr-2 pl-4 pt-1')}>
+          <Button onClick={(ev) => onClose(ev)}></Button>
+        </div>
       )}
     </Paper>
   )
