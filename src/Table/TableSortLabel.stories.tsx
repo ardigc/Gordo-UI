@@ -166,5 +166,6 @@ export const test: Story = {
     children: <div></div>,
     active: false,
     className: 'text-black',
+    direction: 'asc',
   },
 }

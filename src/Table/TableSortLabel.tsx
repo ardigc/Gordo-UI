@@ -9,11 +9,13 @@ export interface TableSortLabelProps extends SpanReactProps {
   children?: ReactNode
   active?: boolean
   className?: string
+  direction?: 'asc' | 'desc'
 }
 export default function TableSortLabel({
   children,
   active,
   className,
+  direction = 'asc',
   ...rest
 }: TableSortLabelProps) {
   return (
@@ -29,6 +31,7 @@ export default function TableSortLabel({
         className={classNames('', {
           'opacity-100': active,
           'opacity-0 group-hover:opacity-30': !active,
+          'rotate-180': direction === 'asc',
         })}
       >
         <ArrowDown />
