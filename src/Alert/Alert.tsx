@@ -25,12 +25,12 @@ export default function Alert({
   return (
     <Paper
       className={classNames(
-        'flex py-[6px] px-4 font-base text-sm font-normal',
+        'flex py-[6px] px-4 font-base text-sm font-normal items-center',
         {
-          'bg-green-100 text-green-800': severity === 'success',
-          'bg-yellow-100 text-yellow-800': severity === 'warning',
-          'bg-red-100 text-red-800': severity === 'error',
-          'bg-blue-100 text-blue-800': severity === 'info',
+          'bg-green-100 text-success-color': severity === 'success',
+          'bg-yellow-100 text-warning-color': severity === 'warning',
+          'bg-red-100 text-error-color': severity === 'error',
+          'bg-blue-100 text-info-color': severity === 'info',
         }
       )}
       elevation={0}
@@ -43,20 +43,20 @@ export default function Alert({
       </div>
       <div
         className={classNames('py-2 min-w-0 overflow-auto', {
-          'text-green-800': severity === 'success',
-          'text-yellow-800': severity === 'warning',
-          'text-red-800': severity === 'error',
-          'text-blue-800': severity === 'info',
+          'text-success-color': severity === 'success',
+          'text-warning-color': severity === 'warning',
+          'text-error-color': severity === 'error',
+          'text-info-color': severity === 'info',
         })}
       >
         {children}
       </div>
       {action && (
-        <div className={classNames('ml-auto -mr-2 pl-4 pt-1')}>{action}</div>
+        <div className={classNames('ml-auto -mr-2 pl-4 ')}>{action}</div>
       )}
       {!action && onClose && (
-        <div className={classNames('ml-auto -mr-2 pl-4 pt-1')}>
-          <Button onClick={(ev) => onClose(ev)}>
+        <div className={classNames('ml-auto -mr-2 pl-4 ')}>
+          <Button color={severity} onClick={(ev) => onClose(ev)}>
             <XIcon />
           </Button>
         </div>

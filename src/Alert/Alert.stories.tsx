@@ -42,3 +42,10 @@ export const action: Story = {
     action: <Button size="small">UNDO</Button>,
   },
 }
+export const onClose: Story = {
+  args: {
+    children: 'Esto es informacion',
+    severity: 'warning',
+    onClose: () => {},
+  },
+}
