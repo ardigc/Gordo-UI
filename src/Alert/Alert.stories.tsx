@@ -9,8 +9,14 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-export const primary: Story = {
+export const success: Story = {
   args: {
     children: 'sdfsdfs',
+  },
+}
+export const warning: Story = {
+  args: {
+    children: 'sdfsdfs',
+    severity: 'warning',
   },
 }
