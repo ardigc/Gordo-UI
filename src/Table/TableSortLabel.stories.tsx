@@ -104,7 +104,7 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
           <TableHead>
             <TableRow>
               <TableCell padding="checkbox"></TableCell>
-              {headCells.map((headCell) => (
+              {headCells.map((headCell, index) => (
                 <TableCell
                   key={headCell.id}
                   align={'right'}
