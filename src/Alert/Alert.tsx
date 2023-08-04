@@ -8,7 +8,6 @@ import {
   InfoIcon,
   XIcon,
 } from '../components/icons/Icons'
-import IconButton from '../Button/IconButton'
 import Button from '../Button/Button'
 
 export interface AlertProps extends Omit<PaperProps, 'children'> {
