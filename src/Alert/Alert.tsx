@@ -47,7 +47,9 @@ export default function Alert({
       >
         {children}
       </div>
-      {action && action}
+      {action && (
+        <div className={classNames('ml-auto -mr-2 pl-4 pt-1')}>{action}</div>
+      )}
     </Paper>
   )
 }

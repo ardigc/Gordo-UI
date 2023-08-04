@@ -39,10 +39,6 @@ export const action: Story = {
   args: {
     children: 'Esto es informacion',
     severity: 'info',
-    action: (
-      <Button color="inherit" size="small">
-        UNDO
-      </Button>
-    ),
+    action: <Button size="small">UNDO</Button>,
   },
 }
