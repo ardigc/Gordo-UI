@@ -16,6 +16,7 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
   action?: ReactNode
   onClose?: (ev: MouseEvent<HTMLButtonElement>) => void
   variant?: 'filled' | 'outlined' | 'standard'
+  className?: string
 }
 export default function Alert({
   children,
@@ -23,6 +24,7 @@ export default function Alert({
   action,
   onClose,
   variant = 'standard',
+  className,
 }: AlertProps) {
   return (
     <Paper
@@ -53,6 +55,7 @@ export default function Alert({
             severity === 'error' && variant === 'filled',
           'bg-info-color text-white':
             severity === 'info' && variant === 'filled',
+          [className || '']: className,
         }
       )}
       elevation={0}
@@ -64,12 +67,7 @@ export default function Alert({
         {severity === 'info' && <InfoIcon />}
       </div>
       <div
-        className={classNames('py-2 min-w-0 overflow-auto text-inherit', {
-          // 'text-success-color': severity === 'success',
-          // 'text-warning-color': severity === 'warning',
-          // 'text-error-color': severity === 'error',
-          // 'text-info-color': severity === 'info',
-        })}
+        className={classNames('py-2 min-w-0 overflow-auto text-inherit', {})}
       >
         {children}
       </div>

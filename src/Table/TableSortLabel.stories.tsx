@@ -12,6 +12,7 @@ import IconButton from '../Button/IconButton'
 import { NextPageIcon, PrevPageIcon } from '../components/icons/Icons'
 import TableHead from './TableHead'
 import TablePagination from './TablePagination'
+import Alert from '../Alert/Alert'
 const meta = {
   component: TableSortLabel,
   title: 'GordoUI/TableSortLabel',
@@ -98,69 +99,71 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
     },
   ]
   return (
-    <Paper className="bg-white">
-      <TableContainer>
-        <Table aria-labelledby="tableTitle">
-          <TableHead>
-            <TableRow>
-              <TableCell padding="checkbox"></TableCell>
-              {headCells.map((headCell, index) => (
-                <TableCell
-                  key={headCell.id}
-                  align={'right'}
-                  padding={headCell.disablePadding ? 'none' : 'normal'}
-                  // sortDirection={orderBy === headCell.id ? order : false}
-                >
-                  <TableSortLabel
-                    //   active={orderBy === headCell.id}
-                    //   direction={orderBy === headCell.id ? order : 'asc'}
-                    //   onClick={createSortHandler(headCell.id)}
-                    active={args.active}
-                    className={args.className}
-                    direction={args.direction}
-                    hideSortIcon={args.hideSortIcon}
-                    IconComponent={args.IconComponent}
-                  >
-                    {headCell.label}
-                  </TableSortLabel>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row, index) => {
-              const labelId = `enhanced-table-checkbox-${index}`
-
-              return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
-                  <TableCell padding="checkbox"></TableCell>
+    <>
+      <Paper className="bg-white">
+        <TableContainer>
+          <Table aria-labelledby="tableTitle">
+            <TableHead>
+              <TableRow>
+                <TableCell padding="checkbox"></TableCell>
+                {headCells.map((headCell, index) => (
                   <TableCell
-                    component="th"
-                    id={labelId}
-                    scope="row"
-                    padding="none"
+                    key={headCell.id}
+                    align={'right'}
+                    padding={headCell.disablePadding ? 'none' : 'normal'}
+                    // sortDirection={orderBy === headCell.id ? order : false}
                   >
-                    {row.name}
+                    <TableSortLabel
+                      //   active={orderBy === headCell.id}
+                      //   direction={orderBy === headCell.id ? order : 'asc'}
+                      //   onClick={createSortHandler(headCell.id)}
+                      active={args.active}
+                      className={args.className}
+                      direction={args.direction}
+                      hideSortIcon={args.hideSortIcon}
+                      IconComponent={args.IconComponent}
+                    >
+                      {headCell.label}
+                    </TableSortLabel>
                   </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
-                </TableRow>
-              )
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        onPageChange={() => console.log('hola')}
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={5}
-        page={0}
-      />
-    </Paper>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row, index) => {
+                const labelId = `enhanced-table-checkbox-${index}`
+
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
+                    <TableCell padding="checkbox"></TableCell>
+                    <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      padding="none"
+                    >
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="right">{row.calories}</TableCell>
+                    <TableCell align="right">{row.fat}</TableCell>
+                    <TableCell align="right">{row.carbs}</TableCell>
+                    <TableCell align="right">{row.protein}</TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          onPageChange={() => console.log('hola')}
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={5}
+          page={0}
+        />
+      </Paper>
+    </>
   )
 }
 export const test: Story = {

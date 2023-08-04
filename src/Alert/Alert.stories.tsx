@@ -14,12 +14,14 @@ export const success: Story = {
   args: {
     children: 'Todo va feten',
     severity: 'success',
+    onClose: undefined,
   },
 }
 export const warning: Story = {
   args: {
     children: 'Ojo cuidao',
     severity: 'warning',
+    onClose: undefined,
   },
 }
 
