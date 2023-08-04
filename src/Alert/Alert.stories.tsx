@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import Alert from './Alert'
 import Button from '../Button/Button'
+import { ArrowDownIcon, StarIconFilled } from '../components/icons/Icons'
 
 const meta = {
   component: Alert,
@@ -67,5 +68,15 @@ export const filled: Story = {
     variant: 'filled',
     closeText: 'aksddakd',
     icon: <div>iconoWapo</div>,
+  },
+}
+export const iconMapping: Story = {
+  args: {
+    children: 'Esto es informacion',
+    severity: 'success',
+    onClose: () => {},
+    variant: 'filled',
+    closeText: 'aksddakd',
+    iconMapping: { success: <ArrowDownIcon />, info: <StarIconFilled /> },
   },
 }

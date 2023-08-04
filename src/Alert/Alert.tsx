@@ -24,6 +24,12 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
   }
   closeText?: string
   icon?: ReactNode
+  iconMapping?: {
+    error?: ReactNode
+    info?: ReactNode
+    success?: ReactNode
+    warning?: ReactNode
+  }
 }
 export default function Alert({
   children,
@@ -35,6 +41,7 @@ export default function Alert({
   classes,
   closeText = 'Close',
   icon,
+  iconMapping,
 }: AlertProps) {
   const warningAndNoIconFalse = severity === 'warning' && icon !== false
   const successAndNoIconFalse = severity === 'success' && icon !== false
@@ -80,10 +87,38 @@ export default function Alert({
           [classes?.IconComponent || '']: classes?.IconComponent,
         })}
       >
-        {successAndNoIconFalse && (icon === undefined ? <SuccessIcon /> : icon)}
-        {warningAndNoIconFalse && (icon === undefined ? <WarningIcon /> : icon)}
-        {errorAndNoIconFalse && (icon === undefined ? <ErrorIcon /> : icon)}
-        {infoAndNoIconFalse && (icon === undefined ? <InfoIcon /> : icon)}
+        {successAndNoIconFalse &&
+          (iconMapping?.success ? (
+            iconMapping.success
+          ) : icon !== undefined ? (
+            icon
+          ) : (
+            <SuccessIcon />
+          ))}
+        {warningAndNoIconFalse &&
+          (iconMapping?.warning ? (
+            iconMapping.warning
+          ) : icon !== undefined ? (
+            icon
+          ) : (
+            <WarningIcon />
+          ))}
+        {errorAndNoIconFalse &&
+          (iconMapping?.error ? (
+            iconMapping.error
+          ) : icon !== undefined ? (
+            icon
+          ) : (
+            <ErrorIcon />
+          ))}
+        {infoAndNoIconFalse &&
+          (iconMapping?.info ? (
+            iconMapping.info
+          ) : icon !== undefined ? (
+            icon
+          ) : (
+            <InfoIcon />
+          ))}
       </div>
       <div
         className={classNames('py-2 min-w-0 overflow-auto text-inherit', {
