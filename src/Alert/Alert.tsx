@@ -80,14 +80,10 @@ export default function Alert({
           [classes?.IconComponent || '']: classes?.IconComponent,
         })}
       >
-        {/* {(severity === 'success'&&icon!=='false')&& icon==='undefined'?<SuccessIcon/>:icon} */}
         {successAndNoIconFalse && (icon === undefined ? <SuccessIcon /> : icon)}
         {warningAndNoIconFalse && (icon === undefined ? <WarningIcon /> : icon)}
         {errorAndNoIconFalse && (icon === undefined ? <ErrorIcon /> : icon)}
         {infoAndNoIconFalse && (icon === undefined ? <InfoIcon /> : icon)}
-        {/* {severity === 'warning' && <WarningIcon />}
-        {severity === 'error' && <ErrorIcon />}
-        {severity === 'info' && <InfoIcon />} */}
       </div>
       <div
         className={classNames('py-2 min-w-0 overflow-auto text-inherit', {
