@@ -1,7 +1,12 @@
 import { ReactNode } from 'react'
 import Paper, { PaperProps } from '../Paper/Paper'
 import classNames from 'classnames'
-import { ErrorIcon, SuccessIcon, WarningIcon } from '../components/icons/Icons'
+import {
+  ErrorIcon,
+  SuccessIcon,
+  WarningIcon,
+  InfoIcon,
+} from '../components/icons/Icons'
 
 export interface AlertProps extends Omit<PaperProps, 'children'> {
   children?: ReactNode
@@ -25,7 +30,7 @@ export default function Alert({ children, severity = 'success' }: AlertProps) {
         {severity === 'success' && <SuccessIcon />}
         {severity === 'warning' && <WarningIcon />}
         {severity === 'error' && <ErrorIcon />}
-        {severity === 'info' && <ErrorIcon />}
+        {severity === 'info' && <InfoIcon />}
       </div>
       <div
         className={classNames('py-2 min-w-0 overflow-auto', {
