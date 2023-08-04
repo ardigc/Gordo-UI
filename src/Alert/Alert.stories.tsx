@@ -93,5 +93,6 @@ export const render: Story = {
     closeText: 'aksddakd',
     iconMapping: { success: <ArrowDownIcon />, info: <StarIconFilled /> },
     slots: { closeButton: 'div', closeIcon: StarIcon },
+    slotProps: { closeButton: { className: 'bg-slate-200' } },
   },
 }
