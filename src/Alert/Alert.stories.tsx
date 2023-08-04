@@ -20,9 +20,16 @@ export const warning: Story = {
     severity: 'warning',
   },
 }
+
 export const error: Story = {
   args: {
     children: 'sdfsdfs',
     severity: 'error',
+  },
+}
+export const info: Story = {
+  args: {
+    children: 'sdfsdfs',
+    severity: 'info',
   },
 }
