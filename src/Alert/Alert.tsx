@@ -42,6 +42,7 @@ export default function Alert({
   closeText = 'Close',
   icon,
   iconMapping,
+  ...rest
 }: AlertProps) {
   const warningAndNoIconFalse = severity === 'warning' && icon !== false
   const successAndNoIconFalse = severity === 'success' && icon !== false
@@ -81,6 +82,7 @@ export default function Alert({
         }
       )}
       elevation={0}
+      {...rest}
     >
       <div
         className={classNames('mr-[12px] py-[7px] flex opacity-90', {
