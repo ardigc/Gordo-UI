@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import Alert from './Alert'
+import Button from '../Button/Button'
 
 const meta = {
   component: Alert,
@@ -32,5 +33,16 @@ export const info: Story = {
   args: {
     children: 'Esto es informacion',
     severity: 'info',
+  },
+}
+export const action: Story = {
+  args: {
+    children: 'Esto es informacion',
+    severity: 'info',
+    action: (
+      <Button color="inherit" size="small">
+        UNDO
+      </Button>
+    ),
   },
 }

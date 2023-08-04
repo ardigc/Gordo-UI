@@ -11,8 +11,13 @@ import {
 export interface AlertProps extends Omit<PaperProps, 'children'> {
   children?: ReactNode
   severity?: 'error' | 'info' | 'success' | 'warning'
+  action?: ReactNode
 }
-export default function Alert({ children, severity = 'success' }: AlertProps) {
+export default function Alert({
+  children,
+  severity = 'success',
+  action,
+}: AlertProps) {
   return (
     <Paper
       className={classNames(
@@ -42,6 +47,7 @@ export default function Alert({ children, severity = 'success' }: AlertProps) {
       >
         {children}
       </div>
+      {action && action}
     </Paper>
   )
 }
