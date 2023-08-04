@@ -1,3 +1,12 @@
-export default function Alert({}: type) {
-  return <div></div>
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+
+type DivReactPops = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+export interface AlertProps extends DivReactPops {
+  children?: ReactNode
+}
+export default function Alert({ children }: AlertProps) {
+  return <div>{children}</div>
 }
