@@ -60,7 +60,7 @@ export const outlined: Story = {
 export const filled: Story = {
   args: {
     children: 'Esto es informacion',
-    severity: 'warning',
+    severity: 'success',
     onClose: () => {},
     variant: 'filled',
   },

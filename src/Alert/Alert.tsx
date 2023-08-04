@@ -47,6 +47,12 @@ export default function Alert({
             severity === 'info' && variant === 'outlined',
           'bg-success-color text-white':
             severity === 'success' && variant === 'filled',
+          'bg-warning-color text-white':
+            severity === 'warning' && variant === 'filled',
+          'bg-error-color text-white':
+            severity === 'error' && variant === 'filled',
+          'bg-info-color text-white':
+            severity === 'info' && variant === 'filled',
         }
       )}
       elevation={0}
@@ -58,11 +64,11 @@ export default function Alert({
         {severity === 'info' && <InfoIcon />}
       </div>
       <div
-        className={classNames('py-2 min-w-0 overflow-auto', {
-          'text-success-color': severity === 'success',
-          'text-warning-color': severity === 'warning',
-          'text-error-color': severity === 'error',
-          'text-info-color': severity === 'info',
+        className={classNames('py-2 min-w-0 overflow-auto text-inherit', {
+          // 'text-success-color': severity === 'success',
+          // 'text-warning-color': severity === 'warning',
+          // 'text-error-color': severity === 'error',
+          // 'text-info-color': severity === 'info',
         })}
       >
         {children}
@@ -73,8 +79,11 @@ export default function Alert({
       {!action && onClose && (
         <div className={classNames('ml-auto -mr-2 pl-4 ')}>
           <Button
-            className="rounded-full w-9 h-9 min-w-0"
+            className={classNames('rounded-full w-9 h-9  [div>&]:min-w-0', {
+              '[div>&]:px-0 [div>&]:shadow-none': variant === 'filled',
+            })}
             color={severity}
+            variant={variant === 'filled' ? 'contained' : 'text'}
             onClick={(ev) => onClose(ev)}
           >
             <XIcon />
