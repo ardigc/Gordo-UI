@@ -36,6 +36,7 @@ export default function Alert({
   closeText = 'Close',
   icon,
 }: AlertProps) {
+  const warningAndNoIconFalse = severity === 'warning' && icon !== false
   return (
     <Paper
       className={classNames(
@@ -77,14 +78,19 @@ export default function Alert({
         })}
       >
         {/* {(severity === 'success'&&icon!=='false')&& icon==='undefined'?<SuccessIcon/>:icon} */}
-        {severity === 'success' && icon !== false && icon === undefined ? (
-          <SuccessIcon />
-        ) : (
-          icon
-        )}
-        {severity === 'warning' && <WarningIcon />}
+        {severity === 'success' &&
+          icon !== false &&
+          (icon === undefined ? <SuccessIcon /> : icon)}
+        {warningAndNoIconFalse && (icon === undefined ? <WarningIcon /> : icon)}
+        {severity === 'error' &&
+          icon !== false &&
+          (icon === undefined ? <ErrorIcon /> : icon)}
+        {severity === 'info' &&
+          icon !== false &&
+          (icon === undefined ? <InfoIcon /> : icon)}
+        {/* {severity === 'warning' && <WarningIcon />}
         {severity === 'error' && <ErrorIcon />}
-        {severity === 'info' && <InfoIcon />}
+        {severity === 'info' && <InfoIcon />} */}
       </div>
       <div
         className={classNames('py-2 min-w-0 overflow-auto text-inherit', {

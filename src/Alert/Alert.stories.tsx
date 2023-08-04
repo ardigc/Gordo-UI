@@ -66,5 +66,6 @@ export const filled: Story = {
     onClose: () => {},
     variant: 'filled',
     closeText: 'aksddakd',
+    icon: <div>iconoWapo</div>,
   },
 }
