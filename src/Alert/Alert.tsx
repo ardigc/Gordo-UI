@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent } from 'react'
+import { ReactNode, MouseEvent, ElementType } from 'react'
 import Paper, { PaperProps } from '../Paper/Paper'
 import classNames from 'classnames'
 import {
@@ -30,6 +30,7 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
     success?: ReactNode
     warning?: ReactNode
   }
+  slots?: { closeButton?: ElementType; closeIcon?: ElementType }
 }
 export default function Alert({
   children,
@@ -42,12 +43,15 @@ export default function Alert({
   closeText = 'Close',
   icon,
   iconMapping,
+  slots,
   ...rest
 }: AlertProps) {
   const warningAndNoIconFalse = severity === 'warning' && icon !== false
   const successAndNoIconFalse = severity === 'success' && icon !== false
   const errorAndNoIconFalse = severity === 'error' && icon !== false
   const infoAndNoIconFalse = severity === 'info' && icon !== false
+  const RenderCloseButon = slots?.closeButton ? slots.closeButton : Button
+  const RenderCloseIcon = slots?.closeIcon ? slots.closeIcon : XIcon
   return (
     <Paper
       className={classNames(
@@ -134,17 +138,19 @@ export default function Alert({
       )}
       {!action && onClose && (
         <div className={classNames('ml-auto -mr-2 pl-4 ')}>
-          <Button
+          <RenderCloseButon
             className={classNames('rounded-full w-9 h-9  [div>&]:min-w-0', {
               '[div>&]:px-0 [div>&]:shadow-none': variant === 'filled',
             })}
             color={severity}
             variant={variant === 'filled' ? 'contained' : 'text'}
             title={closeText}
-            onClick={(ev) => onClose(ev)}
+            onClick={(
+              ev: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+            ) => onClose(ev)}
           >
-            <XIcon />
-          </Button>
+            <RenderCloseIcon />
+          </RenderCloseButon>
         </div>
       )}
     </Paper>
