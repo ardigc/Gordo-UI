@@ -8,15 +8,20 @@ type SpanReactProps = DetailedHTMLProps<
 export interface TableSortLabelProps extends SpanReactProps {
   children?: ReactNode
   active?: boolean
+  className?: string
 }
 export default function TableSortLabel({
   children,
   active,
+  className,
   ...rest
 }: TableSortLabelProps) {
   return (
     <span
-      className="group inline-flex flex-inherit relative text-black bg-transparent select-none cursor-pointer align-middle justify-start items-center"
+      className={classNames(
+        'group inline-flex flex-inherit relative text-black bg-transparent select-none cursor-pointer align-middle justify-start items-center',
+        { [className || '']: className }
+      )}
       {...rest}
     >
       {children}
