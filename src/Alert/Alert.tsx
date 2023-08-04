@@ -1,12 +1,13 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import Paper, { PaperProps } from '../Paper/Paper'
 
-type DivReactPops = DetailedHTMLProps<
-  HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->
-export interface AlertProps extends DivReactPops {
+export interface AlertProps extends Omit<PaperProps, 'children'> {
   children?: ReactNode
 }
 export default function Alert({ children }: AlertProps) {
-  return <div>{children}</div>
+  return (
+    <Paper>
+      <div>{children}</div>
+    </Paper>
+  )
 }
