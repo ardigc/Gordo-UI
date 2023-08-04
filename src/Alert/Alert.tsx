@@ -10,7 +10,7 @@ import {
 } from '../components/icons/Icons'
 import Button from '../Button/Button'
 
-export interface AlertProps extends Omit<PaperProps, 'children'> {
+export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
   children?: ReactNode
   severity?: 'error' | 'info' | 'success' | 'warning'
   action?: ReactNode
@@ -29,10 +29,22 @@ export default function Alert({
       className={classNames(
         'flex py-[6px] px-4 font-base text-sm font-normal items-center',
         {
-          'bg-green-100 text-success-color': severity === 'success',
-          'bg-yellow-100 text-warning-color': severity === 'warning',
-          'bg-red-100 text-error-color': severity === 'error',
-          'bg-blue-100 text-info-color': severity === 'info',
+          'bg-green-100 text-success-color':
+            severity === 'success' && variant === 'standard',
+          'bg-yellow-100 text-warning-color':
+            severity === 'warning' && variant === 'standard',
+          'bg-red-100 text-error-color':
+            severity === 'error' && variant === 'standard',
+          'bg-blue-100 text-info-color':
+            severity === 'info' && variant === 'standard',
+          'border-success-color border text-success-color':
+            severity === 'success' && variant === 'outlined',
+          'border-warning-color border text-warning-color':
+            severity === 'warning' && variant === 'outlined',
+          'border-error-color border text-error-color':
+            severity === 'error' && variant === 'outlined',
+          'border-info-color border text-info-color':
+            severity === 'info' && variant === 'outlined',
         }
       )}
       elevation={0}

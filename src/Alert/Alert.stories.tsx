@@ -49,3 +49,11 @@ export const onClose: Story = {
     onClose: () => {},
   },
 }
+export const outlined: Story = {
+  args: {
+    children: 'Esto es informacion',
+    severity: 'warning',
+    onClose: () => {},
+    variant: 'outlined',
+  },
+}
