@@ -37,6 +37,9 @@ export default function Alert({
   icon,
 }: AlertProps) {
   const warningAndNoIconFalse = severity === 'warning' && icon !== false
+  const successAndNoIconFalse = severity === 'success' && icon !== false
+  const errorAndNoIconFalse = severity === 'error' && icon !== false
+  const infoAndNoIconFalse = severity === 'info' && icon !== false
   return (
     <Paper
       className={classNames(
@@ -78,16 +81,10 @@ export default function Alert({
         })}
       >
         {/* {(severity === 'success'&&icon!=='false')&& icon==='undefined'?<SuccessIcon/>:icon} */}
-        {severity === 'success' &&
-          icon !== false &&
-          (icon === undefined ? <SuccessIcon /> : icon)}
+        {successAndNoIconFalse && (icon === undefined ? <SuccessIcon /> : icon)}
         {warningAndNoIconFalse && (icon === undefined ? <WarningIcon /> : icon)}
-        {severity === 'error' &&
-          icon !== false &&
-          (icon === undefined ? <ErrorIcon /> : icon)}
-        {severity === 'info' &&
-          icon !== false &&
-          (icon === undefined ? <InfoIcon /> : icon)}
+        {errorAndNoIconFalse && (icon === undefined ? <ErrorIcon /> : icon)}
+        {infoAndNoIconFalse && (icon === undefined ? <InfoIcon /> : icon)}
         {/* {severity === 'warning' && <WarningIcon />}
         {severity === 'error' && <ErrorIcon />}
         {severity === 'info' && <InfoIcon />} */}
