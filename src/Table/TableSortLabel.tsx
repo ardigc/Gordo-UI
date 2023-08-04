@@ -1,4 +1,9 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import {
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactNode,
+  ElementType,
+} from 'react'
 import { ArrowDown } from '../components/icons/Icons'
 import classNames from 'classnames'
 type SpanReactProps = DetailedHTMLProps<
@@ -11,6 +16,7 @@ export interface TableSortLabelProps extends SpanReactProps {
   className?: string
   direction?: 'asc' | 'desc'
   hideSortIcon?: boolean
+  IconComponent?: ElementType
 }
 export default function TableSortLabel({
   children,
@@ -18,17 +24,11 @@ export default function TableSortLabel({
   className,
   direction = 'asc',
   hideSortIcon = false,
+  IconComponent,
   ...rest
 }: TableSortLabelProps) {
-  return (
-    <span
-      className={classNames(
-        'group inline-flex flex-inherit relative text-black bg-transparent select-none cursor-pointer align-middle justify-start items-center',
-        { [className || '']: className }
-      )}
-      {...rest}
-    >
-      {children}
+  const ArrowComponent = () => {
+    return (
       <div
         className={classNames('transition-transform', {
           'opacity-100': active,
@@ -40,6 +40,20 @@ export default function TableSortLabel({
       >
         <ArrowDown />
       </div>
+    )
+  }
+  const RenderIconComponent = IconComponent ? IconComponent : ArrowComponent
+
+  return (
+    <span
+      className={classNames(
+        'group inline-flex flex-inherit relative text-black bg-transparent select-none cursor-pointer align-middle justify-start items-center',
+        { [className || '']: className }
+      )}
+      {...rest}
+    >
+      {children}
+      <RenderIconComponent />
     </span>
   )
 }
