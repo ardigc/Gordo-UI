@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import Paper, { PaperProps } from '../Paper/Paper'
 import classNames from 'classnames'
 import { SuccessIcon, WarningIcon } from '../components/icons/Icons'
