@@ -119,6 +119,7 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
                     className={args.className}
                     direction={args.direction}
                     hideSortIcon={args.hideSortIcon}
+                    IconComponent={args.IconComponent}
                   >
                     {headCell.label}
                   </TableSortLabel>
@@ -170,5 +171,6 @@ export const test: Story = {
     className: 'text-black',
     direction: 'asc',
     hideSortIcon: false,
+    // IconComponent:()=><div>flechita</div>,
   },
 }

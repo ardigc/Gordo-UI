@@ -27,23 +27,6 @@ export default function TableSortLabel({
   IconComponent,
   ...rest
 }: TableSortLabelProps) {
-  const ArrowComponent = () => {
-    return (
-      <div
-        className={classNames('transition-transform', {
-          'opacity-100': active,
-          'opacity-0 group-hover:opacity-30': !active && !hideSortIcon,
-          'opacity-0 ': !active && hideSortIcon,
-          'rotate-180': direction === 'asc',
-          'rotate-0': direction === 'desc',
-        })}
-      >
-        <ArrowDown />
-      </div>
-    )
-  }
-  const RenderIconComponent = IconComponent ? IconComponent : ArrowComponent
-
   return (
     <span
       className={classNames(
@@ -53,7 +36,20 @@ export default function TableSortLabel({
       {...rest}
     >
       {children}
-      <RenderIconComponent />
+      {!IconComponent && (
+        <div
+          className={classNames('transition-transform', {
+            'opacity-100': active,
+            'opacity-0 group-hover:opacity-30': !active && !hideSortIcon,
+            'opacity-0 ': !active && hideSortIcon,
+            'rotate-180': direction === 'asc',
+            'rotate-0': direction === 'desc',
+          })}
+        >
+          <ArrowDown />
+        </div>
+      )}
+      {IconComponent && <IconComponent />}
     </span>
   )
 }
