@@ -59,7 +59,9 @@ const TestFunc = ({ args }: { args: TableContainerProps }) => {
     <TableContainer
       {...args}
       component={({ children }: { children: ReactNode }) => (
-        <Paper elevation={10}>{children}</Paper>
+        <Paper className="bg-white" elevation={10}>
+          {children}
+        </Paper>
       )}
     >
       <Table>

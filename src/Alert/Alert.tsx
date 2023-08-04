@@ -27,7 +27,7 @@ export default function Alert({
   return (
     <Paper
       className={classNames(
-        'flex py-[6px] px-4 font-base text-sm font-normal items-center',
+        'flex py-[6px] px-4 font-base text-sm font-normal items-center ',
         {
           'bg-green-100 text-success-color':
             severity === 'success' && variant === 'standard',
@@ -37,14 +37,16 @@ export default function Alert({
             severity === 'error' && variant === 'standard',
           'bg-blue-100 text-info-color':
             severity === 'info' && variant === 'standard',
-          'border-success-color border text-success-color':
+          'border-success-color bg-white border text-success-color':
             severity === 'success' && variant === 'outlined',
-          'border-warning-color border text-warning-color':
+          'border-warning-color bg-white border text-warning-color':
             severity === 'warning' && variant === 'outlined',
-          'border-error-color border text-error-color':
+          'border-error-color border bg-white text-error-color':
             severity === 'error' && variant === 'outlined',
-          'border-info-color border text-info-color':
+          'border-info-color border bg-white text-info-color':
             severity === 'info' && variant === 'outlined',
+          'bg-success-color text-white':
+            severity === 'success' && variant === 'filled',
         }
       )}
       elevation={0}

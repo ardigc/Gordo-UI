@@ -57,3 +57,11 @@ export const outlined: Story = {
     variant: 'outlined',
   },
 }
+export const filled: Story = {
+  args: {
+    children: 'Esto es informacion',
+    severity: 'warning',
+    onClose: () => {},
+    variant: 'filled',
+  },
+}

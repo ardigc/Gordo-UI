@@ -98,7 +98,7 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
     },
   ]
   return (
-    <Paper>
+    <Paper className="bg-white">
       <TableContainer>
         <Table aria-labelledby="tableTitle">
           <TableHead>
