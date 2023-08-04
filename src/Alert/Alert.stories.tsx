@@ -65,5 +65,6 @@ export const filled: Story = {
     severity: 'success',
     onClose: () => {},
     variant: 'filled',
+    closeText: 'aksddakd',
   },
 }

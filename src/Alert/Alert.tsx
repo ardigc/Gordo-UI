@@ -17,6 +17,12 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
   onClose?: (ev: MouseEvent<HTMLButtonElement>) => void
   variant?: 'filled' | 'outlined' | 'standard'
   className?: string
+  classes?: {
+    Paper?: string
+    IconComponent?: string
+    ChildrenComponent?: string
+  }
+  closeText?: string
 }
 export default function Alert({
   children,
@@ -25,6 +31,8 @@ export default function Alert({
   onClose,
   variant = 'standard',
   className,
+  classes,
+  closeText = 'Close',
 }: AlertProps) {
   return (
     <Paper
@@ -56,18 +64,25 @@ export default function Alert({
           'bg-info-color text-white':
             severity === 'info' && variant === 'filled',
           [className || '']: className,
+          [classes?.Paper || '']: classes?.Paper,
         }
       )}
       elevation={0}
     >
-      <div className={classNames('mr-[12px] py-[7px] flex opacity-90')}>
+      <div
+        className={classNames('mr-[12px] py-[7px] flex opacity-90', {
+          [classes?.IconComponent || '']: classes?.IconComponent,
+        })}
+      >
         {severity === 'success' && <SuccessIcon />}
         {severity === 'warning' && <WarningIcon />}
         {severity === 'error' && <ErrorIcon />}
         {severity === 'info' && <InfoIcon />}
       </div>
       <div
-        className={classNames('py-2 min-w-0 overflow-auto text-inherit', {})}
+        className={classNames('py-2 min-w-0 overflow-auto text-inherit', {
+          [classes?.ChildrenComponent || '']: classes?.ChildrenComponent,
+        })}
       >
         {children}
       </div>
@@ -82,6 +97,7 @@ export default function Alert({
             })}
             color={severity}
             variant={variant === 'filled' ? 'contained' : 'text'}
+            title={closeText}
             onClick={(ev) => onClose(ev)}
           >
             <XIcon />
