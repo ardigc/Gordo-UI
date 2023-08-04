@@ -15,12 +15,14 @@ export interface AlertProps extends Omit<PaperProps, 'children'> {
   severity?: 'error' | 'info' | 'success' | 'warning'
   action?: ReactNode
   onClose?: (ev: MouseEvent<HTMLButtonElement>) => void
+  variant?: 'filled' | 'outlined' | 'standard'
 }
 export default function Alert({
   children,
   severity = 'success',
   action,
   onClose,
+  variant = 'standard',
 }: AlertProps) {
   return (
     <Paper
