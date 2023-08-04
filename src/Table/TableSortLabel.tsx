@@ -10,12 +10,14 @@ export interface TableSortLabelProps extends SpanReactProps {
   active?: boolean
   className?: string
   direction?: 'asc' | 'desc'
+  hideSortIcon?: boolean
 }
 export default function TableSortLabel({
   children,
   active,
   className,
   direction = 'asc',
+  hideSortIcon = false,
   ...rest
 }: TableSortLabelProps) {
   return (
@@ -28,10 +30,12 @@ export default function TableSortLabel({
     >
       {children}
       <div
-        className={classNames('', {
+        className={classNames('transition-transform', {
           'opacity-100': active,
-          'opacity-0 group-hover:opacity-30': !active,
+          'opacity-0 group-hover:opacity-30': !active && !hideSortIcon,
+          'opacity-0 ': !active && hideSortIcon,
           'rotate-180': direction === 'asc',
+          'rotate-0': direction === 'desc',
         })}
       >
         <ArrowDown />
