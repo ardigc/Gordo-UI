@@ -11,25 +11,26 @@ export default meta
 type Story = StoryObj<typeof meta>
 export const success: Story = {
   args: {
-    children: 'sdfsdfs',
+    children: 'Todo va feten',
+    severity: 'success',
   },
 }
 export const warning: Story = {
   args: {
-    children: 'sdfsdfs',
+    children: 'Ojo cuidao',
     severity: 'warning',
   },
 }
 
 export const error: Story = {
   args: {
-    children: 'sdfsdfs',
+    children: 'Menudo fallo',
     severity: 'error',
   },
 }
 export const info: Story = {
   args: {
-    children: 'sdfsdfs',
+    children: 'Esto es informacion',
     severity: 'info',
   },
 }
