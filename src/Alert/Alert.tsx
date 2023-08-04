@@ -1,7 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 import Paper, { PaperProps } from '../Paper/Paper'
 import classNames from 'classnames'
-import { SuccessIcon } from '../components/icons/Icons'
+import { SuccessIcon, WarningIcon } from '../components/icons/Icons'
 
 export interface AlertProps extends Omit<PaperProps, 'children'> {
   children?: ReactNode
@@ -21,6 +21,7 @@ export default function Alert({ children, severity = 'success' }: AlertProps) {
     >
       <div className={classNames('mr-[12px] py-[7px] flex opacity-90')}>
         {severity === 'success' && <SuccessIcon />}
+        {severity === 'warning' && <WarningIcon />}
       </div>
       <div
         className={classNames('py-2 min-w-0 overflow-auto', {
