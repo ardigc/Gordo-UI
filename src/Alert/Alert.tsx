@@ -6,6 +6,7 @@ import {
   SuccessIcon,
   WarningIcon,
   InfoIcon,
+  XIcon,
 } from '../components/icons/Icons'
 import Button from '../Button/Button'
 
@@ -55,7 +56,9 @@ export default function Alert({
       )}
       {!action && onClose && (
         <div className={classNames('ml-auto -mr-2 pl-4 pt-1')}>
-          <Button onClick={(ev) => onClose(ev)}></Button>
+          <Button onClick={(ev) => onClose(ev)}>
+            <XIcon />
+          </Button>
         </div>
       )}
     </Paper>
