@@ -23,6 +23,7 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
     ChildrenComponent?: string
   }
   closeText?: string
+  icon?: ReactNode
 }
 export default function Alert({
   children,
@@ -33,6 +34,7 @@ export default function Alert({
   className,
   classes,
   closeText = 'Close',
+  icon,
 }: AlertProps) {
   return (
     <Paper
@@ -74,7 +76,12 @@ export default function Alert({
           [classes?.IconComponent || '']: classes?.IconComponent,
         })}
       >
-        {severity === 'success' && <SuccessIcon />}
+        {/* {(severity === 'success'&&icon!=='false')&& icon==='undefined'?<SuccessIcon/>:icon} */}
+        {severity === 'success' && icon !== false && icon === undefined ? (
+          <SuccessIcon />
+        ) : (
+          icon
+        )}
         {severity === 'warning' && <WarningIcon />}
         {severity === 'error' && <ErrorIcon />}
         {severity === 'info' && <InfoIcon />}
