@@ -117,6 +117,7 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
                     //   onClick={createSortHandler(headCell.id)}
                     active={args.active}
                     className={args.className}
+                    direction={args.direction}
                   >
                     {headCell.label}
                   </TableSortLabel>
