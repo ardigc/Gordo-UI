@@ -31,6 +31,7 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
     warning?: ReactNode
   }
   slots?: { closeButton?: ElementType; closeIcon?: ElementType }
+  slotProps?: { closeButton?: object; closeIcon?: object }
 }
 export default function Alert({
   children,
@@ -44,6 +45,7 @@ export default function Alert({
   icon,
   iconMapping,
   slots,
+  slotProps,
   ...rest
 }: AlertProps) {
   const warningAndNoIconFalse = severity === 'warning' && icon !== false
@@ -148,8 +150,9 @@ export default function Alert({
             onClick={(
               ev: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
             ) => onClose(ev)}
+            {...slotProps?.closeButton}
           >
-            <RenderCloseIcon />
+            <RenderCloseIcon {...slotProps?.closeIcon} />
           </RenderCloseButon>
         </div>
       )}
