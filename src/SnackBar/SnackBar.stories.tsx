@@ -15,18 +15,20 @@ export default meta
 type Story = StoryObj<typeof meta>
 const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
-  const handleClose = (_event: React.SyntheticEvent | Event|null, reason?: string) => {
-  
-console.log(reason)
-// if (reason === 'clickAway') {
-//   return;
-// }
-    setOpen(false);
-  };
+  const handleClose = (
+    _event: React.SyntheticEvent | Event | null,
+    reason?: string
+  ) => {
+    console.log(reason)
+    // if (reason === 'clickAway') {
+    //   return;
+    // }
+    setOpen(false)
+  }
   return (
     <>
       <Button onClick={() => setOpen(!open)}>Hazme click</Button>
-      <SnackBar open={open} {...args} onClose={handleClose}/>
+      <SnackBar open={open} {...args} onClose={handleClose} />
     </>
   )
 }
@@ -45,59 +47,83 @@ export const secundary: Story = {
 export const action: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
-  action:<Button><XIcon/></Button>,
+    action: (
+      <Button>
+        <XIcon />
+      </Button>
+    ),
     message: 'Note archived',
   },
 }
 export const autoHide: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
-  action:<Button><XIcon/></Button>,
+    action: (
+      <Button>
+        <XIcon />
+      </Button>
+    ),
     message: 'Note archived',
-    autoHideDuration:600
+    autoHideDuration: 600,
   },
 }
 export const anchorOrigin: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
-  action:<Button><XIcon/></Button>,
+    action: (
+      <Button>
+        <XIcon />
+      </Button>
+    ),
     message: 'Note archived',
-    autoHideDuration:600,
-    anchorOrigin:{vertical:'bottom', horizontal:'left'}
+    autoHideDuration: 600,
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
   },
 }
 export const sliceUp: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
-  action:<Button><XIcon/></Button>,
+    action: (
+      <Button>
+        <XIcon />
+      </Button>
+    ),
     message: 'Note archived',
-    autoHideDuration:3000,
-    anchorOrigin:{vertical:'bottom', horizontal:'left'},
-    transition:'slideUp',
+    autoHideDuration: 3000,
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+    transition: 'slideUp',
   },
 }
 const ChildrenFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
-  const handleClose = (_event: React.SyntheticEvent | Event|null, reason?: string) => {
-  
-console.log(reason)
-// if (reason === 'clickAway') {
-//   return;
-// }
-    setOpen(false);
-  };
+  const handleClose = (
+    _event: React.SyntheticEvent | Event | null,
+    reason?: string
+  ) => {
+    console.log(reason)
+    // if (reason === 'clickAway') {
+    //   return;
+    // }
+    setOpen(false)
+  }
   return (
     <>
       <Button onClick={() => setOpen(!open)}>Hazme click</Button>
-      <SnackBar open={open} {...args} onClose={handleClose}><Alert onClose={handleClose}>ESto es una prueba</Alert></SnackBar>
+      <SnackBar open={open} {...args} onClose={handleClose}>
+        <Alert onClose={handleClose}>ESto es una prueba</Alert>
+      </SnackBar>
     </>
   )
 }
 export const children: Story = {
   render: (args) => <ChildrenFunc args={args} />,
   args: {
-  action:<Button><XIcon/></Button>,
+    action: (
+      <Button>
+        <XIcon />
+      </Button>
+    ),
     message: 'Note archived',
-    autoHideDuration:6000
+    autoHideDuration: 6000,
   },
 }
