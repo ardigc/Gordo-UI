@@ -29,10 +29,10 @@ export default {
         height: ' height 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity: ' opacity 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity0: ' opacity0 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        slideUp: ' slideUp 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        slideUpRev: ' slideUpRev 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        slideUpCenter: ' slideUpCenter 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        slideUpRevCenter: ' slideUpRevCenter 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        slideUp: ' slideUp 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideUpRev: ' slideUpRev 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideUpCenter: ' slideUpCenter 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideUpRevCenter: ' slideUpRevCenter 200ms cubic-bezier(0, 0, 1, 1) 1 ',
       },
       keyframes: {
         grow: {
