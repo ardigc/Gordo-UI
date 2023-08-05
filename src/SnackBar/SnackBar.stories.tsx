@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import SnackBar, { SnackBarProps } from './SnackBar'
 import { useState } from 'react'
 import Button from '../Button/Button'
+import { XIcon } from '../components/icons/Icons'
 
 const meta = {
   component: SnackBar,
@@ -31,5 +32,12 @@ export const secundary: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
     // message: 'Note archived',
+  },
+}
+export const action: Story = {
+  render: (args) => <PrimaryFunc args={args} />,
+  args: {
+  action:<Button><XIcon/></Button>,
+    message: 'Note archived',
   },
 }
