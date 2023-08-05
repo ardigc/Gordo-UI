@@ -6,8 +6,13 @@ type DivReactProps = DetailedHTMLProps<
 >
 export interface SnackBarProps extends DivReactProps {
   children?: ReactNode
+  message?: ReactNode
 }
 
-export default function SnackBar({ children }: SnackBarProps) {
-  return <div>{children}</div>
+export default function SnackBar({
+  children,
+  message,
+  ...rest
+}: SnackBarProps) {
+  return <div {...rest}>{message}</div>
 }
