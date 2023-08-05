@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import SnackBar, { SnackBarProps } from './SnackBar'
+import { useState } from 'react'
+import Button from '../Button/Button'
 
 const meta = {
   component: SnackBar,
@@ -10,12 +12,19 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
-  return <SnackBar {...args} />
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Hazme click</Button>
+      <SnackBar open={open} {...args} />
+    </>
+  )
 }
 export const Primary: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
-    message: 'Note archived',
+    message: 'Has hecho click',
   },
 }
 export const secundary: Story = {
