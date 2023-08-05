@@ -38,6 +38,17 @@ export default {
           ' slideDownRevBottom 200ms cubic-bezier(0, 0, 1, 1) 1 ',
         slideDownTop: ' slideDownTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
         slideDownRevTop: ' slideDownRevTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideLeftLeft: ' slideLeftLeft 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideLeftRevLeft: ' slideLeftRevLeft 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideLeftRight: ' slideLeftRight 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideLeftRevRight:
+          ' slideLeftRevRight 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideRightRight: ' slideRightRight 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideRightRevRight:
+          ' slideRightRevRight 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideRightLeft: ' slideRightLeft 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideRightRevLeft:
+          ' slideRightRevLeft 200ms cubic-bezier(0, 0, 1, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -158,7 +169,7 @@ export default {
         },
         slideRightRight: {
           '0%': {
-            transform: 'translate(-100vh, 0)',
+            transform: 'translate(30vh, 0)',
           },
           '100%': {
             transform: 'translate(0,0)',
@@ -169,12 +180,12 @@ export default {
             transform: 'translate(0,0)',
           },
           '100%': {
-            transform: 'translate(-100vh,0)',
+            transform: 'translate(30vh,0)',
           },
         },
         slideRightLeft: {
           '0%': {
-            transform: 'translate(-15vh,0)',
+            transform: 'translate(300vh,0)',
           },
           '100%': {
             transform: 'translate(0,0)',
@@ -185,7 +196,7 @@ export default {
             transform: 'translate(0,0)',
           },
           '100%': {
-            transform: 'translate(-15vh,0)',
+            transform: 'translate(300vh,0)',
           },
         },
       },
