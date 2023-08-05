@@ -14,7 +14,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
-  const handleClose = (_event: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (_event: React.SyntheticEvent | Event|null, reason?: string) => {
   
 console.log(reason)
 // if (reason === 'clickAway') {
@@ -46,5 +46,13 @@ export const action: Story = {
   args: {
   action:<Button><XIcon/></Button>,
     message: 'Note archived',
+  },
+}
+export const autoHide: Story = {
+  render: (args) => <PrimaryFunc args={args} />,
+  args: {
+  action:<Button><XIcon/></Button>,
+    message: 'Note archived',
+    autoHideDuration:600
   },
 }
