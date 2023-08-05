@@ -126,7 +126,7 @@ export default {
         },
         slideDownBottom: {
           '0%': {
-            transform: 'translate(0,100vh)',
+            transform: 'translate(0,-100vh)',
           },
           '100%': {
             transform: 'translate(0,0)',
@@ -154,6 +154,38 @@ export default {
           },
           '100%': {
             transform: 'translate(0,-15vh)',
+          },
+        },
+        slideRightRight: {
+          '0%': {
+            transform: 'translate(-100vh, 0)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideRightRevRight: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(-100vh,0)',
+          },
+        },
+        slideRightLeft: {
+          '0%': {
+            transform: 'translate(-15vh,0)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideRightRevLeft: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(-15vh,0)',
           },
         },
       },

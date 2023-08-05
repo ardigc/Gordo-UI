@@ -26,7 +26,13 @@ export interface SnackBarProps extends DivReactProps {
     horizontal: 'center' | 'left' | 'right'
     vertical: 'bottom' | 'top'
   }
-  transition?: 'fade' | 'grown' | 'slideUp' | 'slideDown'
+  transition?:
+    | 'fade'
+    | 'grown'
+    | 'slideUp'
+    | 'slideDown'
+    | 'slideLeft'
+    | 'slideRight'
 }
 
 export default function SnackBar({
@@ -142,6 +148,37 @@ export default function SnackBar({
                       !open &&
                       transition === 'slideDown' &&
                       anchorOrigin.vertical === 'top',
+                    'animate-slideLeftLeft':
+                      transition === 'slideLeft' &&
+                      anchorOrigin.horizontal === 'left',
+                    'animate-slideLeftRevLeft -translate-x-[100vh]':
+                      !open &&
+                      transition === 'slideLeft' &&
+                      anchorOrigin.horizontal === 'left',
+                    'animate-slideLeftRight':
+                      open &&
+                      transition === 'slideLeft' &&
+                      anchorOrigin.horizontal === 'right',
+                    'animate-slideLeftRevRight -translate-x-[15vh]':
+                      !open &&
+                      transition === 'slideLeft' &&
+                      anchorOrigin.horizontal === 'right',
+                    'animate-slideRightRight':
+                      transition === 'slideRight' &&
+                      anchorOrigin.horizontal === 'right',
+                    'animate-slideRightRevRight -translate-x-[100vh]':
+                      !open &&
+                      transition === 'slideRight' &&
+                      anchorOrigin.horizontal === 'right',
+                    'animate-slideRightLeft':
+                      open &&
+                      transition === 'slideRight' &&
+                      anchorOrigin.horizontal === 'left',
+                    'animate-slideRightRevLeft -translate-x-[15vh]':
+                      !open &&
+                      transition === 'slideRight' &&
+                      anchorOrigin.horizontal === 'left',
+
                     'animate-opacity0 opacity-0':
                       !open && transition === 'fade',
                     'animate-opacity': open && transition === 'fade',
