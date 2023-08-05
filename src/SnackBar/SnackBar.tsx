@@ -28,7 +28,7 @@ export default function SnackBar({
           'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
         )}
       >
-        {message}
+        <div className={classNames('py-2')}>{message}</div>
       </Paper>
     </div>
   )
