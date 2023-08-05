@@ -1,11 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Alert from './Alert'
+import Alert, { AlertProps } from './Alert'
 import Button from '../Button/Button'
 import {
   ArrowDownIcon,
   StarIcon,
   StarIconFilled,
 } from '../components/icons/Icons'
+import AlertTitle from './AlertTitle'
 
 const meta = {
   component: Alert,
@@ -94,5 +95,20 @@ export const render: Story = {
     iconMapping: { success: <ArrowDownIcon />, info: <StarIconFilled /> },
     slots: { closeButton: 'div', closeIcon: StarIcon },
     slotProps: { closeButton: { className: 'bg-slate-200' } },
+  },
+}
+const TestFunc = ({ args }: { args: AlertProps }) => {
+  return (
+    <Alert {...args}>
+      <AlertTitle>titulo</AlertTitle>
+      lo de abajo
+    </Alert>
+  )
+}
+export const alertTitle: Story = {
+  render: (args) => <TestFunc args={args} />,
+  args: {
+    severity: 'info',
+    onClose: undefined,
   },
 }
