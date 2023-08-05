@@ -70,7 +70,7 @@ console.log(reason)
   return (
     <>
       <Button onClick={() => setOpen(!open)}>Hazme click</Button>
-      <SnackBar open={open} {...args} onClose={handleClose}><Alert>ESto es una prueba</Alert></SnackBar>
+      <SnackBar open={open} {...args} onClose={handleClose}><Alert onClose={handleClose}>ESto es una prueba</Alert></SnackBar>
     </>
   )
 }
