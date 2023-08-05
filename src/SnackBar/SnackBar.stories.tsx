@@ -15,6 +15,6 @@ const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
 export const Primary: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
-    message: 'akfjkadlfakfl',
+    message: 'Note archived',
   },
 }

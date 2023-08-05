@@ -23,7 +23,11 @@ export default function SnackBar({
       )}
       {...rest}
     >
-      <Paper className={classNames('font-base font-normal text-base')}>
+      <Paper
+        className={classNames(
+          'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
+        )}
+      >
         {message}
       </Paper>
     </div>
