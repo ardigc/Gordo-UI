@@ -23,7 +23,9 @@ export default function SnackBar({
       )}
       {...rest}
     >
-      <Paper>{message}</Paper>
+      <Paper className={classNames('font-base font-normal text-base')}>
+        {message}
+      </Paper>
     </div>
   )
 }
