@@ -95,6 +95,7 @@ export default function SnackBar({
                 ' left-2 right-2  sm:left-auto sm:right-6':
                   anchorOrigin.horizontal === 'right',
                 'sm:bottom-6 bottom-2 ': anchorOrigin.vertical === 'bottom',
+                'sm:top-6 top-2 ': anchorOrigin.vertical === 'top',
               }
             )}
             onAnimationEnd={() => setVisible(Boolean(open))}
