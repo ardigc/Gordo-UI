@@ -100,8 +100,8 @@ export const render: Story = {
 const TestFunc = ({ args }: { args: AlertProps }) => {
   return (
     <Alert {...args}>
-      <AlertTitle>titulo</AlertTitle>
-      lo de abajo
+      <AlertTitle>Titulo</AlertTitle>
+      Lo de abajo
     </Alert>
   )
 }
