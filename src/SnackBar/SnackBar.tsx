@@ -5,6 +5,7 @@ import {
   KeyboardEvent,
   ReactNode,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 import Paper from '../Paper/Paper'
@@ -35,8 +36,10 @@ export default function SnackBar({
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
-  if (autoHideDuration) {
-    setTimeout(() => {
+  const timeOutRef = useRef<NodeJS.Timeout | null>(null)
+  if (autoHideDuration&&!timeOutRef.current) {
+    timeOutRef.current=setTimeout(() => {
+      timeOutRef.current=null
       if (!onClose) return
       onClose(null,'timeout')
     }, autoHideDuration);
@@ -46,6 +49,7 @@ export default function SnackBar({
     if (open === true) {
       setVisible(Boolean(open))
     }
+
     const handleKeyDown = (event:KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (open && onClose) {
@@ -56,9 +60,14 @@ export default function SnackBar({
     const handleKeyDownListener = (event: Event) => handleKeyDown(event as unknown as KeyboardEvent);
     document.addEventListener('keydown', handleKeyDownListener);
 
+    if(timeOutRef.current&&!open){
+      clearTimeout(timeOutRef.current)
+      timeOutRef.current=null
+    }
     return () => {
       document.removeEventListener('keydown', handleKeyDownListener);
     };
+    
   }, [open])
 
 const clickAwayHandle= (ev:MouseEvent|TouchEvent)=>{
@@ -76,7 +85,7 @@ onClose(ev,'clickAway')
             ' z-50 flex justify-start items-center fixed  animate-opacity',
             { 'animate-opacity0 opacity-0': !open,
           ' left-2 right-2  sm:left-6 sm:right-auto':  anchorOrigin.horizontal ==='left', 
-          ' left-2 right-2  sm:left-1/2 sm:right-auto':  anchorOrigin.horizontal ==='center', 
+          ' left-2 right-2  sm:left-1/2 sm:right-auto sm:-translate-x-1/2':  anchorOrigin.horizontal ==='center', 
           ' left-2 right-2  sm:left-auto sm:right-6':  anchorOrigin.horizontal ==='right', 
           'sm:bottom-6 bottom-2 ':anchorOrigin.vertical=== 'bottom'
           }
