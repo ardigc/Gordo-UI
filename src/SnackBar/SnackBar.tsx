@@ -26,6 +26,7 @@ export interface SnackBarProps extends DivReactProps {
     horizontal: 'center' | 'left' | 'right'
     vertical: 'bottom' | 'top'
   }
+  transition?:'fade'|'slideUp'
 }
 
 export default function SnackBar({
@@ -36,6 +37,7 @@ export default function SnackBar({
   onClose,
   autoHideDuration,
   anchorOrigin = { vertical: 'bottom', horizontal: 'left' },
+  transition='fade',
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -85,9 +87,12 @@ export default function SnackBar({
         <Clickaway onClickaway={clickAwayHandle}>
           <div
             className={classNames(
-              ' z-50 flex justify-start items-center fixed  animate-opacity',
+              ' z-50 flex justify-start items-center fixed ',
               {
-                'animate-opacity0 opacity-0': !open,
+                'animate-opacity0 opacity-0': !open&&transition==='fade',
+                'animate-opacity':transition==='fade',
+                'animate-opacity0 fopacity-0': !open&&transition==='slideUp',
+                'animate-opacity df':transition==='slideUp',
                 ' left-2 right-2  sm:left-6 sm:right-auto':
                   anchorOrigin.horizontal === 'left',
                 ' left-2 right-2  sm:left-1/2 sm:right-auto sm:-translate-x-1/2':
