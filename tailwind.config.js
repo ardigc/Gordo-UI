@@ -199,6 +199,38 @@ export default {
             transform: 'translate(300vh,0)',
           },
         },
+        slideLeftLeft: {
+          '0%': {
+            transform: 'translate(-50vh, 0)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideLeftRevLeft: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(-50vh,0)',
+          },
+        },
+        slideLeftRight: {
+          '0%': {
+            transform: 'translate(-300vh,0)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideLeftRevRight: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(-300vh,0)',
+          },
+        },
       },
 
       colors: {

@@ -151,18 +151,18 @@ export default function SnackBar({
                     'animate-slideLeftLeft':
                       transition === 'slideLeft' &&
                       anchorOrigin.horizontal === 'left',
-                    'animate-slideLeftRevLeft -translate-x-[100vh]':
+                    'animate-slideLeftRevLeft -translate-x-[50vh]':
                       !open &&
                       transition === 'slideLeft' &&
                       anchorOrigin.horizontal === 'left',
                     'animate-slideLeftRight':
                       open &&
                       transition === 'slideLeft' &&
-                      anchorOrigin.horizontal === 'right',
-                    'animate-slideLeftRevRight -translate-x-[15vh]':
+                      (anchorOrigin.horizontal === 'right' || 'center'),
+                    'animate-slideLeftRevRight -translate-x-[300vh]':
                       !open &&
                       transition === 'slideLeft' &&
-                      anchorOrigin.horizontal === 'right',
+                      (anchorOrigin.horizontal === 'right' || 'center'),
                     'animate-slideRightRight':
                       open &&
                       transition === 'slideRight' &&
