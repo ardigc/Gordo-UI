@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import {
   DetailedHTMLProps,
   HTMLAttributes,
+  KeyboardEventHandler,
   ReactNode,
   useEffect,
   useState,
@@ -36,6 +37,21 @@ export default function SnackBar({
       setVisible(Boolean(open))
     }
   }, [open])
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        if (open && onClose) {
+          onClose(event, 'keyPress');
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
 const clickAwayHandle= (ev:MouseEvent|TouchEvent)=>{
   if (!onClose) {
     return
