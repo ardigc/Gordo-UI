@@ -10,7 +10,6 @@ import {
 } from 'react'
 import Paper from '../Paper/Paper'
 import Clickaway from '../ClickAway/ClickAway'
-import { className } from '../FormControl/FormControl.stories'
 
 type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -116,7 +115,80 @@ export default function SnackBar({
             )}
             {...rest}
           >
-            {children && children}
+            {children && (
+              <div
+                className={classNames({
+                  'animate-slideUpBottom':
+                    transition === 'slideUp' &&
+                    anchorOrigin.vertical === 'bottom',
+                  'animate-slideUpRevBottom -translate-y-[100vh]':
+                    !open &&
+                    transition === 'slideUp' &&
+                    anchorOrigin.vertical === 'bottom',
+                  'animate-slideUpTop':
+                    open &&
+                    transition === 'slideUp' &&
+                    anchorOrigin.vertical === 'top',
+                  'animate-slideUpRevTop -translate-y-[15vh]':
+                    !open &&
+                    transition === 'slideUp' &&
+                    anchorOrigin.vertical === 'top',
+                  'animate-slideDownBottom':
+                    transition === 'slideDown' &&
+                    anchorOrigin.vertical === 'bottom',
+                  'animate-slideDownRevBottom -translate-y-[100vh]':
+                    !open &&
+                    transition === 'slideDown' &&
+                    anchorOrigin.vertical === 'bottom',
+                  'animate-slideDownTop':
+                    open &&
+                    transition === 'slideDown' &&
+                    anchorOrigin.vertical === 'top',
+                  'animate-slideDownRevTop -translate-y-[15vh]':
+                    !open &&
+                    transition === 'slideDown' &&
+                    anchorOrigin.vertical === 'top',
+                  'animate-slideLeftLeft':
+                    transition === 'slideLeft' &&
+                    anchorOrigin.horizontal === 'left',
+                  'animate-slideLeftRevLeft -translate-x-[50vh]':
+                    !open &&
+                    transition === 'slideLeft' &&
+                    anchorOrigin.horizontal === 'left',
+                  'animate-slideLeftRight':
+                    open &&
+                    transition === 'slideLeft' &&
+                    (anchorOrigin.horizontal === 'right' || 'center'),
+                  'animate-slideLeftRevRight -translate-x-[300vh]':
+                    !open &&
+                    transition === 'slideLeft' &&
+                    (anchorOrigin.horizontal === 'right' || 'center'),
+                  'animate-slideRightRight':
+                    open &&
+                    transition === 'slideRight' &&
+                    anchorOrigin.horizontal === 'right',
+                  'animate-slideRightRevRight translate-x-[30vh]':
+                    !open &&
+                    transition === 'slideRight' &&
+                    anchorOrigin.horizontal === 'right',
+                  'animate-slideRightLeft':
+                    open &&
+                    transition === 'slideRight' &&
+                    (anchorOrigin.horizontal === 'left' || 'center'),
+                  'animate-slideRightRevLeft translate-x-[300vh]':
+                    !open &&
+                    transition === 'slideRight' &&
+                    (anchorOrigin.horizontal === 'left' || 'center'),
+
+                  'animate-opacity0 opacity-0': !open && transition === 'fade',
+                  'animate-opacity': open && transition === 'fade',
+                  'animate-dwarf opacity-0': !open && transition === 'grown',
+                  'animate-grow': open && transition === 'grown',
+                })}
+              >
+                {children}
+              </div>
+            )}
             {!children && (
               <Paper
                 className={classNames(

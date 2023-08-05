@@ -95,6 +95,21 @@ export const sliceUp: Story = {
     transition: 'slideUp',
   },
 }
+export const className: Story = {
+  render: (args) => <PrimaryFunc args={args} />,
+  args: {
+    action: (
+      <Button>
+        <XIcon />
+      </Button>
+    ),
+    className: 'bg-slate-200',
+    message: 'Note archived',
+    autoHideDuration: 3000,
+    anchorOrigin: { vertical: 'top', horizontal: 'left' },
+    transition: 'slideUp',
+  },
+}
 const ChildrenFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
   const handleClose = (
