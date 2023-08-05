@@ -69,21 +69,17 @@ export default {
         },
         opacity: {
           '0%': {
-            // transform: 'scale(0.5) ',
             opacity: '0',
           },
           '100%': {
-            // transform: 'scale(1) ',
             opacity: '1',
           },
         },
         opacity0: {
           '0%': {
-            // transform: 'scale(1) ',
             opacity: '1',
           },
           '100%': {
-            // transform: 'scale(0.5) ',
             opacity: '0',
           },
         },
