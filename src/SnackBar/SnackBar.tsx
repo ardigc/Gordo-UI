@@ -91,10 +91,10 @@ export default function SnackBar({
               {
                 'animate-opacity0 opacity-0': !open&&transition==='fade',
                 'animate-opacity':open&&transition==='fade',
-                'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal!=='center',
-                'animate-slideUpRevCenter -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal==='center',
-                'animate-slideUp':transition==='slideUp'&&anchorOrigin.horizontal!=='center',
-                'animate-slideUpCenter':transition==='slideUp'&&anchorOrigin.horizontal==='center',
+                // 'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal!=='center',
+                // 'animate-slideUpRevCenter -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal==='center',
+                // 'animate-slideUp':transition==='slideUp'&&anchorOrigin.horizontal!=='center',
+                // 'animate-slideUpCenter':transition==='slideUp'&&anchorOrigin.horizontal==='center',
                 ' left-2 right-2  sm:left-6 sm:right-auto':
                   anchorOrigin.horizontal === 'left',
                 ' left-2 right-2  sm:left-1/2 sm:right-auto sm:-translate-x-1/2':
@@ -112,7 +112,12 @@ export default function SnackBar({
             {!children && (
               <Paper
                 className={classNames(
-                  'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
+                  'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]',{
+                                    'animate-slideUp':transition==='slideUp',
+                                                    'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal!=='center',
+
+
+                  }
                 )}
               >
                 <div className={classNames('py-2')}>{message}</div>
