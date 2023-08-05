@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import {
   DetailedHTMLProps,
   HTMLAttributes,
-  KeyboardEventHandler,
+  KeyboardEvent,
   ReactNode,
   useEffect,
   useState,
@@ -19,7 +19,7 @@ export interface SnackBarProps extends DivReactProps {
   message?: ReactNode
   open?: boolean
   action?: ReactNode
-  onClose?:(ev:Event, reason:string) => void
+  onClose?:(ev:Event|KeyboardEvent, reason:string) => void
 }
 
 export default function SnackBar({
@@ -38,7 +38,7 @@ export default function SnackBar({
     }
   }, [open])
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event:KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (open && onClose) {
           onClose(event, 'keyPress');
@@ -46,10 +46,16 @@ export default function SnackBar({
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    // document.addEventListener('keydown', handleKeyDown);
+
+    // return () => {
+    //   document.removeEventListener('keydown', handleKeyDown);
+    // };
+    const handleKeyDownListener = (event: Event) => handleKeyDown(event as unknown as KeyboardEvent);
+    document.addEventListener('keydown', handleKeyDownListener);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDownListener);
     };
   }, [open]);
 const clickAwayHandle= (ev:MouseEvent|TouchEvent)=>{
