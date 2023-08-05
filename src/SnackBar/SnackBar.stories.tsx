@@ -57,7 +57,7 @@ export const autoHide: Story = {
     autoHideDuration:600
   },
 }
-export const anchorPosition: Story = {
+export const anchorOrigin: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
   action:<Button><XIcon/></Button>,
