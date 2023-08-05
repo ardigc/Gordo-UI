@@ -84,7 +84,30 @@ export default function SnackBar({
       clearTimeout(timeOutRef.current)
       timeOutRef.current = null
     }
+
+    const handleFocus = () => {
+      console.log('esta dentro')
+      if (autoHideDuration && !timeOutRef.current && open) {
+        timeOutRef.current = setTimeout(() => {
+          timeOutRef.current = null
+          if (!onClose) return
+          onClose(null, 'timeout')
+        }, autoHideDuration)
+      }
+    }
+
+    const handleBlur = () => {
+      console.log('esta fuera')
+      if (timeOutRef.current) {
+        clearTimeout(timeOutRef.current)
+        timeOutRef.current = null
+      }
+    }
+    window.addEventListener('focus', handleFocus)
+    window.addEventListener('blur', handleBlur)
     return () => {
+      window.removeEventListener('focus', handleFocus)
+      window.removeEventListener('blur', handleBlur)
       document.removeEventListener('keydown', handleKeyDownListener)
     }
   }, [open])
