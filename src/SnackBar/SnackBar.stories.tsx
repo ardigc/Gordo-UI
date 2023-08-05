@@ -57,6 +57,15 @@ export const autoHide: Story = {
     autoHideDuration:600
   },
 }
+export const anchorPosition: Story = {
+  render: (args) => <PrimaryFunc args={args} />,
+  args: {
+  action:<Button><XIcon/></Button>,
+    message: 'Note archived',
+    autoHideDuration:600,
+    anchorOrigin:{vertical:'bottom', horizontal:'left'}
+  },
+}
 const ChildrenFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
   const handleClose = (_event: React.SyntheticEvent | Event|null, reason?: string) => {
