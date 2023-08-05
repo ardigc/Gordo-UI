@@ -27,6 +27,8 @@ export default {
         grow: ' grow 200ms cubic-bezier(0, 0, 0.2, 1) 1 forwards',
         dwarf: ' dwarf 200ms cubic-bezier(0, 0, 0.2, 1) 1 forwards',
         height: ' height 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        opacity: ' opacity 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        opacity0: ' opacity0 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -64,6 +66,26 @@ export default {
           },
           '80%': { opacity: '1' },
           '100%': { opacity: '0', transform: 'scale(4)' },
+        },
+        opacity: {
+          '0%': {
+            transform: 'scale(0.5)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+        },
+        opacity0: {
+          '0%': {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'scale(0.5)',
+            opacity: '0',
+          },
         },
       },
 
