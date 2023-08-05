@@ -41,7 +41,7 @@ export default function SnackBar({
     const handleKeyDown = (event:KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (open && onClose) {
-          onClose(event, 'keyPress');
+          onClose(event, 'escapeKeyDown');
         }
       }
     };
