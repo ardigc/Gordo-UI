@@ -77,14 +77,15 @@ onClose(ev,'clickAway')
             onAnimationEnd={() => setVisible(Boolean(open))}
             {...rest}
             >
-          <Paper
+              {children&&children}
+{       !children&&   <Paper
             className={classNames(
               'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
               )}
               >
             <div className={classNames('py-2')}>{message}</div>
             {action&&<div className='flex items-center ml-auto pl-4 -mr-2'>{action}</div>}
-          </Paper>
+          </Paper>}
         </div>
       </Clickaway>
       )}
