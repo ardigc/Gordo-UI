@@ -87,12 +87,12 @@ export default function SnackBar({
         <Clickaway onClickaway={clickAwayHandle}>
           <div
             className={classNames(
-              ' z-50 flex justify-start items-center fixed ',
+              ' z-50 flex justify-start items-center fixed transition-all',
               {
                 'animate-opacity0 opacity-0': !open&&transition==='fade',
                 'animate-opacity':open&&transition==='fade',
-                // 'animate-slideUpRev': !open&&transition==='slideUp',
-                // 'animate-opacity0 opacity-0': !open&&transition==='slideUp',
+                // '-translate-y-52': !open&&transition==='slideUp',
+                'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp',
                 'animate-slideUp':transition==='slideUp',
                 ' left-2 right-2  sm:left-6 sm:right-auto':
                   anchorOrigin.horizontal === 'left',

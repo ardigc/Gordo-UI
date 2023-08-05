@@ -71,7 +71,7 @@ export const sliceUp: Story = {
   args: {
   action:<Button><XIcon/></Button>,
     message: 'Note archived',
-    autoHideDuration:600,
+    autoHideDuration:3000,
     anchorOrigin:{vertical:'bottom', horizontal:'left'},
     transition:'slideUp',
   },
