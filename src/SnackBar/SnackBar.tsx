@@ -114,7 +114,7 @@ export default function SnackBar({
                 className={classNames(
                   'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]',{
                                     'animate-slideUp':transition==='slideUp',
-                                                    'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal!=='center',
+                                                    'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp',
 
 
                   }
