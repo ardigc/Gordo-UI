@@ -14,7 +14,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (_event: React.SyntheticEvent | Event, reason?: string) => {
   
 console.log(reason)
 if (reason === 'clickAway') {
