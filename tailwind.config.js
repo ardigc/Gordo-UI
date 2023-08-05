@@ -30,6 +30,7 @@ export default {
         opacity: ' opacity 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity0: ' opacity0 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         sliceUp: ' sliceUp 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        sliceUpRev: ' sliceUpRev 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -90,6 +91,15 @@ export default {
           },
           '100%': {
             transform:'translate(0,0)',
+          },
+        },
+        sliceUpRev: {
+          '0%': {
+            transform:'translate(0,0)',
+          },
+          '100%': {
+           
+            transform:'translate(0,-100vh)',
           },
         },
       },

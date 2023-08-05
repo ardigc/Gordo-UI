@@ -91,8 +91,8 @@ export default function SnackBar({
               {
                 'animate-opacity0 opacity-0': !open&&transition==='fade',
                 'animate-opacity':transition==='fade',
-                'animate-slideUp': !open&&transition==='slideUp',
-                'animate-sliceUp':transition==='slideUp',
+                'animate-sliceUpRev': !open&&transition==='slideUp',
+                'animate-slideUp  ':transition==='slideUp',
                 ' left-2 right-2  sm:left-6 sm:right-auto':
                   anchorOrigin.horizontal === 'left',
                 ' left-2 right-2  sm:left-1/2 sm:right-auto sm:-translate-x-1/2':
