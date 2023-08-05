@@ -103,7 +103,7 @@ export const className: Story = {
         <XIcon />
       </Button>
     ),
-    className: 'bg-slate-200',
+    className: 'w-96',
     message: 'Note archived',
     autoHideDuration: 3000,
     anchorOrigin: { vertical: 'top', horizontal: 'left' },
