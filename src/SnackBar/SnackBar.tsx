@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import Paper from '../Paper/Paper'
+import Paper, { PaperProps } from '../Paper/Paper'
 import Clickaway from '../ClickAway/ClickAway'
 
 type DivReactProps = DetailedHTMLProps<
@@ -34,6 +34,7 @@ export interface SnackBarProps extends DivReactProps {
     | 'slideLeft'
     | 'slideRight'
   className?: string
+  ContentProps?: PaperProps
 }
 
 export default function SnackBar({
@@ -46,6 +47,7 @@ export default function SnackBar({
   anchorOrigin = { vertical: 'bottom', horizontal: 'left' },
   transition = 'grown',
   className,
+  ContentProps,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -264,6 +266,7 @@ export default function SnackBar({
                   }
                 )}
                 // onAnimationEnd={() =>{ console.log(open),setVisible(Boolean(open))}}
+                {...ContentProps}
               >
                 <div className={classNames('py-2')}>{message}</div>
                 {action && (
