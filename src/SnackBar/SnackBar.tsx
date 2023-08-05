@@ -1,13 +1,13 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 
-type DivReactPops = DetailedHTMLProps<
+type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
-export interface SnackBarPops extends DivReactPops {
+export interface SnackBarProps extends DivReactProps {
   children?: ReactNode
 }
 
-export default function SnackBar({ children }: SnackBarPops) {
+export default function SnackBar({ children }: SnackBarProps) {
   return <div>{children}</div>
 }
