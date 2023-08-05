@@ -21,6 +21,7 @@ export interface SnackBarProps extends DivReactProps {
   action?: ReactNode
   onClose?:(ev:Event|KeyboardEvent|null, reason:string) => void
   autoHideDuration?:number
+  anchorOrigin?:{ horizontal: 'center' | 'left' | 'right', vertical: 'bottom' | 'top' }
 }
 
 export default function SnackBar({
@@ -30,6 +31,7 @@ export default function SnackBar({
   action,
   onClose,
   autoHideDuration,
+  anchorOrigin={ vertical: 'bottom', horizontal: 'left' },
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -71,8 +73,11 @@ onClose(ev,'clickAway')
         <Clickaway onClickaway={clickAwayHandle}>
         <div
           className={classNames(
-            '  fixed bottom-2 left-2 right-2 z-50 flex justify-start items-center sm:bottom-6 sm:left-6 sm:right-auto animate-opacity',
-            { 'animate-opacity0 opacity-0': !open }
+            ' z-50 flex justify-start items-center fixed  animate-opacity',
+            { 'animate-opacity0 opacity-0': !open,
+          ' left-2 right-2  sm:left-6 sm:right-auto':  anchorOrigin.horizontal ==='left', 
+          'sm:bottom-6 bottom-2 ':anchorOrigin.vertical=== 'bottom'
+          }
             )}
             onAnimationEnd={() => setVisible(Boolean(open))}
             {...rest}
