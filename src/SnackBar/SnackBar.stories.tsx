@@ -10,9 +10,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
-  return <SnackBar />
+  return <SnackBar {...args} />
 }
 export const Primary: Story = {
   render: (args) => <PrimaryFunc args={args} />,
-  args: {},
+  args: {
+    message: 'akfjkadlfakfl',
+  },
 }
