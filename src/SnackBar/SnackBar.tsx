@@ -90,9 +90,10 @@ export default function SnackBar({
               ' z-50 flex justify-start items-center fixed ',
               {
                 'animate-opacity0 opacity-0': !open&&transition==='fade',
-                'animate-opacity':transition==='fade',
-                'animate-sliceUpRev': !open&&transition==='slideUp',
-                'animate-slideUp  ':transition==='slideUp',
+                'animate-opacity':open&&transition==='fade',
+                // 'animate-slideUpRev': !open&&transition==='slideUp',
+                // 'animate-opacity0 opacity-0': !open&&transition==='slideUp',
+                'animate-slideUp':transition==='slideUp',
                 ' left-2 right-2  sm:left-6 sm:right-auto':
                   anchorOrigin.horizontal === 'left',
                 ' left-2 right-2  sm:left-1/2 sm:right-auto sm:-translate-x-1/2':

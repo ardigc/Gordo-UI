@@ -29,8 +29,8 @@ export default {
         height: ' height 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity: ' opacity 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity0: ' opacity0 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        sliceUp: ' sliceUp 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        sliceUpRev: ' sliceUpRev 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        slideUp: ' slideUp 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        slideUpRev: ' slideUpRev 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -85,7 +85,7 @@ export default {
             opacity: '0',
           },
         },
-        sliceUp: {
+        slideUp: {
           '0%': {
             transform:'translate(0,-100vh)',
           },
@@ -93,7 +93,7 @@ export default {
             transform:'translate(0,0)',
           },
         },
-        sliceUpRev: {
+        slideUpRev: {
           '0%': {
             transform:'translate(0,0)',
           },
