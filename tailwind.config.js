@@ -31,6 +31,8 @@ export default {
         opacity0: ' opacity0 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         slideUp: ' slideUp 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         slideUpRev: ' slideUpRev 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        slideUpCenter: ' slideUpCenter 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
+        slideUpRevCenter: ' slideUpRevCenter 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -100,6 +102,23 @@ export default {
           '100%': {
            
             transform:'translate(0,-100vh)',
+          },
+        },
+        slideUpCenter: {
+          '0%': {
+            transform:'translate(-50%,-100vh)',
+          },
+          '100%': {
+            transform:'translate(-50%,0)',
+          },
+        },
+        slideUpRevCenter: {
+          '0%': {
+            transform:'translate(-50%,0)',
+          },
+          '100%': {
+           
+            transform:'translate(-50%,-100vh)',
           },
         },
       },

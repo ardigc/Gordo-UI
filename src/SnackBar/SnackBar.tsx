@@ -91,9 +91,10 @@ export default function SnackBar({
               {
                 'animate-opacity0 opacity-0': !open&&transition==='fade',
                 'animate-opacity':open&&transition==='fade',
-                // '-translate-y-52': !open&&transition==='slideUp',
-                'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp',
-                'animate-slideUp':transition==='slideUp',
+                'animate-slideUpRev -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal!=='center',
+                'animate-slideUpRevCenter -translate-y-[100vh]': !open&&transition==='slideUp'&&anchorOrigin.horizontal==='center',
+                'animate-slideUp':transition==='slideUp'&&anchorOrigin.horizontal!=='center',
+                'animate-slideUpCenter':transition==='slideUp'&&anchorOrigin.horizontal==='center',
                 ' left-2 right-2  sm:left-6 sm:right-auto':
                   anchorOrigin.horizontal === 'left',
                 ' left-2 right-2  sm:left-1/2 sm:right-auto sm:-translate-x-1/2':
