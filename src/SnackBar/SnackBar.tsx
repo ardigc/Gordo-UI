@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react'
 import Paper from '../Paper/Paper'
+import Clickaway from '../ClickAway/ClickAway'
 
 type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -26,6 +27,7 @@ export default function SnackBar({
   message,
   open,
   action,
+  onClose,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -35,27 +37,34 @@ export default function SnackBar({
       setVisible(Boolean(open))
     }
   }, [open])
-
+const clickAwayHandle= (ev:MouseEvent|TouchEvent)=>{
+  if (!onClose) {
+    return
+  }
+onClose(ev,'clickAway')
+}
   return (
     <>
       {visible && (
+        <Clickaway onClickaway={clickAwayHandle}>
         <div
           className={classNames(
             '  fixed bottom-2 left-2 right-2 z-50 flex justify-start items-center sm:bottom-6 sm:left-6 sm:right-auto animate-opacity',
             { 'animate-opacity0 opacity-0': !open }
-          )}
-          onAnimationEnd={() => setVisible(Boolean(open))}
-          {...rest}
-        >
+            )}
+            onAnimationEnd={() => setVisible(Boolean(open))}
+            {...rest}
+            >
           <Paper
             className={classNames(
               'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
-            )}
-          >
+              )}
+              >
             <div className={classNames('py-2')}>{message}</div>
             {action&&<div className='flex items-center ml-auto pl-4 -mr-2'>{action}</div>}
           </Paper>
         </div>
+      </Clickaway>
       )}
     </>
   )
