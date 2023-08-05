@@ -33,6 +33,11 @@ export default {
         slideUpRevBottom: ' slideUpRevBottom 200ms cubic-bezier(0, 0, 1, 1) 1 ',
         slideUpTop: ' slideUpTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
         slideUpRevTop: ' slideUpRevTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideDownBottom: ' slideDownBottom 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideDownRevBottom:
+          ' slideDownRevBottom 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideDownTop: ' slideDownTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideDownRevTop: ' slideDownRevTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -89,7 +94,7 @@ export default {
         },
         slideUpBottom: {
           '0%': {
-            transform: 'translate(0,-100vh)',
+            transform: 'translate(0,15vh)',
           },
           '100%': {
             transform: 'translate(0,0)',
@@ -100,10 +105,42 @@ export default {
             transform: 'translate(0,0)',
           },
           '100%': {
-            transform: 'translate(0,-100vh)',
+            transform: 'translate(0,15vh)',
           },
         },
         slideUpTop: {
+          '0%': {
+            transform: 'translate(0,100vh)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideUpRevTop: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(0,100vh)',
+          },
+        },
+        slideDownBottom: {
+          '0%': {
+            transform: 'translate(0,100vh)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideDownRevBottom: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(0,-100vh)',
+          },
+        },
+        slideDownTop: {
           '0%': {
             transform: 'translate(0,-15vh)',
           },
@@ -111,7 +148,7 @@ export default {
             transform: 'translate(0,0)',
           },
         },
-        slideUpRevTop: {
+        slideDownRevTop: {
           '0%': {
             transform: 'translate(0,0)',
           },

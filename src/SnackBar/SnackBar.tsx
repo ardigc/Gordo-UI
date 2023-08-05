@@ -26,7 +26,7 @@ export interface SnackBarProps extends DivReactProps {
     horizontal: 'center' | 'left' | 'right'
     vertical: 'bottom' | 'top'
   }
-  transition?: 'fade' | 'grown' | 'slideUp'
+  transition?: 'fade' | 'grown' | 'slideUp' | 'slideDown'
 }
 
 export default function SnackBar({
@@ -126,6 +126,21 @@ export default function SnackBar({
                     'animate-slideUpRevTop -translate-y-[15vh]':
                       !open &&
                       transition === 'slideUp' &&
+                      anchorOrigin.vertical === 'top',
+                    'animate-slideDownBottom':
+                      transition === 'slideDown' &&
+                      anchorOrigin.vertical === 'bottom',
+                    'animate-slideDownRevBottom -translate-y-[100vh]':
+                      !open &&
+                      transition === 'slideDown' &&
+                      anchorOrigin.vertical === 'bottom',
+                    'animate-slideDownTop':
+                      open &&
+                      transition === 'slideDown' &&
+                      anchorOrigin.vertical === 'top',
+                    'animate-slideDownRevTop -translate-y-[15vh]':
+                      !open &&
+                      transition === 'slideDown' &&
                       anchorOrigin.vertical === 'top',
                     'animate-opacity0 opacity-0':
                       !open && transition === 'fade',
