@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 
 type DivReactProps = DetailedHTMLProps<
@@ -14,5 +15,14 @@ export default function SnackBar({
   message,
   ...rest
 }: SnackBarProps) {
-  return <div {...rest}>{message}</div>
+  return (
+    <div
+      className={classNames(
+        'fixed bottom-6 left-6 right-auto z-50 flex justify-start items-center'
+      )}
+      {...rest}
+    >
+      {message}
+    </div>
+  )
 }
