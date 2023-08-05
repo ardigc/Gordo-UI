@@ -29,9 +29,10 @@ export default {
         height: ' height 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity: ' opacity 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
         opacity0: ' opacity0 200ms cubic-bezier(0, 0, 0.2, 1) 1 ',
-        slideUp: ' slideUp 200ms cubic-bezier(0, 0, 1, 1) 1 ',
-        slideUpRev: ' slideUpRev 200ms cubic-bezier(0, 0, 1, 1) 1 ',
-       
+        slideUpBottom: ' slideUpBottom 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideUpRevBottom: ' slideUpRevBottom 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideUpTop: ' slideUpTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
+        slideUpRevTop: ' slideUpRevTop 200ms cubic-bezier(0, 0, 1, 1) 1 ',
       },
       keyframes: {
         grow: {
@@ -86,21 +87,36 @@ export default {
             opacity: '0',
           },
         },
-        slideUp: {
+        slideUpBottom: {
           '0%': {
-            transform:'translate(0,-100vh)',
+            transform: 'translate(0,-100vh)',
           },
           '100%': {
-            transform:'translate(0,0)',
+            transform: 'translate(0,0)',
           },
         },
-        slideUpRev: {
+        slideUpRevBottom: {
           '0%': {
-            transform:'translate(0,0)',
+            transform: 'translate(0,0)',
           },
           '100%': {
-           
-            transform:'translate(0,-100vh)',
+            transform: 'translate(0,-100vh)',
+          },
+        },
+        slideUpTop: {
+          '0%': {
+            transform: 'translate(0,-15vh)',
+          },
+          '100%': {
+            transform: 'translate(0,0)',
+          },
+        },
+        slideUpRevTop: {
+          '0%': {
+            transform: 'translate(0,0)',
+          },
+          '100%': {
+            transform: 'translate(0,-15vh)',
           },
         },
       },

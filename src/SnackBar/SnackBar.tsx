@@ -42,7 +42,7 @@ export default function SnackBar({
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
   const timeOutRef = useRef<NodeJS.Timeout | null>(null)
-  if (autoHideDuration && !timeOutRef.current) {
+  if (autoHideDuration && !timeOutRef.current && open) {
     timeOutRef.current = setTimeout(() => {
       timeOutRef.current = null
       if (!onClose) return
@@ -53,6 +53,10 @@ export default function SnackBar({
   useEffect(() => {
     if (open === true) {
       setVisible(Boolean(open))
+    } else if (open === false) {
+      setTimeout(() => {
+        setVisible(Boolean(open))
+      }, 200)
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -81,6 +85,7 @@ export default function SnackBar({
     }
     onClose(ev, 'clickAway')
   }
+
   return (
     <>
       {visible && (
@@ -99,7 +104,6 @@ export default function SnackBar({
                 'sm:top-6 top-2 ': anchorOrigin.vertical === 'top',
               }
             )}
-            onAnimationEnd={() => setVisible(Boolean(open))}
             {...rest}
           >
             {children && children}
@@ -108,9 +112,21 @@ export default function SnackBar({
                 className={classNames(
                   'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]',
                   {
-                    'animate-slideUp': transition === 'slideUp',
-                    'animate-slideUpRev -translate-y-[100vh]':
-                      !open && transition === 'slideUp',
+                    'animate-slideUpBottom':
+                      transition === 'slideUp' &&
+                      anchorOrigin.vertical === 'bottom',
+                    'animate-slideUpRevBottom -translate-y-[100vh]':
+                      !open &&
+                      transition === 'slideUp' &&
+                      anchorOrigin.vertical === 'bottom',
+                    'animate-slideUpTop':
+                      open &&
+                      transition === 'slideUp' &&
+                      anchorOrigin.vertical === 'top',
+                    'animate-slideUpRevTop -translate-y-[15vh]':
+                      !open &&
+                      transition === 'slideUp' &&
+                      anchorOrigin.vertical === 'top',
                     'animate-opacity0 opacity-0':
                       !open && transition === 'fade',
                     'animate-opacity': open && transition === 'fade',
@@ -118,6 +134,7 @@ export default function SnackBar({
                     'animate-grow': open && transition === 'grown',
                   }
                 )}
+                // onAnimationEnd={() =>{ console.log(open),setVisible(Boolean(open))}}
               >
                 <div className={classNames('py-2')}>{message}</div>
                 {action && (

@@ -23,6 +23,7 @@ const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
     // if (reason === 'clickAway') {
     //   return;
     // }
+
     setOpen(false)
   }
   return (
@@ -90,7 +91,7 @@ export const sliceUp: Story = {
     ),
     message: 'Note archived',
     autoHideDuration: 3000,
-    anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+    anchorOrigin: { vertical: 'top', horizontal: 'left' },
     transition: 'slideUp',
   },
 }
@@ -101,9 +102,6 @@ const ChildrenFunc = ({ args }: { args: SnackBarProps }) => {
     reason?: string
   ) => {
     console.log(reason)
-    // if (reason === 'clickAway') {
-    //   return;
-    // }
     setOpen(false)
   }
   return (
