@@ -16,12 +16,14 @@ export interface SnackBarProps extends DivReactProps {
   children?: ReactNode
   message?: ReactNode
   open?: boolean
+  action?: ReactNode
 }
 
 export default function SnackBar({
   children,
   message,
   open,
+  action,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -49,6 +51,7 @@ export default function SnackBar({
             )}
           >
             <div className={classNames('py-2')}>{message}</div>
+            {action&&<div>{action}</div>}
           </Paper>
         </div>
       )}
