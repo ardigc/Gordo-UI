@@ -51,7 +51,7 @@ export default function SnackBar({
             )}
           >
             <div className={classNames('py-2')}>{message}</div>
-            {action&&<div>{action}</div>}
+            {action&&<div className='flex items-center ml-auto pl-4 -mr-2'>{action}</div>}
           </Paper>
         </div>
       )}
