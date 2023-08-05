@@ -10,6 +10,7 @@ import {
 } from 'react'
 import Paper from '../Paper/Paper'
 import Clickaway from '../ClickAway/ClickAway'
+import { className } from '../FormControl/FormControl.stories'
 
 type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -33,6 +34,7 @@ export interface SnackBarProps extends DivReactProps {
     | 'slideDown'
     | 'slideLeft'
     | 'slideRight'
+  className?: string
 }
 
 export default function SnackBar({
@@ -44,6 +46,7 @@ export default function SnackBar({
   autoHideDuration,
   anchorOrigin = { vertical: 'bottom', horizontal: 'left' },
   transition = 'grown',
+  className,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -108,6 +111,7 @@ export default function SnackBar({
                   anchorOrigin.horizontal === 'right',
                 'sm:bottom-6 bottom-2 ': anchorOrigin.vertical === 'bottom',
                 'sm:top-6 top-2 ': anchorOrigin.vertical === 'top',
+                [className || '']: className,
               }
             )}
             {...rest}
