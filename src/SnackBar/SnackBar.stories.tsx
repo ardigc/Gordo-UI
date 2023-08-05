@@ -18,3 +18,9 @@ export const Primary: Story = {
     message: 'Note archived',
   },
 }
+export const secundary: Story = {
+  render: (args) => <PrimaryFunc args={args} />,
+  args: {
+    // message: 'Note archived',
+  },
+}
