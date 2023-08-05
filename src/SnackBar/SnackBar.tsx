@@ -3,6 +3,7 @@ import {
   DetailedHTMLProps,
   HTMLAttributes,
   ReactNode,
+  SyntheticEvent,
   useEffect,
   useState,
 } from 'react'
@@ -17,6 +18,7 @@ export interface SnackBarProps extends DivReactProps {
   message?: ReactNode
   open?: boolean
   action?: ReactNode
+  onClose?:(ev:SyntheticEvent, reason:string) => void
 }
 
 export default function SnackBar({
