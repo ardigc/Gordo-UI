@@ -20,6 +20,7 @@ export interface SnackBarProps extends DivReactProps {
   open?: boolean
   action?: ReactNode
   onClose?:(ev:Event|KeyboardEvent, reason:string) => void
+  autoHideDuration?:number
 }
 
 export default function SnackBar({
@@ -28,16 +29,16 @@ export default function SnackBar({
   open,
   action,
   onClose,
+  autoHideDuration,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    
     if (open === true) {
       setVisible(Boolean(open))
     }
-  }, [open])
-  useEffect(() => {
     const handleKeyDown = (event:KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (open && onClose) {
@@ -46,18 +47,16 @@ export default function SnackBar({
       }
     };
 
-    // document.addEventListener('keydown', handleKeyDown);
-
-    // return () => {
-    //   document.removeEventListener('keydown', handleKeyDown);
-    // };
     const handleKeyDownListener = (event: Event) => handleKeyDown(event as unknown as KeyboardEvent);
     document.addEventListener('keydown', handleKeyDownListener);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDownListener);
     };
-  }, [open]);
+  }, [open])
+  // useEffect(() => {
+
+  // }, [open]);
 const clickAwayHandle= (ev:MouseEvent|TouchEvent)=>{
   if (!onClose) {
     return

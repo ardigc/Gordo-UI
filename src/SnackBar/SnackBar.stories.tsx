@@ -17,9 +17,9 @@ const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
   const handleClose = (_event: React.SyntheticEvent | Event, reason?: string) => {
   
 console.log(reason)
-if (reason === 'clickAway') {
-  return;
-}
+// if (reason === 'clickAway') {
+//   return;
+// }
     setOpen(false);
   };
   return (
