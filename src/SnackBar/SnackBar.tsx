@@ -76,6 +76,8 @@ onClose(ev,'clickAway')
             ' z-50 flex justify-start items-center fixed  animate-opacity',
             { 'animate-opacity0 opacity-0': !open,
           ' left-2 right-2  sm:left-6 sm:right-auto':  anchorOrigin.horizontal ==='left', 
+          ' left-2 right-2  sm:left-1/2 sm:right-auto':  anchorOrigin.horizontal ==='center', 
+          ' left-2 right-2  sm:left-auto sm:right-6':  anchorOrigin.horizontal ==='right', 
           'sm:bottom-6 bottom-2 ':anchorOrigin.vertical=== 'bottom'
           }
             )}
