@@ -9,27 +9,33 @@ type DivReactProps = DetailedHTMLProps<
 export interface SnackBarProps extends DivReactProps {
   children?: ReactNode
   message?: ReactNode
+  open?: boolean
 }
 
 export default function SnackBar({
   children,
   message,
+  open,
   ...rest
 }: SnackBarProps) {
   return (
-    <div
-      className={classNames(
-        'fixed bottom-2 left-2 right-2 z-50 flex justify-start items-center sm:bottom-6 sm:left-6 sm:right-auto'
+    <>
+      {open && (
+        <div
+          className={classNames(
+            'fixed bottom-2 left-2 right-2 z-50 flex justify-start items-center sm:bottom-6 sm:left-6 sm:right-auto'
+          )}
+          {...rest}
+        >
+          <Paper
+            className={classNames(
+              'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
+            )}
+          >
+            <div className={classNames('py-2')}>{message}</div>
+          </Paper>
+        </div>
       )}
-      {...rest}
-    >
-      <Paper
-        className={classNames(
-          'font-base font-normal text-base text-white grow bg-[#323232] flex px-4 py-[6px] items-center flex-wrap sm:min-w-[288px] sm:grow-[initial]'
-        )}
-      >
-        <div className={classNames('py-2')}>{message}</div>
-      </Paper>
-    </div>
+    </>
   )
 }
