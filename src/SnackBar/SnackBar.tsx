@@ -48,7 +48,9 @@ export default function SnackBar({
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    setVisible(Boolean(open))
+    if (open === true) {
+      setVisible(Boolean(open))
+    }
   }, [open])
 
   return (
@@ -57,8 +59,9 @@ export default function SnackBar({
         <div
           className={classNames(
             '  fixed bottom-2 left-2 right-2 z-50 flex justify-start items-center sm:bottom-6 sm:left-6 sm:right-auto animate-opacity',
-            { 'animate-opacity0 ': !open }
+            { 'animate-opacity0 opacity-0': !open }
           )}
+          onAnimationEnd={() => setVisible(Boolean(open))}
           {...rest}
         >
           <Paper
