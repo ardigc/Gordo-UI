@@ -35,6 +35,7 @@ export interface SnackBarProps extends DivReactProps {
     | 'slideRight'
   className?: string
   ContentProps?: PaperProps
+  disableWindowBlurListener?: boolean
 }
 
 export default function SnackBar({
@@ -48,6 +49,7 @@ export default function SnackBar({
   transition = 'grown',
   className,
   ContentProps,
+  disableWindowBlurListener,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -103,11 +105,15 @@ export default function SnackBar({
         timeOutRef.current = null
       }
     }
-    window.addEventListener('focus', handleFocus)
-    window.addEventListener('blur', handleBlur)
+    if (!disableWindowBlurListener) {
+      window.addEventListener('focus', handleFocus)
+      window.addEventListener('blur', handleBlur)
+    }
     return () => {
-      window.removeEventListener('focus', handleFocus)
-      window.removeEventListener('blur', handleBlur)
+      if (!disableWindowBlurListener) {
+        window.removeEventListener('focus', handleFocus)
+        window.removeEventListener('blur', handleBlur)
+      }
       document.removeEventListener('keydown', handleKeyDownListener)
     }
   }, [open])
