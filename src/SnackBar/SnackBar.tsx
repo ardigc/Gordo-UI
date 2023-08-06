@@ -88,7 +88,6 @@ export default function SnackBar({
     }
 
     const handleFocus = () => {
-      console.log('esta dentro')
       if (autoHideDuration && !timeOutRef.current && open) {
         timeOutRef.current = setTimeout(() => {
           timeOutRef.current = null
@@ -99,7 +98,6 @@ export default function SnackBar({
     }
 
     const handleBlur = () => {
-      console.log('esta fuera')
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current)
         timeOutRef.current = null

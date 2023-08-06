@@ -110,6 +110,14 @@ export const className: Story = {
     transition: 'slideUp',
   },
 }
+export const DisableWindowBlur: Story = {
+  render: (args) => <PrimaryFunc args={args} />,
+  args: {
+    message: 'Has hecho click',
+    disableWindowBlurListener: true,
+    autoHideDuration: 3000,
+  },
+}
 const ChildrenFunc = ({ args }: { args: SnackBarProps }) => {
   const [open, setOpen] = useState(false)
   const handleClose = (
