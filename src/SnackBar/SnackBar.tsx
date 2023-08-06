@@ -37,6 +37,7 @@ export interface SnackBarProps extends DivReactProps {
   ContentProps?: PaperProps
   disableWindowBlurListener?: boolean
   key:any
+  resumeHideDuration:number
 }
 
 export default function SnackBar({
@@ -52,6 +53,7 @@ export default function SnackBar({
   ContentProps,
   disableWindowBlurListener,
   key,
+  resumeHideDuration,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -95,7 +97,7 @@ export default function SnackBar({
           timeOutRef.current = null
           if (!onClose) return
           onClose(null, 'timeout')
-        }, autoHideDuration)
+        },resumeHideDuration?resumeHideDuration: autoHideDuration/2)
       }
     }
 
