@@ -36,8 +36,8 @@ export interface SnackBarProps extends DivReactProps {
   className?: string
   ContentProps?: PaperProps
   disableWindowBlurListener?: boolean
-  key:any
-  resumeHideDuration:number
+  key?:any
+  resumeHideDuration?:number
 }
 
 export default function SnackBar({
