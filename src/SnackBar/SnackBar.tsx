@@ -26,6 +26,11 @@ export interface SnackBarProps extends DivReactProps {
     horizontal: 'center' | 'left' | 'right'
     vertical: 'bottom' | 'top'
   }
+  className?: string
+  ContentProps?: PaperProps
+  disableWindowBlurListener?: boolean
+  key?:any
+  resumeHideDuration?:number
   transition?:
     | 'fade'
     | 'grown'
@@ -33,11 +38,6 @@ export interface SnackBarProps extends DivReactProps {
     | 'slideDown'
     | 'slideLeft'
     | 'slideRight'
-  className?: string
-  ContentProps?: PaperProps
-  disableWindowBlurListener?: boolean
-  key?:any
-  resumeHideDuration?:number
 }
 
 export default function SnackBar({
