@@ -123,7 +123,6 @@ export const transitionDuration: Story = {
   args: {
     message: 'Has hecho click',
     autoHideDuration: 3000,
-    transitionDuration:0,
   },
 }
 export const resumeHideDuration: Story = {

@@ -38,7 +38,6 @@ export interface SnackBarProps extends DivReactProps {
     | 'slideDown'
     | 'slideLeft'
     | 'slideRight'
-    transitionDuration?:0|200
 }
 
 export default function SnackBar({
@@ -55,7 +54,6 @@ export default function SnackBar({
   disableWindowBlurListener,
   key,
   resumeHideDuration,
-  transitionDuration,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -128,7 +126,6 @@ export default function SnackBar({
     }
     onClose(ev, 'clickAway')
   }
-
   return (
     <>
       {visible && (
@@ -220,7 +217,7 @@ export default function SnackBar({
                   'animate-opacity': open && transition === 'fade',
                   'animate-dwarf opacity-0': !open && transition === 'grown',
                   'animate-grow': open && transition === 'grown',
-                  'duration-0':transitionDuration===0,
+
                 })}
               >
                 {children}
