@@ -36,6 +36,7 @@ export interface SnackBarProps extends DivReactProps {
   className?: string
   ContentProps?: PaperProps
   disableWindowBlurListener?: boolean
+  key:any
 }
 
 export default function SnackBar({
@@ -50,6 +51,7 @@ export default function SnackBar({
   className,
   ContentProps,
   disableWindowBlurListener,
+  key,
   ...rest
 }: SnackBarProps) {
   const [visible, setVisible] = useState(false)
@@ -128,6 +130,7 @@ export default function SnackBar({
       {visible && (
         <Clickaway onClickaway={clickAwayHandle}>
           <div
+          key={key}
             className={classNames(
               ' z-50 flex justify-start items-center fixed transition-all',
               {
