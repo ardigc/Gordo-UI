@@ -196,7 +196,6 @@ export function Button({
         }
       )}
     >
-      <button></button>
       {startIcon && (
         <span className={classNames('mr-2 -ml-1')}>{startIcon}</span>
       )}
