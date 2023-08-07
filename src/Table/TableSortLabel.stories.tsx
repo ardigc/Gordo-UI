@@ -5,14 +5,9 @@ import TableRow from './TableRow'
 import TableBody from './TableBody'
 import TableSortLabel, { TableSortLabelProps } from './TableSortLabel'
 import Paper from '../Paper/Paper'
-import { useState } from 'react'
 import TableContainer from './TableContainer'
-import TableFooter from './TableFooter'
-import IconButton from '../Button/IconButton'
-import { NextPageIcon, PrevPageIcon } from '../components/icons/Icons'
 import TableHead from './TableHead'
 import TablePagination from './TablePagination'
-import Alert from '../Alert/Alert'
 const meta = {
   component: TableSortLabel,
   title: 'GordoUI/TableSortLabel',
@@ -106,7 +101,7 @@ const TestFunc = ({ args }: { args: TableSortLabelProps }) => {
             <TableHead>
               <TableRow>
                 <TableCell padding="checkbox"></TableCell>
-                {headCells.map((headCell, index) => (
+                {headCells.map((headCell) => (
                   <TableCell
                     key={headCell.id}
                     align={'right'}
