@@ -4,15 +4,16 @@ on:
     branches:
       - main
 jobs:
-  build:
+ build:
     runs-on: ubuntu-latest
-      steps:
+    steps:
+      - name: Checkout code
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-       - name: Install dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Build package
