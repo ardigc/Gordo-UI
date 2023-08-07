@@ -299,7 +299,6 @@ export function SnackBar({
                     'animate-grow': open && transition === 'grown',
                   }
                 )}
-                // onAnimationEnd={() =>{ console.log(open),setVisible(Boolean(open))}}
                 {...ContentProps}
               >
                 <div className={classNames('py-2')}>{message}</div>

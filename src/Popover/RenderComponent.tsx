@@ -114,10 +114,7 @@ RenderComponentProps) {
   function resolveAnchorEl(anchorEl: Element | (() => Element)) {
     return typeof anchorEl === 'function' ? anchorEl() : anchorEl
   }
-  // const location = anchorEl
-  //   ? resolveAnchorEl(anchorEl).getBoundingClientRect()
-  //   : undefined
-  // console.log(location)
+
   const position = setPopoverPosition(
     anchorReference,
     marginThreshold,

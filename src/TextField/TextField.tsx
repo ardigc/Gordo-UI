@@ -108,14 +108,12 @@ export function TextField({
   const changeEventHandler: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   > = (ev) => {
-    console.log('component', ComponentValue)
     setValue(ev.currentTarget.value)
     if (onChange) {
       onChange(ev)
     }
   }
   const clickAwayHandler = useCallback(() => {
-    // console.log(ComponentValue)
     if (!ComponentValue) {
       setTouched(false)
     }
@@ -129,7 +127,6 @@ export function TextField({
     } as ChangeEvent<HTMLInputElement>
     changeEventHandler(fakeEvent)
   }
-  console.log('comp', ComponentValue)
   return (
     <ClickAway onClickaway={clickAwayHandler}>
       <div
