@@ -23,7 +23,7 @@ export interface TableCellProps extends TableCellReactProps {
   // sortDirection?:'asc'|'desc'
   variant?: 'body' | 'footer' | 'head'
 }
-export default function TableCell({
+export function TableCell({
   children,
   align = 'left',
   className,

@@ -56,7 +56,7 @@ export interface ButtonPropsForAnchor
   href: string
   onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
 }
-export default function Button({
+export function Button({
   children,
   variant = 'text',
   onClick,

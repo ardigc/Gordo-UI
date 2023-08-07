@@ -68,7 +68,7 @@ interface ButtonPropsForAnchor extends CommonProps, AnchorReactProps {
 //   onClick?: (ev: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
 // }
 
-export default function IconButton({
+export function IconButton({
   children,
   size = 'medium',
   onClick,

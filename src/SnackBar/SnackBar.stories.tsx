@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import SnackBar, { SnackBarProps } from './SnackBar'
+import { SnackBar, SnackBarProps } from './SnackBar'
 import { useState } from 'react'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 import { XIcon } from '../components/icons/Icons'
 import { Alert } from '../Alert/Alert'
 
@@ -20,7 +20,7 @@ const PrimaryFunc = ({ args }: { args: SnackBarProps }) => {
     reason?: string
   ) => {
     console.log(reason)
-    // if (reason === 'clickAway') {
+    // if (reason === 'ClickAway') {
     //   return;
     // }
 

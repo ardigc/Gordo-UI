@@ -18,7 +18,7 @@ export interface TableSortLabelProps extends SpanReactProps {
   hideSortIcon?: boolean
   IconComponent?: ElementType
 }
-export default function TableSortLabel({
+export function TableSortLabel({
   children,
   active,
   className,

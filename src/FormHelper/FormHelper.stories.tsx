@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import FormHelper from './FormHelper'
+import { FormHelper } from './FormHelper'
 const meta = {
   component: FormHelper,
   title: 'GordoUI/FormHelper',

@@ -23,7 +23,7 @@ export interface MenuItemProps extends LiReactProps {
   onClick?: (ev: MouseEvent<HTMLLIElement>) => void
   selected?: boolean
 }
-export default function MenuItem({
+export function MenuItem({
   children,
   className,
   component,

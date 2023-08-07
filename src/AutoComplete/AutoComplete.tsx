@@ -5,7 +5,7 @@ interface Options {
   label: string
   value: string
 }
-export default function AutoComplete({
+export function AutoComplete({
   options,
   label,
   onInputChange,

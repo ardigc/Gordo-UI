@@ -13,7 +13,7 @@ export interface TableContainerProps extends TableContainerReactProps {
   children: ReactNode
   component?: ElementType
 }
-export default function TableContainer({
+export function TableContainer({
   children,
   component,
   ...rest

@@ -47,7 +47,7 @@ export interface TablePaginationProps extends TableCellReactProps {
   showFirstButton?: boolean
   showLastButton?: boolean
 }
-export default function TablePagination({
+export function TablePagination({
   count,
   rowsPerPage,
   page,

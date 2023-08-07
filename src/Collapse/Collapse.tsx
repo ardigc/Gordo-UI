@@ -18,7 +18,7 @@ export interface CollapseProps {
   easing?: 'ease-linear' | 'ease-in' | 'ease-out' | 'ease-in-out'
   timeout?: 0 | 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000
 }
-export default function Collapse({
+export function Collapse({
   children,
   open,
   className,

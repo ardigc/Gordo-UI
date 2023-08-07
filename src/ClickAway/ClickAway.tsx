@@ -5,7 +5,7 @@ import React, {
   JSXElementConstructor,
 } from 'react'
 
-export default function Clickaway({
+export function ClickAway({
   onClickaway,
   children,
 }: {

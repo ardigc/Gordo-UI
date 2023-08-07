@@ -32,7 +32,7 @@ export interface PopoverProps {
   // transitionDuration?:'auto'| number| { appear?: number, enter?: number, exit?: number }
   // TransitionProps?: object
 }
-export default function Popover({
+export function Popover({
   children,
   open,
   onClose,

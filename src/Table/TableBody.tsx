@@ -15,7 +15,7 @@ export interface TableBodyProps extends TableBodyReactProps {
   className?: string
   component?: ElementType
 }
-export default function TableBody({
+export function TableBody({
   children,
   className,
   component,

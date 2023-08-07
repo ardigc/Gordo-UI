@@ -1,4 +1,4 @@
-import AutoComplete from './AutoComplete'
+import { AutoComplete } from './AutoComplete'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

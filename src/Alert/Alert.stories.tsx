@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Alert, AlertProps } from './Alert'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 import {
   ArrowDownIcon,
   StarIcon,
   StarIconFilled,
 } from '../components/icons/Icons'
-import AlertTitle from './AlertTitle'
+import { AlertTitle } from './AlertTitle'
 
 const meta = {
   component: Alert,

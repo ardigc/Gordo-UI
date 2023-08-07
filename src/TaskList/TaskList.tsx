@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Task, TaskProps } from '../Task/Task'
 
-export default function TaskList({
+export function TaskList({
   loading = false,
   tasks,
   onPinTask,

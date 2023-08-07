@@ -8,7 +8,7 @@ import {
   SetStateAction,
   ElementType,
 } from 'react'
-import Clickaway from '../ClickAway/ClickAway'
+import { ClickAway } from '../ClickAway/ClickAway'
 
 export type FormControlContextType = {
   contextVariant?: 'filled' | 'outlined' | 'standard'
@@ -49,7 +49,7 @@ export interface FormControlProps {
   hiddenLabel?: boolean
   required?: boolean
 }
-export default function FormControl({
+export function FormControl({
   children,
   onSubmit,
   variant = 'outlined',
@@ -71,7 +71,7 @@ export default function FormControl({
   >()
   const RenderComponent = component ? component : 'form'
   return (
-    <Clickaway
+    <ClickAway
       onClickaway={() => {
         if (!contextValue) {
           setTouched(false)
@@ -105,6 +105,6 @@ export default function FormControl({
           {children}
         </FormControlContext.Provider>
       </RenderComponent>
-    </Clickaway>
+    </ClickAway>
   )
 }

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import IconButton from './IconButton'
+import { IconButton } from './IconButton'
 import { StarIcon } from '../components/icons/Icons'
 const meta = {
   component: IconButton,

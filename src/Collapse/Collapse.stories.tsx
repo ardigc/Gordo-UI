@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Table from '../Table/Table'
-import TableCell from '../Table/TableCell'
-import TableRow from '../Table/TableRow'
-import TableHead from '../Table/TableHead'
-import Collapse, { CollapseProps } from './Collapse'
-import TableBody from '../Table/TableBody'
+import { Table } from '../Table/Table'
+import { TableCell } from '../Table/TableCell'
+import { TableRow } from '../Table/TableRow'
+import { TableHead } from '../Table/TableHead'
+import { Collapse, CollapseProps } from './Collapse'
+import { TableBody } from '../Table/TableBody'
 
 const meta = {
   component: Collapse,

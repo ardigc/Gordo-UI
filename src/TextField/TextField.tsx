@@ -10,7 +10,7 @@ import {
   useCallback,
 } from 'react'
 import classNames from 'classnames'
-import Clickaway from '../ClickAway/ClickAway'
+import ClickAway from '../ClickAway/ClickAway'
 import Input, { InputProps } from '../Input/Input'
 import InputLabel from '../InputLabel/InputLabel'
 import FormHelper from '../FormHelper/FormHelper'
@@ -69,7 +69,7 @@ export interface TextField {
   name?: string
   placeholder?: string
 }
-export default function TextField({
+export function TextField({
   label,
   variant = 'standard',
   error,
@@ -131,7 +131,7 @@ export default function TextField({
   }
   console.log('comp', ComponentValue)
   return (
-    <Clickaway onClickaway={clickAwayHandler}>
+    <ClickAway onClickaway={clickAwayHandler}>
       <div
         id={id}
         className={classNames('relative inline-flex flex-col', {
@@ -205,6 +205,6 @@ export default function TextField({
           </FormHelper>
         )}
       </div>
-    </Clickaway>
+    </ClickAway>
   )
 }

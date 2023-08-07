@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Button from './Button'
+import { Button } from './Button'
 const meta = {
   component: Button,
   title: 'GordoUI/Button',
@@ -42,7 +42,7 @@ export const Link: Story = {
       console.log('hola')
     },
     href: 'https://www.google.com',
-    fullWidth:true,
+    fullWidth: true,
   },
 }
 export const contained: Story = {
@@ -71,7 +71,7 @@ export const disableRipple: Story = {
       console.log('hola')
     },
     variant: 'contained',
-    disableRipple:true,
+    disableRipple: true,
     disableElevation: true,
   },
 }
@@ -82,7 +82,7 @@ export const startIcon: Story = {
       console.log('hola')
     },
     variant: 'contained',
-    startIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
+    startIcon: <div className="w-2 h-2 bg-slate-300"></div>,
   },
 }
 export const endIcon: Story = {
@@ -91,9 +91,9 @@ export const endIcon: Story = {
     onClick() {
       console.log('hola')
     },
-    className:'h-96',
+    className: 'h-96',
     variant: 'contained',
-    endIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
+    endIcon: <div className="w-2 h-2 bg-slate-300"></div>,
   },
 }
 export const classes: Story = {
@@ -102,10 +102,13 @@ export const classes: Story = {
     onClick() {
       console.log('hola')
     },
-    className:'h-96',
-    classes:{buttonClassName:'bg-slate-100', rippleSpanClassName:'bg-red-500'},
+    className: 'h-96',
+    classes: {
+      buttonClassName: 'bg-slate-100',
+      rippleSpanClassName: 'bg-red-500',
+    },
     variant: 'contained',
-    endIcon:(<div className='w-2 h-2 bg-slate-300'></div>)
+    endIcon: <div className="w-2 h-2 bg-slate-300"></div>,
   },
 }
 export const divComponent: Story = {
@@ -114,10 +117,13 @@ export const divComponent: Story = {
     onClick() {
       console.log('hola')
     },
-    className:'h-96',
-    classes:{buttonClassName:'bg-slate-100', rippleSpanClassName:'bg-red-500'},
+    className: 'h-96',
+    classes: {
+      buttonClassName: 'bg-slate-100',
+      rippleSpanClassName: 'bg-red-500',
+    },
     variant: 'contained',
-    endIcon:(<div className='w-2 h-2 bg-slate-300'></div>),
-    component:'div',
+    endIcon: <div className="w-2 h-2 bg-slate-300"></div>,
+    component: 'div',
   },
 }

@@ -39,7 +39,7 @@ export interface RenderComponentProps extends DivReactProps {
   // }
   // id: string
 }
-export default function RenderComponent({
+export function RenderComponent({
   children,
   className,
   marginThreshold,

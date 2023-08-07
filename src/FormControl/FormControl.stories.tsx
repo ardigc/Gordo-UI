@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
-import FormControl from './FormControl'
-import Input from '../Input/Input'
-import InputLabel from '../InputLabel/InputLabel'
-import FormHelper from '../FormHelper/FormHelper'
+import { FormControl } from './FormControl'
+import { Input } from '../Input/Input'
+import { InputLabel } from '../InputLabel/InputLabel'
+import { FormHelper } from '../FormHelper/FormHelper'
 const meta = {
   component: FormControl,
   title: 'GordoUI/FormControl',
@@ -32,17 +32,17 @@ export const filled: Story = {
         <InputLabel>hola</InputLabel>
         <Input name="email" />
         <FormHelper>helper text</FormHelper>
-         <button type="submit">button</button>
+        <button type="submit">button</button>
       </>
     ),
-    color:'error',
+    color: 'error',
     onSubmit(ev) {
       ev.preventDefault()
       const formData = new FormData(ev.currentTarget)
       console.log(formData.get('email'))
     },
     variant: 'filled',
-    hiddenLabel:true
+    hiddenLabel: true,
   },
 }
 export const className: Story = {
@@ -53,14 +53,14 @@ export const className: Story = {
         <Input name="email" /> <button type="submit">button</button>
       </>
     ),
-    className:'bg-red-300 bg-opacity-1',
+    className: 'bg-red-300 bg-opacity-1',
     onSubmit(ev) {
       ev.preventDefault()
       const formData = new FormData(ev.currentTarget)
       console.log(formData.get('email'))
     },
     variant: 'filled',
-    disabled:true
+    disabled: true,
   },
 }
 export const UserComponent: Story = {
@@ -71,14 +71,14 @@ export const UserComponent: Story = {
         <Input name="email" /> <button type="submit">button</button>
       </>
     ),
-    component:'div',
-    className:'bg-red-300 bg-opacity-1',
+    component: 'div',
+    className: 'bg-red-300 bg-opacity-1',
     onSubmit(ev) {
       ev.preventDefault()
       const formData = new FormData(ev.currentTarget)
       console.log(formData.get('email'))
     },
     variant: 'filled',
-    focused:true
+    focused: true,
   },
 }

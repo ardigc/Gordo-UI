@@ -13,7 +13,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import Popover from '../Popover/Popover'
+import { Popover } from '../Popover/Popover'
 import classNames from 'classnames'
 export const TooltipContext = createContext<{
   placement?:
@@ -85,7 +85,7 @@ export interface TooltipProps {
   ) => void
   className?: string
 }
-export default function Tooltip({
+export function Tooltip({
   children,
   title,
   placement,

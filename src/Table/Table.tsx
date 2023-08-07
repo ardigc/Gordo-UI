@@ -24,7 +24,7 @@ export interface TableProps extends TableReactPops {
   size?: 'medium' | 'small'
   stickyHeader?: boolean
 }
-export default function Table({
+export function Table({
   children,
   className,
   component,

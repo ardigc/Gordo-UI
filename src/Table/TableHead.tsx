@@ -20,7 +20,7 @@ export interface TableHeadProps extends TableHeadReactProps {
   className?: string
   component?: ElementType
 }
-export default function TableHead({
+export function TableHead({
   children,
   className,
   component,

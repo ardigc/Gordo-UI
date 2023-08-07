@@ -9,11 +9,7 @@ export interface AlertTitleProps extends DivReactProps {
   children: ReactNode
   className?: string
 }
-export default function AlertTitle({
-  children,
-  className,
-  ...rest
-}: AlertTitleProps) {
+export function AlertTitle({ children, className, ...rest }: AlertTitleProps) {
   return (
     <div
       className={classNames(

@@ -6,7 +6,7 @@ import React, {
   useContext,
   useState,
 } from 'react'
-import Clickaway from '../ClickAway/ClickAway'
+import ClickAway from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 import { FormControlContext } from '../FormControl/FormControl'
 
@@ -55,7 +55,7 @@ export interface InputProps {
   size?: 'medium' | 'small'
   shrink?: boolean
 }
-export default function Input({
+export function Input({
   autocomplete,
   autoFocus,
   id,
@@ -160,7 +160,7 @@ export default function Input({
   }
   const renderMyInput = !multiline && !UserInput ? true : false
   return (
-    <Clickaway onClickaway={() => setTouched(false)}>
+    <ClickAway onClickaway={() => setTouched(false)}>
       <RenderComponent {...RenderComponentProps}>
         {renderMyInput && (
           <>
@@ -280,6 +280,6 @@ export default function Input({
           </fieldset>
         )}
       </RenderComponent>
-    </Clickaway>
+    </ClickAway>
   )
 }

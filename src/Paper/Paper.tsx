@@ -17,7 +17,7 @@ export interface PaperProps extends PaperReactProps {
   square?: boolean
   variant?: 'elevation' | 'outlined'
 }
-export default function Paper({
+export function Paper({
   children,
   className,
   component,

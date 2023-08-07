@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
-import ClickAway from './ClickAway'
-import TextField from '../TextField/TextField'
-import Option from '../option/Option'
+import { ClickAway } from './ClickAway'
+import { TextField } from '../TextField/TextField'
+import { Option } from '../option/Option'
 
 const meta = {
   component: ClickAway,
-  title: 'GordoUI/Clickaway',
+  title: 'GordoUI/ClickAway',
   tags: ['autodocs'],
 } satisfies Meta<typeof ClickAway>
 

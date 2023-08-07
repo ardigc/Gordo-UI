@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react'
 import Paper, { PaperProps } from '../Paper/Paper'
-import Clickaway from '../ClickAway/ClickAway'
+import ClickAway from '../ClickAway/ClickAway'
 
 type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -29,8 +29,8 @@ export interface SnackBarProps extends DivReactProps {
   className?: string
   ContentProps?: PaperProps
   disableWindowBlurListener?: boolean
-  key?:any
-  resumeHideDuration?:number
+  key?: any
+  resumeHideDuration?: number
   transition?:
     | 'fade'
     | 'grown'
@@ -40,7 +40,7 @@ export interface SnackBarProps extends DivReactProps {
     | 'slideRight'
 }
 
-export default function SnackBar({
+export function SnackBar({
   children,
   message,
   open,
@@ -93,11 +93,14 @@ export default function SnackBar({
 
     const handleFocus = () => {
       if (autoHideDuration && !timeOutRef.current && open) {
-        timeOutRef.current = setTimeout(() => {
-          timeOutRef.current = null
-          if (!onClose) return
-          onClose(null, 'timeout')
-        },resumeHideDuration?resumeHideDuration: autoHideDuration/2)
+        timeOutRef.current = setTimeout(
+          () => {
+            timeOutRef.current = null
+            if (!onClose) return
+            onClose(null, 'timeout')
+          },
+          resumeHideDuration ? resumeHideDuration : autoHideDuration / 2
+        )
       }
     }
 
@@ -124,14 +127,14 @@ export default function SnackBar({
     if (!onClose) {
       return
     }
-    onClose(ev, 'clickAway')
+    onClose(ev, 'ClickAway')
   }
   return (
     <>
       {visible && (
-        <Clickaway onClickaway={clickAwayHandle}>
+        <ClickAway onClickaway={clickAwayHandle}>
           <div
-          key={key}
+            key={key}
             className={classNames(
               ' z-50 flex justify-start items-center fixed transition-all',
               {
@@ -217,7 +220,6 @@ export default function SnackBar({
                   'animate-opacity': open && transition === 'fade',
                   'animate-dwarf opacity-0': !open && transition === 'grown',
                   'animate-grow': open && transition === 'grown',
-
                 })}
               >
                 {children}
@@ -309,7 +311,7 @@ export default function SnackBar({
               </Paper>
             )}
           </div>
-        </Clickaway>
+        </ClickAway>
       )}
     </>
   )

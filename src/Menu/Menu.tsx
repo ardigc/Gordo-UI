@@ -10,7 +10,7 @@ export interface MenuProps extends Omit<PopoverProps, 'classes'> {
   MenuListProps?: MenuListProps
   PopoverClasses?: { root?: string; paper?: string }
 }
-export default function Menu({
+export function Menu({
   children,
   open,
   onClose,

@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent, ElementType } from 'react'
-import Paper, { PaperProps } from '../Paper/Paper'
+import { Paper, PaperProps } from '../Paper/Paper'
 import classNames from 'classnames'
 import {
   ErrorIcon,
@@ -8,7 +8,7 @@ import {
   InfoIcon,
   XIcon,
 } from '../components/icons/Icons'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 
 export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
   children?: ReactNode

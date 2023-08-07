@@ -8,7 +8,7 @@ export interface OptionProps {
   value: string
 }
 // Partial<OptionProps>
-export default function Option({
+export function Option({
   children,
   className = 'cursor-pointer hover:bg-slate-200',
   onClick,

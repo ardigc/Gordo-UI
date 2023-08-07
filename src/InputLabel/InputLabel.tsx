@@ -16,7 +16,7 @@ export interface InputLabelProps {
   margin?: 'dense' | 'none'
   variant?: 'filled' | 'outlined' | 'standard'
 }
-export default function InputLabel({
+export function InputLabel({
   children,
   htmlFor,
   className,

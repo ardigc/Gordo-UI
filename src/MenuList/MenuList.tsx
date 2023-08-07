@@ -7,6 +7,6 @@ type UlReactProps = DetailedHTMLProps<
 export interface MenuListProps extends UlReactProps {
   children: ReactNode
 }
-export default function MenuList({ children, ...rest }: MenuListProps) {
+export function MenuList({ children, ...rest }: MenuListProps) {
   return <ul {...rest}>{children}</ul>
 }

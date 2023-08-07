@@ -1,5 +1,10 @@
 import classNames from 'classnames'
-import { DetailedHTMLProps, ElementType, HTMLAttributes, ReactNode } from 'react'
+import {
+  DetailedHTMLProps,
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+} from 'react'
 
 type TableFooterReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableSectionElement>,
@@ -8,15 +13,15 @@ type TableFooterReactProps = DetailedHTMLProps<
 export interface TableFooterProps extends TableFooterReactProps {
   children?: ReactNode
   className?: string
-  component?:ElementType
+  component?: ElementType
 }
-export default function TableFooter({
+export function TableFooter({
   children,
   className,
   component,
   ...rest
 }: TableFooterProps) {
-  const RenderComponent =component? component:'tfoot'
+  const RenderComponent = component ? component : 'tfoot'
   return (
     <RenderComponent
       className={classNames('table-footer-group', {
