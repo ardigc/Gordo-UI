@@ -26,7 +26,7 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
   }
 
   const handleChangePage = (
-    event: React.MouseEvent<Element, MouseEvent> | null,
+    _event: React.MouseEvent<Element, MouseEvent> | null,
     newPage: number
   ) => {
     setPage(newPage)
@@ -233,7 +233,7 @@ function TestFunc2({ args }: { args: TablePaginationProps }) {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
   const handleChangePage = (
-    event: React.MouseEvent<Element, MouseEvent> | null | null,
+    _event: React.MouseEvent<Element, MouseEvent> | null | null,
     newPage: number
   ) => {
     setPage(newPage)

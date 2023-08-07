@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import MenuList, { MenuListProps } from './MenuList'
 import MenuItem from '../MenuItem/MenuItem'
-import Button from '../Button/Button'
-import { MouseEventHandler, useState } from 'react'
 
 const meta = {
   component: MenuList,
@@ -16,7 +14,7 @@ const TestButtonFunc = ({ args }: { args: MenuListProps }) => {
   return (
     <>
       <div className="flex bg-slate-100 justify-center h-56 items-center">
-        <MenuList>
+        <MenuList {...args}>
           <MenuItem divider>opcion 1</MenuItem>
           <MenuItem>opcion 2</MenuItem>
           <MenuItem>opcion 3</MenuItem>

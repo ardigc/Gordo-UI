@@ -33,7 +33,7 @@ type ButtonReactProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >
-export interface ButtonPropsForButton extends CommonProps, ButtonReactProps {
+interface ButtonPropsForButton extends CommonProps, ButtonReactProps {
   onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
   href?: undefined
 }
@@ -41,7 +41,7 @@ type AnchorReactProps = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >
-export interface ButtonPropsForAnchor extends CommonProps, AnchorReactProps {
+interface ButtonPropsForAnchor extends CommonProps, AnchorReactProps {
   href: string
   onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
 }

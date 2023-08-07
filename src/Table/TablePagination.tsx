@@ -18,7 +18,9 @@ import {
   PrevPageIcon,
   PrevPageIconDis,
 } from '../components/icons/Icons'
-import IconButton, { ButtonPropsForButton } from '../Button/IconButton'
+import IconButton from '../Button/IconButton'
+import { ButtonPropsForButton } from '../Button/Button'
+
 import classNames from 'classnames'
 import Menu, { MenuProps } from '../Menu/Menu'
 import MenuItem, { MenuItemProps } from '../MenuItem/MenuItem'
