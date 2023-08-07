@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 
-import TaskList from './TaskList'
+import { TaskList } from './TaskList'
 
 import * as TaskStories from '../Task/Task.stories'
 

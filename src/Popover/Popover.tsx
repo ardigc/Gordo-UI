@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { ElementType, ReactNode, useEffect, useState } from 'react'
 
 import { createPortal } from 'react-dom'
-import RenderComponent from './RenderComponent'
+import { RenderComponent } from './RenderComponent'
 export interface PopoverProps {
   children?: ReactNode
   open: boolean

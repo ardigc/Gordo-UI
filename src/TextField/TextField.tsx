@@ -10,10 +10,10 @@ import {
   useCallback,
 } from 'react'
 import classNames from 'classnames'
-import ClickAway from '../ClickAway/ClickAway'
-import Input, { InputProps } from '../Input/Input'
-import InputLabel from '../InputLabel/InputLabel'
-import FormHelper from '../FormHelper/FormHelper'
+import { ClickAway } from '../ClickAway/ClickAway'
+import { Input, InputProps } from '../Input/Input'
+import { InputLabel } from '../InputLabel/InputLabel'
+import { FormHelper } from '../FormHelper/FormHelper'
 export type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
   setValue?: Dispatch<
