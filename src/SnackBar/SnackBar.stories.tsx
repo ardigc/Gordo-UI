@@ -118,18 +118,12 @@ export const DisableWindowBlur: Story = {
     autoHideDuration: 3000,
   },
 }
-export const transitionDuration: Story = {
-  render: (args) => <PrimaryFunc args={args} />,
-  args: {
-    message: 'Has hecho click',
-    autoHideDuration: 3000,
-  },
-}
+
 export const resumeHideDuration: Story = {
   render: (args) => <PrimaryFunc args={args} />,
   args: {
     message: 'Has hecho click',
-resumeHideDuration:500,
+    resumeHideDuration: 500,
     autoHideDuration: 3000,
   },
 }
