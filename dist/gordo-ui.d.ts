@@ -69,12 +69,23 @@ export declare interface AlertProps
   }
 }
 
+export declare function AlertTitle({
+  children,
+  className,
+  ...rest
+}: AlertTitleProps): JSX_2.Element
+
 export declare interface AlertTitleProps extends DivReactProps {
   children: ReactNode
   className?: string
 }
 
 declare type AnchorReactProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>
+
+declare type AnchorReactProps_2 = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >
@@ -87,9 +98,36 @@ export declare function ArrowUp(): JSX_2.Element
 
 export declare function ArrowUpIcon(): JSX_2.Element
 
+export declare function Button({
+  children,
+  variant,
+  onClick,
+  color,
+  disabled,
+  href,
+  disableElevation,
+  disableRipple,
+  size,
+  startIcon,
+  endIcon,
+  className,
+  classes,
+  component,
+  fullWidth,
+  id,
+  ...rest
+}: ButtonPropsForAnchor | ButtonPropsForButton): JSX_2.Element
+
 export declare interface ButtonPropsForAnchor
   extends CommonProps,
     Omit<AnchorReactProps, 'color'> {
+  href: string
+  onClick?: (ev: MouseEvent_2<HTMLAnchorElement>) => void
+}
+
+declare interface ButtonPropsForAnchor_2
+  extends CommonProps_2,
+    AnchorReactProps_2 {
   href: string
   onClick?: (ev: MouseEvent_2<HTMLAnchorElement>) => void
 }
@@ -101,10 +139,40 @@ export declare interface ButtonPropsForButton
   href?: undefined
 }
 
+declare interface ButtonPropsForButton_2
+  extends CommonProps_2,
+    ButtonReactProps_2 {
+  onClick?: (ev: MouseEvent_2<HTMLButtonElement>) => void
+  href?: undefined
+}
+
 declare type ButtonReactProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >
+
+declare type ButtonReactProps_2 = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>
+
+export declare function ClickAway({
+  onClickaway,
+  children,
+}: {
+  children: ReactElement<any, string | JSXElementConstructor<any>>
+  onClickaway: (event: MouseEvent | TouchEvent) => void
+}): JSX_2.Element
+
+export declare function Collapse({
+  children,
+  open,
+  className,
+  collapsedSize,
+  component,
+  easing,
+  timeout,
+}: CollapseProps): JSX_2.Element
 
 export declare interface CollapseProps {
   children: ReactElement<any, string | JSXElementConstructor<any>>
@@ -144,6 +212,19 @@ declare interface CommonProps {
   id?: string
 }
 
+declare interface CommonProps_2 {
+  children?: ReactNode
+  size?: 'small' | 'medium' | 'large'
+  disableRipple?: boolean
+  classes?: {
+    buttonClassName?: string
+    rippleSpanClassName?: string
+  }
+  disabled?: boolean
+  edge?: 'end' | 'start' | false
+  className?: string
+}
+
 declare type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -164,6 +245,22 @@ export declare function ErrorIcon(): JSX_2.Element
 export declare function FirstPageIcon(): JSX_2.Element
 
 export declare function FirstPageIconDis(): JSX_2.Element
+
+export declare function FormControl({
+  children,
+  onSubmit,
+  variant,
+  margin,
+  fullWidth,
+  className,
+  component,
+  disabled,
+  error,
+  color,
+  focused,
+  hiddenLabel,
+  required,
+}: FormControlProps): JSX_2.Element
 
 export declare const FormControlContext: Context<FormControlContextType>
 
@@ -205,6 +302,17 @@ export declare interface FormControlProps {
   required?: boolean
 }
 
+export declare function FormHelper({
+  children,
+  className,
+  component,
+  componentProps,
+  disabled,
+  error,
+  margin,
+  id,
+}: FormHelperProps): JSX_2.Element
+
 export declare interface FormHelperProps {
   children?: ReactNode
   className?: string
@@ -216,7 +324,57 @@ export declare interface FormHelperProps {
   id?: string
 }
 
+export declare function IconButton({
+  children,
+  size,
+  onClick,
+  href,
+  disableRipple,
+  disabled,
+  edge,
+  className,
+  classes,
+  ...rest
+}: ButtonPropsForAnchor_2 | ButtonPropsForButton_2): JSX_2.Element
+
 export declare function InfoIcon(): JSX_2.Element
+
+export declare function Input({
+  autocomplete,
+  autoFocus,
+  id,
+  error,
+  color,
+  classes,
+  components,
+  componentsProps,
+  defaultValue,
+  disabled,
+  disaledUndeline,
+  endAdornment,
+  inputComponent,
+  inputProps,
+  fullWidth,
+  margin,
+  multiline,
+  inputRef,
+  multilineTextAreaRef,
+  rows,
+  startAdornment,
+  name,
+  value,
+  placeholder,
+  readonly,
+  required,
+  type,
+  shrink,
+  onChange,
+  onFocus,
+  className,
+  variant,
+  size,
+  label,
+}: InputProps): JSX_2.Element
 
 export declare type InputContextType = {
   option?: string | ReadonlyArray<string> | number | undefined
@@ -226,6 +384,21 @@ export declare type InputContextType = {
   handleOptionClick?: (option: string) => void
   setOpened?: Dispatch<SetStateAction<boolean>>
 }
+
+export declare function InputLabel({
+  children,
+  htmlFor,
+  className,
+  disableAnimation,
+  shrink,
+  error,
+  color,
+  labelProps,
+  disabled,
+  margin,
+  size,
+  variant,
+}: InputLabelProps): JSX_2.Element
 
 export declare interface InputLabelProps {
   children?: ReactNode
@@ -313,6 +486,28 @@ declare type LiReactProps = DetailedHTMLProps<
   HTMLLIElement
 >
 
+export declare function Menu({
+  children,
+  open,
+  onClose,
+  classes,
+  MenuListProps,
+  PopoverClasses,
+  ...rest
+}: MenuProps): JSX_2.Element
+
+export declare function MenuItem({
+  children,
+  className,
+  component,
+  dense,
+  disableGutters,
+  divider,
+  onClick,
+  selected,
+  ...rest
+}: MenuItemProps): JSX_2.Element
+
 export declare interface MenuItemProps extends LiReactProps {
   children?: ReactNode
   className?: string
@@ -323,6 +518,11 @@ export declare interface MenuItemProps extends LiReactProps {
   onClick?: (ev: MouseEvent_2<HTMLLIElement>) => void
   selected?: boolean
 }
+
+export declare function MenuList({
+  children,
+  ...rest
+}: MenuListProps): JSX_2.Element
 
 export declare interface MenuListProps extends UlReactProps {
   children: ReactNode
@@ -347,12 +547,30 @@ export declare function NextPageIcon(): JSX_2.Element
 
 export declare function NextPageIconDis(): JSX_2.Element
 
+declare function Option_2({
+  children,
+  className,
+  onClick,
+  value,
+}: OptionProps): JSX_2.Element
+export { Option_2 as Option }
+
 export declare interface OptionProps {
   children?: ReactNode
   className?: string
   onClick?: (ev: MouseEvent_2<HTMLDivElement>) => void
   value: string
 }
+
+export declare function Paper({
+  children,
+  className,
+  component,
+  elevation,
+  square,
+  variant,
+  ...rest
+}: PaperProps): JSX_2.Element
 
 export declare interface PaperProps extends PaperReactProps {
   children: ReactNode
@@ -367,6 +585,26 @@ declare type PaperReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
+
+export declare function Popover({
+  children,
+  open,
+  onClose,
+  anchorReference,
+  anchorEl,
+  anchorOrigin,
+  transformOrigin,
+  anchorPosition,
+  className,
+  container,
+  elevation,
+  components,
+  marginThreshold,
+  componentProps,
+  id,
+  disableTransition,
+  classes,
+}: PopoverProps): JSX_2.Element
 
 export declare interface PopoverProps {
   children?: ReactNode
@@ -409,6 +647,19 @@ export declare interface PopoverProps {
 export declare function PrevPageIcon(): JSX_2.Element
 
 export declare function PrevPageIconDis(): JSX_2.Element
+
+export declare function RenderComponent({
+  children,
+  className,
+  marginThreshold,
+  anchorEl,
+  anchorPosition,
+  transformOrigin,
+  anchorReference,
+  anchorOrigin,
+  components,
+  ...rest
+}: RenderComponentProps): JSX_2.Element
 
 export declare interface RenderComponentProps extends DivReactProps_2 {
   children: ReactNode
@@ -478,6 +729,23 @@ export declare const setPopoverPosition: (
     }
   | undefined
 
+export declare function SnackBar({
+  children,
+  message,
+  open,
+  action,
+  onClose,
+  autoHideDuration,
+  anchorOrigin,
+  transition,
+  className,
+  ContentProps,
+  disableWindowBlurListener,
+  key,
+  resumeHideDuration,
+  ...rest
+}: SnackBarProps): JSX_2.Element
+
 export declare interface SnackBarProps extends DivReactProps_3 {
   children?: ReactNode
   message?: ReactNode
@@ -509,6 +777,23 @@ export declare function StarIconFilled(): JSX_2.Element
 
 export declare function SuccessIcon(): JSX_2.Element
 
+export declare function Table({
+  children,
+  className,
+  component,
+  padding,
+  size,
+  stickyHeader,
+  ...rest
+}: TableProps): JSX_2.Element
+
+export declare function TableBody({
+  children,
+  className,
+  component,
+  ...rest
+}: TableBodyProps): JSX_2.Element
+
 export declare interface TableBodyProps extends TableBodyReactProps {
   children?: ReactNode
   className?: string
@@ -519,6 +804,17 @@ declare type TableBodyReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableSectionElement>,
   HTMLTableSectionElement
 >
+
+export declare function TableCell({
+  children,
+  align,
+  className,
+  component,
+  padding,
+  size,
+  variant,
+  ...rest
+}: TableCellProps): JSX_2.Element
 
 export declare interface TableCellProps extends TableCellReactProps {
   children?: ReactNode
@@ -534,6 +830,12 @@ declare type TableCellReactProps = DetailedHTMLProps<
   TdHTMLAttributes<HTMLTableCellElement>,
   HTMLTableCellElement
 >
+
+export declare function TableContainer({
+  children,
+  component,
+  ...rest
+}: TableContainerProps): JSX_2.Element
 
 export declare interface TableContainerProps extends TableContainerReactProps {
   children: ReactNode
@@ -553,6 +855,13 @@ export declare type TableContextType = {
   contextSticky?: boolean
 }
 
+export declare function TableFooter({
+  children,
+  className,
+  component,
+  ...rest
+}: TableFooterProps): JSX_2.Element
+
 export declare interface TableFooterProps extends TableFooterReactProps {
   children?: ReactNode
   className?: string
@@ -563,6 +872,13 @@ declare type TableFooterReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableSectionElement>,
   HTMLTableSectionElement
 >
+
+export declare function TableHead({
+  children,
+  className,
+  component,
+  ...rest
+}: TableHeadProps): JSX_2.Element
 
 export declare const TableHeadContext: Context<TableHeadContextType>
 
@@ -594,6 +910,39 @@ declare type TableReactPops = DetailedHTMLProps<
   TableHTMLAttributes<HTMLTableElement>,
   HTMLTableElement
 >
+
+export declare function TextField({
+  label,
+  variant,
+  error,
+  color,
+  defaultValue,
+  disabled,
+  inputRef,
+  autoFocus,
+  id,
+  value,
+  rows,
+  select,
+  required,
+  type,
+  classes,
+  onChange,
+  disableUnderline,
+  multiLine,
+  TextAreaRef,
+  children,
+  readOnly,
+  hiddenLabel,
+  inputProps,
+  helperText,
+  className,
+  fullWidth,
+  size,
+  margin,
+  name,
+  placeholder,
+}: TextField): JSX_2.Element
 
 export declare interface TextField {
   label?: string
@@ -633,6 +982,30 @@ export declare interface TextField {
 }
 
 export declare const TextFieldContext: Context<InputContextType>
+
+export declare function Tooltip({
+  children,
+  title,
+  placement,
+  open,
+  disableTransition,
+  arrow,
+  followCursor,
+  classes,
+  components,
+  componentsProps,
+  disableFocusListener,
+  disableHoverListener,
+  disableTouchListener,
+  enterDelay,
+  enterNextDelay,
+  enterTouchDelay,
+  id,
+  leaveDelay,
+  onClose,
+  onOpen,
+  className,
+}: TooltipProps): JSX_2.Element
 
 export declare const TooltipContext: Context<{
   placement?:
