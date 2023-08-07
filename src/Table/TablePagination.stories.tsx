@@ -64,7 +64,6 @@ const TestFunc = ({ args }: { args: TablePaginationProps }) => {
     createData('Nougat', 360, 19.0),
     createData('Oreo', 437, 18.0),
   ].sort((a, b) => (a.calories < b.calories ? -1 : 1))
-  console.log('page' + page)
   console.log('rowsperpage' + rowsPerPage)
   return (
     // <div className="h-48 overflow-auto">
