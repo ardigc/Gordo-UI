@@ -19,9 +19,6 @@ export const primary: Story = {
 export const warning: Story = {
   args: {
     children: 'holaas',
-    onClick() {
-      console.log('hola')
-    },
     color: 'warning',
   },
 }
