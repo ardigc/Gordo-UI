@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Paper from './Paper'
+import { Paper } from './Paper'
 
 const meta = {
   component: Paper,

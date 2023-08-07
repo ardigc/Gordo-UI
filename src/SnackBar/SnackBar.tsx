@@ -8,8 +8,8 @@ import {
   useRef,
   useState,
 } from 'react'
-import Paper, { PaperProps } from '../Paper/Paper'
-import ClickAway from '../ClickAway/ClickAway'
+import { Paper, PaperProps } from '../Paper/Paper'
+import { ClickAway } from '../ClickAway/ClickAway'
 
 type DivReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,

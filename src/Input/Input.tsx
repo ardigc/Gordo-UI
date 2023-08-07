@@ -6,7 +6,7 @@ import React, {
   useContext,
   useState,
 } from 'react'
-import ClickAway from '../ClickAway/ClickAway'
+import { ClickAway } from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 import { FormControlContext } from '../FormControl/FormControl'
 

@@ -1,6 +1,6 @@
 // import * as React from 'react';
 import { ChangeEvent, ChangeEventHandler, useState } from 'react'
-import Option from '../option/Option'
+import { Option } from '../option/Option'
 interface Options {
   label: string
   value: string

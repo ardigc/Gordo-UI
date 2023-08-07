@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Table from './Table'
-import TableCell from './TableCell'
-import TableRow from './TableRow'
-import TableBody from './TableBody'
-import TableSortLabel, { TableSortLabelProps } from './TableSortLabel'
-import Paper from '../Paper/Paper'
-import TableContainer from './TableContainer'
-import TableHead from './TableHead'
-import TablePagination from './TablePagination'
+import { Table } from './Table'
+import { TableCell } from './TableCell'
+import { TableRow } from './TableRow'
+import { TableBody } from './TableBody'
+import { TableSortLabel, TableSortLabelProps } from './TableSortLabel'
+import { Paper } from '../Paper/Paper'
+import { TableContainer } from './TableContainer'
+import { TableHead } from './TableHead'
+import { TablePagination } from './TablePagination'
 const meta = {
   component: TableSortLabel,
   title: 'GordoUI/TableSortLabel',

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import MenuList, { MenuListProps } from './MenuList'
-import MenuItem from '../MenuItem/MenuItem'
+import { MenuList, MenuListProps } from './MenuList'
+import { MenuItem } from '../MenuItem/MenuItem'
 
 const meta = {
   component: MenuList,

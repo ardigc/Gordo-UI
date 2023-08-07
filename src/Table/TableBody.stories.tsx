@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import TableBody, { TableBodyProps } from './TableBody'
-import TableCell from './TableCell'
-import TableRow from './TableRow'
+import { TableBody, TableBodyProps } from './TableBody'
+import { TableCell } from './TableCell'
+import { TableRow } from './TableRow'
 
 const meta = {
   component: TableBody,

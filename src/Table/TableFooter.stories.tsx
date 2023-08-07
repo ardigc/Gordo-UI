@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Table from './Table'
-import TableCell from './TableCell'
-import TableRow from './TableRow'
-import TableHead from './TableHead'
-import TableBody from './TableBody'
-import TableFooter, { TableFooterProps } from './TableFooter'
-import Paper from '../Paper/Paper'
+import { Table } from './Table'
+import { TableCell } from './TableCell'
+import { TableRow } from './TableRow'
+import { TableHead } from './TableHead'
+import { TableBody } from './TableBody'
+import { TableFooter, TableFooterProps } from './TableFooter'
+import { Paper } from '../Paper/Paper'
 import { ReactNode } from 'react'
-import TableContainer from './TableContainer'
+import { TableContainer } from './TableContainer'
 const meta = {
   component: TableFooter,
   title: 'GordoUI/TableFooter',

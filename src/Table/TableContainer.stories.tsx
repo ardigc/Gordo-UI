@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Table from './Table'
-import TableCell from './TableCell'
-import TableRow from './TableRow'
-import TableHead from './TableHead'
-import TableBody from './TableBody'
-import TableContainer, { TableContainerProps } from './TableContainer'
-import Paper from '../Paper/Paper'
+import { Table } from './Table'
+import { TableCell } from './TableCell'
+import { TableRow } from './TableRow'
+import { TableHead } from './TableHead'
+import { TableBody } from './TableBody'
+import { TableContainer, TableContainerProps } from './TableContainer'
+import { Paper } from '../Paper/Paper'
 import { ReactNode } from 'react'
 
 const meta = {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import TableCell from './TableCell'
+import { TableCell } from './TableCell'
 
 const meta = {
   component: TableCell,

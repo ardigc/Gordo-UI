@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import Popover, { PopoverProps } from '../Popover/Popover'
-import MenuList, { MenuListProps } from '../MenuList/MenuList'
+import { Popover, PopoverProps } from '../Popover/Popover'
+import { MenuList, MenuListProps } from '../MenuList/MenuList'
 import classNames from 'classnames'
 export interface MenuProps extends Omit<PopoverProps, 'classes'> {
   children?: ReactNode

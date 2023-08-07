@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Menu, { MenuProps } from './Menu'
-import MenuItem from '../MenuItem/MenuItem'
-import Button from '../Button/Button'
+import { Menu, MenuProps } from './Menu'
+import { MenuItem } from '../MenuItem/MenuItem'
+import { Button } from '../Button/Button'
 import { MouseEventHandler, useState } from 'react'
 
 const meta = {
@@ -51,6 +51,6 @@ export const testButton: Story = {
     open: false,
     classes: { Popover: 'hover:bg-gray-600' },
     anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
-transformOrigin:{horizontal:'center', vertical:'top'}
+    transformOrigin: { horizontal: 'center', vertical: 'top' },
   },
 }
