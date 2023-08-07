@@ -110,7 +110,6 @@ const setPopoverPositionTopPosition = (
   popoverSize?: { height: number; width: number },
   mouseMove?: { x: number; y: number }
 ) => {
-  console.log(mouseMove)
   if (mouseMove) {
     if (!transformOrigin || !transformOrigin.vertical || !popoverSize) return 0
     if (transformOrigin.vertical === 'top') {
@@ -269,9 +268,6 @@ export const setPopoverPosition = (
       location
     )
 
-    // const transformX = setPopoverTransformX(currentRef)
-    // const transformY = setPopoverTransformY(currentRef)
-    // console.log(transformX, transformY)
     return { top: top, left: left }
   } else if (
     anchorReference === 'anchorPosition' ||
