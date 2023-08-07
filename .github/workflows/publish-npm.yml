@@ -13,7 +13,7 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
-      - run: npm version pach
+      - run: npm version patch
       - run: npm run build
       - run: npm publish
         env:
