@@ -1,17 +1,17 @@
 {
-  "name": "my-lib",
+  "name": "gordo-ui",
   "private": false,
   "version": "0.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/gordo-ui.umd.cjs",
+  "module": "./dist/gordo-ui.js",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/gordo-ui.js",
+      "require": "./dist/gordo-ui.umd.cjs"
     }
   },
   "scripts": {

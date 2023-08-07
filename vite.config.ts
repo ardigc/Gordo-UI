@@ -12,7 +12,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/main.tsx'),
       name: 'MyLib',
       // the proper extensions will be added
-      fileName: 'my-lib',
+      fileName: 'gordo-ui',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
