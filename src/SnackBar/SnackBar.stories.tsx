@@ -3,7 +3,7 @@ import SnackBar, { SnackBarProps } from './SnackBar'
 import { useState } from 'react'
 import Button from '../Button/Button'
 import { XIcon } from '../components/icons/Icons'
-import Alert from '../Alert/Alert'
+import { Alert } from '../Alert/Alert'
 
 const meta = {
   component: SnackBar,

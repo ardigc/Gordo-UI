@@ -33,7 +33,7 @@ export interface AlertProps extends Omit<PaperProps, 'children' | 'variant'> {
   slots?: { closeButton?: ElementType; closeIcon?: ElementType }
   slotProps?: { closeButton?: object; closeIcon?: object }
 }
-export default function Alert({
+export function Alert({
   children,
   severity = 'success',
   action,
