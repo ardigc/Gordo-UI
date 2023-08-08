@@ -219,7 +219,7 @@ Exports:
 #### Usage
 ```tsx
     <FormControl onSubmit={submitHandler} color='error'> 
-        <InputLabel>hola</InputLabel>
+        <InputLabel>Email</InputLabel>
         <Input name="email" /> <button type="submit">button</button>
     </FormControl>
 ```
@@ -239,3 +239,27 @@ Exports:
 ##### -  focused?: boolean
 ##### -  hiddenLabel?: boolean
 ##### -  required?: boolean
+
+---
+
+### &lt;FormHelper />
+#### Usage
+```tsx
+    <FormControl onSubmit={submitHandler} color='error'> 
+        <InputLabel>Email</InputLabel>
+        <Input name="email" /> <button type="submit">button</button>
+         <FormHelper>Helper text</FormHelper>
+    </FormControl>
+```
+
+#### Props
+**Props of the `DivElement` are also available.**
+
+##### -   children?: ReactNode
+##### -  className?: string
+##### -  component?: ElementType
+##### -  componentProps?: React.HTMLAttributes<HTMLElement>
+##### -  disabled?: boolean
+##### -  error?: boolean
+##### -  margin?: 'dense' | 'none'
+##### -  id?: string
