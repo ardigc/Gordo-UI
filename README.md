@@ -253,7 +253,6 @@ Exports:
 ```
 
 #### Props
-**Props of the `DivElement` are also available.**
 
 ##### -   children?: ReactNode
 ##### -  className?: string
@@ -263,3 +262,48 @@ Exports:
 ##### -  error?: boolean
 ##### -  margin?: 'dense' | 'none'
 ##### -  id?: string
+
+---
+
+### &lt;Input />
+#### Usage
+```tsx
+<Input autoFocus color='secondary'/>
+```
+
+#### Props
+
+##### -   autocomplete?: string
+##### -  id?: string
+##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'. Default: 'primary'
+##### -  autoFocus?: boolean
+##### -  className?: string
+##### -  classes?: {constainerClassName?: string,inputClassName?: string}
+##### -  components?: {Input?: ElementType, Container?: ElementType}
+##### -  componentsProps?: {container?: React.HTMLAttributes<HTMLElement>, input?: React.InputHTMLAttributes<HTMLInputElement>}
+##### - defaultValue?: string | number | ReadonlyArray<string> | undefined
+##### -  disabled?: boolean
+##### -  disaledUndeline?: boolean
+##### -  endAdornment?: ReactNode
+##### -  startAdornment?: ReactNode
+##### -  error?: boolean
+##### -  inputComponent?: ElementType
+##### -  inputProps?: object
+##### -  fullWidth?: boolean
+##### -  inputRef?: React.LegacyRef<HTMLInputElement> | undefined
+##### -  margin?: 'dense' | 'none'
+##### -  multiline?: boolean
+##### -  multilineTextAreaRef?: React.LegacyRef<HTMLTextAreaElement> | undefined
+##### -  rows?: number | string
+##### -  name?: string
+##### -  onChange?: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+##### -  onFocus?: () => void
+##### -  value?: string | ReadonlyArray<string> | number | undefined
+##### -  placeholder?: string | undefined
+##### -  readonly?: boolean
+##### -  required?: boolean
+##### -  type?: HTMLInputTypeAttribute
+##### -  label?: string | ReactNode
+##### -  variant?: 'filled' | 'outlined' | 'standard'. Default: 'standard'
+##### -  size?: 'medium' | 'small'. Default: 'medium'
+##### -  shrink?: boolean
