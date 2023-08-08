@@ -14,7 +14,7 @@ export interface CollapseProps {
   className?: string
   collapsedSize?: number | string
   component?: ElementType
-  orientation?: 'horizontal' | 'vertical'
+ // orientation?: 'horizontal' | 'vertical'
   easing?: 'ease-linear' | 'ease-in' | 'ease-out' | 'ease-in-out'
   timeout?: 0 | 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000
 }
