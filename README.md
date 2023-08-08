@@ -55,7 +55,7 @@ Exports:
 ### &lt;Alert />
 #### Usage
 ```tsx
-    <Alert {...args}>
+    <Alert className='bg-slate-200'>
       Content
     </Alert>
 ```
@@ -70,7 +70,54 @@ Exports:
 ### &lt;AlertTitle />
 #### Usage
 ```tsx
-    <Alert {...args}>
+    <Alert >
+      <AlertTitle>Title</AlertTitle>
+      Content
+    </Alert>
+```
+
+#### Props
+**Props of the DivElement are also available.**
+
+##### -   children: ReactNode
+##### -  className?: string
+
+---
+
+### &lt;Button />
+#### Usage
+```tsx
+    <Button onClick={clickHandle}>Content</Button>
+```
+
+#### Props
+**Props of the ButtonComponent and AnchorElement are also available.**
+
+##### -   children:  children?: ReactNode
+##### -  variant?: 'contained' | 'outlined' | 'text'
+##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'inherit'
+##### -  disabled?: boolean
+##### -  disableElevation?: boolean
+##### -  disableRipple?: boolean
+##### -  size?: 'small' | 'medium' | 'large'
+##### -  startIcon?: ReactNode
+##### -  endIcon?: ReactNode
+##### -  className?: string
+##### -  classes?: {buttonClassName?: string, rippleSpanClassName?: string }
+##### -  component?: ElementType
+##### -  fullWidth?: boolean
+##### -  id?: string
+##### -  href: string
+-If you use href the component will be a AnchorElement
+##### -  onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
+
+
+---
+
+### &lt;AlertTitle />
+#### Usage
+```tsx
+    <Alert >
       <AlertTitle>Title</AlertTitle>
       Content
     </Alert>
