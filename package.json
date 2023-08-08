@@ -1,7 +1,7 @@
 {
   "name": "gordo-ui",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "types": "./dist/gordo-ui.d.ts",
   "files": [
@@ -25,7 +25,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
+    "classnames": "^2.3.2"
+  },
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
