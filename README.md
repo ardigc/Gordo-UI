@@ -283,3 +283,24 @@ Exports:
 ##### -  variant?: 'filled' | 'outlined' | 'standard'. Default: 'standard'
 ##### -  size?: 'medium' | 'small'. Default: 'medium'
 ##### -  shrink?: boolean
+
+---
+
+### &lt;ImputLabel />
+#### Usage
+#### You can see at `FormControl` example
+
+#### Props
+
+##### -    children?: ReactNode
+##### -  className?: string
+##### -  htmlFor?: string
+##### -  disableAnimation?: boolean
+##### -  shrink?: boolean
+##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'. Default: 'primary'
+##### -  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>
+##### -  disabled?: boolean
+##### -  error?: boolean
+##### -  size?: 'medium' | 'small'. Default: 'medium'
+##### -  margin?: 'dense' | 'none'
+##### -  variant?: 'filled' | 'outlined' | 'standard'
