@@ -61,9 +61,19 @@ Exports:
 ```
 
 #### Props
-**Props of the Paper component are also available.**
-##### -   children: ReactNode
+**Props of the `Paper` component are also available.**
+##### -  children?: ReactNode
+##### -  severity?: 'error' | 'info' | 'success' | 'warning'. Default:'success'
+##### -  action?: ReactNode
+##### -  onClose?: (ev: MouseEvent<HTMLButtonElement>) => void
+##### -  variant?: 'filled' | 'outlined' | 'standard'. Default:'standard'
 ##### -  className?: string
+##### -  classes?: { Paper?: string, IconComponent?: string, ChildrenComponent?: string}
+##### -  closeText?: string. Default:'Close'
+##### -  icon?: ReactNode
+##### -  iconMapping?: {error?: ReactNode, info?: ReactNode, success?: ReactNode, warning?: ReactNode}
+##### -  slots?: { closeButton?: ElementType; closeIcon?: ElementType }
+##### -  slotProps?: { closeButton?: object; closeIcon?: object }
 
 ---
 
@@ -77,9 +87,9 @@ Exports:
 ```
 
 #### Props
-**Props of the DivElement are also available.**
+**Props of the `DivElement` are also available.**
 
-##### -   children: ReactNode
+##### -  children: ReactNode
 ##### -  className?: string
 
 ---
@@ -87,19 +97,19 @@ Exports:
 ### &lt;Button />
 #### Usage
 ```tsx
-    <Button onClick={clickHandle}>Content</Button>
+    <Button onClick={clickHandler}>Content</Button>
 ```
 
 #### Props
-**Props of the ButtonComponent and AnchorElement are also available.**
+**Props of the `ButtonComponent` and `AnchorElement` are also available.**
 
-##### -   children:  children?: ReactNode
-##### -  variant?: 'contained' | 'outlined' | 'text'
-##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'inherit'
+##### -  children:  children?: ReactNode
+##### -  variant?: 'contained' | 'outlined' | 'text'. Default:'text'
+##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'inherit'. Default:'primary'
 ##### -  disabled?: boolean
 ##### -  disableElevation?: boolean
 ##### -  disableRipple?: boolean
-##### -  size?: 'small' | 'medium' | 'large'
+##### -  size?: 'small' | 'medium' | 'large'. Default:'medium'
 ##### -  startIcon?: ReactNode
 ##### -  endIcon?: ReactNode
 ##### -  className?: string
@@ -108,23 +118,124 @@ Exports:
 ##### -  fullWidth?: boolean
 ##### -  id?: string
 ##### -  href: string
--If you use href the component will be a AnchorElement
+   - If you use href the component will be an `AnchorElement`
 ##### -  onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
 
 
 ---
 
-### &lt;AlertTitle />
+### &lt;IconButton />
 #### Usage
 ```tsx
-    <Alert >
-      <AlertTitle>Title</AlertTitle>
-      Content
-    </Alert>
+    <IconButton size='small'>
+      <SuccessIcon/>
+    </IconButton>
 ```
 
 #### Props
-**Props of the DivElement are also available.**
+**Props of the `ButtonComponent` and `AnchorElement` are also available.**
 
-##### -   children: ReactNode
+##### -  children?: ReactNode
+##### -  size?: 'small' | 'medium' | 'large'. Default:'medium'
+##### -  disableRipple?: boolean
+##### -  classes?: { buttonClassName?: string, rippleSpanClassName?: string}
+##### -  disabled?: boolean
+##### -  edge?: 'end' | 'start' | false
 ##### -  className?: string
+##### -  href: string
+   - If you use href the component will be an `AnchorElement`
+##### -  onClick?: (ev: MouseEvent<HTMLAnchorElement>) => void
+  
+---
+
+### &lt;ClickAway />
+#### Usage
+```tsx
+    <ClickAway onClickAway={clickAwayHandler}>
+          <TextField label="Select a film" select>
+            {options.map((option) => (
+              <Option value={option}>{option}</Option>
+            ))}
+          </TextField>
+    </ClickAway>
+```
+
+#### Props
+##### -  children: ReactElement<any, string | JSXElementConstructor<any>>
+##### -  onClickaway: (event: MouseEvent | TouchEvent) => void
+  
+---
+
+### &lt;Collapse />
+#### Usage
+```tsx
+ <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Dessert (100g serving)</TableCell>
+          <TableCell align="right">Calories</TableCell>
+          <TableCell align="right">Fat&nbsp;(g)</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <>
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.calories}</TableCell>
+            </TableRow>
+            <TableRow>
+              {' '}
+              <TableCell className="!p-0" colSpan={3}>
+                <Collapse collapsedSize='0px' timeout=0 open={true}>
+                  <div>
+                    <p>gola</p>
+                    <p>gola</p>
+                  </div>
+                </Collapse>
+              </TableCell>
+            </TableRow>
+          </>
+        ))}
+      </TableBody>
+    </Table>
+```
+
+#### Props
+**Props of the `Paper` component are also available.**
+##### -    children: ReactElement<any, string | JSXElementConstructor<any>>
+##### -  open?: boolean
+##### -  className?: string
+##### -  collapsedSize?: number | string
+##### -  component?: ElementType
+##### -  easing?: 'ease-linear' | 'ease-in' | 'ease-out' | 'ease-in-out'
+##### -  timeout?: 0 | 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000. Default: 500
+
+---
+
+### &lt;FormControl />
+#### Usage
+```tsx
+    <FormControl onSubmit={submitHandler} color='error'> 
+        <InputLabel>hola</InputLabel>
+        <Input name="email" /> <button type="submit">button</button>
+    </FormControl>
+```
+
+#### Props
+
+##### -  children?: ReactNode
+##### -  onSubmit?: (ev: FormEvent<HTMLFormElement>) => void
+##### -  variant?: 'filled' | 'outlined' | 'standard'. Default: 'outlined'
+##### -  margin?: 'dense' | 'none' | 'normal'. Default: 'normal'
+##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'. Default: 'primary'
+##### -  component?: ElementType
+##### -  fullWidth?: boolean
+##### -  className?: string
+##### -  disabled?: boolean
+##### -  error?: boolean
+##### -  focused?: boolean
+##### -  hiddenLabel?: boolean
+##### -  required?: boolean
