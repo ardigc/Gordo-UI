@@ -169,38 +169,14 @@ Exports:
 ### &lt;Collapse />
 #### Usage
 ```tsx
- <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>Dessert (100g serving)</TableCell>
-          <TableCell align="right">Calories</TableCell>
-          <TableCell align="right">Fat&nbsp;(g)</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map((row) => (
-          <>
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-            </TableRow>
-            <TableRow>
-              {' '}
-              <TableCell className="!p-0" colSpan={3}>
-                <Collapse collapsedSize='0px' timeout=0 open={true}>
+ <Button onClick={changeOpenFunc}>
+                <Collapse collapsedSize='0px' timeout=0 open={open}>
                   <div>
                     <p>gola</p>
                     <p>gola</p>
                   </div>
                 </Collapse>
-              </TableCell>
-            </TableRow>
-          </>
-        ))}
-      </TableBody>
-    </Table>
+</Button>             
 ```
 
 #### Props
