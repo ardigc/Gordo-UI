@@ -257,7 +257,7 @@ Exports:
 
 #### Props
 
-##### -   autocomplete?: string
+##### -  autocomplete?: string
 ##### -  id?: string
 ##### -  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'. Default: 'primary'
 ##### -  autoFocus?: boolean
@@ -364,3 +364,148 @@ You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
 
 ##### -  children?: ReactNode
 
+---
+
+### &lt;Paper />
+#### Usage
+```tsx
+<Paper elevation=11 >Content</Paper>
+```
+
+#### Props
+**Props of the `DivElement` component are also available.**
+
+
+##### -  children: ReactNode
+##### -  className?: string
+##### -  component?: ElementType
+##### -  elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14. Default: 4
+##### -  square?: boolean
+##### -  variant?: 'elevation' | 'outlined'. Default:'elevation'
+
+---
+
+### &lt;Paper />
+#### Usage
+```tsx
+<Button onClick={handleClick}>click aqui</Button>
+        <Popover
+          onClose={() => setOpen(false)}
+          anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+          transformOrigin={{ vertical: 'center', horizontal: 'right' }}
+          anchorReference='anchorEl'
+          anchorEl={anchorEl}
+          open={open}
+        >
+          <p>
+            The content of the Popover.
+          </p>
+        </Popover>
+```
+
+#### Props
+**Props of the `DivElement` component are also available.**
+
+
+##### -  children?: ReactNode
+##### -  open: boolean
+##### -  onClose?: () => void
+##### -  anchorReference?: 'anchorEl' | 'anchorPosition'. Default: 'anchorEl'
+##### -  anchorEl?: Element | (() => Element)
+##### -  anchorOrigin?: {horizontal?: 'center' | 'left' | 'right', vertical?: 'bottom' | 'center' | 'top'}. Default: vertical: 'top', horizontal: 'left'
+##### -  transformOrigin?: {horizontal?: 'center' | 'left' | 'right', vertical?: 'bottom' | 'center' | 'top'}. Default: vertical: 'top', horizontal: 'left'
+##### -  anchorPosition?: { left?: number; top?: number }. Default: top: 0, left: 0
+##### -  className?: string
+##### -  container?: Element | (() => Element)
+##### -  elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14. Default: 4
+##### -  marginThreshold?: number. Default: 16
+##### -  componentProps?: { paper?: () => void | object; root?: () => void | object }
+##### -  components?: { paper?: ElementType; root?: ElementType }
+##### -  id?: string
+##### -  disableTransition?: boolean
+##### -  classes?: { root?: string; paper?: string }
+
+---
+
+### &lt;SnackBar />
+#### Usage
+```tsx
+   <Button onClick={() => setOpen(!open)}>Hazme click</Button>
+   <SnackBar open={open} onClose={handleClose} />
+```
+
+#### Props
+**Props of the `DivElement` component are also available.**
+
+
+##### -    children?: ReactNode
+##### -  message?: ReactNode
+##### -  open?: boolean
+##### -  action?: ReactNode
+##### -  onClose?: (ev: Event | KeyboardEvent | null, reason: string) => void
+##### -  autoHideDuration?: number
+##### -  anchorOrigin?: {horizontal: 'center' | 'left' | 'right', vertical: 'bottom' | 'top'}. Default: vertical: 'bottom', horizontal: 'left'
+##### -  className?: string
+##### -  ContentProps?: PaperProps
+##### -  disableWindowBlurListener?: boolean
+##### -  key?: any
+##### -  resumeHideDuration?: number
+##### -  transition?: 'fade' | 'grown' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight'. Default: 'grown'
+
+---
+
+### &lt;Table />
+#### You can use `Table`, `TableBody`, `TableCell`, `TableContainer`, `TableFooter`, `TableHead`, `TablePagination`, `TableRow` and `TableSortLabel`
+#### Usage
+```tsx
+    <TableContainer component={Paper}>
+      <Table aria-label="custom pagination table">
+        <TableHead>
+              <TableCell>
+                Name
+              </TableCell>
+              <TableCell>
+                Calories
+              </TableCell>
+              <TableCell>
+                FAat
+              </TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+          {(rowsPerPage > 0
+            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : rows
+          ).map((row, index) => (
+            <TableRow key={index} id={`${index}`}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.calories}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.fat}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TablePagination
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+            />
+          </TableRow>
+        </TableFooter>
+      </Table>
+    </TableContainer>
+```
+
+#### Table Props
+**Props of the `TableElement` component are also available.**
+
+
+##### -    children?: ReactNode
