@@ -508,4 +508,87 @@ You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
 **Props of the `TableElement` component are also available.**
 
 
-##### -    children?: ReactNode
+##### -    children: ReactNode
+##### -  className?: string
+##### -  component?: ElementType
+##### -  padding?: 'checkbox' | 'none' | 'normal'. Default: 'normal'
+##### -  size?: 'medium' | 'small'. Default: 'medium'
+##### -  stickyHeader?: boolean
+
+#### TableBody Props
+**Props of the `TableSectionElement` component are also available.**
+
+
+##### -  children?: ReactNode
+##### -  className?: string
+##### -  component?: ElementType
+
+#### TableCell Props
+**Props of the `TableCellElement` component are also available.**
+
+#### - children?: ReactNode
+#### -  align?: 'center' | 'justify' | 'left' | 'right'. Default: 'left'
+#### -  className?: string
+#### -  component?: ElementType
+#### -  padding?: 'checkbox' | 'none' | 'normal'. Default: 'normal'
+#### -  size?: 'medium' | 'small'. Default: 'medium'
+#### -  variant?: 'body' | 'footer' | 'head'. Default: 'body'
+
+#### TableContainer Props
+**Props of the `DivElement` component are also available.**
+
+#### -  children: ReactNode
+#### -  component?: ElementType
+
+#### TableFooter Props
+**Props of the `TableSectionElement` component are also available.**
+
+#### -   children?: ReactNode
+#### -   className?: string
+#### -   component?: ElementType
+
+#### TableHead Props
+**Props of the `TableSectionElement` component are also available.**
+
+#### -   children?: ReactNode
+#### -   className?: string
+#### -   component?: ElementType
+
+#### TablePagination Props
+**Props of the `TableCellElement` component are also available.**
+
+#### -  count: number
+#### -  rowsPerPage: number
+#### -  page: number
+#### -  onPageChange: (event: React.MouseEvent | null, page: number) => void
+#### -  ActionsComponent?: ElementType
+#### -  backIconButtonProps?: ButtonPropsForButton
+#### -  nextIconButtonProps?: ButtonPropsForButton
+#### -  className?: string
+#### -  component?: ElementType
+#### -  labelDisplayedRows?: (from: number, to: number, count: number) => string
+#### -  labelRowsPerPage?: ReactNode
+#### -  onRowsPerPageChange?: (finalRows: number) => void
+#### -  rowsPerPageOptions?: Array<number | { label: string; value: number }>
+#### -  MenuProps?: { MenuProps?: MenuProps; MenuItemProps?: MenuItemProps }
+#### -  showFirstButton?: boolean
+#### -  showLastButton?: boolean
+
+#### TableRow Props
+**Props of the `TableRowElement` component are also available.**
+
+#### -  children?: ReactNode
+#### -  className?: string
+#### -  component?: ElementType
+#### -  hover?: boolean
+#### -  selected?: boolean
+
+#### TableSortLabel Props
+**Props of the `SpanElement` component are also available.**
+
+#### -  children?: ReactNode
+#### -  active?: boolean
+#### -  className?: string
+#### -  direction?: 'asc' | 'desc'. Default: 'asc'
+#### -  hideSortIcon?: boolean
+#### -  IconComponent?: ElementType
