@@ -304,3 +304,55 @@ Exports:
 ##### -  size?: 'medium' | 'small'. Default: 'medium'
 ##### -  margin?: 'dense' | 'none'
 ##### -  variant?: 'filled' | 'outlined' | 'standard'
+
+---
+
+### &lt;Menu />
+### 
+### &lt;MenuItem/>
+### and
+### &lt;MenuList/>
+
+#### Usage
+```tsx
+        <Menu
+          open={open}
+          onClose={onCloseHandler}
+          anchorEl={anchorEl}
+        >
+          <MenuItem divider onClick={onCloseHandler}>
+            opcion 1
+          </MenuItem>
+          <MenuItem onClick={onCloseHandler}>opcion 2</MenuItem>
+          <MenuItem onClick={onCloseHandler}>opcion 3</MenuItem>
+        </Menu>
+```
+You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
+
+#### Menu props
+**Props of the `Popover` component are also available.**
+
+##### -  children?: ReactNode
+##### -  open: boolean
+##### -  onClose?: () => void
+##### -  classes?: { Popover?: string; MenuList?: string }
+##### -  MenuListProps?: MenuListProps
+##### -  PopoverClasses?: { root?: string; paper?: string }
+
+#### MenuItem props
+**Props of the `LiElement` component are also available.**
+
+##### -  children?: ReactNode
+##### -  className?: string
+##### -  component?: ElementType
+##### -  dense?: boolean
+##### -  disableGutters?: boolean
+##### -  divider?: boolean
+##### -  onClick?: (ev: MouseEvent<HTMLLIElement>) => void
+##### -  selected?: boolean
+
+#### MenuList props
+**Props of the `UlElement` component are also available.**
+
+##### -  children?: ReactNode
+
