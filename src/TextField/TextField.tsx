@@ -33,7 +33,7 @@ export const TextFieldContext = createContext<InputContextType>({})
 //     </TextFieldContext.Provider>
 //   )
 // }
-export interface TextField {
+export interface TextFieldProps {
   label?: string
   variant?: 'filled' | 'outlined' | 'standard'
   classes?: {
@@ -100,7 +100,7 @@ export function TextField({
   margin = 'none',
   name,
   placeholder,
-}: TextField) {
+}: TextFieldProps) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
   const [opened, setOpened] = useState(false)

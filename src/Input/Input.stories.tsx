@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Input } from './Input'
+import { Input, InputProps } from './Input'
 
 const meta = {
   component: Input,
@@ -54,4 +54,15 @@ export const component: Story = {
       <div style={{ background: 'gray', width: '30px', height: '30px' }}></div>
     ),
   },
+}
+const TestFunc = ({ args }: { args: InputProps }) => {
+  return (
+    <nav className="flex justify-around top-0 sticky w-full items-center">
+      <Input {...args} />
+    </nav>
+  )
+}
+export const test: Story = {
+  render: (args) => <TestFunc args={args} />,
+  args: {},
 }

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { TextField } from './TextField'
+import { TextField, TextFieldProps } from './TextField'
 import { Option } from '../option/Option'
 const meta = {
   component: TextField,
@@ -299,5 +299,19 @@ export const TextArearows: Story = {
     onChange(ev) {
       console.log(ev.currentTarget.value)
     },
+  },
+}
+
+const TestFunc = ({ args }: { args: TextFieldProps }) => {
+  return (
+    <nav className="flex justify-around top-0 sticky w-full items-center">
+      <TextField {...args} />
+    </nav>
+  )
+}
+export const test: Story = {
+  render: (args) => <TestFunc args={args} />,
+  args: {
+    label: 'fdakfasl',
   },
 }

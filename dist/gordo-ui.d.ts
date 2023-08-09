@@ -941,9 +941,11 @@ export declare function TextField({
   margin,
   name,
   placeholder,
-}: TextField): JSX_2.Element
+}: TextFieldProps): JSX_2.Element
 
-export declare interface TextField {
+export declare const TextFieldContext: Context<InputContextType>
+
+export declare interface TextFieldProps {
   label?: string
   variant?: 'filled' | 'outlined' | 'standard'
   classes?: {
@@ -979,8 +981,6 @@ export declare interface TextField {
   name?: string
   placeholder?: string
 }
-
-export declare const TextFieldContext: Context<InputContextType>
 
 export declare function Tooltip({
   children,
