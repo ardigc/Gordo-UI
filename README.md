@@ -12,13 +12,21 @@ Check it Out
 npm i gordo-ui
 ```
 
-2. Pull any gordo-ui component into your component:
+2. You need to import the CSS styles. You can do this in your main JavaScript file using:
+```
+import '/node_modules/gordo-ui/dist/style.css';
+```
+   or in your main CSS file using:
+```
+@import '/node_modules/gordo-ui/dist/style.css';
+```
+
+3. Pull any gordo-ui component into your component:
    Example:
 ```
 import { Button } from 'gordo-ui';
 ```
-
-3. Make something awesome!
+4. Make something awesome!
 
 ## API
 
