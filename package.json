@@ -1,7 +1,7 @@
 {
   "name": "gordo-ui",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "types": "./dist/gordo-ui.d.ts",
   "files": [
@@ -33,6 +33,10 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ardigc/Gordo-UI.git"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.2.1",
