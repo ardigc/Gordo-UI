@@ -28260,15 +28260,7 @@ else {
     })
 }
 function fD() {
-  return /* @__PURE__ */ U.jsxs(U.Fragment, {
-    children: [
-      /* @__PURE__ */ U.jsx('div', {
-        className: 'flex bg-slate-100',
-        children: 'holiwi',
-      }),
-      /* @__PURE__ */ U.jsx('div', { children: 'jkass' }),
-    ],
-  })
+  return /* @__PURE__ */ U.jsx(U.Fragment, {})
 }
 var cE = { exports: {} }
 /*!
