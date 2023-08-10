@@ -59,6 +59,7 @@ export interface InputProps extends Omit<InputReactProps, 'size'> {
   variant?: 'filled' | 'outlined' | 'standard'
   size?: 'medium' | 'small'
   shrink?: boolean
+
 }
 export function Input({
   autocomplete,
@@ -95,6 +96,7 @@ export function Input({
   variant = 'standard',
   size = 'medium',
   label,
+  ...rest
 }: InputProps) {
   const [touched, setTouched] = useState(false)
   const UserInput = components?.Input || inputComponent
@@ -212,6 +214,7 @@ export function Input({
               readOnly={readonly}
               disabled={disabled}
               {...inputProps}
+              {...rest}
             />
             {endAdornment && (
               <div className={classNames('flex items-center pr-3')}>
