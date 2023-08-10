@@ -9,6 +9,7 @@ import { FocusEvent as FocusEvent_2 } from 'react';
 import { FormEvent } from 'react';
 import { HTMLAttributes } from 'react';
 import { HTMLInputTypeAttribute } from 'react';
+import { InputHTMLAttributes } from 'react';
 import { JSX as JSX_2 } from 'react/jsx-runtime';
 import { JSXElementConstructor } from 'react';
 import { KeyboardEvent as KeyboardEvent_2 } from 'react';
@@ -238,7 +239,7 @@ export declare interface InputLabelProps {
     variant?: 'filled' | 'outlined' | 'standard';
 }
 
-export declare interface InputProps {
+export declare interface InputProps extends Omit<InputReactProps, 'size'> {
     autocomplete?: string;
     id?: string;
     color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
@@ -283,6 +284,8 @@ export declare interface InputProps {
     size?: 'medium' | 'small';
     shrink?: boolean;
 }
+
+declare type InputReactProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
 export declare function LastPageIcon(): JSX_2.Element;
 
