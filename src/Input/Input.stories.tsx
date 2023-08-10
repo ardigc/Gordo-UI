@@ -64,5 +64,8 @@ const TestFunc = ({ args }: { args: InputProps }) => {
 }
 export const test: Story = {
   render: (args) => <TestFunc args={args} />,
-  args: {},
+  args: {
+    type: 'number',
+    max: 1999,
+  },
 }
