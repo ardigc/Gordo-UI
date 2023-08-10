@@ -31,8 +31,7 @@ const TestButtonFunc = ({ args }: { args: TooltipProps }) => {
           leaveDelay={args.leaveDelay}
         >
           <div>
-            <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
-            <p>akjaksjasklfj</p>
+            <p>Hello</p>
           </div>
         </Tooltip>
       </div>
@@ -45,11 +44,10 @@ export const testButton: Story = {
   args: {
     children: (
       <div>
-        <p>holasdfvadvqasfvasfgvzdfvasdfasdfsdfsdfsdf</p>
-        <p>akjaksjasklfj</p>
+        <p>Hello</p>
       </div>
     ),
-    title: 'Deletdhgsgdgdgddgdgdgdgdggde',
+    title: 'Tooltip Content',
     placement: 'left',
     // open: true,
     disableTransition: false,

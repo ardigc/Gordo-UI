@@ -2,15 +2,20 @@ import classNames from 'classnames'
 import React, {
   ChangeEvent,
   ChangeEventHandler,
+  DetailedHTMLProps,
   HTMLInputTypeAttribute,
+  InputHTMLAttributes,
   useContext,
   useState,
 } from 'react'
 import { ClickAway } from '../ClickAway/ClickAway'
 import { ElementType, ReactNode } from 'react'
 import { FormControlContext } from '../FormControl/FormControl'
-
-export interface InputProps {
+type InputReactProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>
+export interface InputProps extends Omit<InputReactProps, 'size'> {
   autocomplete?: string
   id?: string
   color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
