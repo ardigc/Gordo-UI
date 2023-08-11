@@ -29,8 +29,6 @@ export function ClickAway({
     }
   }, [clickInside])
   return (
-    // <div className="inline-flex" ref={targetRef}>
     <>{React.cloneElement(children, { ref: targetRef })}</>
-    // </div>
   )
 }
