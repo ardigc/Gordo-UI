@@ -7,12 +7,14 @@ import { Dispatch } from 'react';
 import { ElementType } from 'react';
 import { FocusEvent as FocusEvent_2 } from 'react';
 import { FormEvent } from 'react';
+import { FormHTMLAttributes } from 'react';
 import { HTMLAttributes } from 'react';
 import { HTMLInputTypeAttribute } from 'react';
 import { InputHTMLAttributes } from 'react';
 import { JSX as JSX_2 } from 'react/jsx-runtime';
 import { JSXElementConstructor } from 'react';
 import { KeyboardEvent as KeyboardEvent_2 } from 'react';
+import { LabelHTMLAttributes } from 'react';
 import { LiHTMLAttributes } from 'react';
 import { MouseEvent as MouseEvent_2 } from 'react';
 import { default as React_2 } from 'react';
@@ -105,9 +107,9 @@ export declare function ClickAway({ onClickaway, children, }: {
     onClickaway: (event: MouseEvent | TouchEvent) => void;
 }): JSX_2.Element;
 
-export declare function Collapse({ children, open, className, collapsedSize, component, easing, timeout, }: CollapseProps): JSX_2.Element;
+export declare function Collapse({ children, open, className, collapsedSize, component, easing, timeout, ...rest }: CollapseProps): JSX_2.Element;
 
-export declare interface CollapseProps {
+export declare interface CollapseProps extends DivReactProps_2 {
     children: ReactElement<any, string | JSXElementConstructor<any>>;
     open?: boolean;
     className?: string;
@@ -156,13 +158,17 @@ declare type DivReactProps_2 = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,
 
 declare type DivReactProps_3 = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
+declare type DivReactProps_4 = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
+declare type DivReactProps_5 = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
 export declare function ErrorIcon(): JSX_2.Element;
 
 export declare function FirstPageIcon(): JSX_2.Element;
 
 export declare function FirstPageIconDis(): JSX_2.Element;
 
-export declare function FormControl({ children, onSubmit, variant, margin, fullWidth, className, component, disabled, error, color, focused, hiddenLabel, required, }: FormControlProps): JSX_2.Element;
+export declare function FormControl({ children, onSubmit, variant, margin, fullWidth, className, component, disabled, error, color, focused, hiddenLabel, required, ...rest }: FormControlProps): JSX_2.Element;
 
 export declare const FormControlContext: Context<FormControlContextType>;
 
@@ -180,7 +186,7 @@ export declare type FormControlContextType = {
     contextRequired?: boolean;
 };
 
-export declare interface FormControlProps {
+export declare interface FormControlProps extends formReactProps {
     children?: ReactNode;
     onSubmit?: (ev: FormEvent<HTMLFormElement>) => void;
     variant?: 'filled' | 'outlined' | 'standard';
@@ -196,9 +202,9 @@ export declare interface FormControlProps {
     required?: boolean;
 }
 
-export declare function FormHelper({ children, className, component, componentProps, disabled, error, margin, id, }: FormHelperProps): JSX_2.Element;
+export declare function FormHelper({ children, className, component, componentProps, disabled, error, margin, id, ...rest }: FormHelperProps): JSX_2.Element;
 
-export declare interface FormHelperProps {
+export declare interface FormHelperProps extends paragraphReactProps {
     children?: ReactNode;
     className?: string;
     component?: ElementType;
@@ -209,11 +215,13 @@ export declare interface FormHelperProps {
     id?: string;
 }
 
+declare type formReactProps = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
+
 export declare function IconButton({ children, size, onClick, href, disableRipple, disabled, edge, className, classes, ...rest }: ButtonPropsForAnchor_2 | ButtonPropsForButton_2): JSX_2.Element;
 
 export declare function InfoIcon(): JSX_2.Element;
 
-export declare function Input({ autocomplete, autoFocus, id, error, color, classes, components, componentsProps, defaultValue, disabled, disaledUndeline, endAdornment, inputComponent, inputProps, fullWidth, margin, multiline, inputRef, multilineTextAreaRef, rows, startAdornment, name, value, placeholder, readonly, required, type, shrink, onChange, onFocus, className, variant, size, label, }: InputProps): JSX_2.Element;
+export declare function Input({ autocomplete, autoFocus, id, error, color, classes, components, componentsProps, defaultValue, disabled, disaledUndeline, endAdornment, inputComponent, inputProps, fullWidth, margin, multiline, inputRef, multilineTextAreaRef, rows, startAdornment, name, value, placeholder, readonly, required, type, shrink, onChange, onFocus, className, variant, size, label, ...rest }: InputProps): JSX_2.Element;
 
 export declare type InputContextType = {
     option?: string | ReadonlyArray<string> | number | undefined;
@@ -222,9 +230,9 @@ export declare type InputContextType = {
     setOpened?: Dispatch<SetStateAction<boolean>>;
 };
 
-export declare function InputLabel({ children, htmlFor, className, disableAnimation, shrink, error, color, labelProps, disabled, margin, size, variant, }: InputLabelProps): JSX_2.Element;
+export declare function InputLabel({ children, htmlFor, className, disableAnimation, shrink, error, color, labelProps, disabled, margin, size, variant, ...rest }: InputLabelProps): JSX_2.Element;
 
-export declare interface InputLabelProps {
+export declare interface InputLabelProps extends labelReactProps {
     children?: ReactNode;
     className?: string;
     htmlFor?: string;
@@ -287,6 +295,10 @@ export declare interface InputProps extends Omit<InputReactProps, 'size'> {
 
 declare type InputReactProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
+declare type InputReactProps_2 = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+
+declare type labelReactProps = DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
+
 export declare function LastPageIcon(): JSX_2.Element;
 
 export declare function LastPageIconDis(): JSX_2.Element;
@@ -335,10 +347,10 @@ export declare function NextPageIcon(): JSX_2.Element;
 
 export declare function NextPageIconDis(): JSX_2.Element;
 
-declare function Option_2({ children, className, onClick, value, }: OptionProps): JSX_2.Element;
+declare function Option_2({ children, className, onClick, value, ...rest }: OptionProps): JSX_2.Element;
 export { Option_2 as Option }
 
-export declare interface OptionProps {
+export declare interface OptionProps extends DivReactProps_3 {
     children?: ReactNode;
     className?: string;
     onClick?: (ev: MouseEvent_2<HTMLDivElement>) => void;
@@ -357,6 +369,8 @@ export declare interface PaperProps extends PaperReactProps {
 }
 
 declare type PaperReactProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
+declare type paragraphReactProps = DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
 
 export declare function Popover({ children, open, onClose, anchorReference, anchorEl, anchorOrigin, transformOrigin, anchorPosition, className, container, elevation, components, marginThreshold, componentProps, id, disableTransition, classes, }: PopoverProps): JSX_2.Element;
 
@@ -404,7 +418,7 @@ export declare function PrevPageIconDis(): JSX_2.Element;
 
 export declare function RenderComponent({ children, className, marginThreshold, anchorEl, anchorPosition, transformOrigin, anchorReference, anchorOrigin, components, ...rest }: RenderComponentProps): JSX_2.Element;
 
-export declare interface RenderComponentProps extends DivReactProps_2 {
+export declare interface RenderComponentProps extends DivReactProps_4 {
     children: ReactNode;
     className: string;
     marginThreshold: number;
@@ -450,7 +464,7 @@ export declare const setPopoverPosition: (anchorReference: 'anchorEl' | 'anchorP
 
 export declare function SnackBar({ children, message, open, action, onClose, autoHideDuration, anchorOrigin, transition, className, ContentProps, disableWindowBlurListener, key, resumeHideDuration, ...rest }: SnackBarProps): JSX_2.Element;
 
-export declare interface SnackBarProps extends DivReactProps_3 {
+export declare interface SnackBarProps extends DivReactProps_5 {
     children?: ReactNode;
     message?: ReactNode;
     open?: boolean;
@@ -555,11 +569,11 @@ export declare interface TableProps extends TableReactPops {
 
 declare type TableReactPops = DetailedHTMLProps<TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
 
-export declare function TextField({ label, variant, error, color, defaultValue, disabled, inputRef, autoFocus, id, value, rows, select, required, type, classes, onChange, disableUnderline, multiLine, TextAreaRef, children, readOnly, hiddenLabel, inputProps, helperText, className, fullWidth, size, margin, name, placeholder, }: TextFieldProps): JSX_2.Element;
+export declare function TextField({ label, variant, error, color, defaultValue, disabled, inputRef, autoFocus, id, value, rows, select, required, type, classes, onChange, disableUnderline, multiLine, TextAreaRef, children, readOnly, hiddenLabel, inputProps, helperText, className, fullWidth, size, margin, name, placeholder, ...rest }: TextFieldProps): JSX_2.Element;
 
 export declare const TextFieldContext: Context<InputContextType>;
 
-export declare interface TextFieldProps {
+export declare interface TextFieldProps extends Omit<InputReactProps_2, 'size' | 'onFocus'> {
     label?: string;
     variant?: 'filled' | 'outlined' | 'standard';
     classes?: {
@@ -596,7 +610,7 @@ export declare interface TextFieldProps {
     placeholder?: string;
 }
 
-export declare function Tooltip({ children, title, placement, open, disableTransition, arrow, followCursor, classes, components, componentsProps, disableFocusListener, disableHoverListener, disableTouchListener, enterDelay, enterNextDelay, enterTouchDelay, id, leaveDelay, onClose, onOpen, className, }: TooltipProps): JSX_2.Element;
+export declare function Tooltip({ children, title, placement, open, disableTransition, arrow, followCursor, classes, components, componentsProps, disableFocusListener, disableHoverListener, disableTouchListener, enterDelay, enterNextDelay, enterTouchDelay, id, leaveDelay, onClose, onOpen, className, ...rest }: TooltipProps): JSX_2.Element;
 
 export declare const TooltipContext: Context<{
     placement?: "top" | "left" | "right" | "bottom" | "bottom-end" | "bottom-start" | "left-end" | "left-start" | "right-end" | "right-start" | "top-end" | "top-start" | undefined;
@@ -606,7 +620,7 @@ export declare const TooltipContext: Context<{
     } | undefined;
 }>;
 
-export declare interface TooltipProps {
+export declare interface TooltipProps extends Omit<PopoverProps, 'open' | 'onClose' | 'components' | 'classes'> {
     children: ReactNode;
     title?: ReactNode;
     placement?: 'bottom-end' | 'bottom-start' | 'bottom' | 'left-end' | 'left-start' | 'left' | 'right-end' | 'right-start' | 'right' | 'top-end' | 'top-start' | 'top';
