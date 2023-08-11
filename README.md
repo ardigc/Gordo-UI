@@ -937,6 +937,8 @@ You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
 ```
 
 #### Props
+**Props of the `PopoverElement` component are also available.**
+
 
 ##### - children: ReactNode
 
@@ -982,7 +984,7 @@ You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
 
 ---
 
-### &lt;Tooltip />
+### &lt;Option />
 
 #### Usage
 

@@ -13,7 +13,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { Popover } from '../Popover/Popover'
+import { Popover, PopoverProps } from '../Popover/Popover'
 import classNames from 'classnames'
 export const TooltipContext = createContext<{
   placement?:
@@ -31,7 +31,7 @@ export const TooltipContext = createContext<{
     | 'top'
   mouseMove?: { x: number; y: number }
 }>({})
-export interface TooltipProps {
+export interface TooltipProps extends Omit<PopoverProps, 'open'|'onClose'|'components'|'classes'> {
   children: ReactNode
   title?: ReactNode
   placement?:
@@ -107,6 +107,7 @@ export function Tooltip({
   onClose,
   onOpen,
   className,
+  ...rest
 }: TooltipProps) {
   const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -284,6 +285,7 @@ export function Tooltip({
           elevation={0}
           classes={{ root: 'pointer-events-none' }}
           disableTransition={disableTransition}
+          {...rest}
         >
           <TooltipComponent
             id={id}
