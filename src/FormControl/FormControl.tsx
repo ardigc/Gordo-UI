@@ -66,6 +66,7 @@ export function FormControl({
   focused,
   hiddenLabel,
   required,
+  ...rest
 }: FormControlProps) {
   const [contextTouched, setTouched] = useState(false)
   const [contextLabel, setLabel] = useState<ReactNode>('')
@@ -90,6 +91,7 @@ export function FormControl({
         })}
         onFocus={() => setTouched(true)}
         onSubmit={onSubmit}
+        {...rest}
       >
         <FormControlContext.Provider
           value={{
