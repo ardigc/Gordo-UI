@@ -1,7 +1,10 @@
-import { MouseEvent, MouseEventHandler, ReactNode, useContext } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, MouseEvent, MouseEventHandler, ReactNode, useContext } from 'react'
 import { TextFieldContext } from '../TextField/TextField'
-
-export interface OptionProps {
+type DivReactProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+export interface OptionProps extends DivReactProps {
   children?: ReactNode
   className?: string
   onClick?: (ev: MouseEvent<HTMLDivElement>) => void
@@ -13,6 +16,7 @@ export function Option({
   className = 'cursor-pointer hover:bg-slate-200',
   onClick,
   value,
+  ...rest
 }: OptionProps) {
   const { handleOptionClick, setOpened } = useContext(TextFieldContext)
 
@@ -27,7 +31,7 @@ export function Option({
   }
 
   return (
-    <div onClick={clickHandler} className={className}>
+    <div onClick={clickHandler} className={className} {...rest}>
       {children}
     </div>
   )
