@@ -247,9 +247,9 @@ Exports:
 ```
 
 #### Props
+
 **Props of the `DivElement` are also available.**
 
-**Props of the `Paper` component are also available.**
 
 ##### - children: ReactElement<any, string | JSXElementConstructor<any>>
 
@@ -279,6 +279,7 @@ Exports:
 ```
 
 #### Props
+
 **Props of the `FormElement` are also available.**
 
 ##### - children?: ReactNode
