@@ -352,7 +352,7 @@ Exports:
 <Input autoFocus color="secondary" />
 ```
 
-**Props of the `Input` component are also available.**
+**Props of the `InputElement` component are also available.**
 
 #### Props
 
@@ -433,6 +433,8 @@ Exports:
 #### You can see at `FormControl` example
 
 #### Props
+**Props of the `LabelElement` component are also available.**
+
 
 ##### - children?: ReactNode
 

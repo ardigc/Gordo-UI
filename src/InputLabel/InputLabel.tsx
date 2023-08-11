@@ -1,8 +1,9 @@
 import classNames from 'classnames'
-import { useContext, ReactNode } from 'react'
+import { useContext, ReactNode, DetailedHTMLProps, LabelHTMLAttributes } from 'react'
 import { FormControlContext } from '../FormControl/FormControl'
 
-export interface InputLabelProps {
+type labelReactProps =DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>
+export interface InputLabelProps extends labelReactProps {
   children?: ReactNode
   className?: string
   htmlFor?: string
@@ -29,6 +30,7 @@ export function InputLabel({
   margin,
   size = 'medium',
   variant,
+  ...rest
 }: InputLabelProps) {
   const {
     contextVariant,
@@ -77,6 +79,7 @@ export function InputLabel({
         [className || '']: className,
       })}
       {...labelProps}
+      {...rest}
     >
       {children}
     </label>
