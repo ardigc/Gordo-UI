@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import React, {
+  DetailedHTMLProps,
   ElementType,
+  HTMLAttributes,
   JSXElementConstructor,
   ReactElement,
   useEffect,
@@ -8,13 +10,17 @@ import React, {
   useState,
 } from 'react'
 
-export interface CollapseProps {
+type DivReactProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+
+export interface CollapseProps extends DivReactProps {
   children: ReactElement<any, string | JSXElementConstructor<any>>
   open?: boolean
   className?: string
   collapsedSize?: number | string
   component?: ElementType
- // orientation?: 'horizontal' | 'vertical'
   easing?: 'ease-linear' | 'ease-in' | 'ease-out' | 'ease-in-out'
   timeout?: 0 | 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000
 }
@@ -26,6 +32,7 @@ export function Collapse({
   component,
   easing,
   timeout = 500,
+  ...rest
 }: CollapseProps) {
   const childrenRef = useRef<HTMLElement>(null)
   const [childrenHeight, setChildrenHeight] = useState(0)
@@ -58,6 +65,7 @@ export function Collapse({
         'duration-700': timeout === 700,
         'duration-1000': timeout === 1000,
       })}
+      {...rest}
     >
       {/* {children} */}
       <>{React.cloneElement(children, { ref: childrenRef })}</>

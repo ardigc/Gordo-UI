@@ -232,6 +232,7 @@ Exports:
 ---
 
 ### &lt;Collapse />
+**Props of the `DivElement` are also available.**
 
 #### Usage
 
