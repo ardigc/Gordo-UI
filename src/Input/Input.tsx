@@ -252,6 +252,7 @@ export function Input({
             }}
             disabled={disabled}
             {...inputProps}
+            {...rest}
           />
         )}
         {variant === 'outlined' && (

@@ -556,7 +556,7 @@ You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
 
 ---
 
-### &lt;Paper />
+### &lt;Popover />
 
 #### Usage
 
