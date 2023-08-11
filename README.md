@@ -859,6 +859,8 @@ You can wrap some `MenuItem` with a `MenuList` if you don´t want a Popover
 ```
 
 #### Props
+**Props of the `InputElement` component are also available.**
+
 
 ##### - label?: string
 

@@ -8,6 +8,8 @@ import {
   createContext,
   useState,
   useCallback,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
 } from 'react'
 import classNames from 'classnames'
 import { ClickAway } from '../ClickAway/ClickAway'
@@ -23,17 +25,11 @@ export type InputContextType = {
   setOpened?: Dispatch<SetStateAction<boolean>>
 }
 export const TextFieldContext = createContext<InputContextType>({})
-// export function TextFieldProvider({ children }: { children: ReactNode }) {
-//   const [option, setOption] = useState<
-//     string | ReadonlyArray<string> | number | undefined
-//   >()
-//   return (
-//     <TextFieldContext.Provider value={{ option, setOption }}>
-//       {children}
-//     </TextFieldContext.Provider>
-//   )
-// }
-export interface TextFieldProps {
+type InputReactProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>
+export interface TextFieldProps extends Omit<InputReactProps, 'size'|'onFocus'> {
   label?: string
   variant?: 'filled' | 'outlined' | 'standard'
   classes?: {
@@ -100,6 +96,7 @@ export function TextField({
   margin = 'none',
   name,
   placeholder,
+  ...rest
 }: TextFieldProps) {
   const [touched, setTouched] = useState(false)
   const [ComponentValue, setValue] = useState(value)
@@ -191,6 +188,7 @@ export function TextField({
           }}
           className={className}
           {...inputProps}
+          {...rest}
         />
 
         <TextFieldContext.Provider value={{ handleOptionClick, setOpened }}>
