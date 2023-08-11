@@ -7,6 +7,8 @@ import {
   Dispatch,
   SetStateAction,
   ElementType,
+  DetailedHTMLProps,
+  FormHTMLAttributes,
 } from 'react'
 import { ClickAway } from '../ClickAway/ClickAway'
 
@@ -33,8 +35,9 @@ export type FormControlContextType = {
   contextRequired?: boolean
 }
 export const FormControlContext = createContext<FormControlContextType>({})
+type formReactProps= DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>,HTMLFormElement>
 
-export interface FormControlProps {
+export interface FormControlProps extends formReactProps {
   children?: ReactNode
   onSubmit?: (ev: FormEvent<HTMLFormElement>) => void
   variant?: 'filled' | 'outlined' | 'standard'

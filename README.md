@@ -232,7 +232,6 @@ Exports:
 ---
 
 ### &lt;Collapse />
-**Props of the `DivElement` are also available.**
 
 #### Usage
 
@@ -248,6 +247,7 @@ Exports:
 ```
 
 #### Props
+**Props of the `DivElement` are also available.**
 
 **Props of the `Paper` component are also available.**
 
@@ -279,6 +279,7 @@ Exports:
 ```
 
 #### Props
+**Props of the `FormElement` are also available.**
 
 ##### - children?: ReactNode
 
