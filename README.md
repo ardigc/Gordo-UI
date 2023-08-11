@@ -323,6 +323,8 @@ Exports:
 ```
 
 #### Props
+**Props of the `ParagraphElement` are also available.**
+
 
 ##### - children?: ReactNode
 

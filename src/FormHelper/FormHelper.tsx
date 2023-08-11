@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import { ReactNode, ElementType, useContext } from 'react'
+import { ReactNode, ElementType, useContext, DetailedHTMLProps, HTMLAttributes } from 'react'
 import { FormControlContext } from '../FormControl/FormControl'
-
-export interface FormHelperProps {
+type paragraphReactProps= DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>
+export interface FormHelperProps extends paragraphReactProps {
   children?: ReactNode
   className?: string
   component?: ElementType
@@ -21,6 +21,7 @@ export function FormHelper({
   error,
   margin,
   id,
+  ...rest
 }: FormHelperProps) {
   const RederComponent = component ? component : 'p'
   const { contextVariant, contextColor, contextDisabled } =
@@ -39,6 +40,7 @@ export function FormHelper({
         [className || '']: className,
       })}
       {...componentProps}
+      {...rest}
     >
       {children}
     </RederComponent>
