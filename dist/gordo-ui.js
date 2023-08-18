@@ -1,3 +1,4 @@
+"use client";
 import pf, { useState as Rn, useRef as ms, useEffect as Np, createContext as zp, useContext as ys, useCallback as Jk } from "react";
 function eD(_) {
   return _ && _.__esModule && Object.prototype.hasOwnProperty.call(_, "default") ? _.default : _;
