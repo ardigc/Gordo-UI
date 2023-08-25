@@ -93,6 +93,7 @@ const TestButtonFunc = ({ args }: { args: PopoverProps }) => {
         anchorPosition={args.anchorPosition}
         anchorEl={anchorEl}
         open={open}
+        componentProps={{ paper: { className: 'hol' } }}
         className={args.className}
         container={args.container}
         elevation={args.elevation}
