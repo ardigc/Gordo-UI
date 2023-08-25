@@ -673,8 +673,8 @@ export declare interface PopoverProps extends PopoverReactProps {
   elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
   marginThreshold?: number
   componentProps?: {
-    paper?: () => void | object
-    root?: () => void | object
+    paper?: Omit<PaperProps, 'children'>
+    root?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
   }
   components?: {
     paper?: ElementType
