@@ -1,9 +1,21 @@
 import classNames from 'classnames'
-import { ElementType, ReactNode, useEffect, useState } from 'react'
+import {
+  DetailedHTMLProps,
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react'
 
 import { createPortal } from 'react-dom'
 import { RenderComponent } from './RenderComponent'
-export interface PopoverProps {
+
+type PopoverReactProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+export interface PopoverProps extends PopoverReactProps {
   children?: ReactNode
   open: boolean
   onClose?: () => void
@@ -50,6 +62,7 @@ export function Popover({
   id,
   disableTransition,
   classes,
+  ...rest
 }: PopoverProps) {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -78,6 +91,7 @@ export function Popover({
             className={classNames('fixed inset-0 z-[1300] ', {
               [classes?.root || '']: classes?.root,
             })}
+            {...rest}
           >
             <div
               onClick={onClose}
