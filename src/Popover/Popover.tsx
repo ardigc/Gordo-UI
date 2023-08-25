@@ -10,6 +10,7 @@ import {
 
 import { createPortal } from 'react-dom'
 import { RenderComponent } from './RenderComponent'
+import { PaperProps } from '../main'
 
 type PopoverReactProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -34,7 +35,7 @@ export interface PopoverProps extends PopoverReactProps {
   container?: Element | (() => Element)
   elevation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
   marginThreshold?: number
-  componentProps?: { paper?: () => void | object; root?: () => void | object }
+  componentProps?: { paper?: PaperProps; root?: () => void | object }
   components?: { paper?: ElementType; root?: ElementType }
   id?: string
   disableTransition?: boolean
