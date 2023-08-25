@@ -37,7 +37,7 @@ export interface PopoverProps extends PopoverReactProps {
   marginThreshold?: number
   componentProps?: {
     paper?: Omit<PaperProps, 'children'>
-    root?: () => void | object
+    root?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
   }
   components?: { paper?: ElementType; root?: ElementType }
   id?: string
