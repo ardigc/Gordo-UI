@@ -31,7 +31,11 @@ export const TooltipContext = createContext<{
     | 'top'
   mouseMove?: { x: number; y: number }
 }>({})
-export interface TooltipProps extends Omit<PopoverProps, 'open'|'onClose'|'components'|'classes'> {
+export interface TooltipProps
+  extends Omit<
+    PopoverProps,
+    'open' | 'onClose' | 'components' | 'classes' | 'title'
+  > {
   children: ReactNode
   title?: ReactNode
   placement?:
