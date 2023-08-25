@@ -1,4 +1,4 @@
-(function(De,ze){typeof exports=="object"&&typeof module<"u"?ze(exports,require("react")):typeof define=="function"&&define.amd?define(["exports","react"],ze):(De=typeof globalThis<"u"?globalThis:De||self,ze(De.GordoUI={},De.React))})(this,function(De,ze){"use strict";const qD="";function wE(_){return _&&_.__esModule&&Object.prototype.hasOwnProperty.call(_,"default")?_.default:_}var Nm={exports:{}},df={};/**
+(function(De,ze){typeof exports=="object"&&typeof module<"u"?ze(exports,require("react")):typeof define=="function"&&define.amd?define(["exports","react"],ze):(De=typeof globalThis<"u"?globalThis:De||self,ze(De.GordoUI={},De.React))})(this,function(De,ze){"use strict";"use client";const qD="";function wE(_){return _&&_.__esModule&&Object.prototype.hasOwnProperty.call(_,"default")?_.default:_}var Nm={exports:{}},df={};/**
  * @license React
  * react-jsx-runtime.production.min.js
  *

@@ -19,6 +19,7 @@ export default defineConfig({
         globals: {
           react: 'React',
         },
+      banner: "'use client';",
       },
     },
   },
