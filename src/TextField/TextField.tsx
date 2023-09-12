@@ -29,7 +29,8 @@ type InputReactProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >
-export interface TextFieldProps extends Omit<InputReactProps, 'size'|'onFocus'> {
+export interface TextFieldProps
+  extends Omit<InputReactProps, 'size' | 'onFocus'> {
   label?: string
   variant?: 'filled' | 'outlined' | 'standard'
   classes?: {
@@ -149,7 +150,6 @@ export function TextField({
         )}
 
         <Input
-          id="input"
           disabled={disabled}
           defaultValue={defaultValue}
           autoFocus={autoFocus}
