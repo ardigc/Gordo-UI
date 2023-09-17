@@ -31,13 +31,6 @@ export interface RenderComponentProps extends DivReactProps {
     vertical?: 'bottom' | 'center' | 'top'
   }
   components?: { paper?: ElementType; root?: ElementType }
-  // screenVariation?: {
-  //   initialScreenW: number | null
-  //   initialScreenH: number | null
-  //   currentScreenW: number | null
-  //   currentScreenH: number | null
-  // }
-  // id: string
 }
 export function RenderComponent({
   children,
@@ -50,12 +43,9 @@ export function RenderComponent({
   anchorOrigin,
   components,
   ...rest
-}: // screenVariation,
-// id,
-RenderComponentProps) {
+}: RenderComponentProps) {
   const popoverRef = useRef<HTMLDivElement>(null)
-  // const triggerRef = useRef<HTMLDivElement>(null);
-  // const [positioned, setPosition] = useState({ x: 0, y: 0 })
+
   const [location, setLocation] = useState<DOMRect>()
   const [popoverSize, setpopoverSize] = useState<{
     height: number
@@ -74,18 +64,8 @@ RenderComponentProps) {
       height: popover.offsetHeight,
       width: popover.offsetWidth,
     })
-    //   if (setContextPopoverPosition) {
 
-    //     setContextPopoverPosition({
-    //       height: popover.offsetHeight,
-    //       width: popover.offsetWidth,
-    //       left: popover.offsetLeft,
-    //       top:popover.offsetTop,
-
-    //   })
-    // }
     animationFrameId = requestAnimationFrame(updatePosition)
-    // updatePosition()
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId)
@@ -98,14 +78,6 @@ RenderComponentProps) {
     if (anchorEl) {
       const rect = resolveAnchorEl(anchorEl).getBoundingClientRect()
       setLocation(rect)
-      // if (setAnchorRect) {
-
-      //   setAnchorRect(rect)
-      // }
-      // setPosition({
-      //   x: rect.left + window.scrollX,
-      //   y: rect.top + window.scrollY,
-      // })
     }
     animationFrameId = requestAnimationFrame(updatePosition)
   }
@@ -129,8 +101,6 @@ RenderComponentProps) {
 
   return (
     <RenderComponent
-      // id={id}
-
       ref={popoverRef}
       style={{
         top: position?.top
@@ -138,16 +108,9 @@ RenderComponentProps) {
           : position?.top,
         left: position?.left
           ? position?.left + leftMargin(placement)
-          : // -
-            // (screenVariation?.currentScreenW && screenVariation.initialScreenW
-            //   ? screenVariation?.initialScreenW -
-            //     screenVariation?.initialScreenW
-            //   : 0)
-            position?.left,
-        // translate: `${position?.transformX} ${position?.transformY}`,
+          : position?.left,
       }}
       className={classNames({ [className || '']: className })}
-      // className='absolute'
       {...rest}
     >
       {children}

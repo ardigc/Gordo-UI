@@ -43,10 +43,6 @@ export interface PopoverProps extends PopoverReactProps {
   id?: string
   disableTransition?: boolean
   classes?: { root?: string; paper?: string }
-  // Transition component will be render when we implent transition library
-  // TransitionComponent?: ElementType
-  // transitionDuration?:'auto'| number| { appear?: number, enter?: number, exit?: number }
-  // TransitionProps?: object
 }
 export function Popover({
   children,
@@ -73,6 +69,9 @@ export function Popover({
   useEffect(() => {
     if (open) {
       setIsOpen(true)
+    }
+    if (!open && disableTransition) {
+      setIsOpen(false)
     }
   }, [open])
   const RenderRoot = components?.root ? components.root : 'div'
@@ -110,7 +109,6 @@ export function Popover({
               anchorPosition={anchorPosition}
               anchorReference={anchorReference}
               transformOrigin={transformOrigin}
-              // screenVariation={screenVariation}
               anchorOrigin={anchorOrigin}
               className={classNames(
                 'absolute  bg-transparent rounded-[4px]  ',
