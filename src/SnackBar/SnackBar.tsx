@@ -153,7 +153,7 @@ export function SnackBar({
           >
             {children && (
               <div
-                className={classNames({
+                className={classNames('w-full', {
                   'animate-slideUpBottom ':
                     transition === 'slideUp' &&
                     anchorOrigin.vertical === 'bottom',
