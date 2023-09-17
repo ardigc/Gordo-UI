@@ -139,7 +139,9 @@ export function TextField({
           <InputLabel
             variant={variant}
             shrink={touched || inputProps?.startAdornment ? true : false}
-            className={labelClassName}
+            className={classNames('pointer-events-none', {
+              [labelClassName || '']: labelClassName,
+            })}
             color={color}
             disabled={disabled}
             size={size}
@@ -171,14 +173,12 @@ export function TextField({
           variant={variant}
           multilineTextAreaRef={TextAreaRef}
           fullWidth={fullWidth}
-          // margin={margin}
           onFocus={() => {
             setTouched(true)
             setOpened(true)
           }}
           classes={{
             constainerClassName: classNames({
-              // 'mt-4': label && variant === 'standard',
               [classes?.inputContainerClassName || '']:
                 classes?.inputContainerClassName,
             }),
